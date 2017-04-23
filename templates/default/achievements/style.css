@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+.skill-icon { float:left; margin-right: 2px; width: 18px; height: 18px; }
+
+.achievement-0 { background:url('images/achievement_locked.jpg') left top repeat; border:1px solid #b6803d; margin-top: 4px; }
+.achievement-1 { background:url('images/achievement_unlocked.jpg') left top repeat; border:1px solid #b6803d; margin-top: 4px; }
+.achievement-0a { background:url('images/achievement_account_locked.jpg') left top repeat; border:1px solid #b6803d; margin-top: 4px; }
+.achievement-1a { background:url('images/achievement_account_unlocked.jpg') left top repeat; border:1px solid #b6803d; margin-top: 4px; }
+.achievement-2 { border:1px solid #fff; padding:7px 7px 6px; } 
+
+.achievement-icon { color:#135E82; float: left; margin-right: 10px; }
+.achievement-icon .icon { height: 44px; width: 44px; float: left; position: relative; }
+.achievement-icon .icon img { height: 44px; width: 44px; }
+.achievement-icon .icon .mask-0 { background: url('images/icon_mask.png') no-repeat left top; height: 44px; width: 44px; position: absolute; z-index: 500; left: 0px; top: 0px; }
+.achievement-icon .icon .mask-1 { background: url('images/icon_mask.png') no-repeat right top; height: 44px; width: 44px; position: absolute; z-index: 500; left: 0px; top: 0px; }
+
+.achievement-shield-0 { background: url(images/shield.png) no-repeat left top; float: right; height: 44px; width: 40px; margin-left: 10px; }
+.achievement-shield-0 .points { font:22px/40px Georgia; color:#CCC; text-align: center; }
+.achievement-shield-1 { background: url(images/shield.png) no-repeat right top; float: right; height: 44px; width: 40px; margin-left: 10px; }
+.achievement-shield-1 .points { font:22px/40px Georgia; color:white; text-align: center; }
+.achievement-shield-2 { background: url(images/point_shield1.png) no-repeat left top; float: right; height: 44px; width: 50px; margin-left: 10px; }
+.achievement-shield-2 .points { display: none; }
+.achievement-shield-3 { background: url(images/point_shield1.png) no-repeat right top; float: right; height: 44px; width: 50px; margin-left: 10px; }
+.achievement-shield-3 .points { display: none; }
+
+.achievement-info { font: 14px Georgia, "Times New Roman", Times, serif; color: #000; text-align: center; }
+.achievement-info .name { font-size: 18px; font-weight: bold; color: #361701; margin-bottom: 5px; }
+.achievement-info .desc { font-size: 12px; color: #000; }
+.achievement-info .date { font-size: 12px; font-weight: bold; color: #030; }
+
+.unlocked {	BACKGROUND: url(images/arrow-unlocked.gif) no-repeat 0px 3px; COLOR: #1eff00;}
+.achievements { padding-left:19px; padding-top:20px;}
+.achievements .selected {  }
+.achievements .criteria { display:none; text-align:left; padding:0; }
+
+#achi_menu ul { margin:0;display:block;padding:0 0 0 10px;list-style-type:none;list-style-position:outside;width:180px;position:relative;line-height:22px;}
+#achi_menu ul li.selected2 { background: url('../images/bg-dark-menu.png') repeat-x left bottom !important; color:#3351C9;}
+#achi_menu ul li.selected2 a { color:#3351C9;}
+#achi_menu ul li.menu_head { background: url('../images/bg-dark-menu.png') repeat-x left top; height: 20px; padding: 4px; border: 1px solid #b6803d; color:#000000;font-weight: bold;}
+#achi_menu ul li.menu_head:hover { background: url('../images/bg-dark-menu.png') repeat-x left bottom; height: 20px; padding: 4px; border: 1px solid #b6803d;}
+#achi_menu .sub_menu{padding:0 0 3px 0;}
+#achi_menu .sub_menu li { background: url('../images/bg-dark-menu.png') repeat-x left bottom; height: 15px; padding: 4px; border: 1px solid #ffffd6; margin-left:7px;}
+
+.nav-subcat { background:url(images/achv_sel_sub.jpg) right repeat-y;  }
+
+/* Progress bar */
+.profile-progress {display:block; position: relative; float:center; left:90px;background: rgba(255, 255, 255, 0.1); margin: 0; border:1px solid #fff; text-align: center; height: 22px; width: 73%;}
+.profile-progress .bar { height: 22px; position: absolute; background-color:#0066CC;}
+.profile-progress .bar-contents { line-height: 25px; COLOR: #3E1212;z-index:1000;position: relative;
+top: 0;
+left: 0;
+font-size: 12px;
+line-height: 22px;
+z-index: 5;}
+.bar-contents { line-height: 25px; COLOR: #3E1212;z-index:1000;}
+/* Meta achievements */
+.meta-achievements {	MARGIN: 3px;}
+.meta-achievements UL {	PADDING-BOTTOM: 5px; LIST-STYLE-TYPE: none; WIDTH: 605px;}
+.meta-achievements UL:after {	DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; CLEAR: both; CONTENT: "."}
+.meta-achievements LI {	POSITION: relative; PADDING-LEFT: 15px; WIDTH: 43%; TEXT-OVERFLOW: ellipsis; 	text-align: left; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 20px; COLOR: #d68e6f; OVERFLOW: hidden}
+.ctunlocked{ font-weight:bold; color:#006600;}
+.unlocked {BACKGROUND: url(images/arrow-unlocked.gif) no-repeat 0px 3px;}

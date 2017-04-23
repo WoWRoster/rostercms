@@ -1,0 +1,80 @@
+<!-- $Id: armory_data.html 2616 2012-09-27 16:51:19Z ulminia@gmail.com $ -->
+
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title"><!-- TRANSLATE adata_update_talents --></h3>
+			<form action="{classes.UPDATELINK}" method="post" id="update">
+				<input type="hidden" name="parse" value="ALL" />
+				<input type="hidden" name="process" value="process" />
+				<button type="submit" class="input btn-danger"><!-- TRANSLATE update --></button>
+			</form>
+	</div>
+	<div class="panel-body">
+		<div class="container">
+		<!-- BEGIN classes -->
+			<div class="row">
+				<div class="col-sm-6">{classes.NAME}</div>
+				<div class="col-sm-6">{classes.ROWS}</div>
+			</div>
+		<!-- END classes -->
+		</div>
+	</div>
+</div>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title"><!-- TRANSLATE items --></h3>
+			<form action="" method="post" id="update">
+				<input type="hidden" name="truncate" value="true" />
+				<input type="hidden" name="process" value="process" />
+				<button type="submit" class="input btn-danger"><!-- TRANSLATE installer_purge --></button>
+			</form>
+	</div>
+	<div class="panel-body">
+		<div class="container">
+		<!-- BEGIN cache -->
+			<div class="row">
+				<div class="col-sm-6">{cache.NAME}</div>
+				<div class="col-sm-6">{cache.ROWS}</div>
+			</div>
+		<!-- END cache -->
+		</div>
+	</div>
+</div>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Api Usage</h3>
+			<form action="" method="post" id="update">
+				<input type="hidden" name="clear" value="true" />
+				<input type="hidden" name="process" value="process" />
+				<button type="submit" class="input btn-danger"><!-- TRANSLATE clear --></button>
+			</form>
+	</div>
+	<div class="panel-body">
+		<table class="table table-inverse">
+			<thead>
+				<tr>
+					<th>Type</th>
+					<th>Request</th>
+					<th>Percente</th>
+				</tr>
+			</thead>
+			<tbody>
+			<!-- BEGIN apiusage -->
+				<tr>
+					<th colspan="3" >{apiusage.DATE}</th>
+				</tr>
+				<!-- BEGIN type -->
+				<tr>
+					<td >&nbsp;&nbsp;{apiusage.type.TYPE}</td>
+					<td >{apiusage.type.REQ}</td>
+					<td >{apiusage.type.PERCENT}</td>
+				</tr>
+				<!-- END type -->
+			<!-- END apiusage -->
+			</tbody>
+		</table>
+	</div>
+</div>

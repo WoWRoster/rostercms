@@ -1,0 +1,27 @@
+<!-- $Id: ucp-profile.html 2479 2012-05-25 05:05:25Z c.treyce@gmail.com $ -->
+
+	<div class="container">
+		<div class="row cfg-header">
+			<div class="col-md-12 col-sm-6">{profile.CNAME}
+
+				<form action="" method="post" enctype="multipart/form-data" id="config_config" onsubmit="return confirm('This will save the changes to the database. Are you sure?');">
+					<div class="config-submit">
+						<input type="submit" value="Save Settings" />
+						<input type="hidden" name="process" value="process" />
+					</div>
+<!-- BEGIN profile -->
+
+			<div id="text{profile.ID}">
+
+<!-- BEGIN cfg -->
+				<div class="row cfg-row">
+					<div class="col-md-6 col-sm-5"><i class="cfg-row-i icon-flag-1" style="cursor:help;"></i>{profile.cfg.NAME}</div>
+					<div class="col-md-6 col-sm-5">{profile.cfg.FIELD}</div>
+				</div>
+<!-- END cfg -->
+			</div>
+<!-- END profile -->
+		</form>
+	</div>
+
+

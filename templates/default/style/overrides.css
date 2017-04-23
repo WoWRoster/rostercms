@@ -1,0 +1,103 @@
+/*
+	test
+*
+div.item { width: 55px; height: 55px; display: inline-block;}
+/*div.item .frame{ display: inline; width: 49px; height: 49px; background: url("../images/icons/frames/inventory-slots.png") no-repeat; }*
+div.item .frame,
+div.empty .frame { position: relative; display: block;width: 49px; height: 49px; background: url("../images/icons/frames/inventory-slots.png") no-repeat; }
+div.item .frame{ -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; }
+div.item img {display: inline-block;position: absolute;width: 49px;height: 49px;padding: 1px;}
+.item-quality-0 .frame { background-position: -49px  0 !important; }
+.item-quality-1 .frame { background-position: -98px  0 !important; }
+.item-quality-2 .frame { background-position: -147px 0 !important; }
+.item-quality-3 .frame { background-position: -196px 0 !important; }
+.item-quality-4 .frame { background-position: -245px 0 !important; }
+.item-quality-5 .frame { background-position: -294px 0 !important; }
+.item-quality-6 .frame { background-position: -343px 0 !important; }
+.item-quality-7 .frame { background-position: -392px 0 !important; }
+*/
+.mitem { position:relative; display:inline-block; float: left; margin: 3px; height: 40px; width: 40px; }
+.mitem img{ position: absolute; display:block; clip: rect(2px 38px 38px 2px); height: 40px; width: 40px; }
+.mitem .mask { position: absolute; display:block; background: url(../images/mask/item_mask.png) no-repeat left top; height: 40px; width: 40px; z-index: 100; left: 0; top: 0; }
+
+
+.mitem .none,
+.mitem .poor {		border: 1px solid #9d9d9d; box-shadow: 0 0 10px 1px #9d9d9d, inset 0 0 8px 1px #9d9d9d;} /* poor (gray) */
+.mitem .common {		border: 1px solid #ffffff; box-shadow: 0 0 10px 1px #ffffff, inset 0 0 8px 1px #ffffff;} /* common (white) */
+.mitem .uncommon {		border: 1px solid #1eff00; box-shadow: 0 0 10px 1px #1eff00, inset 0 0 8px 1px #1eff00;} /* uncommon (green) */
+.mitem .rare {		border: 1px solid #0081ff; box-shadow: 0 0 10px 1px #0081ff, inset 0 0 8px 1px #0081ff;} /* rare (blue) */
+.mitem .epic {		border: 1px solid #c600ff; box-shadow: 0 0 10px 1px #c600ff, inset 0 0 8px 1px #c600ff;} /* epic (purple) */
+.mitem .legendary {		border: 1px solid #ff8000; box-shadow: 0 0 10px 1px #ff8000, inset 0 0 8px 1px #ff8000;} /* legendary (orange) */
+.mitem .artifact,
+.mitem .heirloom { 	border: 1px solid #e5cc80; box-shadow: 0 0 10px 1px #e5cc80, inset 0 0 8px 1px #e5cc80; } /* heirloom (gold) */
+
+#sortabl { list-style-type: none; margin: 0; padding: 0;}
+#sortabl li { cursor: move;border: 1px solid #000;}
+
+.row {
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
+
+.list-group-3 {
+	list-style:none;
+	margin: 0px;
+	padding: 0px;
+}
+.list-group-3 .list-group-3-item {
+    display: block;
+    line-height: 40px;
+    padding-left: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 13px;
+	margin-bottom: -1px;
+	border: 1px solid #ddd;
+background-color: #5d6368;
+}
+.list-group-3 .list-group-3-item a:hover,
+.list-group-3 .list-group-3-item a {
+    color: #fff;
+}
+
+.list-group-3 li a i,
+li.list-group-3-item.active > i,
+li.list-group-3-item > i,
+.list-group-3-item > i,
+.list-group-3 .list-group-3-item.active a i,
+.list-group-3 .list-group-3-item a i {
+    font-size: 1.3em;
+    vertical-align: middle;
+    width: 30px;
+    margin-right: 10px;
+    display: inline-block;
+    text-align: center;
+	color: #fff;
+}
+
+.list-group-3 .list-group-3-item:hover {
+    background: #2c2c2c;
+	text-decoration: none;
+}
+.list-group-3 .active {
+background-color: #080808;
+color: #fff; 
+}
+
+.rostercp-nohover,
+.rostercp-nohover:hover,
+.rostercp-nohover,
+.rostercp-nohover:hover,
+.cfg-row:hover,
+.cfg-row {
+	background-color: #5d6368 !important;  border:1px solid rgba(255,255,255,0.1); color: #fff; padding:5px; 
+}
+.cfg-row-i{
+	font-size: 1.3em;
+    vertical-align: middle;
+    width: 30px;
+    margin-right: 10px;
+    display: inline-block;
+    text-align: center;
+	color: #fff;
+}

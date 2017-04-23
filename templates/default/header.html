@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title></title>
+<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+<link rel="Icon" href="favicon.ico" type="image/x-icon" />
+
+{ROSTER_HEAD_CSS}
+{ROSTER_HEAD_JS}
+{ROSTER_HEAD}
+
+</head>
+
+<body>
+
+<!-- IF SHOW_MENU -->
+<nav class="navbar navbar-inverse navigation-clean-button">
+    <div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Blood Gods</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+
+				<!-- IF T_BAR_USER_ILI -->
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">{T_BAR_USER_MSG}<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<!-- BEGIN menu_button_section -->
+						<!-- BEGIN menu_buttons -->
+						<!-- IF menu_button_section.menu_buttons.SCOPE eq 'user' -->
+						<li class="smenuitem">
+							<a href="{menu_button_section.menu_buttons.U_LINK}" >
+								<div>
+									<div id="container">
+									<img src="{menu_button_section.menu_buttons.ICON}"  border=0 style="vertical-align:middle;" alt="" />
+									{menu_button_section.menu_buttons.NAME}</div>
+								</div>
+							</a>
+						</li>
+						<!-- ENDIF -->
+						<!-- END menu_buttons -->
+						<!-- END menu_button_section -->
+					</ul>
+				</li>
+				
+				<li>
+					<form name="roster_logout" action="{U_LOGIN_ACTION}" style="padding: 12px;" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="logout" value="1" />
+						<button class="btn btn-primary btn-xs" type="submit"><!-- TRANSLATE logout --></button>
+					</form>
+				</li>
+				<!-- ELSE -->
+				<li>
+					<div style="padding: 8px;">
+						<button type="submit" onclick="openWin()" class="btn btn-primary btn-block">Log In with Battle.net</button>
+					</div>
+				</li>
+				<!-- ENDIF -->
+				
+				<!-- IF ROSTER_SCOPE eq "char" -->
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><!-- TRANSLATE member_profiles --><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+					<!-- BEGIN menu_button_section -->
+					<!-- BEGIN menu_buttons -->
+					<!-- IF menu_button_section.menu_buttons.SCOPE eq 'char' -->
+						<li class="smenuitem">
+							<a href="{menu_button_section.menu_buttons.U_LINK}" >
+								<div>
+									<div id="container">
+									<img src="{menu_button_section.menu_buttons.ICON}"  border=0 style="vertical-align:middle;" alt="" />
+									{menu_button_section.menu_buttons.NAME}</div>
+								</div>
+							</a>
+						</li>
+					<!-- ENDIF -->
+					<!-- END menu_buttons -->
+					<!-- END menu_button_section -->
+					</ul>
+				</li>
+				<!-- ENDIF -->
+					
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="right"><a href="{ROSTER_URL}">Home</a></li>
+				<li class="right"><a href="{GALLERY}">Gallery</a></li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><!-- TRANSLATE guild -->
+					<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+					<!-- BEGIN menu_button_section -->
+					<!-- BEGIN menu_buttons -->
+					<!-- IF menu_button_section.menu_buttons.SCOPE eq 'guild' -->
+						<li class="smenuitem">
+							<a href="{menu_button_section.menu_buttons.U_LINK}" >
+								<div>
+									<div id="container">
+									<img src="{menu_button_section.menu_buttons.ICON}"  border=0 style="vertical-align:middle;" alt="" />
+									{menu_button_section.menu_buttons.NAME}</div>
+								</div>
+							</a>
+						</li>
+					<!-- ENDIF -->
+					<!-- END menu_buttons -->
+					<!-- END menu_button_section -->
+					</ul>
+				</li>
+				<li class="right"><a href="{FORUM}">Forums</a></li>
+				<!-- IF ISADMIN -->
+				<li class="right"><a class="mlink" href="{RCP}">Admin CP</a></li>
+				<!-- ENDIF -->
+				<!-- IF T_BAR_USER_ILI -->
+				<!-- ELSE -->
+				<li class="right" id="bnetlogin" ><a href="#">Log In with Battle.net<i class="spinner-battlenet"></i></a></li>
+				<!-- ENDIF -->
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><!-- TRANSLATE util -->
+					<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+					<!-- BEGIN menu_button_section -->
+					<!-- BEGIN menu_buttons -->
+					<!-- IF menu_button_section.menu_buttons.SCOPE eq 'util' -->
+						<li class="smenuitem">
+							<a href="{menu_button_section.menu_buttons.U_LINK}" >
+								<div>
+									<div id="container">
+									<img src="{menu_button_section.menu_buttons.ICON}"  border=0 style="vertical-align:middle;" alt="" />
+									{menu_button_section.menu_buttons.NAME}</div>
+								</div>
+							</a>
+						</li>
+					<!-- ENDIF -->
+					<!-- END menu_buttons -->
+					<!-- END menu_button_section -->
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="hidden-xs holaday darkmoonfaireelwynn">
+	</div>
+<!-- ENDIF -->
+<!-- IF S_MESSAGES -->
+<div id="messages">
+	<div class="container">
+		<div class="alert alert-dismissable alert-warning" id="notify">
+			<button type="button" class="close" data-dismiss="alert">×</button>
+			<!-- BEGIN messages -->
+				<!-- BEGIN item -->
+					<!-- IF messages.item.TITLE neq '' -->
+					<h4>{messages.item.TITLE}</h4>
+					<!-- ENDIF -->
+					<p>{messages.item.TEXT}</p>
+				<!-- END item -->
+			<!-- END messages -->
+		</div>
+	</div>
+</div>
+<!-- ENDIF -->
+

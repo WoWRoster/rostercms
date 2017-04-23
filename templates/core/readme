@@ -1,0 +1,5 @@
+Templates Core
+
+This folder houses the Core theme files for roster
+these being js and some css files and some images
+other themes "child themes" may overwrite the files with a setting in the admin section

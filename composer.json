@@ -1,0 +1,6 @@
+{
+    "require": {
+        "filp/whoops": "1.*",
+        "raveren/kint": "^1.0"
+    }
+}

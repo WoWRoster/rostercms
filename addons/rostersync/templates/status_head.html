@@ -1,0 +1,43 @@
+<!-- $Id: status_head.html 550 2012-06-02 05:27:04Z ulminia@gmail.com $ -->
+
+<!-- ArmorySync Status Head -->
+
+<form name="linker" id="rsynclinker" action="{LINK}" method="post">
+        <input type="hidden" name="job_id" value="{JOB_ID}" />
+        <input type="hidden" name="StatusHidden" value="{STATUSHIDDEN}" />
+		<!-- IF DEBUG neq "" -->
+		{DEBUG}
+		<!-- ENDIF -->
+</form>
+
+<div class="container">
+	<div class="tier-1-title" style="cursor:pointer;" onclick="showHide('status','asimg','{THEME_PATH}/images/button_close.png','{THEME_PATH}/images/button_open.png');">
+		<div class="header_text" style="background-image:none;">
+		<table align="center" width="100%" cellspacing="0" cellpadding="0">
+			<tr>
+				<td id="progress_title" width="33%" align="left">{TITLE}</td>
+				<td id="progress_next" width="33%" align="center">{NEXT}</td>
+				<td width="33%" align="right">
+					{PROGRESSBAR}
+				</td>
+				<td>
+					<div class="toggle">
+						<img id="asimg" src="{THEME_PATH}/images/button_close.png"/>
+					</div>
+				</td>
+			</tr>
+		</table>
+		</div>
+		
+	</div>
+</div>
+<div class="container" id="status" <!-- IF DISPLAY neq "" --> style="display:{DISPLAY};"<!-- ENDIF -->>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+				<!-- BEGIN head_col -->
+					<th>{head_col.HEAD_TITLE}</th>
+				<!-- END head_col -->
+				</tr>
+			</thead>

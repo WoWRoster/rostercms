@@ -1,0 +1,16 @@
+<!-- $Id: comment_add.html 2409 2012-03-09 08:24:54Z ulminia@gmail.com $ -->
+
+<form method="post" action="{U_ADD_FORMACTION}" id="addcomment" style="text-align:left;">
+	<input type="hidden" name="process" value="process" />
+	<input type="hidden" name="id" value="{U_NEWS_ID}" />
+
+		<div class="page-header">
+			<h3><!-- TRANSLATE add_comment --></h3>
+		</div>
+		<div class="info-text">
+			<label for="author"><!-- TRANSLATE name -->:</label> <input name="author" id="author" type="text" maxlength="16" size="16" value="{S_USER}" />
+		</div>
+		<textarea name="comment" style="width: 100%;height: 300px;" id="comment"></textarea>
+		<input type="submit" value="<!-- TRANSLATE add_comment -->" />
+
+</form>

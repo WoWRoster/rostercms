@@ -1,0 +1,56 @@
+
+
+<div class="panel-group">
+  <!-- BEGIN news_admin -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">
+        <a data-toggle="collapse" href="#collapse{news_admin.NUM}">{news_admin.TITLE}</a>
+		<div class="float-right" style="margin-top:3px;">
+			<form name="delete" style="display:inline;" method="post" enctype="multipart/form-data" action="">
+				<input type="hidden" name="op" value="process" />
+				<input type="hidden" name="type" value="delete" />
+				<input type="hidden" name="id" value="{news_admin.NEWS_ID}" />
+				<button type="submit" class="input" style="font-size: 18px !important;">
+				<img src="{THEME_PATH}/images/admin/red.png" style="height:16px;width:16px;border:0;" alt="" /><!-- TRANSLATE delete --></button>
+			</form>
+		</div>
+	  </h2>
+    </div>
+    <div id="collapse{news_admin.NUM}" class="panel-collapse collapse">
+	
+		<div class="addon-status" style="width: 75px;">
+
+			<div style="margin-top:3px;">
+				<form name="activate" style="display:inline;" method="post" enctype="multipart/form-data" action="">
+					<input type="hidden" name="op" value="process" />
+					<input type="hidden" name="type" value="{slider_row.B_ACTIVEOP}" />
+					<input type="hidden" name="id" value="{slider_row.B_ID}" />
+					<button type="submit" class="input" >
+					<img src="{THEME_PATH}/images/admin/{slider_row.B_ACTIVEI}.png" style="height:16px;width:16px;border:0;" alt="" />{slider_row.B_ACTIVET}</button>
+				</form>
+			</div>
+
+			<div style="margin-top:3px;">
+				<form name="delete" style="display:inline;" method="post" enctype="multipart/form-data" action="">
+					<input type="hidden" name="op" value="process" />
+					<input type="hidden" name="type" value="delete" />
+					<input type="hidden" name="id" value="{slider_row.B_ID}" />
+					<input type="hidden" name="image" value="{slider_row.B_IMG}" />
+					<button type="submit" class="input" >
+					<img src="{THEME_PATH}/images/admin/red.png" style="height:16px;width:16px;border:0;" alt="" /><!-- TRANSLATE delete --></button>
+				</form>
+			</div>
+
+		</div>
+
+		<div style="float: left;padding-left: 10px;">
+			<div><img src="{news_admin.IMAGE}" width="150" height="70"></a></div>
+		</div>
+		
+      <div class="panel-body">{news_admin.TEXT}</div>
+      <div class="panel-footer"><!-- TRANSLATE posted_by -->: {news_admin.POSTER} <span class="spacer"> - </span> {news_admin.DATE} {news_admin.L_COMMENT}</div>
+    </div>
+  </div>
+  <!-- END news_admin -->
+</div>

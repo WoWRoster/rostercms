@@ -1,0 +1,113 @@
+
+<div class="container">
+	<div style="float: left;">
+		<div class="achievements">
+			<div id="achi_menu">
+				<ul id="a_menu" style="display:block">
+					
+					<!-- BEGIN amenue -->
+					<li id="{amenue.ID}" class="menu_head">{amenue.NAME}</li>
+						<!-- IF amenue.SUB -->
+						<ul id="{amenue.ID}_sub" class="sub_menu" style="display:none;">
+							<!-- BEGIN sub -->
+							<li id="{amenue.sub.ID}" class="membersRow1">{amenue.sub.NAME}</li>
+							<!-- END sub -->
+						</ul>
+						<!-- ENDIF -->
+					
+					<!-- END amenue -->
+				</ul>
+			</div>
+		</div>
+		
+		<div class="tier-1-a">
+			<div class="tier-1-b">
+				<div class="tier-1-c">
+					<div class="tier-1-title"><!-- TRANSLATE Summary --></div>
+					
+					<!-- BEGIN cat -->
+					<div >{cat.TITLE}</div>
+					<div  style="cursor:default;">
+						<div class="levelbarParent" style="width:200px;">
+							<div class="levelbarChild">{cat.BAR}</div>
+						</div>
+						<table class="expOutline" border="0" cellpadding="0" cellspacing="0" width="200">
+							<tr>
+								<td style="background-image: url('img/honored.gif');" width="{cat.PERCENT1}%">
+									<img src="img/pixel.gif" height="16" width="1" alt="" />
+								</td>
+								<td width="{cat.PERCENT}%"></td>
+							</tr>
+						</table>
+					</div>
+					<!-- END cat -->
+			
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="amain" style="float: right; width: 760px;">
+
+<!-- BEGIN info -->
+	<div style="display:none;" id="{info.ID}">
+
+				
+						
+
+
+						<div class="tier-1-a">
+							<div class="tier-1-b">
+								<div class="tier-1-c">
+									<div class="tier-1-title">{info.NAME}</div>
+
+<!-- BEGIN achv -->
+										<div class="achievement-{info.achv.STATUS}" <!-- IF info.achv.CRITERIA neq 1 -->style="cursor:pointer;" onclick="showHide('{info.achv.IDDI}','img_{info.achv.IDDI}','templates/default/images/minus.gif','templates/default/images/plus.gif');"<!-- ENDIF -->>
+											<div class="achievement-2">
+											<!-- IF S_ACHIV_ICON eq 1 -->
+												<div class="achievement-icon">
+													<div class="icon"><img src="{info.achv.ICON}" /><div class="mask-{info.achv.STATUS}"></div></div>
+												</div>
+											<!-- ENDIF -->
+												<div class="achievement-shield-{info.achv.SHIELD}">
+													<div class="points">{info.achv.POINTS}</div>
+												</div>
+												<div class="achievement-info">
+													<div class="name">{info.achv.NAME}</div>
+													<div class="desc">{info.achv.DESC}</div>
+
+<!-- IF info.achv.DATE -->
+													<div class="date">{info.achv.DATE}</div>
+<!-- ENDIF -->
+												</div>
+<div style="height: 0px; clear: both;"></div>
+<!-- IF info.achv.CRITERIA neq 1 -->
+												<div class="achievement-info">
+													<img style="float:right;" id="img_{info.achv.IDDI}" src="templates/default/images/plus.gif" alt="" />
+													<div id="{info.achv.IDDI}" style="width:100%;display:none;">
+													{info.achv.CRITERIA2}
+													</div>
+												</div>
+<!-- ENDIF -->
+											<div style="height: 0px; clear: both;"></div>
+											</div>
+											
+											
+										</div>
+<!-- END achv -->
+									
+
+								</div>
+							</div>
+						</div>
+
+
+		</div>
+		<!-- END info -->
+	</div>
+
+	<br clear="all" />
+
+
+</div>

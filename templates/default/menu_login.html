@@ -1,0 +1,22 @@
+<!-- $Id: menu_login.html 2488 2012-05-27 02:43:48Z c.treyce@gmail.com $ -->
+
+<div class="menu-login">
+<!-- IF S_LOGIN_MESSAGE -->
+	<div class="menu-login-message">
+		{L_LOGIN_MESSAGE}
+<!-- IF U_LOGIN neq 0 -->
+		<form class="inline slim" name="roster_logout" action="{U_LOGIN_ACTION}" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="logout" value="1" />
+			<button type="submit"><!-- TRANSLATE logout --></button>
+	  </form>
+<!-- ENDIF -->
+	</div>
+<!-- ENDIF -->
+<!-- IF U_LOGIN eq 0 -->
+	<div class="control-group">
+		<button type="submit" id="bnetlogins" class="btn btn-primary btn-block">
+		Log In with Battle.net
+		</button>
+	</div>
+<!-- ENDIF -->
+</div>

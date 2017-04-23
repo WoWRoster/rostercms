@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title></title>
+<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+<link rel="Icon" href="favicon.ico" type="image/x-icon" />
+
+{ROSTER_HEAD_CSS}
+{ROSTER_HEAD_JS}
+{ROSTER_HEAD}
+
+</head>
+
+<body>
+
+<!-- IF SHOW_MENU -->
+<header>
+	<span class="logo"></span>
+
+	<nav class="menu">
+		<div class="container">
+			<ul class="nav navbar-left">
+				<!-- IF T_BAR_USER_ILI -->
+				<li class="left"><span id="menu">{T_BAR_USER_MSG} </span>
+				<ul class="submenu">
+                           <!-- BEGIN menu_button_section -->
+							<!-- BEGIN menu_buttons -->
+							<!-- IF menu_button_section.menu_buttons.SCOPE eq 'user' -->
+							<li class="smenuitem">
+								<a href="{menu_button_section.menu_buttons.U_LINK}" >
+									<div>
+										<div id="container">
+										<img src="{menu_button_section.menu_buttons.ICON}"  border=0 style="vertical-align:middle;" alt="" />
+										{menu_button_section.menu_buttons.NAME}</div>
+									</div>
+								</a>
+							</li>
+							<!-- ENDIF -->
+							<!-- END menu_buttons -->
+							<!-- END menu_button_section -->
+                        </ul>
+				
+				
+				</li>
+				<li class="left">
+					<span id="menu">
+						<form name="roster_logout" action="{U_LOGIN_ACTION}" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="logout" value="1" />
+							<button class="btn btn-primary btn-xs" type="submit"><!-- TRANSLATE logout --></button>
+						</form>
+					</span>
+				</li>
+				<!-- ENDIF -->
+				
+				<li class="left">
+					<a class="mlink" href="#menu_guild"><!-- TRANSLATE guild --></a>
+					<ul class="submenu">
+					<!-- BEGIN menu_button_section -->
+					<!-- BEGIN menu_buttons -->
+					<!-- IF menu_button_section.menu_buttons.SCOPE eq 'guild' -->
+						<li class="smenuitem">
+							<a href="{menu_button_section.menu_buttons.U_LINK}" >
+								<div>
+									<div id="container">
+									<img src="{menu_button_section.menu_buttons.ICON}"  border=0 style="vertical-align:middle;" alt="" />
+									{menu_button_section.menu_buttons.NAME}</div>
+								</div>
+							</a>
+						</li>
+					<!-- ENDIF -->
+					<!-- END menu_buttons -->
+					<!-- END menu_button_section -->
+					</ul>
+				</li>
+				<!-- IF ROSTER_SCOPE eq "char" -->
+				<li class="headlink">
+				<li class="left">
+					<a class="mlink" href="#menu_chars"><!-- TRANSLATE member_profiles --></a>
+					<ul class="submenu">
+					<!-- BEGIN menu_button_section -->
+					<!-- BEGIN menu_buttons -->
+					<!-- IF menu_button_section.menu_buttons.SCOPE eq 'char' -->
+						<li class="smenuitem">
+							<a href="{menu_button_section.menu_buttons.U_LINK}" >
+								<div>
+									<div id="container">
+									<img src="{menu_button_section.menu_buttons.ICON}"  border=0 style="vertical-align:middle;" alt="" />
+									{menu_button_section.menu_buttons.NAME}</div>
+								</div>
+							</a>
+						</li>
+					<!-- ENDIF -->
+					<!-- END menu_buttons -->
+					<!-- END menu_button_section -->
+					</ul>
+				</li>
+				<!-- ENDIF -->
+			</ul>
+			<ul class="nav navbar-right">
+				<li class="right"><a class="mlink" href="#menu_util"><!-- TRANSLATE util --></a>
+					<ul class="submenu">
+					<!-- BEGIN menu_button_section -->
+					<!-- BEGIN menu_buttons -->
+					<!-- IF menu_button_section.menu_buttons.SCOPE eq 'util' -->
+						<li class="smenuitem">
+							<a href="{menu_button_section.menu_buttons.U_LINK}" >
+								<div>
+									<div id="container">
+									<img src="{menu_button_section.menu_buttons.ICON}"  border=0 style="vertical-align:middle;" alt="" />
+									{menu_button_section.menu_buttons.NAME}</div>
+								</div>
+							</a>
+						</li>
+					<!-- ENDIF -->
+					<!-- END menu_buttons -->
+					<!-- END menu_button_section -->
+					</ul>
+				</li>
+				<!-- IF ISADMIN -->
+				<li class="right"><a class="mlink" href="{RCP}">Admin CP</a></li>
+				<!-- ENDIF -->
+				<!-- IF T_BAR_USER_ILI -->
+				<!-- ELSE -->
+				<li class="right" id="bnetlogin" ><a href="#">Log In with Battle.net<i class="spinner-battlenet"></i></a></li>
+				<!-- ENDIF -->
+				<li class="right"><a href="{FORUM}">Forums</a></li>
+				<li class="right"><a href="{ROSTER_URL}">Home</a></li>
+			</ul>
+		</div>
+	</nav>
+
+</header>
+
+<!-- ENDIF -->
+<!-- IF S_MESSAGES -->
+<div id="messages">
+	<div class="container">
+		<div class="alert alert-dismissable alert-warning" id="notify">
+			<button type="button" class="close" data-dismiss="alert">×</button>
+			<!-- BEGIN messages -->
+				<!-- BEGIN item -->
+					<!-- IF messages.item.TITLE neq '' -->
+					<h4>{messages.item.TITLE}</h4>
+					<!-- ENDIF -->
+					<p>{messages.item.TEXT}</p>
+				<!-- END item -->
+			<!-- END messages -->
+		</div>
+	</div>
+</div>
+<!-- ENDIF -->
+<div id="main">

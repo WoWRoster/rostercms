@@ -1,0 +1,55 @@
+<!-- $Id: rostercp.html 2530 2012-06-04 22:32:10Z ulminia@gmail.com $ -->
+
+{HEADER}
+
+<div class="roster-panel">
+	<div class="container">
+
+		<div class="btn-toolbar">
+			<div class="btn-group">
+<!-- BEGIN pagebar -->
+			<!-- IF pagebar.SPECIAL eq 'divider' --><!-- ELSE --><a class="btn btn-primary btn-xs<!-- IF pagebar.SELECTED --> active<!-- ELSE --><!-- ENDIF -->" href="{pagebar.LINK}" role="button">{pagebar.NAME}</a><!-- ENDIF -->
+<!-- END pagebar -->
+			</div>
+		</div>
+<!-- IF ADDON_PAGEBAR -->
+		<div class="btn-toolbar">
+			<div class="btn-group">
+<!-- BEGIN addon_pagebar -->
+			<a href="{addon_pagebar.LINK}" class="btn btn-primary btn-xs<!-- IF addon_pagebar.SELECTED --> active<!-- ELSE --><!-- ENDIF --> role="button">{addon_pagebar.NAME}</a>
+<!-- END addon_pagebar -->
+			</div>
+		</div>
+<!-- ENDIF -->
+
+
+<div class="panel panel-warning" id="ap_{sections.ID}">
+	<div class="panel-heading">
+		<h3 class="panel-title">
+			<div class="icon">
+				<img src="{INTERFACE_URL}Interface/Icons/inv_misc_gear_02.{IMG_SUFFIX}" alt="" />
+				<div class="mask"></div>
+			</div>
+			{ROSTERCP_TITLE}
+		</h3>
+	</div>
+	<div class="panel-body">
+
+
+<!-- IF MENU neq '' -->
+					<div class="config-menu">
+{MENU}
+					</div>
+					<div class="config-body-menu">
+<!-- ELSE -->
+					<div class="config-body">
+<!-- ENDIF -->
+{BODY}
+					</div>
+
+				</div>
+			</div>
+		</div>
+</div>
+
+{FOOTER}

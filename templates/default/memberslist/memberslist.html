@@ -1,0 +1,84 @@
+<!-- $Id: memberslist.html 2560 2012-06-29 21:58:29Z ulminia@gmail.com $ -->
+<form name="{LISTNAME}_filterform" enctype="application/x-www-form-urlencoded" action="{U_FILTER_FORM}" method="get">
+	<input type="hidden" name="p" id="p" value="{UR_FILTER_FORM}" />
+<div id="main" class="container">
+	<div class="section-blue">
+	<!-- IF B_PAGINATION -->
+		<nav aria-label="Page navigation">
+		  <ul class="pagination">
+			<li>
+			  <a href="{PAGINATION_PREV}" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+			  </a>
+			</li>
+			<!-- BEGIN pagination_pages -->
+			<li<!-- IF pagination_pages.ACTIVE --> class="active"<!-- ENDIF --><!-- IF pagination_pages.DISABLED --> class="disabled"<!-- ENDIF -->><a href="{pagination_pages.URL}">{pagination_pages.PAGE}</a></li>
+			<!-- END pagination_pages -->
+			<li>
+			  <a href="{PAGINATION_NEXT}" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+			  </a>
+			</li>
+		  </ul>
+		</nav>
+		<!-- ENDIF -->
+		
+		<div class="SortTable SortTable--flex" queryselectoralways="27">
+			<div class="SortTable-head">
+			  <div class="SortTable-row">
+				
+				<!-- BEGIN header_cell -->
+				<div data-priority="8" class="SortTable-col SortTable-label{header_cell.IS_SORT}{header_cell.FLOAT}">
+				  <div class="SortTable-labelOuter">
+					<div class="SortTable-labelInner">
+					  <div class="SortTable-labelText ">
+				<!-- IF header_cell.LINK -->
+						<a href="{header_cell.LINK}" class="internal_link sort-link">{header_cell.TEXT}</a>
+				<!-- ELSE -->
+							{header_cell.TEXT}
+				<!-- ENDIF -->
+					  </div>
+					</div>
+				  </div>
+				</div>
+				<!-- END header_cell -->
+
+			  </div>
+			</div>
+			<div class="SortTable-body">
+			<!-- BEGIN members_row -->
+			  <div class="SortTable-row">
+				<!-- BEGIN cell -->
+				<div data-value="1" class="SortTable-col SortTable-data align-{members_row.cell.FLOAT} text-nowrap">
+					{members_row.cell.VALUE}
+				</div>
+				<!-- END cell -->
+			  </div>
+			<!-- END members_row -->
+		  </div>
+
+		</div>
+		
+		<!-- IF B_PAGINATION -->
+		<nav aria-label="Page navigation">
+		  <ul class="pagination">
+			<li>
+			  <a href="{PAGINATION_PREV}" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+			  </a>
+			</li>
+			<!-- BEGIN pagination_pages -->
+			<li<!-- IF pagination_pages.ACTIVE --> class="active"<!-- ENDIF --><!-- IF pagination_pages.DISABLED --> class="disabled"<!-- ENDIF -->><a href="{pagination_pages.URL}">{pagination_pages.PAGE}</a></li>
+			<!-- END pagination_pages -->
+			<li>
+			  <a href="{PAGINATION_NEXT}" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+			  </a>
+			</li>
+		  </ul>
+		</nav>
+		<!-- ENDIF -->
+		
+	</div>
+</div>
+</form>

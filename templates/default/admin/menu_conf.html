@@ -1,0 +1,59 @@
+
+	<div class="row">
+		<div class="col-md-12">
+		<form action="{U_FORM_ACTION}" method="post" onsubmit="return confirm('<!-- TRANSLATE confirm_config_submit -->') &amp;&amp; writeValue();">
+			<div class="content-box-header">
+				<div class="panel-title">{SECTION_NAME}</div>
+				<div class="panel-options">
+					<input type="hidden" name="arrayput" id="arrayput" />
+					<input type="hidden" name="section" value="{SECTION}" />
+					<input type="hidden" name="process" value="process" />
+					<input type="submit" value="<!-- TRANSLATE config_submit_button -->" />
+				</div>
+			</div>
+			</form>
+			<div class="content-box-large box-with-header">
+			
+				<div class="panel panel-default">
+					<div class="panel-heading">Active</div>
+					<div class="panel-body">
+						<div class="ui-widget ui-widget-content ui-corner-all sblueborder" id="array" style="width:100%;height:{BUTTON_GRID_HEIGHT}px;">
+							<ul id="active">
+							<!-- BEGIN button_grid -->
+							<li id="b{button_grid.ID}" class="mitem"{button_grid.TOOLTIP}>
+								<img src="{button_grid.ICON}" alt="" />
+								<span class="frame item-quality-1"></span>
+							</li>
+							<!-- END button_grid -->
+							</ul>
+						</div>
+						<span id="1"></span>
+					</div>
+
+					<div class="panel-heading"><!-- TRANSLATE menuconf_unused_buttons --></div>
+					<div class="panel-body">
+						<div id="palet" class="ui-widget ui-widget-content ui-corner-all sgrayborder" style="width:100%;height:{UN_BUTTON_GRID_HEIGHT}px;">
+						<ul>
+							<!-- BEGIN pallet_grid -->
+							<li id="b{pallet_grid.ID}" class="mitem"{pallet_grid.TOOLTIP}>
+								<img src="{pallet_grid.ICON}" alt="" />
+								<div class="mask {pallet_grid.CLASS}"></div>
+							</li>
+							<!-- END pallet_grid -->
+						</ul>
+						</div>
+						<span id="2"></span>
+
+					</div>
+
+					<div class="panel-heading"><!-- TRANSLATE menuconf_drag_delete --></div>
+					<div class="panel-body">
+						<div id="rec_bin" class="ui-widget ui-state-error ui-corner-all" style="width:100%;height:65px;">
+						</div>
+						<span id="3"></span>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>

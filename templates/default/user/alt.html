@@ -1,0 +1,65 @@
+
+
+<div class="tier-2-a">
+	<div class="tier-2-b">
+		<div class="tier-1-title">
+			<div class="icon">
+				<img src="{INTERFACE_URL}Interface/Icons/inv_misc_gear_02.png" alt="" />
+				<div class="mask"></div>
+			</div>
+			<!-- TRANSLATE alt_clame -->
+		</div>
+
+<!-- IF STAGE eq 1 -->
+	
+		<div class="tier-1-a" style="margin-top: 5px;">
+			<div class="tier-1-b">
+				<div class="tier-1-c exp-content">
+					<div class="info-text-h">
+						<!-- TRANSLATE alt_header -->
+						<br>
+						<!-- TRANSLATE alt_desc -->
+						<br>
+						{TEXT}
+						<br>
+						<button class="btn btn-primary btn-block" data-loading-text="" tabindex="2" id="charclaim">start</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<!-- ENDIF -->
+
+<!-- IF STAGE eq 3 -->
+		<div class="tier-1-a" style="margin-top: 5px;">
+			<div class="tier-1-b">
+				<div class="tier-1-c exp-content">
+					<div class="info-text-h">
+						{TEXT}
+						<!-- BEGIN chars -->
+
+						<div class="my-chars">
+							<div class="avatar">
+								<!-- IF chars.PROFILE --><a href="{chars.PROFILE}" ><!-- ENDIF --><img src="{chars.THUMB}?alt=wow/static/images/2d/avatar/{chars.RACE}-{chars.GENDER}.jpg"></a>
+							</div>
+							<div class="title">
+								<!-- IF chars.PROFILE --><a href="{chars.PROFILE}" >{chars.NAME}</a><!-- ELSE -->{chars.NAME}<!-- ENDIF --><br>Level {chars.LEVEL} {chars.CLASS}
+								<!-- IF chars.IS_MAIN -->
+								<img style="float:center;" src="img/pvp-win.gif" alt="" />
+								<!-- ENDIF -->
+							</div>
+							<div class="info">{chars.GUILD} @ {chars.SERVER}</div>
+							<div class="main"> <label for="complete_yes">Is Main</label><input type="radio" name="main" value="" id="complete_yes" <!-- IF chars.IS_MAIN --> 'checked="checked"<!-- ENDIF -->/></div>
+							<input type="hidden" name="main_name" value="" />
+						</div>
+			
+						<!-- END chars -->
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- ENDIF -->
+
+
+	</div>
+</div>

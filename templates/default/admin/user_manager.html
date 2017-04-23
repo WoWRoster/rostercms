@@ -1,0 +1,42 @@
+<!-- $Id: user_manager.html 2496 2012-05-27 17:43:18Z c.treyce@gmail.com $ -->
+
+<form action="" method="post" id="update">
+	<input type="hidden" id="deletehide" name="action" value="" />
+	<input type="hidden" name="process" value="process" />
+	<div class="config-submit">
+		<button type="submit" class="btn btn-default btn-xs" onclick="return confirm('update settings');"><!-- TRANSLATE update --></button>
+	</div>
+
+	<div class="tier-2-a">
+		<div class="tier-2-b">
+			<div class="info-text-h">
+				{L_USER_MANAGER}
+			</div>
+		</div>
+	</div>
+
+<!-- BEGIN user -->
+
+	<div class="row cfg-row">
+		<div class="col-md-3 col-sm-2"><i class="cfg-row-i icon-flag-1" style="cursor:help;" {user.TOOLTIP}></i>{user.NAME}</div>
+		<div class="col-md-3 col-sm-2">{user.ACCESS}</div>
+		<div class="col-md-2 col-sm-2">
+			<div class="btn-group" data-toggle="buttons">
+				<label class="btn btn-default btn-xs" id="rad_config_{user.IDC}_xx">
+					<input type="radio" id="rad_config_{user.IDC}" name="config_{user.ID}[active]" value="0" <!-- IF user.ACTIVE eq 0 -->checked="checked" <!-- ENDIF -->/>
+					<!-- TRANSLATE inactive --></label>
+				<label class="btn btn-default btn-xs" id="rad_config_{user.IDC}xxx">
+					<input type="radio" id="rad_config_{user.IDX}" name="config_{user.ID}[active]" value="1" <!-- IF user.ACTIVE eq 1 -->checked="checked" <!-- ENDIF -->/>
+					<!-- TRANSLATE active --></label>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-2">
+			<label for="delete_{user.ID}"> <!-- TRANSLATE delete --></label><input type="checkbox" name="delete[]" id="delete_{user.ID}" value="{user.ID}" />
+		</div>
+
+		<div class="col-md-2 col-sm-2"><a class="btn btn-default btn-xs" href="{user.PERMISS}"><!-- TRANSLATE permissions --></a></div>
+	</div>
+
+<!-- END user -->
+
+</form>

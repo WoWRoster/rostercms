@@ -1,0 +1,44 @@
+<!-- BEGIN folders -->
+<div class="tier-2-a {folders.BORDER}" style="width:100%;">
+	<div class="tier-2-b">
+
+		<div class="tier-2-title">
+			<div style="text-transform:none;cursor:pointer;width:100%;text-align:left;" onclick="showHide('table_{folders.ID}','img_{folders.ID}','/wowroster/templates/default/images/button_open.png','/wowroster/templates/default/images/button_close.png');">
+				<div style="float:right;"><span style="color:{folders.SCOLOR};">{folders.SNAME}</span>
+					<img id="img_{folders.ID}" src="/wowroster/templates/default/images/button_close.png" alt="">
+				</div>
+			{folders.NAME}
+			</div>
+		</div>
+		<div id="table_{folders.ID}" style="width: 100%; display: none;">
+	
+			<!-- IF folders.FILE neq '' -->
+			<div class="tier-2-a {folders.BORDER}" style="margin: 3px;">
+				<div class="tier-2-b">
+					<div class="tier-2-title">
+						<div style="text-transform:none;cursor:pointer;width:100%;text-align:left;" onclick="showHide('table_{folders.ID}_f','img_{folders.ID}_f','/wowroster/templates/default/images/button_open.png','/wowroster/templates/default/images/button_close.png');">
+							<div style="float:right;"><span style="color:{folders.SCOLOR};"></span>
+								<img id="img_{folders.ID}" src="/wowroster/templates/default/images/button_close.png" alt="">
+							</div>
+						Files
+						</div>
+					</div>
+					<table id="table_{folders.ID}_f" style="width: 100%; display: none;" cellpadding="0" cellspacing="0">
+						<tr>
+							<th class="membersHeader">Filename</th>
+							<th class="membersHeader">Local Sha</th>
+							<th class="membersHeader">Repo Sha</th>
+							<th class="membersHeader">Local Size</th>
+							<th class="membersHeader">Repo Size</th>
+						</tr>
+						{folders.FILE}
+					</table>
+				</div>
+			</div>
+			<!-- ENDIF -->
+			
+			{folders.SUB}
+		</div>
+	</div>
+</div>
+<!-- END folders -->

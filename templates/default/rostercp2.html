@@ -1,0 +1,93 @@
+<div id="main" class="container-cp">
+	<div class="navbar navbar-fixed-top navbar-primary main" role="navigation">
+		<div class="navbar-header pull-left">
+			<div class="navbar-brand">
+				<div class="pull-left">
+					<a href="#" class="toggle-button toggle-sidebar btn-navbar"><i class="fa fa-bars"></i></a>
+				</div>
+				<span class="appbrand innerL">{PAGE_INFO}</span>
+			</div>
+		</div>
+		<ul class="nav navbar-nav navbar-left">
+			<li class=" hidden-xs"><span class="appbrand innerL">{ROSTERCP_TITLE}</span></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right hidden-xs">
+		
+			<li class="dropdown notification">
+				<a href="#" class="dropdown-toggle menu-icon" data-toggle="dropdown"><i class="fa fa-fw fa-envelope-o"></i><span class="badge badge-primary">2</span></a>
+				<ul class="dropdown-menu inbox">
+					<li class="headline">Messages</li>
+					<!-- BEGIN roster_cp -->
+
+							<li class="media">
+								<a class="pull-left" href="#"><img class="media-object" src="{roster_cp.ICON}" alt="..."></a>
+								<div class="media-body margin-none">
+									<a class="padding-none">{roster_cp.FULLNAME}</a>
+									<div class="clearfix"></div>
+									<em>{roster_cp.L_TIP_UPGRADE}</em>
+								</div>
+							</li>
+
+					<!-- END roster_cp -->
+				</ul>
+			</li>
+			
+			<li><a href="{ROSTER_URL}" class="menu-icon"><i class="fa fa-sign-out"></i></a></li>
+		</ul>
+	</div>
+	
+	
+	<div id="mmenu" class="hidden-print hidden-xs">
+		<div class="sidebar sidebar-inverse">
+			<div class="sidebarMenuWrapper">
+				<ul id="nolinkprop" class="list-unstyled">
+					<!-- BEGIN pagebar -->
+					<li<!-- IF pagebar.SELECTED --> class="active"<!-- ENDIF -->><a class="menu_link" href="{pagebar.LINK}"><i class="icon-projector-screen-line"></i><span>{pagebar.NAME}</span></a></li>
+					<!-- END pagebar -->
+				</ul>
+				<!-- IF ADDON_PAGEBAR -->
+				<ul id="side_menu2" class="list-unstyled">
+					<li class="hasSubmenu">
+						<a href="#" data-target="#menu-style" id="hassubmenu" data-toggle="collapse"><i class="icon-compose"></i><span>Addons</span></a>
+						<ul class="collapse" id="menu-style">
+						<!-- BEGIN addon_pagebar -->
+							<li<!-- IF addon_pagebar.SELECTED --> class="active"<!-- ENDIF -->><a href="{addon_pagebar.LINK}">{addon_pagebar.NAME}</a></li>
+						<!-- END addon_pagebar -->
+						</ul>
+					</li>
+				</ul>
+				<!-- ENDIF -->
+				<!-- IF PLUGIN_PAGEBAR -->
+				<ul id="side_menu3" class="list-unstyled">
+					<li class="hasSubmenu">
+						<a href="#" data-target="#menu-style2" id="hassubmenu" data-toggle="collapse"><i class="icon-compose"></i><span>Plugins</span></a>
+						<ul class="collapse" id="menu-style2">
+						<!-- BEGIN plugin_pagebar -->
+							<li<!-- IF plugin_pagebar.SELECTED --> class="active"<!-- ENDIF -->><a href="{plugin_pagebar.LINK}">{plugin_pagebar.NAME}</a></li>
+						<!-- END plugin_pagebar -->
+						</ul>
+					</li>
+				</ul>
+				<!-- ENDIF -->
+				
+			</div>
+		</div>
+	</div>
+	
+	<div id="content">
+		<div class="panel-body">
+			<div class="row">
+<!-- IF MENU neq '' -->
+				<div class="col-md-2 col-sm-2">
+{MENU}
+				</div>
+				<div class="col-md-10 col-sm-6">
+<!-- ELSE -->
+				<div class="col-md-12 col-sm-6">
+<!-- ENDIF -->
+{BODY}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,93 @@
+<div class="card-deck" style="width:90%">
+<!-- BEGIN forum -->
+<div class="card card-inverse">
+	<div class="card-block">
+		<h4 class="card-title">{forum.TITLE}</h4>
+		<p class="card-text">{forum.DESC}</p>
+	</div>
+	<ul class="list-group list-group-flush">
+		<li class="list-group-item">
+			<form name="activate" method="post" style="display: inline-block;" enctype="multipart/form-data" action="">
+				<input type="hidden" name="op" value="process" />
+				<input type="hidden" name="type" value="{forum.B_ACTIVEOP}" />
+				<input type="hidden" name="id" value="{forum.FORUM_ID}" />
+				<button type="submit" class="btn btn-primary btn-xs" >
+				<img src="templates/default/images/admin/{forum.B_ACTIVEI}.png" style="height:16px;width:16px;border:0;" alt="" />{forum.B_ACTIVET}</button>
+			</form>
+		
+			<form name="lock" method="post" style="display: inline-block;" enctype="multipart/form-data" action="">
+				<input type="hidden" name="op" value="process" />
+				<input type="hidden" name="type" value="{forum.L_ACTIVEOP}" />
+				<input type="hidden" name="id" value="{forum.FORUM_ID}" />
+				<button type="submit" class="btn btn-primary btn-xs" ><span class="ui-icon ui-icon-{forum.L_ACTIVEU}"></span>{forum.L_ACTIVET}</button>
+			</form>
+		</li>
+		<li class="list-group-item">
+			<form name="delete" method="post" style="display: inline-block;" enctype="multipart/form-data" action="">
+				<input type="hidden" name="op" value="process" />
+				<input type="hidden" name="type" value="delete" />
+				<input type="hidden" name="id" value="{forum.FORUM_ID}" />
+				<button type="submit" class="btn btn-primary btn-xs" >
+				<img src="templates/default/images/admin/yellow.png" style="height:16px;width:16px;border:0;" alt="" />Delete</button>
+			</form>
+			
+			<a href="{forum.U_EDIT}"><button type="submit" class="btn btn-primary btn-xs" ><img src="templates/default/images/admin/purple.png" style="height:16px;width:16px;border:0;" alt="" />Edit</button></a>
+		</li>
+		<li class="list-group-item">
+			<!-- TRANSLATE order -->: {forum.ORDER}
+		</li>
+		<li class="list-group-item">
+			<form action="{U_MAKELINK}" method="post" style="display: inline-block;" >
+				<input type="hidden" name="op" value="process" />
+				<input type="hidden" name="type" value="parent" />
+				<input type="hidden" name="id" value="{forum.FORUM_ID}" />
+				Parent: <input type="submit" value="Change Parent" /><span class="pull-right">{forum.PARENT}</span>
+			</form>
+		</li>
+		<li class="list-group-item">
+			<form action="{U_MAKELINK}" method="post" style="display: inline-block;" >
+				<input type="hidden" name="op" value="process" />
+				<input type="hidden" name="type" value="access" />
+				<input type="hidden" name="id" value="{forum.FORUM_ID}" />
+				<input type="submit" value="Set" /><span class="pull-right">{forum.ACCESS}</span>
+			</form>
+		</li>
+	</ul>
+  <div class="card-block">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+<!-- END forum -->
+</div>
+				
+<form method="post" action="" id="addnews" style="text-align:left;">
+	<input type="hidden" name="op" value="process" />
+	<input type="hidden" name="type" value="add" />
+
+	<div class="tier-2-a">
+		<div class="tier-2-b">
+			<div class="tier-2-title">
+				<div class="right"><input type="submit" value="<!-- TRANSLATE add_forum -->" /></div>
+				<!-- TRANSLATE add_forum -->
+			</div>
+
+			<div class="info-text">
+				<label for="title"><!-- TRANSLATE title -->:</label> <input name="title" id="title" type="text" maxlength="150" size="75" value="" />
+			</div>
+			<div class="info-text">
+				<label for="desc"><!-- TRANSLATE description -->:</label> <input name="desc" id="desc" type="text" size="75" value="" />
+			</div>
+			<div class="info-text">
+				<label for="order"><!-- TRANSLATE order -->:</label> <input name="order" id="order" type="text" size="10" value="" />
+			</div>
+			<div class="info-text">
+				<label for="parent"><!-- TRANSLATE parent -->:</label> {PARENT}
+			</div>
+			<div class="info-text">
+				{ACCESS}
+			</div>
+		</div>
+	</div>
+
+</form>

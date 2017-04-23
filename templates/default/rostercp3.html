@@ -1,0 +1,100 @@
+	<div class="header">
+		<nav class="navbar navbar-inverse navigation-clean-button">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">{ROSTERCP_TITLE}</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="right"><a href="{ROSTER_URL}" class="menu-icon"><i class="fa fa-sign-out"></i> Back To Roster</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+
+    <div class="page-content">
+    	<div class="row">
+		  <div class="col-md-2">
+		  	<div class="sidebar content-box" style="display: block;">
+                <ul class="nav">
+					<!-- BEGIN pagebar -->
+					<li<!-- IF pagebar.SELECTED --> class="current"<!-- ENDIF -->>
+						<a href="{pagebar.LINK}"><i class="fa fa-fw fa-bar-chart-o"></i>{pagebar.NAME}</a>
+					</li>
+					<!-- END pagebar -->
+					
+					<!-- IF ADDON_PAGEBAR -->
+					<li class="submenu<!-- IF ADDON_PAGE_S --> open<!-- ENDIF -->">
+						<a href="javascript:;">
+							<i class="glyphicon glyphicon-list"></i> Addons
+                            <span class="caret pull-right"></span>
+						</a>
+						<ul>
+						<!-- BEGIN addon_pagebar -->
+							<li<!-- IF addon_pagebar.SELECTED --> class="current"<!-- ENDIF -->>
+								<a href="{addon_pagebar.LINK}">{addon_pagebar.NAME}</a>
+							</li>
+						<!-- END addon_pagebar -->
+						</ul>
+					</li>
+					<!-- ENDIF -->
+				
+					<!-- IF PLUGIN_PAGEBAR -->
+                    <li class="submenu<!-- IF PLUGIN_PAGE_S --> open<!-- ENDIF -->">
+                         <a href="javascript:;">
+							<i class="glyphicon glyphicon-list"></i> Plugins
+                            <span class="caret pull-right"></span>
+						</a>
+                        
+                        <ul>
+						<!-- BEGIN plugin_pagebar -->
+                            <li<!-- IF plugin_pagebar.SELECTED --> class="current"<!-- ENDIF -->>
+								<a href="{plugin_pagebar.LINK}">{plugin_pagebar.NAME}</a>
+							</li>
+						<!-- END plugin_pagebar -->
+                        </ul>
+                    </li>
+					<!-- ENDIF -->				
+                </ul>
+             </div>
+		  </div>
+		  <div class="col-md-10">
+		  	<div class="row">
+				<!-- IF MENU neq '' -->
+		  		<div class="col-md-2">
+		  			<div class="content-box-large">
+		  				{MENU}
+		  			</div>
+		  		</div>
+
+		  		<div class="col-md-10">
+				<!-- ELSE -->
+				<div class="col-md-12">
+				<!-- ENDIF -->
+		  			<div class="row">
+		  				<div class="col-md-12">
+						{BEGIN_FORM}
+		  					<div class="content-box-header">
+			  					<div class="panel-title">{ROSTERCP_TITLE}</div>
+								<!-- IF BOXOPTIONS -->
+								<div class="panel-options">
+									{BOXOPTIONS}
+								</div>
+								<!-- ENDIF -->
+				  			</div>
+				  			<div class="content-box-large box-with-header">{BODY}</div>
+						{END_FORM}
+		  				</div>
+		  			</div>
+		  		</div>
+		  	</div>
+		  </div>
+		</div>
+    </div>

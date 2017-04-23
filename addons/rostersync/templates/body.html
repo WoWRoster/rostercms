@@ -1,0 +1,22 @@
+
+
+			<tbody>
+			<!-- BEGIN body_row -->
+				<tr<!-- IF body_row.ACTIVE neq false --> class="active"<!-- ENDIF -->>
+					<td>{body_row.LINE_VALUE}</td>
+				<!-- BEGIN line -->
+					<td>{body_row.line.LINE_VALUE}</td>
+				<!-- END line -->
+				<!-- IF MEMBERSLIST eq "1" -->
+				<!-- BEGIN body_rowx -->
+					<td>
+						{body_rowx.LOG}
+					</td>
+				<!-- END body_rowx -->
+			<!-- ENDIF -->
+				</tr>
+			</tbody>
+			<!-- END body_row -->
+		</table>
+	</div>
+</div>
