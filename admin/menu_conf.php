@@ -326,26 +326,70 @@ $i = 0;
 
 $jscript = "
 $(function() {
-    $( '#active' ).sortable({
+    
+	/*
+	$( '.striped-bar' ).sortable({
       placeholder: 'ui-state-highlight',
-	  connectWith: '#palet, #rec_bin',
     });
-    $( '#active' ).disableSelection();	
-	
+   //$( '#active' ).disableSelection();	
+
 	$( '#palet' ).sortable({
       placeholder: 'ui-state-highlight',
-	  connectWith: '#active, #rec_bin',
+	  connectWith: '#palet, #active, #rec_bin',
     });
-    $( '#palet' ).disableSelection();
+   // $( '#palet' ).disableSelection();
 	
 	
 	$( '#rec_bin' ).sortable({
       placeholder: 'ui-state-highlight',
-	  connectWith: '#active, #palet',
+	  connectWith: '#rec_bin, #active, #palet',
     });
-    $( '#rec_bin' ).disableSelection();
-  
+   // $( '#rec_bin' ).disableSelection();
+
 	$('ul').sortable({
+        stop: function (event, ui) {
+			var id = ui.item.attr('id');
+			var a = $( '#active' ).sortable('toArray');
+			var b = $( '#palet' ).sortable('toArray');
+			var c = $( '#rec_bin' ).sortable('toArray');
+			console.log(a +' - '+ b +' - '+ c);
+			$('#1').text(a.join(':'));
+			$('#2').text(b.join(':'));
+			$('#3').text(c.join(':'));
+		}
+	});
+	*/
+	$('#active').sortable({
+		connectWith: '#palet, #rec_bin',
+		placeholder: 'ui-state-highlight',
+        stop: function (event, ui) {
+			var id = ui.item.attr('id');
+			var a = $( '#active' ).sortable('toArray');
+			var b = $( '#palet' ).sortable('toArray');
+			var c = $( '#rec_bin' ).sortable('toArray');
+			console.log(a +' - '+ b +' - '+ c);
+			$('#1').text(a.join(':'));
+			$('#2').text(b.join(':'));
+			$('#3').text(c.join(':'));
+		}
+	});
+	$('#palet').sortable({
+		connectWith: '#active, #rec_bin',
+		placeholder: 'ui-state-highlight',
+        stop: function (event, ui) {
+			var id = ui.item.attr('id');
+			var a = $( '#active' ).sortable('toArray');
+			var b = $( '#palet' ).sortable('toArray');
+			var c = $( '#rec_bin' ).sortable('toArray');
+			console.log(a +' - '+ b +' - '+ c);
+			$('#1').text(a.join(':'));
+			$('#2').text(b.join(':'));
+			$('#3').text(c.join(':'));
+		}
+	});
+	$('#rec_bin').sortable({
+		connectWith: '#palet, #active',
+		placeholder: 'ui-state-highlight',
         stop: function (event, ui) {
 			var id = ui.item.attr('id');
 			var a = $( '#active' ).sortable('toArray');

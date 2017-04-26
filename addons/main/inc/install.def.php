@@ -22,7 +22,7 @@ class mainInstall
 	var $active = true;
 	var $icon = 'ability_warrior_rallyingcry';
 
-	var $version = '0.3.0';
+	var $version = '2.9.9.0000';
 	var $wrnet_id = '0';
 
 	var $fullname = 'WoWRoster Portal';
@@ -31,7 +31,6 @@ class mainInstall
 		array("name"=>	"Ulminia",
 				"info"=>	"Original author")
 	);
-
 
 	/**
 	 * Install function
@@ -45,6 +44,7 @@ class mainInstall
 		$installer->add_config("'1','startpage','cmsmain_conf','display','master'");
 		$installer->add_config("'100','cmsmain_conf',NULL,'blockframe','menu'");
 		$installer->add_config("'200','cmsmain_slider',NULL,'blockframe','menu'");
+		$installer->add_config("'300','cmsmain_newsposts','rostercp-addon-main-news','makelink','menu'");
 		$installer->add_config("'300','cmsmain_slider_images','rostercp-addon-main-sliderimages','makelink','menu'");
 		$installer->add_config("'400','cmsmain_slider_add','rostercp-addon-main-slideradd','makelink','menu'");
 		$installer->add_config("'500','cmsmain_plugins','rostercp-addon-main-plugins','makelink','menu'");
@@ -146,7 +146,8 @@ class mainInstall
 		$permissions = array(
 			array('catagory'=> 'main_news','name'=> 'can_post','info'=> 'news_can_post_info','cfg_name'=> 'news_can_post'),
 			array('catagory'=> 'main_news','name'=> 'can_edit_post','info'=> 'news_can_post_edit_info','cfg_name'=> 'news_can_edit_post'),
-			array('catagory'=> 'main_news','name'=> 'can_post_comment','info'=> 'news_can_post_comment_info','cfg_name'=> 'news_can_post_comment'),			array('catagory'=> 'main_news','name'=> 'can_edit_comment','info'=> 'news_can_edit_comment_info','cfg_name'=> 'news_can_edit_comment'),
+			array('catagory'=> 'main_news','name'=> 'can_post_comment','info'=> 'news_can_post_comment_info','cfg_name'=> 'news_can_post_comment'),
+			array('catagory'=> 'main_news','name'=> 'can_edit_comment','info'=> 'news_can_edit_comment_info','cfg_name'=> 'news_can_edit_comment'),
 			//array('catagory'=> 'forum_topics','name'=> 'forum_topics_move','info'=> 'forum_topics_move_desc','cfg_name'=> 'topic_move'),
 		);
 		$installer->add_permissions($permissions);
@@ -166,56 +167,6 @@ class mainInstall
 	{
 		global $installer, $roster;
 
-    /**
-     * Update uninstalls old version and sets new install
-     */
-		if( version_compare('0.2.5', $oldversion, '>') == true )
-		{
-			// Old sliders table
-			$installer->drop_table($installer->table('banners'));
-			$installer->drop_table($installer->table('config'));
-			$installer->drop_table($installer->table('blocks'));
-			$installer->drop_table($installer->table('slider'));
-			$installer->drop_table($installer->table('news'));
-			$installer->remove_all_config();
-
-			$installer->remove_all_menu_button();
-			$this->install();
-			$roster->set_message('All settings were cleared, you must reconfigure WoWRoster Portal options, sorry.', 'CMS News Page');
-
-			return true;
-		}
-		
-		if( version_compare('0.2.6', $oldversion,'>') == true )
-		{
-
-			$installer->add_query("ALTER TABLE `" . $installer->table('slider') . "` ADD `b_video` INT( 10 ) DEFAULT '0' AFTER  `b_active`");
-				
-			return true;
-		}
-		if( version_compare('0.2.8', $oldversion,'>') == true )
-		{
-			$installer->add_config("'500','cmsmain_plugins','rostercp-addon-main-plugins','makelink','menu'");
-			$installer->add_query("ALTER TABLE  `" . $installer->table('blocks') . "` ADD  `block_id` INT( 10 ) NULL DEFAULT NULL ");
-			return true;
-		}
-		if( version_compare('0.2.9', $oldversion,'>') == true )
-		{
-			$permissions = array(
-				array('catagory'=> 'main_news','name'=> 'can_post','info'=> 'news_can_post_info','cfg_name'=> 'news_can_post'),
-				array('catagory'=> 'main_news','name'=> 'can_edit_post','info'=> 'news_can_post_edit_info','cfg_name'=> 'news_can_edit_post'),
-				array('catagory'=> 'main_news','name'=> 'can_post_comment','info'=> 'news_can_post_comment_info','cfg_name'=> 'news_can_post_comment'),
-				//array('catagory'=> 'forum_topics','name'=> 'forum_topics_move','info'=> 'forum_topics_move_desc','cfg_name'=> 'topic_move'),
-			);
-			$installer->add_permissions($permissions);
-		}
-		if( version_compare('0.3.0', $oldversion,'>') == true )
-		{
-			$permissions = array(
-				array('catagory'=> 'main_news','name'=> 'can_edit_comment','info'=> 'news_can_edit_comment_info','cfg_name'=> 'news_can_edit_comment')
-			);
-			$installer->add_permissions($permissions);
-		}			
 		return true;
 	}
 
@@ -233,7 +184,7 @@ class mainInstall
 		$installer->drop_table($installer->table('slider'));
 		$installer->drop_table($installer->table('news'));
 		$installer->remove_all_config();
-
+		$installer->remove_all_permissions();
 		$installer->remove_all_menu_button();
 		return true;
 	}

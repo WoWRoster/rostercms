@@ -75,12 +75,13 @@ $(function() {
     $('#top_nav > a').removeClass('active');
   });
    // Style checkboxes not in a checkset
+
   $('input:checkbox').each(function() {
     if (! $(this).parent().hasClass('checkset')) {
       $(this).checkbox();
     };
   });
-  
+
   $('input:checked').parent('.btn').addClass('active');
 	$(".btn").click(function(){
 		clk = $(this).children(":input").attr("id");

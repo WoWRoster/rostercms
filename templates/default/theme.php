@@ -20,7 +20,6 @@ if( !defined('IN_ROSTER') )
 
 define('R_TPL_VERSION', '2.2.0.0');
 
-roster_add_js('templates/' . $roster->tpl->tpl . '/theme.js');
 roster_add_css('templates/' . $roster->tpl->tpl . '/style/colorpicker.css', 'theme');
 roster_add_css('templates/' . $roster->tpl->tpl . '/style/jquery.multiselect.css', 'theme');
 roster_add_css('templates/' . $roster->tpl->tpl . '/style/droplist.css', 'theme');
@@ -39,10 +38,17 @@ roster_add_css('templates/' . $roster->tpl->tpl . '/style/base.css', 'theme');
 /*
 	new tooltip functions js files
 */
-roster_add_js('templates/' . $roster->tpl->tpl . '/style/bootv3/bootstrap.min.js', 'theme');
+roster_add_js('templates/' . $roster->tpl->tpl . '/js/jquery/jquery-3.2.1.min.js', 'core');
 roster_add_js('templates/' . $roster->tpl->tpl . '/js/jquery/jquery-ui.min.js', 'theme');
+roster_add_js('templates/' . $roster->tpl->tpl . '/js/script.js', 'core');
+roster_add_js('templates/' . $roster->tpl->tpl . '/js/tabcontent.js', 'core');
+roster_add_js('templates/' . $roster->tpl->tpl . '/js/mainjs.js', 'core');
+roster_add_js('templates/' . $roster->tpl->tpl . '/style/bootv3/bootstrap.min.js', 'theme');
+roster_add_js('templates/' . $roster->tpl->tpl . '/js/jquery.sumoselect.js', 'core');
+roster_add_js('templates/' . $roster->tpl->tpl . '/js/ui.checkbox.js', 'theme');
 roster_add_js('templates/' . $roster->tpl->tpl . '/js/apitips.js',null,'footer');
 roster_add_js('templates/' . $roster->tpl->tpl . '/js/tooltip.js',null,'footer');
+roster_add_js('templates/' . $roster->tpl->tpl . '/theme.js');
 /**
  * Starts or ends fancy bodering containers
  *

@@ -21,62 +21,9 @@ function roster_add_js( $data = NULL , $type = 'module' , $scope = 'header' , $d
 		// Add base javascript files the first time a Javascript file is added.
 		if (empty($javascript)) {
 			$javascript['header'] = array(
-				'core' => array(
-					'templates/' . $roster->tpl->tpl . '/js/jquery/jquery-3.2.1.min.js' => array(
-						'cache' => TRUE,
-						'defer' => FALSE,
-						'preprocess' => TRUE,
-					),
-					/*'templates/' . $roster->tpl->tpl . '/js/jquery-ui.js' => array(
-						'cache' => TRUE,
-						'defer' => FALSE,
-						'preprocess' => TRUE,
-					),
-					'templates/' . $roster->tpl->tpl . '/js/ui.selectmenu.js' => array(
-						'cache' => TRUE,
-						'defer' => FALSE,
-						'preprocess' => TRUE,
-					),
-					'templates/' . $roster->tpl->tpl . '/js/ui.checkbox.js' => array(
-						'cache' => TRUE,
-						'defer' => FALSE,
-						'preprocess' => TRUE,
-					),
-					*/
-					'templates/' . $roster->tpl->tpl . '/js/jquery.sumoselect.js' => array(
-						'cache' => TRUE,
-						'defer' => FALSE,
-						'preprocess' => TRUE,
-					),
-					'templates/' . $roster->tpl->tpl . '/js/script.js' => array(
-						'cache' => TRUE,
-						'defer' => FALSE,
-						'preprocess' => TRUE,
-					),
-					'templates/' . $roster->tpl->tpl . '/js/tabcontent.js' => array(
-						'cache' => TRUE,
-						'defer' => FALSE,
-						'preprocess' => TRUE,
-					),
-					'templates/' . $roster->tpl->tpl . '/js/mainjs.js' => array(
-						'cache' => TRUE,
-						'defer' => FALSE,
-						'preprocess' => TRUE,
-					),
-					/*'js/ckeditor/ckeditor.js' => array(
-						'cache' => FALSE,
-						'defer' => FALSE,
-						'preprocess' => TRUE,
-					),*/
-				),
+				'core' => array(),
 				'module' => array(),
-				'theme' => array(
-					/*'js/overlib.js' => array(
-						'cache' => TRUE,
-						'defer' => FALSE,
-						'preprocess' => TRUE,
-					),*/
-				),
+				'theme' => array(),
 				'setting' => array(
 					array('roster_path' => ROSTER_PATH,'roster_url'=>$roster->config['website_address']),
 				),

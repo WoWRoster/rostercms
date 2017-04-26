@@ -17,30 +17,28 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Active</div>
 					<div class="panel-body">
-						<div class="ui-widget ui-widget-content ui-corner-all sblueborder" id="array" style="width:100%;height:{BUTTON_GRID_HEIGHT}px;">
-							<ul id="active">
+						<div class="striped-bar sortable" id="active" style="background-color:#e1e1e8;width:100%;height:{UN_BUTTON_GRID_HEIGHT}px;">
+							
 							<!-- BEGIN button_grid -->
-							<li id="b{button_grid.ID}" class="mitem"{button_grid.TOOLTIP}>
+							<div id="b{button_grid.ID}" class="mitem"{button_grid.TOOLTIP}>
 								<img src="{button_grid.ICON}" alt="" />
 								<span class="frame item-quality-1"></span>
-							</li>
+							</div>
 							<!-- END button_grid -->
-							</ul>
+							
 						</div>
 						<span id="1"></span>
 					</div>
 
 					<div class="panel-heading"><!-- TRANSLATE menuconf_unused_buttons --></div>
 					<div class="panel-body">
-						<div id="palet" class="ui-widget ui-widget-content ui-corner-all sgrayborder" style="width:100%;height:{UN_BUTTON_GRID_HEIGHT}px;">
-						<ul>
+						<div class="striped-bar sortable" id="palet" style="background-color:#f2b968;width:100%;height:{UN_BUTTON_GRID_HEIGHT}px;">
 							<!-- BEGIN pallet_grid -->
-							<li id="b{pallet_grid.ID}" class="mitem"{pallet_grid.TOOLTIP}>
+							<div id="b{pallet_grid.ID}" class="mitem"{pallet_grid.TOOLTIP}>
 								<img src="{pallet_grid.ICON}" alt="" />
 								<div class="mask {pallet_grid.CLASS}"></div>
-							</li>
+							</div>
 							<!-- END pallet_grid -->
-						</ul>
 						</div>
 						<span id="2"></span>
 
@@ -48,7 +46,8 @@
 
 					<div class="panel-heading"><!-- TRANSLATE menuconf_drag_delete --></div>
 					<div class="panel-body">
-						<div id="rec_bin" class="ui-widget ui-state-error ui-corner-all" style="width:100%;height:65px;">
+						<div class="striped-bar sortable" id="rec_bin" style="background-color:#d9534f;width:100%;height:{UN_BUTTON_GRID_HEIGHT}px;">
+
 						</div>
 						<span id="3"></span>
 					</div>

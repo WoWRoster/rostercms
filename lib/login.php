@@ -75,16 +75,19 @@ class RosterLogin
 		}
 		elseif( isset($_POST['password']) && $_POST['password'] != '' && isset($_POST['username']) && $_POST['username'] != '')
 		{
+			$roster->debug->_debug( 0, false, 'try to login with user and pass', true );
 			$this->checkPass(md5($_POST['password']), $_POST['username'],'1');
 			return;
 		}
 		elseif( isset($_COOKIE['roster_pass']) && isset($_COOKIE['roster_user']) )
 		{
 			$this->checkPass($_COOKIE['roster_pass'], $_COOKIE['roster_user'],'0');
+			$roster->debug->_debug( 0, false, 'try to login with cookies', true );
 			return;
 		}
 		else
 		{
+			$roster->debug->_debug( 0, false, 'no login detected', true );
 			$this->allow_login = false;
 			$this->message = '';
 			setcookie('roster_user',     NULL, time() - (60*60*24*30*100), ROSTER_PATH);
@@ -134,6 +137,7 @@ class RosterLogin
 			$this->allow_login = false;
 			$this->valid = 0;
 			$this->message = $roster->locale->act['login_fail'];
+			$roster->debug->_debug( 0, false, 'login failed', false );
 			return false;
 		}
 
@@ -163,6 +167,14 @@ class RosterLogin
 			$this->message = sprintf($roster->locale->act['welcome_user'], $row['user_display']);
 			$roster->db->free_result($result);
 
+			$roster->tpl->assign_vars(array(
+				'U_LOGIN_ACTION'  => $this->action,
+				'S_LOGIN_MESSAGE' => (bool)$this->message,
+				'L_LOGIN_MESSAGE' => $this->message,
+				'L_REGISTER'      => '<a href="'.makelink('register').'" class="btn btn-block">'.$roster->locale->act['register'].'</a>',
+				'U_LOGIN'         => $this->valid
+			));
+		
 			return true;
 		}
 
@@ -171,6 +183,14 @@ class RosterLogin
 		setcookie('roster_u', '0', time() + 60*60*24*30, ROSTER_PATH);
 		$this->allow_login = false;
 		$this->message = $roster->locale->act['login_invalid'];
+		
+		$roster->tpl->assign_vars(array(
+			'U_LOGIN_ACTION'  => $this->action,
+			'S_LOGIN_MESSAGE' => (bool)$this->message,
+			'L_LOGIN_MESSAGE' => $this->message,
+			'L_REGISTER'      => '<a href="'.makelink('register').'" class="btn btn-block">'.$roster->locale->act['register'].'</a>',
+			'U_LOGIN'         => $this->valid
+		));
 		return;
 	}
 	

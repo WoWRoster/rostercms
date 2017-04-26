@@ -16,8 +16,8 @@ div.item img {display: inline-block;position: absolute;width: 49px;height: 49px;
 .item-quality-6 .frame { background-position: -343px 0 !important; }
 .item-quality-7 .frame { background-position: -392px 0 !important; }
 */
-.mitem { position:relative; display:inline-block; float: left; margin: 3px; height: 40px; width: 40px; }
-.mitem img{ position: absolute; display:block; clip: rect(2px 38px 38px 2px); height: 40px; width: 40px; }
+.mitem { position:relative; display:inline-block; float: left; margin: 3px; height: 40px; width: 40px; border: 1px solid #000;}
+.mitem img{ position: absolute; display:block; height: 38px; width: 38px; }
 .mitem .mask { position: absolute; display:block; background: url(../images/mask/item_mask.png) no-repeat left top; height: 40px; width: 40px; z-index: 100; left: 0; top: 0; }
 
 

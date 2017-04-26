@@ -58,6 +58,7 @@ $lang['comment_error_process'] = 'There was a problem processing your comment';
 
 // Config strings
 $lang['admin']['cmsmain_conf']          = 'News|Basic news configuration';
+$lang['admin']['cmsmain_newsposts']		= 'News Posts| news posts made by allowed users';
 $lang['admin']['cmsmain_slider']        = 'Slider|Image Slider configuration';
 $lang['admin']['cmsmain_slider_images'] = 'Slider Images';
 $lang['admin']['cmsmain_slider_add']    = 'Add Images';

@@ -116,10 +116,10 @@ if( $addon['active'] = '1' )
 
 		$config->buildConfigPage();
 
-		$body .= $config->form_start
-			   . $config->formpages
-			   . $config->submit_button
-			   . $config->form_end
+		$body .= //$config->form_start
+			   $config->formpages
+			   //. $config->submit_button
+			   //. $config->form_end
 			   . $config->nonformpages;
 		$footer .= $config->jscript;
 	}

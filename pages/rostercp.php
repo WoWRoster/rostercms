@@ -251,10 +251,5 @@ $roster->tpl->assign_vars(array(
 roster_add_css('templates/' . $roster->tpl->tpl . '/style/admin/styles.css', 'module');
 roster_add_js('templates/' . $roster->tpl->tpl . '/js/admin/custom.js', 'theme');
 
-$roster->tpl->set_filenames(array('rostercp' => 'rostercp3.html'));
+$roster->tpl->set_filenames(array('rostercp' => 'rostercp.html'));
 $roster->tpl->display('rostercp');
-/*
-$roster->tpl->set_filenames(array('rostercp' => 'rostercp2.html'));
-$roster->tpl->display('rostercp');
-*/
-d($roster);

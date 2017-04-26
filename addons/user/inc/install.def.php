@@ -245,6 +245,7 @@ class userInstall
 		global $installer;
 		$installer->remove_all_config();
 		$installer->remove_all_menu_button();
+		$installer->remove_all_permissions();
 		$installer->drop_table('profile');
 		$installer->drop_table('messaging');
 		$installer->drop_table('user_link');

@@ -234,6 +234,7 @@ class rostersyncInstall
 
 		$installer->remove_all_config();
 		$installer->remove_all_menu_button();
+		$installer->remove_all_permissions();
 		$installer->drop_table( $installer->table('jobs') );
 		$installer->drop_table( $installer->table('jobqueue') );
 		$installer->drop_table( $installer->table('updates') );
