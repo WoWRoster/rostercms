@@ -101,6 +101,16 @@ if( version_compare(phpversion(), '5.1.0', '<') )
 {
 	die('You must have PHP version 5.1 or later to run WoWRoster');
 }
+/*
+	debug needs to load befor all else
+*/
+require (ROSTER_BASE . 'vendor/autoload.php');
+if ( isset($_GET['debug']) )
+{
+	$whoops = new Whoops\Run();
+	$whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
+	$whoops->register();
+}
 
 /**
  * Base, absolute roster library directory
@@ -203,7 +213,7 @@ $roster->cache->sql = new sql_cache();
  * Load the config
  */
 $roster->load_config();
-
+$roster->load_addon_hooks();
 /**
  * Inject some different locale setting if the locale url switch is set
  */
@@ -377,11 +387,4 @@ $roster->get_plugin_data();
 if( file_exists(ROSTER_BASE . 'install.php') && !file_exists(ROSTER_BASE . 'version_match.php') )
 {
 	roster_die($roster->locale->act['remove_install_files_text'], $roster->locale->act['remove_install_files'], 'sred');
-}
-require (ROSTER_BASE . 'vendor/autoload.php');
-if ( isset($_GET['debug']) )
-{
-	$whoops = new Whoops\Run();
-	$whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
-	$whoops->register();
 }

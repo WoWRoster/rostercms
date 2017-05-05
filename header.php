@@ -124,6 +124,7 @@ $roster->tpl->assign_vars(array(
 
 	'ROSTER_SCOPE'         => $roster->scope,
 	'PAGE_TITLE'           => $roster_title,
+	'ROSTER_PAGE_TITLE'		=> apply_filters('roster_page_title', $roster_title),
 	'ROSTER_HEAD'          => $roster->output['html_head'],
 	'ROSTER_HEAD_JS'       => roster_get_js(),
 	'ROSTER_HEAD_CSS'      => roster_get_css(),
@@ -134,6 +135,7 @@ $roster->tpl->assign_vars(array(
 
 	'L_MENU_LABEL'         => $roster->scope,
 	'L_MENU_LABEL_NAME'    => $roster->locale->act[$roster->scope],
+	'MENU_TITLE'			=> apply_filters('roster_menu_title', $roster->config['menu_title']),
 
 	'S_LOCALE_SELECT'      => (bool)$roster->config['header_locale'],
 	'S_HEADER_SEARCH'      => (bool)$roster->config['header_search'],
@@ -155,7 +157,7 @@ $roster->tpl->assign_vars(array(
 	'FORUM'					=> makelink('guild-forum'),
 	'GALLERY'				=> makelink('util-gallery'),
 	'ISADMIN'				=>  $roster->auth->getAuthorized( 'roster_cp' ),
-	'RCP'					=>  makelink('rostercp'),
+	'RCP'					=>  makelink('rostercp')
 ));
 
 // Make a listing of our current locales
@@ -384,7 +386,8 @@ foreach( $roster->get_messages() as $type => $messages )
 		{
 			$roster->tpl->assign_block_vars('messages.item', array(
 				'TITLE' => $message[0],
-				'TEXT' => $message[1]
+				'TEXT' => $message[1],
+				'TYPE' => $type
 				)
 			);
 		}

@@ -45,9 +45,9 @@ class mainInstall
 		$installer->add_config("'100','cmsmain_conf',NULL,'blockframe','menu'");
 		$installer->add_config("'200','cmsmain_slider',NULL,'blockframe','menu'");
 		$installer->add_config("'300','cmsmain_newsposts','rostercp-addon-main-news','makelink','menu'");
-		$installer->add_config("'300','cmsmain_slider_images','rostercp-addon-main-sliderimages','makelink','menu'");
-		$installer->add_config("'400','cmsmain_slider_add','rostercp-addon-main-slideradd','makelink','menu'");
-		$installer->add_config("'500','cmsmain_plugins','rostercp-addon-main-plugins','makelink','menu'");
+		$installer->add_config("'400','cmsmain_slider_images','rostercp-addon-main-sliderimages','makelink','menu'");
+		$installer->add_config("'500','cmsmain_slider_add','rostercp-addon-main-slideradd','makelink','menu'");
+		$installer->add_config("'600','cmsmain_plugins','rostercp-addon-main-plugins','makelink','menu'");
 
 		$installer->add_config("'1000','news_add','11','access','cmsmain_conf'");
 		$installer->add_config("'1010','news_edit','11','access','cmsmain_conf'");

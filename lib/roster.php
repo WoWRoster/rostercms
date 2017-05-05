@@ -157,6 +157,32 @@ class roster
 	}
 
 	/**
+	*	load hook files
+	*/
+	function load_addon_hooks()
+	{
+		global $roster, $installer;
+
+		// Initialize output
+		$addons = '';
+		$output = '';
+		// load the addons
+		$roster->get_addon_data();
+
+		foreach($roster->addon_data as $addons => $addon )
+		{
+			/*
+				if addons are active there hooks are auto loaded
+			*/
+			$roster->debug->_debug( 0, false, $addons.' is "'.$addon['active'].'"', true );
+			if ($addon['active'] == '1')
+			{
+				require_once(ROSTER_ADDONS . $addons . DIR_SEP . 'inc' . DIR_SEP . 'hooks.php');
+			}
+		}
+	}
+	
+	/**
 	 * Load the config
 	 */
 	function load_config( )

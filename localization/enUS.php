@@ -1440,6 +1440,7 @@ $lang['admin']['data_links'] = 'Data Links|External links';
 $lang['admin']['update_access'] = 'Update Access|Set access levels for RosterCP components';
 $lang['admin']['pagebar_permissions'] = 'Permissions';
 $lang['admin']['documentation'] = 'Documentation|WoWRoster Documentation via the wowroster.net wiki';
+$lang['admin']['debug_conf'] = 'Debug Settings|All Settings Related to debug output of roster';
 
 // main_conf
 $lang['admin']['roster_dbver'] = "Roster Database Version|The version of the database";

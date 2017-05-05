@@ -209,6 +209,58 @@ function templateList( $values )
 }
 
 /**
+ * Get a list of bootstrap themes from the current templates directory
+ *
+ * @return array | $file => $name
+ */
+function ThemeList( $values )
+{
+	global $roster;
+	static $arrFiles = array();
+
+	if( count($arrFiles) == 0 )
+	{
+		// Open the directory
+		$bdir = ROSTER_TPLDIR . $roster->config['theme'] . DIR_SEP . 'style' . DIR_SEP . 'bootstrap' . DIR_SEP;
+		$tmp_dir = @opendir( $bdir );
+		if( !empty($tmp_dir) )
+		{
+			// Read the files
+			while( $file = readdir($tmp_dir) )
+			{
+				if( is_dir($bdir . $file) && $file != '.' && $file != '..' && $file != '.svn' && $file != 'install' )
+				{
+					$arrFiles[] = ($file);
+				}
+			}
+			// close the directory
+			closedir($tmp_dir);
+			//sort the list
+			asort($arrFiles);
+		}
+	}
+
+	$input_field = '<select name="config_' . $values['name'] . '">' . "\n";
+	$not_selected = TRUE;
+	foreach( $arrFiles as $file )
+	{
+		if( $file == $values['value'] && $not_selected )
+		{
+			$input_field .= '  <option value="' . $file . '" selected="selected">' . ucfirst($file) . '</option>' . "\n";
+			$not_selected = FALSE;
+		}
+		else
+		{
+			$input_field .= '  <option value="' . $file . '">' . ucfirst($file) . '</option>' . "\n";
+		}
+	}
+	$input_field .= '</select>';
+
+	return $input_field;
+}
+
+
+/**
  * Get a list of addon based auth files
  *
  * @return array | $file => $name
