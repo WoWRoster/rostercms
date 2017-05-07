@@ -1,32 +1,10 @@
-#
-# MySQL Roster Data File
-#
-# * $Id: mysql_data.sql 2602 2012-09-01 05:15:30Z ulminia@gmail.com $
-#
-# --------------------------------------------------------
-### Data
 
-# --------------------------------------------------------
-### Master Values
 
-INSERT INTO `renprefix_config` VALUES (3, 'roster_dbver', '7', 'display', 'master');
-INSERT INTO `renprefix_config` VALUES (4, 'version', '', 'display', 'master');
+INSERT INTO `renprefix_config` VALUES (3, 'roster_dbver', '6', 'display', 'master');
+INSERT INTO `renprefix_config` VALUES (4, 'version', '2.9.9.1122', 'display', 'master');
 INSERT INTO `renprefix_config` VALUES (5, 'startpage', 'main_conf', 'display', 'master');
-INSERT INTO `renprefix_config` VALUES (6, 'versioncache', '', 'hidden', 'master');
-INSERT INTO `renprefix_config` VALUES (99, 'css_js_query_string', 'lod68q', 'hidden', 'master');
-
-# --------------------------------------------------------
-### Permission settings
-INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'roster_cp', 'roster_cp_desc' , 'roster_cp');
-INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'gp_update', 'gp_update_desc' , 'gp_update');
-INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'cp_update', 'cp_update_desc' , 'cp_update');
-INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'lua_update', 'lua_update_desc' , 'lua_update');
-
-# --------------------------------------------------------
-### User groups
-INSERT INTO `renprefix_user_groups` VALUES ('1', '1', 'Admin', 'Admin user group', '{"roster_cp": "1","gp_update": "1","cp_update": "1","lua_update": "1"}', '0');
-INSERT INTO `renprefix_user_groups` VALUES ('2', '1', 'Public', 'general public access group auth use only', NULL, '0');
-
+INSERT INTO `renprefix_config` VALUES (6, 'versioncache', 'a:4:{s:9:\"timestamp\";i:1493865235;s:10:\"ver_latest\";s:5:\"2.3.0\";s:8:\"ver_info\";s:13:\"2.3.0 Release\";s:8:\"ver_date\";s:10:\"1347206563\";}', 'hidden', 'master');
+INSERT INTO `renprefix_config` VALUES (99, 'css_js_query_string', 'zas03jN', 'hidden', 'master');
 # --------------------------------------------------------
 ### menu data 
 INSERT INTO `renprefix_config` VALUES (110, 'main_conf', NULL, 'blockframe', 'menu');
@@ -38,7 +16,6 @@ INSERT INTO `renprefix_config` VALUES (160, 'data_links', NULL, 'blockframe', 'm
 INSERT INTO `renprefix_config` VALUES (170, 'update_access', NULL, 'blockframe', 'menu');
 INSERT INTO `renprefix_config` VALUES (180, 'documentation', 'http://www.wowroster.net/MediaWiki', 'newlink', 'menu');
 INSERT INTO `renprefix_config` VALUES (190, 'acc_session', 'NULL', 'blockframe', 'menu');
-
 # --------------------------------------------------------
 ### main_conf 
 INSERT INTO `renprefix_config` VALUES (1010, 'minCPver', '1.0.0', 'text{10|10', 'main_conf');
@@ -57,20 +34,19 @@ INSERT INTO `renprefix_config` VALUES (1110, 'timezone', 'PST', 'text{10|10', 'm
 INSERT INTO `renprefix_config` VALUES (1120, 'localtimeoffset', '0', 'select{-12^-12|-11^-11|-10^-10|-9^-9|-8^-8|-7^-7|-6^-6|-5^-5|-4^-4|-3.5^-3.5|-3^-3|-2^-2|-1^-1|0^0|+1^1|+2^2|+3^3|+3.5^3.5|+4^4|+4.5^4.5|+5^5|+5.5^5.5|+6^6|+6.5^6.5|+7^7|+8^8|+9^9|+9.5^9.5|+10^10|+11^11|+12^12|+13^13', 'main_conf');
 INSERT INTO `renprefix_config` VALUES (1140, 'use_update_triggers', '1', 'radio{on^1|off^0', 'main_conf');
 INSERT INTO `renprefix_config` VALUES (1150, 'check_updates', '24', 'select{Do Not check^0|Once a Day^24|Once a Week^168|Once a Month^720', 'main_conf');
-
 # --------------------------------------------------------
 ### defaults_conf 
 INSERT INTO `renprefix_config` VALUES (2000, 'default_name', 'WoWRoster', 'text{50|50', 'defaults_conf');
 INSERT INTO `renprefix_config` VALUES (2010, 'default_desc', 'THE original Roster for World of Warcraft', 'text{255|60', 'defaults_conf');
 INSERT INTO `renprefix_config` VALUES (2020, 'alt_type', 'alt', 'text{30|30', 'defaults_conf');
 INSERT INTO `renprefix_config` VALUES (2030, 'alt_location', 'note', 'select{Player Note^note|Officer Note^officer_note|Guild Rank Number^guild_rank|Guild Title^guild_title', 'defaults_conf');
-
 # --------------------------------------------------------
 ### debug_conf  
 INSERT INTO `renprefix_config` VALUES (3010, 'debug_mode', '1', 'radio{extended^2|on^1|off^0', 'debug_conf');
 INSERT INTO `renprefix_config` VALUES (3020, 'sql_window', '1', 'radio{extended^2|on^1|off^0', 'debug_conf');
 INSERT INTO `renprefix_config` VALUES (3030, 'processtime', '1', 'radio{on^1|off^0', 'debug_conf');
-
+# --------------------------------------------------------
+### display_conf 
 # --------------------------------------------------------
 ### realmstatus_conf 
 INSERT INTO `renprefix_config` VALUES (8010, 'rs_top', NULL, 'blockframe', 'realmstatus_conf');
@@ -101,7 +77,8 @@ INSERT INTO `renprefix_config` VALUES (8250, 'rs_color_error', '#646464', 'color
 INSERT INTO `renprefix_config` VALUES (8265, 'rs_color_offline', '#646464', 'color', 'rs_right');
 INSERT INTO `renprefix_config` VALUES (8270, 'rs_color_full', '#CC3333', 'color', 'rs_right');
 INSERT INTO `renprefix_config` VALUES (8280, 'rs_color_recommended', '#33CC33', 'color', 'rs_right');
-
+# --------------------------------------------------------
+### data_links
 # --------------------------------------------------------
 ### update_access
 INSERT INTO `renprefix_config` VALUES (9000, 'authenticated_user', '1', 'radio{enable^1|disable^0', 'update_access');
@@ -111,12 +88,10 @@ INSERT INTO `renprefix_config` VALUES (9003, 'api_url_region', 'US', 'select{US^
 INSERT INTO `renprefix_config` VALUES (9004, 'api_url_locale', 'en_US', 'select{Americas English (US)^en_US|Americas Espanol (AL)^es_MX|Americas Portugues (AL)^pt_BR|Europe Deutsch^de_DE|Europe English^en_GB|Europe Espanol^es_ES|Europe Francais^fr_FR|Europe Italiano^it_IT|Europe Portugues^pt_PT|Europe Pyccknn^ru_RU|Korea^ko_KR|Taiwan^zh_TW|China^zh_CN|Southeast Asia^en_US', 'update_access');
 INSERT INTO `renprefix_config` VALUES (9006, 'use_api_onupdate', '0', 'select{Yes^1|No^0', 'update_access');
 INSERT INTO `renprefix_config` VALUES (9005, 'update_inst', '1', 'radio{on^1|off^0', 'update_access');
-
 # --------------------------------------------------------
 ### acc_session
 INSERT INTO `renprefix_config` VALUES (9100, 'sess_time', '15', 'text{30|4', 'acc_session');
 INSERT INTO `renprefix_config` VALUES (9101, 'save_login', '1', 'radio{on^1|off^0', 'acc_session');
-
 # --------------------------------------------------------
 ### theme_conf
 INSERT INTO `renprefix_config` VALUES (4000, 'seo_url', '0', 'radio{on^1|off^0', 'theme_conf');
@@ -132,20 +107,3 @@ INSERT INTO `renprefix_config` VALUES (4080, 'header_locale', '1', 'radio{on^1|o
 INSERT INTO `renprefix_config` VALUES (4100, 'header_login', '1', 'radio{on^1|off^0', 'theme_conf');
 INSERT INTO `renprefix_config` VALUES (4110, 'header_search', '1', 'radio{on^1|off^0', 'theme_conf');
 INSERT INTO `renprefix_config` VALUES (4120, 'bootstrap', 'default', 'function{ThemeList', 'theme_conf');
-
-# --------------------------------------------------------
-### Menu table entries
-INSERT INTO `renprefix_menu` VALUES (1, 'util', 'b1:b2:b3');
-INSERT INTO `renprefix_menu` VALUES (2, 'realm', '');
-INSERT INTO `renprefix_menu` VALUES (3, 'guild', '');
-INSERT INTO `renprefix_menu` VALUES (4, 'char', '');
-INSERT INTO `renprefix_menu` VALUES (5, 'user', '');
-
-# --------------------------------------------------------
-### Menu Button entries
-INSERT INTO `renprefix_menu_button` VALUES (1, 0, 'menu_search', 'util', 'search', 'inv_misc_spyglass_02');
-INSERT INTO `renprefix_menu_button` VALUES (2, 0, 'menu_roster_cp', 'util', 'rostercp', 'inv_misc_gear_02');
-INSERT INTO `renprefix_menu_button` VALUES (3, 0, 'menu_roster_ucp', 'util', 'ucp', 'inv_misc_gear_07');
-
-# --------------------------------------------------------
-### Users
