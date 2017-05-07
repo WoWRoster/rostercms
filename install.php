@@ -262,7 +262,7 @@ $DEFAULTS = array(
 );
 
 $REQUIRE = array(
-	'php_version'   => '5.2.0',
+	'php_version'   => '5.6.0',
 	'mysql_version' => '4.1.0'
 );
 
@@ -276,7 +276,7 @@ $DBALS = array(
 		'delim_basic' => ';'
 	),
 	'pdo' => array(
-		'label'       => 'MySQL 5 / PHP 5.4+',
+		'label'       => 'MySQL 5 / PHP 5.6+',
 		'structure'   => 'pdo',
 		'comments'    => 'remove_remarks',
 		'delim'       => ';',

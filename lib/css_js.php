@@ -195,6 +195,7 @@ function roster_to_js($var) {
 }
 
 function roster_build_js_cache($files, $filename) {
+	global $roster;
 	$contents = '';
 
 	if (!file_exists(ROSTER_CACHEDIR . $filename)) {
@@ -203,7 +204,23 @@ function roster_build_js_cache($files, $filename) {
 			if ($info['preprocess']) {
 				// Append a ';' and a newline after each JS file to prevent them from running together.
 				//$contents .= file_get_contents($path) . ";\n";
-				if ($roster->config['minifyjs'])
+				// get the file basename
+				$fname = basename($path);
+				// min'd to false
+				$minifyd = false;
+				//check filename to see if it is min'd
+				if (preg_match("/min/i", $fname))
+				{
+					$minifyd = true;
+				}
+				else
+				{
+					$minifyd = false;
+				}
+				// coment in file name
+				$contents .= "/* " . $fname . " - ".$minifyd." */\n";
+				// check if setting to min and file is not min'd
+				if ($roster->config['minifyjs'] && !$minifyd)
 				{
 					$js = file_get_contents($path);
 					$contents .= JSMin::minify($js).";\n";
@@ -500,7 +517,7 @@ function _roster_process_comment($matches) {
 
 
  */
-/*
+
 class JSMin {
   const ORD_LF            = 10;
   const ORD_SPACE         = 32;
@@ -772,4 +789,3 @@ class JSMin {
     return $this->lookAhead;
   }
 }
-*/

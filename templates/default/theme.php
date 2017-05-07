@@ -39,11 +39,11 @@ roster_add_css('templates/' . $roster->tpl->tpl . '/style/base.css', 'theme');
 	new tooltip functions js files
 */
 roster_add_js('templates/' . $roster->tpl->tpl . '/js/jquery/jquery-3.2.1.min.js', 'core');
-roster_add_js('templates/' . $roster->tpl->tpl . '/js/jquery/jquery-ui.min.js', 'theme');
+roster_add_js('templates/' . $roster->tpl->tpl . '/js/jquery/jquery-ui.min.js', 'core');
+roster_add_js('templates/' . $roster->tpl->tpl . '/style/bootv3/bootstrap.min.js', 'core');
 roster_add_js('templates/' . $roster->tpl->tpl . '/js/script.js', 'core');
 roster_add_js('templates/' . $roster->tpl->tpl . '/js/tabcontent.js', 'core');
 roster_add_js('templates/' . $roster->tpl->tpl . '/js/mainjs.js', 'core');
-roster_add_js('templates/' . $roster->tpl->tpl . '/style/bootv3/bootstrap.min.js', 'theme');
 roster_add_js('templates/' . $roster->tpl->tpl . '/js/jquery.sumoselect.js', 'core');
 roster_add_js('templates/' . $roster->tpl->tpl . '/js/ui.checkbox.js', 'theme');
 roster_add_js('templates/' . $roster->tpl->tpl . '/js/apitips.js',null,'footer');
