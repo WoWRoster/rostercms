@@ -23,9 +23,6 @@ if( !defined('IN_ROSTER') )
 // This is what GET var the page link should be
 define('ROSTER_PAGE', 'p');
 
-require_once (ROSTER_LIB . 'roster_rewrite.php');
-$roster->rewrite = new rewrite();
-
 // Loaded from the $roster constructor, so reference it as $this
 if( $roster->config['seo_url'] )
 {
@@ -213,10 +210,6 @@ function makelink( $url='' , $full=false , $anchor=true , $ext='html')
 		}
 	}
 
-	if (!isset($roster->rewrite->rules[$url]))
-	{
-		$roster->rewrite->add_rule($url);
-	}
 	// Return full url if requested
 	if( $full )
 	{
