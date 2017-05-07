@@ -24,7 +24,7 @@ INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'lua_upd
 
 # --------------------------------------------------------
 ### User groups
-INSERT INTO `renprefix_user_groups` VALUES ('1', '1', 'Admin', 'Admin user group', NULL, '0');
+INSERT INTO `renprefix_user_groups` VALUES ('1', '1', 'Admin', 'Admin user group', '{"roster_cp": "1","gp_update": "1","cp_update": "1","lua_update": "1"}', '0');
 INSERT INTO `renprefix_user_groups` VALUES ('2', '1', 'Public', 'general public access group auth use only', NULL, '0');
 
 

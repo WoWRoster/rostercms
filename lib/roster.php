@@ -177,7 +177,10 @@ class roster
 			$roster->debug->_debug( 0, false, $addons.' is "'.$addon['active'].'"', true );
 			if ($addon['active'] == '1')
 			{
-				require_once(ROSTER_ADDONS . $addons . DIR_SEP . 'inc' . DIR_SEP . 'hooks.php');
+				if ( file_exists(ROSTER_ADDONS . $addons . DIR_SEP . 'inc' . DIR_SEP . 'hooks.php') )
+				{
+					require_once(ROSTER_ADDONS . $addons . DIR_SEP . 'inc' . DIR_SEP . 'hooks.php');
+				}
 			}
 		}
 	}
