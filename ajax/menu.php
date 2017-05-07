@@ -15,7 +15,7 @@ if( !defined('IN_ROSTER') )
 {
 	exit('Detected invalid access to this file!');
 }
-
+$json_return = true;
 switch ($method)
 {
 	case 'menu_button_add':
@@ -91,9 +91,11 @@ switch ($method)
 		}
 
 		$status=0;
-		$result  = '<id>b' . $roster->db->insert_id() . "</id>\n";
-		$result .= '<title>' . $title . '</title>';
-		$result .= '<icon>' . $icon . '</icon>';
+		$result  = array(
+			'id' => 'b' . $roster->db->insert_id(),
+			'title' => $title,
+			'icon' => $icon
+		);
 
 		break;
 
@@ -151,3 +153,7 @@ switch ($method)
 		$result = $button;
 		break;
 }
+if ( isset($_GET['debugf']) )
+	{
+		include_once (ROSTER_BASE . 'footer.php');
+	}

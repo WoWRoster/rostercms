@@ -23,7 +23,16 @@ define('R_TPL_VERSION', '2.2.0.0');
 roster_add_css('templates/' . $roster->tpl->tpl . '/style/colorpicker.css', 'theme');
 roster_add_css('templates/' . $roster->tpl->tpl . '/style/jquery.multiselect.css', 'theme');
 roster_add_css('templates/' . $roster->tpl->tpl . '/style/droplist.css', 'theme');
-roster_add_css('templates/' . $roster->tpl->tpl . '/style/bootv3/bootstrap.css', 'theme');
+//roster_add_css('templates/' . $roster->tpl->tpl . '/style/bootv3/bootstrap.css', 'theme');
+if ( file_exists('templates/' . $roster->tpl->tpl . '/style/bootstrap/'.$roster->config['bootstrap'].'/bootstrap.css') )
+{
+	roster_add_css('templates/' . $roster->tpl->tpl . '/style/bootstrap/'.$roster->config['bootstrap'].'/bootstrap.css', 'theme');
+}
+
+if ( file_exists('templates/' . $roster->tpl->tpl . '/style/bootstrap/'.$roster->config['bootstrap'].'/bootstrap.min.css') )
+{
+	roster_add_css('templates/' . $roster->tpl->tpl . '/style/bootstrap/'.$roster->config['bootstrap'].'/bootstrap.min.css', 'theme');
+}
 roster_add_css('templates/' . $roster->tpl->tpl . '/style/overrides.css', 'theme');
 /*
 we load the ui script but dont use the style

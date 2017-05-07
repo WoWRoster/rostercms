@@ -25,7 +25,7 @@ $section_name = (isset($roster->locale->act['menupanel_' . $section]) ? $roster-
 // --[ Write submitted menu configuration to DB if applicable ]--
 if( isset($_POST['process']) && $_POST['process'] == 'process' )
 {
-	$query = "UPDATE `" . $roster->db->table('menu') . "` SET `config` = '" . $_POST['arrayput'] . "' WHERE `section` = '" . $section . "';";
+	$query = "UPDATE `" . $roster->db->table('menu') . "` SET `config` = '" . $_POST['order'] . "' WHERE `section` = '" . $section . "';";
 
 	$result = $roster->db->query($query);
 
@@ -34,7 +34,18 @@ if( isset($_POST['process']) && $_POST['process'] == 'process' )
 		$roster->set_message('Failed to update ' . $section_name . ' menu configuration due to a database error.', '' ,'error');
 		$roster->set_message('<pre>' . $roster->db->error() , '</pre>', 'MySQL Said', 'error');
 	}
-
+	if (!empty($_POST['delete']))
+	{
+		$but = explode(':',$_POST['delete']);
+		$c = 0;
+		foreach ($but as $b)
+		{
+			$button_id = (int)substr($b,1);
+			$query = "DELETE FROM `" . $roster->db->table('menu_button') . "` WHERE `button_id` = '" . $button_id . "';";
+			$result = $roster->db->query($query);
+			$c++;
+		}
+	}
 	if( $roster->db->affected_rows() > 0 ) // the config row was actually changed
 	{
 		$roster->set_message(sprintf($roster->locale->act['menuconf_changes_saved'], $section_name));
@@ -43,6 +54,7 @@ if( isset($_POST['process']) && $_POST['process'] == 'process' )
 	{
 		$roster->set_message($roster->locale->act['menuconf_no_changes_saved']);
 	}
+	
 }
 
 // --[ Fetch button list from DB ]--
@@ -326,39 +338,7 @@ $i = 0;
 
 $jscript = "
 $(function() {
-    
-	/*
-	$( '.striped-bar' ).sortable({
-      placeholder: 'ui-state-highlight',
-    });
-   //$( '#active' ).disableSelection();	
 
-	$( '#palet' ).sortable({
-      placeholder: 'ui-state-highlight',
-	  connectWith: '#palet, #active, #rec_bin',
-    });
-   // $( '#palet' ).disableSelection();
-	
-	
-	$( '#rec_bin' ).sortable({
-      placeholder: 'ui-state-highlight',
-	  connectWith: '#rec_bin, #active, #palet',
-    });
-   // $( '#rec_bin' ).disableSelection();
-
-	$('ul').sortable({
-        stop: function (event, ui) {
-			var id = ui.item.attr('id');
-			var a = $( '#active' ).sortable('toArray');
-			var b = $( '#palet' ).sortable('toArray');
-			var c = $( '#rec_bin' ).sortable('toArray');
-			console.log(a +' - '+ b +' - '+ c);
-			$('#1').text(a.join(':'));
-			$('#2').text(b.join(':'));
-			$('#3').text(c.join(':'));
-		}
-	});
-	*/
 	$('#active').sortable({
 		connectWith: '#palet, #rec_bin',
 		placeholder: 'ui-state-highlight',
@@ -368,9 +348,9 @@ $(function() {
 			var b = $( '#palet' ).sortable('toArray');
 			var c = $( '#rec_bin' ).sortable('toArray');
 			console.log(a +' - '+ b +' - '+ c);
-			$('#1').text(a.join(':'));
-			$('#2').text(b.join(':'));
-			$('#3').text(c.join(':'));
+			$('#order').val(a.join(':'));
+			$('#deactivate').val(b.join(':'));
+			$('#delete').val(c.join(':'));
 		}
 	});
 	$('#palet').sortable({
@@ -382,9 +362,9 @@ $(function() {
 			var b = $( '#palet' ).sortable('toArray');
 			var c = $( '#rec_bin' ).sortable('toArray');
 			console.log(a +' - '+ b +' - '+ c);
-			$('#1').text(a.join(':'));
-			$('#2').text(b.join(':'));
-			$('#3').text(c.join(':'));
+			$('#order').val(a.join(':'));
+			$('#deactivate').val(b.join(':'));
+			$('#delete').val(c.join(':'));
 		}
 	});
 	$('#rec_bin').sortable({
@@ -396,12 +376,39 @@ $(function() {
 			var b = $( '#palet' ).sortable('toArray');
 			var c = $( '#rec_bin' ).sortable('toArray');
 			console.log(a +' - '+ b +' - '+ c);
-			$('#1').text(a.join(':'));
-			$('#2').text(b.join(':'));
-			$('#3').text(c.join(':'));
+			$('#order').val(a.join(':'));
+			$('#deactivate').val(b.join(':'));
+			$('#delete').val(c.join(':'));
 		}
 	});
-});";
+
+        //$('form#add').on('submit', function (e) {
+
+          //e.preventDefault();  
+});
+function sendAddElement()
+{
+	var title = $('#title'        ).val();
+	var url   = $('#url'          ).val();
+	var icon  = $('#icon'         ).val();
+	var scope = $('#section'      ).val();
+	
+	$.ajax({
+		type: 'post',
+		url: roster_js.roster_url+roster_js.roster_path+'index.php?p=ajax-menu_button_add&cont=doAddElement',
+		data: 'title='+escape(title)+'&url='+escape(url)+'&icon='+escape(icon)+'&scope='+escape(scope),
+		dataType: 'json',
+		success: function (data) {
+			
+			console.log(data.result);
+			console.log(data.result.id);
+			alert('form was submitted');
+			html = '<img src=\"' + data.result.icon + '\" alt=\"\"><span class=\"frame item-quality-1\"></span>';
+			$('<div />',{id: \"\"+data.result.id+\"\",\"class\":\"mitem\"}).html(html).appendTo('#active');
+		}
+	});
+};
+";
 roster_add_js($jscript, 'inline', 'header', FALSE, FALSE);
 
 

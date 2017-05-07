@@ -1067,7 +1067,10 @@ color: #fff;
 .rostercp-nohover:hover,
 .cfg-row:hover,
 .cfg-row {
-	background-color: rgba(25, 27, 29, 0.18) !important;  border:1px solid rgba(255,255,255,0.1); color: #fff; padding:5px; text-align: left;
+	background-color: rgba(25, 27, 29, 0.18) !important;  border:1px solid rgba(255,255,255,0.1); color: #fff; padding:5px; text-align: left; border-color: rgba(255,255,255,0.1) !important;
+}
+.cfg-row td{
+	border-color: rgba(255,255,255,0.1) !important;
 }
 .cfg-row-i{
 	font-size: 1.3em;
@@ -1494,7 +1497,6 @@ button:hover {
     border-color: #10a1de;
     color: #fff;
     font-size: 1.0625rem;
-    margin-top: .5rem;
    
 }
 .cfg-button {

@@ -22,6 +22,7 @@ $cont = (isset($_GET['cont']) ? $_GET['cont'] : '');
 
 $errmsg = $result = '';
 
+$json_return = false;
 
 if( $roster->pages[1] == 'addon' )
 {
@@ -73,16 +74,16 @@ else
 $roster->output['show_header'] = false;
 $roster->output['show_menu'] = false;
 $roster->output['show_footer'] = false;
-/*
-header('Content-Type: text/xml');
 
-// Output XML
-echo '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' . "\n"
-	. "<response>\n"
-	. '  <method>' . $method . "</method>\n"
-	. '  <cont>' . $cont . "</cont>\n"
-	. '  <result>' . $result . "</result>\n"
-	. '  <status>' . (int)$status . "</status>\n"
-	. '  <errmsg>' . $errmsg . "</errmsg>\n"
-	. "</response>\n";
-*/
+if ($json_return)
+{
+	$array = array(
+		'method' => $method,
+		'cont' => $cont,
+		'result' => $result,
+		'status' => (int)$status,
+		'errmsg' => $errmsg
+	);
+	// we do json output now damn it
+	echo json_encode($array);
+}

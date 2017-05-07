@@ -1938,13 +1938,16 @@ $lang['apiitem']['skills'] = array(
 /*
 	Common
 */
-
+$lang['clear'] = 'Clear';
+$lang['api_usage'] = 'Api Usage';
 /*
 	PageTitles
 */
-
+$lang['pagebar_rostertheme'] = 'Theme Settings';
 /*
 	Admin
 */
 $lang['admin']['default_group'] = 'Dafault User Group|The Default Group for new users not in the guild';
-$lang['pagebar_rostertheme'] = 'Theme Settings';
+$lang['admin']['minifyjs'] = 'Compress JS|chose to minify the js files thata re not minifyd already';
+$lang['admin']['bootstrap'] = 'Bootstrap|Select the bootstrap color theme for roster';
+

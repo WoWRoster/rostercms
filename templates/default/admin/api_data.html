@@ -9,72 +9,64 @@
 
 <!-- BEGIN sections -->
 	<!-- IF sections.ID eq 'usage' -->
-<div class="panel panel-primary" id="ap_{sections.ID}">
-	<div class="panel-heading">
-		<h3 class="panel-title">{sections.NAME}</h3>
-		<div class="panel-title-right">
-			<form action="" method="post" id="update">
-				<input type="hidden" name="{sections.TYPE}" value="{sections.VALUE}" />
-				<input type="hidden" name="process" value="process" />
-				<button type="submit" class="btn btn-default btn-xs"><!-- TRANSLATE installer_purge --></button>
-			</form>
-		</div>
-	</div>
-	<div class="panel-body">					
-		<div class="btn-toolbar" id="menu">
-			<ul class="btn-group" id="rcp_usage2">
-			<!-- BEGIN usage -->
-				<li id="ap_{sections.usage.ID}" class="btn btn-default btn-xs" >{sections.usage.NAME}</li>
-			<!-- END usage -->
-			</ul>
-		</div>
-
-		<!-- BEGIN usage -->
-		<div class="panel panel-primary"  id="ap_{sections.usage.ID}">
-			<div class="panel-heading">
-				<h3 class="panel-title">{sections.usage.NAME}</h3>
+	
+		<div class="content-box-header" id="ap_{sections.ID}">
+			<div class="panel-title">{sections.NAME}</div>
+			<div class="panel-options">
+				<form action="" method="post" id="update">
+					<input type="hidden" name="{sections.TYPE}" value="{sections.VALUE}" />
+					<input type="hidden" name="process" value="process" />
+					<input type="submit" class="btn btn-default btn-xs" value="<!-- TRANSLATE installer_purge -->" />
+				</form>
 			</div>
-			<div class="panel-body">
+		</div>
+		<div class="content-box-large box-with-header" id="ap_{sections.ID}">
+			<div class="btn-toolbar" id="menu">
+				<ul class="btn-group" id="rcp_usage2">
+				<!-- BEGIN usage -->
+					<li id="ap_{sections.usage.ID}" class="btn btn-default btn-xs" >{sections.usage.NAME}</li>
+				<!-- END usage -->
+				</ul>
+			</div>
+			<!-- BEGIN usage -->
+			<div class="content-box-header" id="ap_{sections.usage.ID}">
+				<div class="panel-title">{sections.usage.NAME}</div>
+			</div>
+			<div class="content-box-large box-with-header" id="ap_{sections.usage.ID}">
 				<table class="table table-striped table-hover ">
-					<!-- BEGIN lines -->
-						<tr>
-							<td>{sections.usage.lines.NAME}</td>
-							<td>{sections.usage.lines.ROWS}</td>
-						</tr>
-					<!-- END lines -->
+				<!-- BEGIN lines -->
+					<tr>
+						<td>{sections.usage.lines.NAME}</td>
+						<td>{sections.usage.lines.ROWS}</td>
+					</tr>
+				<!-- END lines -->
 				</table>
 			</div>
+			<!-- END usage -->
 		</div>
-		<!-- END usage -->
-	</div>
-</div>
 		
 	<!-- ELSEIF sections.TYPE neq 'usage' -->
-<div class="panel panel-primary" id="ap_{sections.ID}">
-	<div class="panel-heading">
-		<h3 class="panel-title">{sections.NAME}</h3>
-		<div class="panel-title-right">
-			<form action="" method="post" id="update">
-				<input type="hidden" name="{sections.TYPE}" value="{sections.VALUE}" />
-				<input type="hidden" name="process" value="process" />
-				<button type="submit" class="btn btn-default btn-xs"><!-- TRANSLATE installer_purge --></button>
-			</form>
+	
+		<div class="content-box-header" id="ap_{sections.ID}">
+			<div class="panel-title">{sections.NAME}</div>
+			<div class="panel-options">
+				<form action="" method="post" id="update">
+					<input type="hidden" name="{sections.TYPE}" value="{sections.VALUE}" />
+					<input type="hidden" name="process" value="process" />
+					<input type="submit" class="btn btn-default btn-xs" value="<!-- TRANSLATE installer_purge -->" />
+				</form>
+			</div>
 		</div>
-	</div>
-	<div class="panel-body">
-
-		<table class="table table-striped table-hover ">
-		<!-- BEGIN lines -->
-			<tr>
-				<td>{sections.lines.NAME}</td>
-				<td>{sections.lines.ROWS}</td>
-			</tr>
-		<!-- END lines -->
-		</table>
-
-	</div>
-</div>
-		
+		<div class="content-box-large box-with-header" id="ap_{sections.ID}">
+			<table class="table table-striped table-hover ">
+			<!-- BEGIN lines -->
+				<tr>
+					<td>{sections.lines.NAME}</td>
+					<td>{sections.lines.ROWS}</td>
+				</tr>
+			<!-- END lines -->
+			</table>
+		</div>
 	<!-- ENDIF -->
 
 <!-- END sections -->

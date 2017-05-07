@@ -228,7 +228,7 @@ function ThemeList( $values )
 			// Read the files
 			while( $file = readdir($tmp_dir) )
 			{
-				if( is_dir($bdir . $file) && $file != '.' && $file != '..' && $file != '.svn' && $file != 'install' )
+				if( is_dir($bdir . $file) && $file != '.' && $file != '..' && $file != '.svn' && $file != 'install' && $file != 'fonts')
 				{
 					$arrFiles[] = ($file);
 				}

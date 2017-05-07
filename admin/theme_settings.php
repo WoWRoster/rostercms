@@ -16,7 +16,7 @@ if( !defined('IN_ROSTER') || !defined('IN_ROSTER_ADMIN') )
 	exit('Detected invalid access to this file!');
 }
 
-$roster->output['title'] .= $roster->locale->act['pagebar_themeconf'];
+$roster->output['title'] .= $roster->locale->act['pagebar_rostertheme'];
 
 // ----[ Set the tablename and create the config class ]----
 include(ROSTER_LIB . 'config.lib.php');

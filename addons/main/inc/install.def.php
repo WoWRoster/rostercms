@@ -53,9 +53,6 @@ class mainInstall
 		$installer->add_config("'1010','news_edit','11','access','cmsmain_conf'");
 		$installer->add_config("'1020','comm_add','0','access','cmsmain_conf'");
 		$installer->add_config("'1030','comm_edit','11','access','cmsmain_conf'");
-		$installer->add_config("'1040','news_html','1','radio{enabled^1|disabled^0|forbidden^-1','cmsmain_conf'");
-		$installer->add_config("'1050','comm_html','-1','radio{enabled^1|disabled^0|forbidden^-1','cmsmain_conf'");
-		$installer->add_config("'1060','news_nicedit','1','radio{enabled^1|disabled^0', 'cmsmain_conf'");
 
 		$installer->add_config("'2000','slider_skin','camera_azure_skin','function{sliderSkin','cmsmain_slider'");
 		$installer->add_config("'2010','slider_alignment','center','select{topLeft^topLeft|topCenter^topCenter|topRight^topRight|centerLeft^centerLeft|center^center|centerRight^centerRight|bottomLeft^bottomLeft|bottomCenter^bottomCenter|bottomRight^bottomRight','cmsmain_slider'");
