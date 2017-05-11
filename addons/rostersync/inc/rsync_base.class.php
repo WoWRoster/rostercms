@@ -1470,27 +1470,27 @@ class rsyncBase {
 		global $addon;
 		
 		$x=array();
-		if ($addon['config']['rsync_char_achievements']) {	$x[] = 'achievements';		}
-		if ($addon['config']['rsync_char_appearance']) {	$x[] = 'appearance';		}
-		if ($addon['config']['rsync_char_feed']) {			$x[] = 'feed';		}
-		if ($addon['config']['rsync_char_guild']) {			$x[] = 'guild';		}
-		if ($addon['config']['rsync_char_hunterPets']) {	$x[] = 'hunterPets';		}
-		if ($addon['config']['rsync_char_items']) {			$x[] = 'items';		}
+		if ($addon['config']['rsync_char_achievements']) {	$x[] = 'achievements';	}
+		if ($addon['config']['rsync_char_appearance']) {	$x[] = 'appearance';	}
+		if ($addon['config']['rsync_char_feed']) {			$x[] = 'feed';			}
+		if ($addon['config']['rsync_char_guild']) {			$x[] = 'guild';			}
+		if ($addon['config']['rsync_char_hunterPets']) {	$x[] = 'hunterPets';	}
+		if ($addon['config']['rsync_char_items']) {			$x[] = 'items';			}
 		if ($addon['config']['rsync_char_mounts']) {		$x[] = 'mounts';		}
-		if ($addon['config']['rsync_char_pets']) {			$x[] = 'pets';		}
+		if ($addon['config']['rsync_char_pets']) {			$x[] = 'pets';			}
 		if ($addon['config']['rsync_char_petSlots']) { 		$x[] = 'petSlots';		}
-		if ($addon['config']['rsync_char_professions']) { 	$x[] = 'professions';		}
-		if ($addon['config']['rsync_char_progression']) { 	$x[] = 'progression';		}
-		if ($addon['config']['rsync_char_pvp']) { 			$x[] = 'pvp';		}
+		if ($addon['config']['rsync_char_professions']) { 	$x[] = 'professions';	}
+		if ($addon['config']['rsync_char_progression']) { 	$x[] = 'progression';	}
+		if ($addon['config']['rsync_char_pvp']) { 			$x[] = 'pvp';			}
 		if ($addon['config']['rsync_char_quests']) { 		$x[] = 'quests';		}
-		if ($addon['config']['rsync_char_reputation']) { 	$x[] = 'reputation';		}
-		if ($addon['config']['rsync_char_stats']) {			$x[] = 'stats';		}
+		if ($addon['config']['rsync_char_reputation']) { 	$x[] = 'reputation';	}
+		if ($addon['config']['rsync_char_stats']) {			$x[] = 'stats';			}
 		if ($addon['config']['rsync_char_talents']) { 		$x[] = 'talents';		}
 		if ($addon['config']['rsync_char_titles']) { 		$x[] = 'titles';		}
-		if ($addon['config']['rsync_char_audit']) { 		$x[] = 'audit';		}
-		if ($addon['config']['rsync_char_companions']) { 	$x[] = 'companions';		}
-		if ($addon['config']['rsync_char_statistics']) { 	$x[] = 'statistics';		}
-		if ($addon['config']['rsync_char_hunterPets']) { 	$x[] = 'hunterPets';		}
+		if ($addon['config']['rsync_char_audit']) { 		$x[] = 'audit';			}
+		if ($addon['config']['rsync_char_companions']) { 	$x[] = 'companions';	}
+		if ($addon['config']['rsync_char_statistics']) { 	$x[] = 'statistics';	}
+		if ($addon['config']['rsync_char_hunterPets']) { 	$x[] = 'hunterPets';	}
 		
 		return implode(',',$x);
 	}

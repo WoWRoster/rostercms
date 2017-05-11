@@ -18,7 +18,7 @@
 						<input type="hidden" name="op" value="process" />
 						<input type="hidden" name="addon" value="{addon_list.BASENAME}" />
 						<input type="hidden" name="type" value="purge" />
-						<button type="submit" class="input" {L_TIP_INSTALL_OLD}>
+						<button type="submit" class="btn btn-default btn" {L_TIP_INSTALL_OLD}>
 							<img src="{THEME_PATH}/images/admin/purple.png" style="height:16px;width:16px;border:0;" alt="" />
 							<!-- TRANSLATE installer_purge -->
 						</button>
@@ -31,7 +31,7 @@
 						<input type="hidden" name="op" value="process" />
 						<input type="hidden" name="addon" value="{addon_list.BASENAME}" />
 						<input type="hidden" name="type" value="uninstall" />
-						<button type="submit" class="input" {L_TIP_INSTALL}>
+						<button type="submit" class="btn btn-default btn" {L_TIP_INSTALL}>
 							<img src="{THEME_PATH}/images/admin/green.png" style="height:16px;width:16px;border:0;" alt="" />
 							<!-- TRANSLATE installer_uninstall -->
 						</button>
@@ -44,7 +44,7 @@
 						<input type="hidden" name="op" value="process" />
 						<input type="hidden" name="addon" value="{addon_list.BASENAME}" />
 						<input type="hidden" name="type" value="uninstall" />
-						<button type="submit" class="input" {L_TIP_INSTALL}>
+						<button type="submit" class="btn btn-default btn" {L_TIP_INSTALL}>
 							<img src="{THEME_PATH}/images/admin/green.png" style="height:16px;width:16px;border:0;" alt="" />
 							<!-- TRANSLATE installer_uninstall -->
 						</button>
@@ -57,7 +57,7 @@
 						<input type="hidden" name="op" value="process" />
 						<input type="hidden" name="addon" value="{addon_list.BASENAME}" />
 						<input type="hidden" name="type" value="upgrade" />
-						<button type="submit" class="input" {addon_list.L_TIP_UPGRADE}>
+						<button type="submit" class="btn btn-default btn" {addon_list.L_TIP_UPGRADE}>
 							<img src="{THEME_PATH}/images/admin/blue.png" style="height:16px;width:16px;border:0;" alt="" />
 							<!-- TRANSLATE installer_upgrade -->
 						</button>
@@ -70,7 +70,7 @@
 						<input type="hidden" name="op" value="process" />
 						<input type="hidden" name="addon" value="{addon_list.BASENAME}" />
 						<input type="hidden" name="type" value="install" />
-						<button type="submit" class="input" {L_TIP_UNINSTALL}>
+						<button type="submit" class="btn btn-default btn" {L_TIP_UNINSTALL}>
 							<img src="{THEME_PATH}/images/admin/red.png" style="height:16px;width:16px;border:0;" alt="" />
 							<!-- TRANSLATE installer_install -->
 						</button>
@@ -83,7 +83,7 @@
 					<form name="deactivate_{addon_list.ID}" style="display:inline;" method="post" enctype="multipart/form-data" action="{U_MAKELINK}">
 						<input type="hidden" name="op" value="deactivate" />
 						<input type="hidden" name="id" value="{addon_list.ID}" />
-						<button type="submit" class="input" {L_TIP_STATUS_ACTIVE}>
+						<button type="submit" class="btn btn-default btn" {L_TIP_STATUS_ACTIVE}>
 							<img src="{THEME_PATH}/images/admin/green.png" style="height:16px;width:16px;border:0;" alt="" />
 							<!-- TRANSLATE installer_deactivate -->
 						</button>
@@ -92,7 +92,7 @@
 					<form name="activate_{addon_list.ID}" style="display:inline;" method="post" enctype="multipart/form-data" action="{U_MAKELINK}">
 						<input type="hidden" name="op" value="activate" />
 						<input type="hidden" name="id" value="{addon_list.ID}" />
-						<button type="submit" class="input" {L_TIP_STATUS_INACTIVE}>
+						<button type="submit" class="btn btn-default btn" {L_TIP_STATUS_INACTIVE}>
 							<img src="{THEME_PATH}/images/admin/yellow.png" style="height:16px;width:16px;border:0;" alt="" />
 							<!-- TRANSLATE installer_activate -->
 						</button>

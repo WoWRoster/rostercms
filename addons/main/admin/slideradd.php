@@ -25,7 +25,7 @@ if (isset($_POST['op']) && $_POST['op'] == 'upload')
 {
 	$filename = basename( $_FILES['b_image']['name']);
 	$target_path = $addon['dir'] .'images'. DIR_SEP . basename( $_FILES['b_image']['name']);
-	$path = $addon['dir'] .'images'. DIR_SEP;
+	$path = $addon['dir'] .'images'. DIR_SEP . 'slider/';
 	$slider = $path .'slider-'. $filename;
 	$thumb = $path .'thumb-'. $filename;
 

@@ -90,21 +90,21 @@ while( $rowb = $roster->db->fetch($resultsb) )
 	{
 		$e = false;
 	}
-	$target_path = $addon['dir'] .'images/'. $rowb['b_image'];
-	if (!file_exists($addon['dir'] .'images/slider-'. $rowb['b_image']) )
+	$target_path = $addon['dir'] .'images/slider/'. $rowb['b_image'];
+	if (!file_exists($addon['dir'] .'images/slider/'. $rowb['b_image']) )
 	{
-		$func->image_resize($target_path, $addon['dir'] .'images/slider-'. $rowb['b_image'], 600, 300);
+		$func->image_resize($target_path, $addon['dir'] .'images/slider/'. $rowb['b_image'], 600, 300);
 	}
-	if (!file_exists($addon['dir'] .'images/thumb-'. $rowb['b_image']) )
+	if (!file_exists($addon['dir'] .'images/slider/thumb-'. $rowb['b_image']) )
 	{
-		$func->image_resize($target_path, $addon['dir'] .'images/thumb-'. $rowb['b_image'], 100, 47);
+		$func->image_resize($target_path, $addon['dir'] .'images/slider/thumb-'. $rowb['b_image'], 100, 47);
 	}
 
 	$roster->tpl->assign_block_vars('slider', array(
 		'DESC'     => $rowb['b_desc'],
 		'URL'      => $rowb['b_url'],
-		'IMAGE'    => $addon['url_path'] .'images/slider-'. $rowb['b_image'],
-		'TIMAGE'   => $addon['url_path'] .'images/thumb-'. $rowb['b_image'],
+		'IMAGE'    => $addon['url_path'] .'images/slider/'. $rowb['b_image'],
+		'TIMAGE'   => $addon['url_path'] .'images/slider/thumb-'. $rowb['b_image'],
 		'ID'       => $rowb['b_id'],
 		'TITLE'    => $rowb['b_title'],
 		'IS_VIDEO' => $rowb['b_video'],

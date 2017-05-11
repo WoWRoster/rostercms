@@ -10,7 +10,10 @@ body {background: url(../images/silvermoon-1920x1200.png) fixed no-repeat; backg
   background-color: #353a41; padding: 0;text-align: left; }
 #main {
 	background: url(../images/background-wow-repeat.jpg) fixed repeat-y;
-	padding-top: 35px;
+	background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.1) 100%), url(../images/background-wow-repeat.jpg);
+	padding: 30px 0 30px 0;
+	border-left: 1px solid rgba(255,255,255,0.1);
+	border-right: 1px solid rgba(255,255,255,0.1);
 }
 
 a:-webkit-any-link {
@@ -41,7 +44,7 @@ a {
 	menu overrides
 */
 .navbar {
-    margin-bottom: 30px !important;
+    margin-bottom: 0px !important;
 	border-radius: 0px !important;
 }
 
@@ -83,7 +86,7 @@ margin:2px;
 text-shadow: black 0 0 3px; padding: 0 9px; background: url(../images/row_n.png) repeat center top; }
 .page-menu-bar .links .ulink form { display: inline; }
 .page-menu-bar .links .mlink:hover { height: 25px; display: block; float: left; border-left: 1px solid #676767; border-right: 1px solid #252525; line-height: 25px; font-family: Tahoma, Verdana, sans-serif; font-weight: bold; color: white; width:75px; text-shadow: black 0 0 3px; padding: 0 9px; background: url(../images/row_h.png) repeat center top; }
-.roster-footer { background: url(../images/footer.png) repeat-x left bottom; height: 100px; margin: 1px; padding: 18px 0px 0px 10px;font-size: 10px; }
+.roster-footer { background: #4d4d4d; border: 2px solid #484848; height: 100px; padding: 18px 0px 0px 10px;font-size: 10px; }
 
 .roster-footer .process { bottom: 5px; right: 5px; color: #AC8739; }
 .roster-footer .valid { position: absolute; bottom: 5px; left: 5px; color: #AC8739; }
@@ -1092,6 +1095,8 @@ textarea {
     border-color: #c77e19 !important;
     color: #c77e19;
 }
+.membersRowRight2,
+.membersRowRight1 {background-color: rgba(25, 27, 29, 0.18) !important;  border:1px solid rgba(255,255,255,0.1);}
 /*
 .list-group-1 {
 	list-style: none;
@@ -1407,6 +1412,7 @@ slate pannel override
     border-color: #ea3012;
     color: #c77e19;
 }
+/*
 .cstm-button,
 input[type=submit],
 button {
@@ -1420,7 +1426,6 @@ button {
 	cursor: pointer;
 	display: -ms-flexbox;
 	font-family: Blizzard,sans-serif !important;
-	/*font-size: 18px;*/
 	font-weight: 400;
 	min-height: 2.5rem;
 	line-height: 1.5;
@@ -1469,6 +1474,7 @@ button:hover {
     white-space: nowrap;
     border-style: solid !important;
 }
+*/
 .cfg-link-button .icon{
 	padding: 0px 5px;
 	width: 16px;
@@ -2279,7 +2285,7 @@ a.list-group-item-danger.active:focus {
 	margin:2px 0 0;
 	font-size:14px;
 	list-style:none;
-	background: #282828;
+	background: #4d4d4d;
     border: 2px solid #484848;
 	border-radius:4px;
 	-webkit-box-shadow:0 6px 12px rgba(0,0,0,0.175);
@@ -2335,5 +2341,8 @@ a.list-group-item-danger.active:focus {
     margin: 0px;
        width: 65.5px;
 }
-
+.col-centered {
+	width: 100%;
+	text-align: center;
+}
 

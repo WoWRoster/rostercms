@@ -29,7 +29,32 @@ require_once (ROSTER_LIB . 'recipes.php');
 class char
 {
 	var $data;
-	var $equip;
+	var $equip = array( //);/*
+		'Head'			=> array(),
+		'Neck'			=> array(),
+		'Shoulder'		=> array(),
+		'Back'			=> array(),
+		'Chest'			=> array(),
+		'Shirt'			=> array(),
+		'Tabard'		=> array(),
+		'Wrist'			=> array(),
+		'MainHand'		=> array(),
+		'Ranged'		=> array(),
+		
+		'Hands'			=> array(),
+		'Waist'			=> array(),
+		'Legs'			=> array(),
+		'Feet'			=> array(),
+		'Finger'		=> array(),
+		'Finger0'		=> array(),
+		'Finger1'		=> array(),
+		'Trinket'		=> array(),
+		'Trinket0'		=> array(),
+		'Trinket1'		=> array(),
+		'OffHand'		=> array(),
+		'SecondaryHand'	=> array(),
+		'Relic'			=> array(),
+	);//*/
 	var $talent_build_url = array();
 	var $locale;
 	
@@ -80,6 +105,60 @@ class char
 		'SecondaryHand' => 22,
 		'Ranged' => 15,
 		'Relic' => 28,
+	);
+	var $slotOrder = array(
+		'Head'			=> 1,
+		'Neck'			=> 2,
+		'Shoulder'		=> 3,
+		'Back'			=> 4,
+		'Chest'			=> 5,
+		'Shirt'			=> 6,
+		'Tabard'		=> 7,
+		'Wrist'			=> 8,
+		'MainHand'		=> 9,
+		'Ranged'		=> 9,
+		
+		'Hands'			=> 10,
+		'Waist'			=> 11,
+		'Legs'			=> 12,
+		'Feet'			=> 13,
+		'Finger'		=> 14,
+		'Finger0'		=> 14,
+		'Finger1'		=> 15,
+		'Trinket'		=> 16,
+		'Trinket0'		=> 16,
+		'Trinket1'		=> 17,
+		'OffHand'		=> 18,
+		'SecondaryHand'	=> 18,
+		'Relic'			=> 18,
+	);
+	var $eqside = array(
+		'Head' => 'left',
+		'Neck' => 'left',
+		'Shoulder' => 'left',
+		'Back' => 'left',
+		'Chest' => 'left',
+		'Shirt' => 'left',
+		'Tabard' => 'left',
+		'Wrist' => 'left',
+		
+		'MainHand' => 'left_bottom',
+		'Ranged' => 'left_bottom',
+		
+		'Hands' => 'right',
+		'Waist' => 'right',
+		'Legs' => 'right',
+		'Feet' => 'right',
+		'Finger' => 'right',
+		'Finger0' => 'right',
+		'Finger1' => 'right',
+		'Trinket' => 'right',
+		'Trinket0' => 'right',
+		'Trinket1' => 'right',
+		
+		'OffHand' => 'right_bottom',
+		'SecondaryHand' => 'right_bottom',
+		'Relic' => 'right_bottom',
 	);
 
 	/**
@@ -223,531 +302,6 @@ class char
 	}
 	
 
-	function show_buffs()
-	{
-		global $roster;
-
-		// Get char professions for quick links
-		$query = "SELECT * FROM `" . $roster->db->table('buffs') . "` WHERE `member_id` = '" . $this->data['member_id'] . "';";
-		$result = $roster->db->query($query);
-
-		$return_string = '';
-		if( $roster->db->num_rows($result) > 0 )
-		{
-			$return_string .= '<div class="buff_icons">';
-			while( $row = $roster->db->fetch($result, SQL_ASSOC) )
-			{
-				$tooltip = makeOverlib($row['tooltip'], '', 'ffdd00', 1, '', ',RIGHT');
-
-				$roster->tpl->assign_block_vars('buff', array(
-					'NAME'    => $row['name'],
-					'RANK'    => $row['rank'],
-					'COUNT'   => $row['count'],
-					'ICON'    => $row['icon'],
-					'TOOLTIP' => $tooltip
-					)
-				);
-			}
-		}
-	}
-
-
-	/**
-	 * Build quests
-	 *
-	 * @return string
-	 */
-	function show_quests()
-	{
-		global $roster, $addon;
-
-		$quests = quest_get_many($this->data['member_id']);
-
-		$roster->tpl->assign_vars(array(
-			'S_QUESTS'    => count($quests),
-			'S_MAXQUESTS' => ROSTER_MAXQUESTS,
-			)
-		);
-
-		if( isset($quests[0]) )
-		{
-			$quests_arr = array();
-			foreach( $quests as $object )
-			{
-				$zone = $object->data['zone'];
-				$quest_name = $object->data['quest_name'];
-				$quests_arr[$zone][$quest_name]['quest_id'] = $object->data['quest_id'];
-				$quests_arr[$zone][$quest_name]['quest_index'] = $object->data['quest_index'];
-				$quests_arr[$zone][$quest_name]['quest_level'] = $object->data['quest_level'];
-				$quests_arr[$zone][$quest_name]['quest_tag'] = $object->data['quest_tag'];
-				$quests_arr[$zone][$quest_name]['difficulty'] = $object->data['difficulty'];
-
-				$description = str_replace('<class>',$this->data['class'],$object->data['description']);
-				$description = str_replace('<name>',$this->data['name'],$description);
-				$quests_arr[$zone][$quest_name]['description'] = nl2br($description);
-
-				$objective = str_replace('<class>',$this->data['class'],$object->data['objective']);
-				$objective = str_replace('<name>',$this->data['name'],$objective);
-				$quests_arr[$zone][$quest_name]['objective'] = nl2br($objective);
-
-				$quests_arr[$zone][$quest_name]['reward_money'] = $object->data['reward_money'];
-				$quests_arr[$zone][$quest_name]['daily'] = $object->data['daily'];
-				$quests_arr[$zone][$quest_name]['group'] = $object->data['group'];
-				$quests_arr[$zone][$quest_name]['is_complete'] = $object->data['is_complete'];
-			}
-
-			foreach( $quests_arr as $zone => $quest )
-			{
-				$roster->tpl->assign_block_vars('zone',array(
-					'NAME' => $zone,
-					)
-				);
-
-				foreach( $quest as $quest_name => $data )
-				{
-					switch( $data['difficulty'] )
-					{
-						case 4:
-							$color = 'red';
-							break;
-
-						case 3:
-							$color = 'orange';
-							break;
-
-						case 2:
-							$color = 'yellow';
-							break;
-
-						case 1:
-							$color = 'green';
-							break;
-
-						case 0:
-						default:
-							$color = 'grey';
-							break;
-					}
-
-					$reward_money_c = $reward_money_s = $reward_money_g = 0;
-					if( $data['reward_money'] > 0 )
-					{
-						$money = $data['reward_money'];
-
-						$reward_money_c = $money % 100;
-						$money = floor( $money / 100 );
-
-						if( !empty($money) )
-						{
-							$reward_money_s = $money % 100;
-							$money = floor( $money / 100 );
-						}
-						if( !empty($money) )
-						{
-							$reward_money_g = $money;
-						}
-					}
-
-					$roster->tpl->assign_block_vars('zone.quest',array(
-						'ROW_CLASS'    => $roster->switch_row_class(),
-						'NAME'         => $quest_name,
-						'COLOR'        => $color,
-						'ID'           => $data['quest_id'],
-						'INDEX'        => $data['quest_index'],
-						'LEVEL'        => $data['quest_level'],
-						'DIFFICULTY'   => $data['difficulty'],
-						'TAG'          => $data['quest_tag'],
-						'COMPLETE'     => $data['is_complete'],
-						'DESCRIPTION'  => $data['description'],
-						'REWARD_MONEY_C' => $reward_money_c,
-						'REWARD_MONEY_S' => $reward_money_s,
-						'REWARD_MONEY_G' => $reward_money_g,
-						'OBJECTIVE'    => $data['objective'],
-						'DAILY'        => $data['daily'],
-						'GROUP'        => $data['group'],
-						)
-					);
-
-					foreach( $roster->locale->act['questlinks'] as $link )
-					{
-						$roster->tpl->assign_block_vars('zone.quest.links',array(
-							'NAME' => $link['name'],
-							'LINK' => sprintf($link['url'],$data['quest_id']),
-							)
-						);
-					}
-				}
-			}
-		}
-		$roster->tpl->set_filenames(array('quests' => $addon['basename'] . '/quests.html'));
-		return $roster->tpl->fetch('quests');
-	}
-
-
-	/**
-	 * Build Recipes
-	 *
-	 * @return string
-	 */
-	function show_recipes()
-	{
-		global $roster, $addon;
-
-		$roster->tpl->assign_vars(array(
-			'S_RECIPE_HIDE' => !(bool)$addon['config']['recipe_disp'],
-
-			'U_ITEM'       => makelink('char-info-recipes&amp;s=item'),
-			'U_NAME'       => makelink('char-info-recipes&amp;s=name'),
-			'U_DIFFICULTY' => makelink('char-info-recipes&amp;s=difficulty'),
-			'U_TYPE'       => makelink('char-info-recipes&amp;s=type'),
-			'U_LEVEL'      => makelink('char-info-recipes&amp;s=level'),
-			'U_REAGENTS'   => makelink('char-info-recipes&amp;s=reagents'),
-			)
-		);
-
-		// Get recipe sort mode
-		$sort = (isset($_GET['s']) ? $_GET['s'] : '');
-
-		$recipes = recipe_get_many($this->data['member_id'], '', $sort);
-		$reagents = recipe_get_regents($this->data['member_id']);
-
-		$reagent_arr = array();
-		foreach ($reagents as $objects)
-		{
-			$skil = $objects->data['reagent_id'];
-			$reagent_arr[$skil]['item_color'] = $objects->data['reagent_color'];
-			$reagent_arr[$skil]['item_texture'] = $objects->data['reagent_texture'];
-			$reagent_arr[$skil]['item_id'] = $objects->data['reagent_id'];
-			$reagent_arr[$skil]['item_name'] = $objects->data['reagent_name'];
-			$reagent_arr[$skil]['tooltip'] = $objects->data['reagent_tooltip'];
-		}
-		$recipexx = array();
-		//$recipeee = new recipe();
-		foreach ($recipes as $idx => $data)
-		{
-			if (isset($data['recipe_sub_type']) && !empty($data['recipe_sub_type']) )
-			{
-				$skill = $data['skill_name'];
-				$type = $data['recipe_type'];
-				$subtype = $data['recipe_sub_type'];
-				$recipe = $data['recipe_name'];
-				$recipeee = new recipe($data);
-				$recipexx[$skill][$type][$subtype]["sub"] = true;
-				$recipexx[$skill][$type][$subtype][$recipe]['recipe_type'] = $data['recipe_type'];
-				$recipexx[$skill][$type][$subtype][$recipe]['difficulty'] = $data['difficulty'];
-				$recipexx[$skill][$type][$subtype][$recipe]['item_color'] = $data['item_color'];
-				$recipexx[$skill][$type][$subtype][$recipe]['reagents'] = $data['reagents'];
-				$recipexx[$skill][$type][$subtype][$recipe]['recipe_texture'] = $data['recipe_texture'];
-				$recipexx[$skill][$type][$subtype][$recipe]['level'] = $data['level'];
-				$recipexx[$skill][$type][$subtype][$recipe]['item_id'] = $data['item_id'];
-				$recipexx[$skill][$type][$subtype][$recipe]['recipe_id'] = $data['recipe_id'];
-				$recipexx[$skill][$type][$subtype][$recipe]['icon'] = $roster->config['interface_url'] . 'Interface/Icons/' . $data['recipe_texture'] . '.' . $roster->config['img_suffix'];//$data->tpl_get_icon();
-				$recipexx[$skill][$type][$subtype][$recipe]['tooltip'] = makeOverlib($data['recipe_tooltip'],'',$data['item_color'],0,$roster->config['locale']);
-				$recipexx[$skill][$type][$subtype][$recipe]['itemlink'] = $recipeee->tpl_get_itemlink();
-				$recipexx[$skill][$type][$subtype][$recipe]['quality'] = $recipeee->_setQuality($data['item_color']);
-			}
-			else
-			{
-				$skill = $data['skill_name'];
-				$type = $data['recipe_type'];
-				$recipe = $data['recipe_name'];
-				$recipeee = new recipe($data);
-				$recipexx[$skill][$type][$recipe]['recipe_type'] = $data['recipe_type'];
-				$recipexx[$skill][$type][$recipe]['difficulty'] = $data['difficulty'];
-				$recipexx[$skill][$type][$recipe]['item_color'] = $data['item_color'];
-				$recipexx[$skill][$type][$recipe]['reagents'] = $data['reagents'];
-				$recipexx[$skill][$type][$recipe]['recipe_texture'] = $data['recipe_texture'];
-				$recipexx[$skill][$type][$recipe]['level'] = $data['level'];
-				$recipexx[$skill][$type][$recipe]['item_id'] = $data['item_id'];
-				$recipexx[$skill][$type][$recipe]['recipe_id'] = $data['recipe_id'];
-				$recipexx[$skill][$type][$recipe]['icon'] = $roster->config['interface_url'] . 'Interface/Icons/' . $data['recipe_texture'] . '.' . $roster->config['img_suffix'];//$data->tpl_get_icon();
-				$recipexx[$skill][$type][$recipe]['tooltip'] = makeOverlib($data['recipe_tooltip'],'',$data['item_color'],0,$roster->config['locale']);
-				$recipexx[$skill][$type][$recipe]['itemlink'] = $recipeee->tpl_get_itemlink();
-				$recipexx[$skill][$type][$recipe]['quality'] = $recipeee->_setQuality($data['item_color']);
-			}
-		}
-		
-		foreach ($recipexx as $skill_name => $header)
-		{
-			$roster->tpl->assign_block_vars('recipe',array(
-				'ID'      => strtolower(str_replace(' ','',$skill_name)),
-				'NAME'    => $skill_name,
-				'ICON'    => $this->locale['ts_iconArray'][$skill_name],
-				'TOOLTIP' => makeOverlib($skill_name,'','',1,'',',WRAP'),
-				'LINK'    => makelink('#' . strtolower(str_replace(' ','',$skill_name))),
-				)
-			);
-			foreach ($header as $hname => $recipe)
-			{
-				$roster->tpl->assign_block_vars('recipe.header',array(
-						'NAME'         => $hname,
-						)
-					);
-				foreach ($recipe as $name => $data)
-				{
-					if (isset($data['sub']))
-					{
-						$roster->tpl->assign_block_vars('recipe.header.subheader',array(
-							'NAME'         => $name,
-							)
-						);
-						foreach($data as $s => $dat)
-						{
-							if ($s != 'sub')
-							{
-								$roster->tpl->assign_block_vars('recipe.header.subheader.rows',array(
-									'ROW_CLASS'    => $roster->switch_row_class(),
-									'DIFFICULTY'   => $dat['difficulty'],
-									'L_DIFFICULTY' => $roster->locale->act['recipe_' . $dat['difficulty']],
-									'ITEM_COLOR'   => $dat['item_color'],
-									'NAME'         => $s,
-									'DIFFICULTY_COLOR' => $this->diff($dat['difficulty']),
-									'TYPE'         => $dat['recipe_type'],
-									'LEVEL'        => $dat['level'],
-									'ICON'         => $dat['icon'],
-									'TOOLTIP'      => $dat['tooltip'],
-									'ITEMLINK'     => $dat['itemlink'],
-									'QUALITY'      => $dat['quality'],
-									)
-								);
-								
-								$reagents = explode('|',$dat['reagents']);
-
-								if ( is_array($reagents) )
-								{
-
-									foreach ($reagents as $reagent)
-									{
-										$dtr = explode(':', $reagent);
-										if (empty($dtr[0]))
-										{
-											$roster->tpl->assign_block_vars('recipe.header.subheader.rows.reagents',array(
-												'DATA' 		 => $reagent,
-												'ID' 		 => '000',
-												'NAME' 		 => 'Missing',
-												'ITEM_COLOR' => '000000',
-												'QUALITY'    => recipe::getQualityName('ffffff'),
-												'COUNT' 	 => '0',
-												'ICON' 		 => 'inv_misc_questionmark',
-												'TOOLTIP' 	 => makeOverlib('Missing data','','',0,$this->data['clientLocale'],',RIGHT'),
-												)
-											);
-										}
-										else
-										{
-											$roster->tpl->assign_block_vars('recipe.header.subheader.rows.reagents',array(
-												'DATA' 		 => $reagent,
-												'ID' 		 => $reagent_arr[$dtr[0]]['item_id'],
-												'NAME' 		 => $reagent_arr[$dtr[0]]['item_name'],
-												'ITEM_COLOR' => $reagent_arr[$dtr[0]]['item_color'],
-												'QUALITY'    => recipe::getQualityName($reagent_arr[$dtr[0]]['item_color']),
-												'COUNT' 	 => $dtr[1],
-												'ICON' 		 => $reagent_arr[$dtr[0]]['item_texture'],
-												'TOOLTIP' 	 => makeOverlib($reagent_arr[$dtr[0]]['tooltip'],'','',0,$this->data['clientLocale'],',RIGHT'),
-												)
-											);
-										}
-									}
-								}
-					
-							}
-						}
-					}
-					else
-					{
-					
-					$roster->tpl->assign_block_vars('recipe.header.row',array(
-						'ROW_CLASS'    => $roster->switch_row_class(),
-						'DIFFICULTY'   => $this->diff($data['difficulty']),
-						'L_DIFFICULTY' => $roster->locale->act['recipe_' . $data['difficulty']],
-						'ITEM_COLOR'   => $data['item_color'],
-						'NAME'         => $name,
-						'DIFFICULTY_COLOR' => $this->diff($data['difficulty']),
-						'TYPE'         => $data['recipe_type'],
-						'LEVEL'        => $data['level'],
-						'ICON'         => $data['icon'],
-						'TOOLTIP'      => $data['tooltip'],
-						'ITEMLINK'     => $data['itemlink'],
-						'QUALITY'      => $data['quality'],
-						)
-					);
-
-					$reagents = explode('|',$data['reagents']);
-
-					//echo $name.'<br>';
-					if ( is_array($reagents) )
-					{
-					//print_r($reagents);
-					//echo '<pre><br>';
-					foreach ($reagents as $reagent)
-					{
-						$dtr = explode(':', $reagent);
-						if (empty($dtr[0]))
-						{
-							$roster->tpl->assign_block_vars('recipe.header.row.reagents',array(
-								'DATA' 		 => $reagent,
-								'ID' 		 => '000',
-								'NAME' 		 => 'Missing',
-								'ITEM_COLOR' => '000000',
-								'QUALITY'    => recipe::getQualityName('ffffff'),
-								'COUNT' 	 => '0',
-								'ICON' 		 => 'inv_misc_questionmark',
-								'TOOLTIP' 	 => makeOverlib('Missing data','','',0,$this->data['clientLocale'],',RIGHT'),
-								)
-							);
-						}
-						else
-						{
-							$roster->tpl->assign_block_vars('recipe.header.row.reagents',array(
-								'DATA' 		 => $reagent,
-								'ID' 		 => $reagent_arr[$dtr[0]]['item_id'],
-								'NAME' 		 => $reagent_arr[$dtr[0]]['item_name'],
-								'ITEM_COLOR' => $reagent_arr[$dtr[0]]['item_color'],
-								'QUALITY'    => recipe::getQualityName($reagent_arr[$dtr[0]]['item_color']),
-								'COUNT' 	 => $dtr[1],
-								'ICON' 		 => $reagent_arr[$dtr[0]]['item_texture'],
-								'TOOLTIP' 	 => makeOverlib($reagent_arr[$dtr[0]]['tooltip'],'','',0,$this->data['clientLocale'],',RIGHT'),
-								)
-							);
-						}
-						}
-					}
-					}
-				}
-			}
-		}	
-		
-		/*
-		if (isset($recipes[0]))
-		{
-			$recipe_arr = array();
-			foreach ($recipes as $object)
-			{
-				$skill = $object->data['skill_name'];
-				$recipe = $object->data['recipe_name'];
-				$recipe_arr[$skill][$recipe]['recipe_type'] = $object->data['recipe_type'];
-				$recipe_arr[$skill][$recipe]['difficulty'] = $object->data['difficulty'];
-				$recipe_arr[$skill][$recipe]['item_color'] = $object->data['item_color'];
-				$recipe_arr[$skill][$recipe]['reagents'] = $object->data['reagents'];
-				$recipe_arr[$skill][$recipe]['recipe_texture'] = $object->data['recipe_texture'];
-				$recipe_arr[$skill][$recipe]['level'] = $object->data['level'];
-				$recipe_arr[$skill][$recipe]['item_id'] = $object->data['item_id'];
-				$recipe_arr[$skill][$recipe]['recipe_id'] = $object->data['recipe_id'];
-				$recipe_arr[$skill][$recipe]['icon'] = $object->tpl_get_icon();
-				$recipe_arr[$skill][$recipe]['tooltip'] = $object->tpl_get_tooltip();
-				$recipe_arr[$skill][$recipe]['itemlink'] = $object->tpl_get_itemlink();
-				$recipe_arr[$skill][$recipe]['quality'] = $object->quality;
-			}
-
-//			echo '<pre>';
-//			print_r($recipe_arr);
-
-			foreach ($recipe_arr as $skill_name => $recipe)
-			{
-				$roster->tpl->assign_block_vars('recipe',array(
-					'ID'      => strtolower(str_replace(' ','',$skill_name)),
-					'NAME'    => $skill_name,
-					'ICON'    => $this->locale['ts_iconArray'][$skill_name],
-					'TOOLTIP' => makeOverlib($skill_name,'','',1,'',',WRAP'),
-					'LINK'    => makelink('#' . strtolower(str_replace(' ','',$skill_name))),
-					)
-				);
-				foreach ($recipe as $name => $data)
-				{
-					switch ($data['difficulty'])
-					{
-						case 5 :
-							$difficultycolor = 'red'; //difficult
-							break;
-
-						case 4 :
-							$difficultycolor = 'orange'; //optimal
-							break;
-
-						case 3 :
-							$difficultycolor = 'yellow'; //medium
-							break;
-
-						case 2 :
-							$difficultycolor = 'green'; //easy
-							break;
-
-						case 1 :
-						default :
-							$difficultycolor = 'grey'; //trivial
-							break;
-					}
-
-					$roster->tpl->assign_block_vars('recipe.row',array(
-						'ROW_CLASS'    => $roster->switch_row_class(),
-						'DIFFICULTY'   => $data['difficulty'],
-						'L_DIFFICULTY' => $roster->locale->act['recipe_' . $data['difficulty']],
-						'ITEM_COLOR'   => $data['item_color'],
-						'NAME'         => $name,
-						'DIFFICULTY_COLOR' => $difficultycolor,
-						'TYPE'         => $data['recipe_type'],
-						'LEVEL'        => $data['level'],
-						'ICON'         => $data['icon'],
-						'TOOLTIP'      => $data['tooltip'],
-						'ITEMLINK'     => $data['itemlink'],
-						'QUALITY'      => $data['quality'],
-						)
-					);
-
-					$reagents = explode('|',$data['reagents']);
-
-					//echo $name.'<br>';
-					if ( is_array($reagents) )
-					{
-					//print_r($reagents);
-					//echo '<pre><br>';
-					foreach ($reagents as $reagent)
-					{
-						$dtr = explode(':', $reagent);
-						//print_r($reagent);
-						//echo '<br>';
-						//echo $dtr[0].' -|- '.
-						//print_r($reagent_arr[$dtr[0]]);
-						//echo '<br><hr><br>';
-						if (empty($dtr[0]))
-						{
-							$roster->tpl->assign_block_vars('recipe.row.reagents',array(
-								'DATA' 		 => $reagent,
-								'ID' 		 => '000',
-								'NAME' 		 => 'Missing',
-								'ITEM_COLOR' => '000000',
-								'QUALITY'    => recipe::getQualityName('ffffff'),
-								'COUNT' 	 => '0',
-								'ICON' 		 => 'inv_misc_questionmark',
-								'TOOLTIP' 	 => makeOverlib('Missing data','','',0,$this->data['clientLocale'],',RIGHT'),
-								)
-							);
-						}
-						else
-						{
-							$roster->tpl->assign_block_vars('recipe.row.reagents',array(
-								'DATA' 		 => $reagent,
-								'ID' 		 => $reagent_arr[$dtr[0]]['item_id'],
-								'NAME' 		 => $reagent_arr[$dtr[0]]['item_name'],
-								'ITEM_COLOR' => $reagent_arr[$dtr[0]]['item_color'],
-								'QUALITY'    => recipe::getQualityName($reagent_arr[$dtr[0]]['item_color']),
-								'COUNT' 	 => $dtr[1],
-								'ICON' 		 => $reagent_arr[$dtr[0]]['item_texture'],
-								'TOOLTIP' 	 => makeOverlib($reagent_arr[$dtr[0]]['tooltip'],'','',0,$this->data['clientLocale'],',RIGHT'),
-								)
-							);
-						}
-						}
-					}
-				}
-			}
-		}
-		*/
-		//echo '<pre>';print_r($recipexx);echo '</pre>';
-		$roster->tpl->set_filenames(array('recipes' => $addon['basename'] . '/recipes.html'));
-		return $roster->tpl->fetch('recipes');
-	}
-
 	function diff($value)
 	{
 		switch ($value)
@@ -774,350 +328,6 @@ class char
 				break;
 		}
 		return $difficultycolor;
-	}
-
-	/**
-	 * Build Mail
-	 *
-	 * @return string
-	 */
-	function show_mailbox()
-	{
-		global $roster, $addon;
-
-		$sqlquery = "SELECT * FROM `" . $roster->db->table('mailbox') . "` "
-				  . "WHERE `member_id` = '" . $this->data['member_id'] . "' "
-				  . "ORDER BY `mailbox_days`;";
-
-		$result = $roster->db->query($sqlquery);
-
-		$roster->tpl->assign_vars(array(
-			'S_MAIL_DISP' => $addon['config']['mail_disp'],
-			'S_MAIL' => false,
-			)
-		);
-
-		if( $result && $roster->db->num_rows($result) > 0 )
-		{
-			$roster->tpl->assign_var('S_MAIL', true);
-
-			while( $row = $roster->db->fetch($result, SQL_ASSOC) )
-			{
-				$maildateutc = strtotime($this->data['maildateutc']);
-
-				// Get money in mail
-				$money_included = '';
-				if( $row['mailbox_coin'] > 0 && $roster->auth->getAuthorized($addon['config']['show_money']) )
-				{
-					$db_money = $row['mailbox_coin'];
-
-					$mail_money['c'] = $db_money % 100;
-					$db_money = floor( $db_money / 100 );
-					$money_included = $mail_money['c'] . '<img src="' . $roster->config['img_url'] . 'coin_copper.png" alt="c" />';
-
-					if( !empty($db_money) )
-					{
-						$mail_money['s'] = $db_money % 100;
-						$db_money = floor( $db_money / 100 );
-						$money_included = $mail_money['s'] . '<img src="' . $roster->config['img_url'] . 'coin_silver.png" alt="s" /> ' . $money_included;
-					}
-					if( !empty($db_money) )
-					{
-						$mail_money['g'] = $db_money;
-						$money_included = $mail_money['g'] . '<img src="' . $roster->config['img_url'] . 'coin_gold.png" alt="g" /> ' . $money_included;
-					}
-				}
-
-				// Start the tooltips
-				$tooltip_h = $row['mailbox_subject'];
-
-				// first line is sender
-				$tooltip = $roster->locale->act['mail_sender'] . ': ' . $row['mailbox_sender'] . '<br />';
-
-				$expires_line = date($roster->locale->act['phptimeformat'],($row['mailbox_days']*24*3600)+$maildateutc) . ' ' . $roster->config['timezone'];
-
-				if( (($row['mailbox_days']*24*3600)+$maildateutc) - time() < (3*24*3600) )
-				{
-					$color = 'ff0000';
-				}
-				else
-				{
-					$color = 'ffffff';
-				}
-
-				$tooltip .= $roster->locale->act['mail_expires'] . ": <span style=\"color:#$color;\">$expires_line</span><br />";
-
-				// Join money with main tooltip
-				if( !empty($money_included) )
-				{
-					$tooltip .= $roster->locale->act['mail_money'] . ': ' . $money_included;
-				}
-
-				$tooltipcode = makeOverlib($tooltip,$tooltip_h,'',2,$this->data['clientLocale']);
-
-				if( $addon['config']['mail_disp'] > 0 )
-				{
-					// Set up box display
-					$row['item_slot'] = 'Mail ' . $row['mailbox_slot'];
-					$row['item_id'] = '0:0:0:0:0';
-					$row['item_name'] = $row['mailbox_subject'];
-					$row['item_level'] = 0;
-					$row['item_texture'] = $row['mailbox_icon'];
-					$row['item_parent'] = 'Mail';
-					$row['item_tooltip'] = $tooltip;
-					$row['item_color'] = '';
-					$row['item_quantity'] = 0;
-					$row['locale'] = $this->data['clientLocale'];
-
-					$attach = new bag($row);
-					$attach->out();
-				}
-
-				$roster->tpl->assign_block_vars('mail',array(
-					'ROW_CLASS' => $roster->switch_row_class(),
-					'TOOLTIP'   => $tooltipcode,
-					'ITEM_ICON' => $row['mailbox_icon'],
-					'SENDER'    => $row['mailbox_sender'],
-					'SUBJECT'   => $row['mailbox_subject'],
-					'EXPIRES'   => $expires_line,
-					)
-				);
-			}
-		}
-
-		$roster->tpl->set_filenames(array('mailbox' => $addon['basename'] . '/mailbox.html'));
-		return $roster->tpl->fetch('mailbox');
-	}
-
-
-	/**
-	 * Build Spellbook
-	 *
-	 * @return bool
-	 */
-	function show_spellbook()
-	{
-		global $roster, $addon;
-
-		// Initialize $spellbook array
-		$spellbook[$this->data['name']] = array();
-
-		$query = "SELECT `spelltree`.*, `talenttree`.`order`"
-			. " FROM `" . $roster->db->table('spellbooktree') . "` AS spelltree"
-			. " LEFT JOIN `" . $roster->db->table('talenttree') . "` AS talenttree"
-				. " ON `spelltree`.`member_id` = `talenttree`.`member_id`"
-				. " AND `spelltree`.`spell_type` = `talenttree`.`tree`"
-			. " WHERE `spelltree`.`member_id` = " . $this->data['member_id']
-			. " ORDER BY `talenttree`.`order` ASC;";
-
-		$result = $roster->db->query($query);
-
-		if( !$result )
-		{
-			return false;
-		}
-
-		$num_trees = $roster->db->num_rows($result);
-
-		if( $num_trees == 0 )
-		{
-			return false;
-		}
-
-		for( $t=0; $t < $num_trees; $t++)
-		{
-			$row = $roster->db->fetch($result,SQL_ASSOC);
-
-			$spell_type = $row['spell_type'];
-			$spellbook[$this->data['name']][$spell_type]['order'] = $t;
-			$spellbook[$this->data['name']][$spell_type]['icon'] = $row['spell_texture'];
-			$spellbook[$this->data['name']][$spell_type]['isOffspec'] = $row['spell_build'];
-			$spellbook[$this->data['name']][$spell_type]['tooltip'] = makeOverlib($spell_type,'','',2,'',',WRAP,RIGHT');
-
-			// Get the spell data
-			$query2 = "SELECT * FROM `" . $roster->db->table('spellbook') . "`"
-				. " WHERE `member_id` = '" . $this->data['member_id'] . "'"
-					. " AND `spell_type` = '" . $roster->db->escape($spell_type) . "'"
-				. " ORDER BY `spell_name`;";
-
-			$result2 = $roster->db->query($query2);
-
-			$s = $p = 0;
-			while( $row2 = $roster->db->fetch($result2, SQL_ASSOC) )
-			{
-				if( ($s / 14) == 1 )
-				{
-					$s = 0;
-					++$p;
-				}
-
-				// Prepare tooltip for rank insertion
-				$tooltip = str_replace("\n\n", "\n", $row2['spell_tooltip']);
-				$tooltip = str_replace('<br>',"\n",$tooltip);
-				$tooltip = str_replace('<br />',"\n",$tooltip);
-				$tooltip = explode("\n", $tooltip);
-				$tooltip[0] .= "\t" . $row2['spell_rank'];
-				$tooltip = implode("\n", $tooltip);
-
-				$spell_name = $row2['spell_name'];
-				$spellbook[$this->data['name']][$spell_type]['spells'][$p][$spell_name]['num'] = $s;
-				$spellbook[$this->data['name']][$spell_type]['spells'][$p][$spell_name]['icon'] = $row2['spell_texture'];
-				$spellbook[$this->data['name']][$spell_type]['spells'][$p][$spell_name]['rank'] = $row2['spell_rank'];
-				$spellbook[$this->data['name']][$spell_type]['spells'][$p][$spell_name]['tooltip'] = makeOverlib($tooltip,'','',0,$this->data['clientLocale'],',RIGHT');
-				++$s;
-			}
-			$roster->db->free_result($result2);
-		}
-
-		$roster->db->free_result($result);
-
-
-		// Get the PET spell data
-		$query = "SELECT `spell`.*, `pet`.`name`"
-			. " FROM `" . $roster->db->table('pet_spellbook') . "` as spell"
-			. " LEFT JOIN `" . $roster->db->table('pets') . "` AS pet"
-				. " ON `spell`.`pet_id` = `pet`.`pet_id`"
-			. " WHERE `spell`.`member_id` = '" . $this->data['member_id'] . "'"
-			. " ORDER BY `spell`.`spell_name`;";
-
-		$result = $roster->db->query($query);
-
-		$pet_rows = $roster->db->num_rows($result);
-
-		if( $pet_rows > 0 )
-		{
-			$s = $p = 0;
-			while( $row = $roster->db->fetch($result, SQL_ASSOC) )
-			{
-				if( ($s / 14) == 1 )
-				{
-					$s = 0;
-					++$p;
-				}
-				$petname = $row['name'];
-				$spell_name = $row['spell_name'];
-
-				$spellbook[$petname][0]['order'] = 0;
-				$spellbook[$petname][0]['icon'] = 'ability_kick';
-				$spellbook[$petname][0]['tooltip'] = '';
-
-				$spellbook[$petname][0]['spells'][0][$spell_name]['num'] = $s;
-				$spellbook[$petname][0]['spells'][0][$spell_name]['icon'] = $row['spell_texture'];
-				$spellbook[$petname][0]['spells'][0][$spell_name]['rank'] = $row['spell_rank'];
-				$spellbook[$petname][0]['spells'][0][$spell_name]['tooltip'] = makeOverlib($row['spell_tooltip'],'','',0,$this->data['clientLocale'],',RIGHT');
-				++$s;
-			}
-		}
-		$roster->db->free_result($result);
-
-		foreach( $spellbook as $name => $spell_tree )
-		{
-			$roster->tpl->assign_block_vars('spell_book',array(
-				'NAME'    => $name,
-				'ID'      => strtolower(str_replace("'",'',$name)),
-				'S_TREES' => !isset($spell_tree[0])
-				)
-			);
-			foreach( $spell_tree as $spell_type => $spell_tree )
-			{
-				$roster->tpl->assign_block_vars('spell_book.tree',array(
-					'NAME'  => $spell_type,
-					'ORDER' => $spell_tree['order'],
-					'ID'    => strtolower(str_replace(' ','',$spell_type)),
-					'ICON'  => $spell_tree['icon'],
-					'ISOFFSPEC' => $spell_tree['isOffspec'],
-					'TOOLTIP' => $spell_tree['tooltip'],
-					)
-				);
-				foreach( $spell_tree['spells'] as $page => $spell )
-				{
-					$roster->tpl->assign_block_vars('spell_book.tree.page',array(
-						'ID'   => $page,
-						'NUM'  => $page+1,
-						'PREV' => ( isset($spell_tree['spells'][$page-1]) ? $page-1 : false ),
-						'NEXT' => ( isset($spell_tree['spells'][$page+1]) ? $page+1 : false ),
-						)
-					);
-					foreach( $spell as $spell_name => $spell_data )
-					{
-						$roster->tpl->assign_block_vars('spell_book.tree.page.spell',array(
-							'NUM'  => $spell_data['num'],
-							'NAME' => $spell_name,
-							'ICON' => $spell_data['icon'],
-							'RANK' => $spell_data['rank'],
-							'TOOLTIP' => $spell_data['tooltip'],
-							)
-						);
-					}
-				}
-			}
-		}
-
-		return true;
-	}
-
-	function show_currency( )
-	{
-		global $roster;
-
-		$query = "SELECT * FROM `" . $roster->db->table('currency') . "`"
-			. " WHERE `member_id` = '" . $this->data['member_id'] . "'"
-			. " ORDER BY `category` ASC, `order` ASC;";
-
-		$result = $roster->db->query($query);
-
-		if( !$result )
-		{
-			return false;
-		}
-
-		$num_currency = $roster->db->num_rows($result);
-
-		if( $num_currency == 0 )
-		{
-			return false;
-		}
-
-		$currency_data = array();
-		for( $t = 0; $t < $num_currency; $t++ )
-		{
-			$row = $roster->db->fetch($result, SQL_ASSOC);
-
-			$category = $row['category'];
-			$currency_name = $row['name'];
-			$currency_data[$category][$currency_name]['order'] = $row['order'];
-			$currency_data[$category][$currency_name]['count'] = $row['count'];
-			$currency_data[$category][$currency_name]['type'] = $row['type'];
-			$currency_data[$category][$currency_name]['icon'] = $row['icon'];
-			$currency_data[$category][$currency_name]['tooltip'] = makeOverlib($row['tooltip'], '', '', 0, $this->data['clientLocale']);
-		}
-
-		$roster->db->free_result($result);
-
-		foreach( $currency_data as $category => $currency )
-		{
-			$roster->tpl->assign_block_vars('currency', array(
-				'ID' => strtolower(str_replace(' ', '', $category)),
-				'CATEGORY' => $category
-				)
-			);
-
-			foreach( $currency as $name => $data )
-			{
-				$roster->tpl->assign_block_vars('currency.item', array(
-					'ID' => strtolower(str_replace(' ', '', $name)),
-					'NAME' => $name,
-					'COUNT' => $data['count'],
-					'TYPE' => $data['type'],
-					'ORDER' => $data['order'],
-					'ICON' => $data['icon'],
-					'TOOLTIP' => $data['tooltip']
-					)
-				);
-			}
-		}
-
-		return true;
 	}
 
 	/**
@@ -1397,126 +607,6 @@ class char
 			}
 		}
 		return $returndata;
-	}
-
-
-	/**
-	 * Build Gyphs
-	 *
-	 * @return bool
-	 */
-	function show_glyphs()
-	{
-		global $roster, $addon;
-
-		$query = "SELECT * FROM `" . $roster->db->table('glyphs') . "`"
-			. " WHERE `member_id` = '" . $this->data['member_id'] . "'"
-			. " ORDER BY `glyph_build`, `glyph_type` ASC;";
-
-		$result = $roster->db->query($query);
-
-		if( !$result )
-		{
-			return false;
-		}
-
-		$num_glyphs = $roster->db->num_rows($result);
-
-		if( $num_glyphs == 0 )
-		{
-			return false;
-		}
-
-		$glyph_data = array();
-		while($row = $roster->db->fetch($result))
-		{
-			$glyph_data = array('0'=>array(),'1' => array());
-			$glyph_build = $row['glyph_build'];
-			$glyph_order = $row['glyph_type'];
-			$glyph_data[$glyph_build][$glyph_order][] = array(
-				'type' => $row['glyph_type'],
-				'name' => $row['glyph_name'],
-				'icon' => $row['glyph_icon'],
-				'tooltip' => makeOverlib($row['glyph_tooltip'], '', '', 0, $this->data['clientLocale']),
-			);
-		}
-
-		// Figure out build names
-		$sqlquery = "SELECT `build`, `tree`, `background`, `pointsspent`"
-			. " FROM `" . $roster->db->table('talenttree') . "`"
-			. " WHERE `member_id` = '" . $this->data['member_id'] . "'"
-			. " ORDER BY `build`, `order`;";
-
-		$trees = $roster->db->query($sqlquery);
-
-		$tree_rows = $roster->db->num_rows($trees);
-
-		if( $tree_rows > 0 )
-		{
-			// Talent data and build spec data
-			$specdata = array();
-
-			// Temp var for talent spec detection
-			$spec_points_temp = array();
-
-			// Loop each mysql row and build arrays
-			for( $j=0; $j < $tree_rows; $j++)
-			{
-				$treedata = $roster->db->fetch($trees, SQL_ASSOC);
-
-				// Get the order and the build numbers
-				$talent_build = $treedata['build'];
-
-				// Checking for build spec
-
-				// Sets initial value if it doesnt exist
-				if( !isset($spec_points_temp[$talent_build]) )
-				{
-					$spec_points_temp[$talent_build] = $treedata['pointsspent'];
-					$specdata[$talent_build]['name'] = $treedata['tree'];
-					$specdata[$talent_build]['icon'] = $treedata['background'];
-				}
-				elseif( $treedata['pointsspent'] > $spec_points_temp[$talent_build] )
-				{
-					$specdata[$talent_build]['name'] = $treedata['tree'];
-					$specdata[$talent_build]['icon'] = $treedata['background'];
-
-					// Store highest tree points to temp var
-					$spec_points_temp[$talent_build] = $treedata['pointsspent'];
-				}
-			}
-		}
-
-		$roster->db->free_result($result);
-
-		foreach( $glyph_data as $build => $glyph_order )
-		{
-			$roster->tpl->assign_block_vars('glyphs',array(
-				'ID'   => $build,
-				'NAME' => $specdata[$build]['name'],
-				'ICON' => $specdata[$build]['icon'],
-				)
-			);
-			foreach( $glyph_order as $order => $gl )
-			{
-				foreach( $gl as $or => $glyph )
-				{
-					if( $glyph['name'] != '' )
-					{
-						$roster->tpl->assign_block_vars('glyphs.glyph',array(
-							'TYPE'    => $glyph['type'],
-							'NAME'    => $glyph['name'],
-							'ORDER'   => $order,
-							'ID'      => strtolower(str_replace(' ','',$glyph['name'])),
-							'ICON'    => $glyph['icon'],
-							'TOOLTIP' => $glyph['tooltip'],
-							)
-						);
-					}
-				}
-			}
-		}
-		return true;
 	}
 
 
@@ -2904,12 +1994,49 @@ class char
 	{
 		global $roster;
 
+		
 		$r = array('8', '11', '12', '10', '7', '21', '13', '14', '6');
 		if( isset($this->equip[$slot]) )
 		{
 			$idata = $this->equip[$slot];
-			
-			//echo $this->slotID[$idata['item_slot']].'<br>';
+			//d($this->equip[$slot]);
+			$jdata = '';
+			if (isset($this->equip[$slot]['json']))
+			{
+				$jdata = json_decode($this->equip[$slot]['json'],true);
+			}
+			//d($jdata);
+			/*
+				new equipment wrapper
+			*/
+			// $eqside
+			$e = array(
+				'SLOT'		=> $this->slotID[$idata['item_slot']],
+				'SLOTID'    => $this->slotID[$idata['item_slot']],
+				'SLOTTYPE'  => $this->slotID[$idata['item_slot']],
+				'NAME'		=> $idata['item_name'],
+				'ILVL'		=> $idata['item_level'],
+				'ITEM_ID'	=> $idata['item_id'],
+				'QUALITY2'	=> $idata['item_rarity'],
+				'RARITY'	=> $this->_getItemQuality($idata['item_rarity']),
+				'EMPTY'		=> false,
+				'ICON'     => $roster->config['interface_url'] . 'Interface/Icons/' . $idata['item_texture'] . '.' . $roster->config['img_suffix'],
+				'TOOLTIP'	=> 'data-tooltip="item-'.$idata['item_id'].'|'.$roster->data['member_id'].'"',
+				'QUALITY'  => $idata['item_rarity'],
+			);
+			$roster->tpl->assign_block_vars('equip.'.$this->eqside[$slot], $e );
+			if (isset($jdata['gems']))
+			{
+				if (count($jdata['gems']) > 0)
+				{
+					foreach($jdata['gems'] as $i => $g)
+					{
+						$roster->tpl->assign_block_vars('equip.'.$this->eqside[$slot].'.gems', array(
+							'ICON' => $roster->config['interface_url'] . 'Interface/Icons/' . $g['icon'] . '.' . $roster->config['img_suffix']
+						));
+					}
+				}
+			}
 			$b = array(
 			//new stuff 
 				'SLOT'		=> $this->slotID[$idata['item_slot']],
@@ -2920,18 +2047,34 @@ class char
 				'RIGHT'		=> (in_array($this->slotID[$idata ['item_slot']], $r) ? true : false),
 				'ITEM_ID'	=> $idata['item_id'],
 				'QUALITY2'	=> $idata['item_rarity'],
-				//'GEMS'		=> $gems,
 				'EMPTY'		=> false,
 				'ICON'     => $roster->config['interface_url'] . 'Interface/Icons/' . $idata['item_texture'] . '.' . $roster->config['img_suffix'],//$this->equip[$slot]->tpl_get_icon(),
 				'TOOLTIP'	=> 'data-tooltip="item-'.$idata['item_id'].'|'.$roster->data['member_id'].'"',
-				//'ITEMLINK' => $this->equip[$slot]->tpl_get_itemlink(),
 				'QUALITY'  => $idata['item_rarity'],
 				);
-				//echo '<pre>';print_r($b);echo '</pre>';
 			$roster->tpl->assign_block_vars('equipment', $b );
 		}
 		else
 		{
+			$e = array(
+				//new stuff 
+				'SLOT'		=> $this->slotID[$slot],
+				'SLOTID'    => $this->slotID[$slot],
+				'SLOTTYPE'  => $this->slotID[$slot],
+				'NAME'		=> '',
+				'ILVL'		=> '',
+				'RARITY'	=> $slot,
+				'ITEM_ID'	=> $slot,
+				'QUALITY2'	=> '',
+				'EMPTY'		=> true,
+				'ICON'     => '',
+				'TOOLTIP'  => '',
+				'ITEMLINK' => '',
+				'QUALITY'  => 'none',
+				'QTY'      => 0,
+				'S_AMMO'   => $slot == 'Ammo'
+			);
+			$roster->tpl->assign_block_vars('equip.'.$this->eqside[$slot], $e );
 			$roster->tpl->assign_block_vars('equipment',array(
 				//new stuff 
 				'SLOT'		=> $this->slotID[$slot],
@@ -2942,11 +2085,9 @@ class char
 				'RIGHT'		=> (in_array($this->slotID[$slot], $r) ? true : false),
 				'ITEM_ID'	=> $slot,
 				'QUALITY2'	=> '',
-				//'GEMS'		=> $gems,
 				'EMPTY'		=> true,
-				//'SLOT'     => $this->slotID[$idata['item_slot']],
 				'ICON'     => $roster->config['img_url'] . 'pixel.gif',
-				'TOOLTIP'  => '',//makeOverlib($roster->locale->act['empty_equip'],$roster->locale->act[$slot],'',2,'',',WRAP'),
+				'TOOLTIP'  => '',
 				'ITEMLINK' => '',
 				'QUALITY'  => 'none',
 				'QTY'      => 0,
@@ -2956,6 +2097,32 @@ class char
 		}
 	}
 
+	function _getItemQuality($value)
+	{
+		$ret = '';
+		switch ($value) {
+			default: $ret = "POOR"; //Grey
+				break;
+			case 0: $ret = "POOR"; /* poor (gray) */
+			break;
+			case 1: $ret = "COMMON"; /* common (white) */
+			break;
+			case 2: $ret = "UNCOMMON"; /* uncommon (green) */
+			break;
+			case 3: $ret = "RARE"; /* #0070dd rare (blue) */
+			break;
+			case 4: $ret = "EPIC"; /* #a335ee epic (purple) */
+			break;
+			case 5: $ret = "LEGENDARY"; /* lengendary (orange) */
+			break;
+			case 6: $ret = "ARTIFACT"; /* artifact (gold) */
+			break;
+			case 7: $ret = "HEIRLOOM"; /* heirloom (lt blue) */
+			break;
+
+		}
+		return $ret;
+	}
 	/*
 				NEW stat block!!!!!
 	*/
@@ -3219,6 +2386,7 @@ class char
 
 		$this->stats();
 		// Equipment
+		$roster->tpl->assign_block_vars('equip', array('SHOW_EMPTY'=>TRUE) );
 		$this->equip_slot('Head');
 		$this->equip_slot('Neck');
 		$this->equip_slot('Shoulder');
@@ -3229,14 +2397,7 @@ class char
 		$this->equip_slot('Wrist');
 
 		$this->equip_slot('MainHand');
-		if( isset($this->equip['SecondaryHand']) )
-		{
-			$this->equip_slot('SecondaryHand');
-		}
-		if( isset($this->equip['Ranged']) )
-		{
-			$this->equip_slot('Ranged');
-		}
+		$this->equip_slot('SecondaryHand');
 		//no longer used
 		//$this->equip_slot('Ammo');
 
@@ -3344,37 +2505,10 @@ class char
 		}
 
 		$roster->tpl->assign_var('RIGHTBOX', $rightbox);
-/*
-		// Print stat boxes
-		$this->status_box('stats','left',true);
-		$this->status_box('melee','left');
-		$this->status_box('ranged','left');
-		$this->status_box('spell','left');
-		$this->status_box('defense','left');
-		$this->status_box('stats','right');
-		$this->status_box('melee','right',$rightbox=='melee');
-		$this->status_box('ranged','right',$rightbox=='ranged');
-		$this->status_box('spell','right',$rightbox=='spell');
-		$this->status_box('defense','right');
-
-		// Buffs
-		$this->show_buffs();
-		*/
 
 		// PvP
 		$this->show_pvp();
 		$this->show_talents();
-		// Item bonuses
-		/*
-		if( $roster->auth->getAuthorized($addon['config']['show_item_bonuses']) )
-		{
-			require_once($addon['inc_dir'] . 'charbonus.lib.php');
-			$char_bonus = new CharBonus($this);
-			$char_bonus->dumpBonus();
-			unset($char_bonus);
-		}
-		*/
-
 
 		// Selected default tab
 		$select_tab = (isset($_GET['t']) ? $_GET['t'] : 'profile');
@@ -3445,57 +2579,6 @@ class char
 		else
 		{
 			$roster->tpl->assign_var('S_SKILL_TAB',false);
-		}
-/*
-		// Talents Tab
-		if( $roster->auth->getAuthorized($addon['config']['show_talents']) && $this->show_talents() )
-		{
-			$roster->tpl->assign_block_vars('tabs',array(
-				'NAME'     => $roster->locale->act['talents'],
-				'VALUE'    => 'talents',
-				'SELECTED' => $select_tab == 'talents' ? true : false
-				)
-			);
-		}
-		else
-		{
-			$roster->tpl->assign_var('S_TALENT_TAB',false);
-		}
-
-		// Glyphs Tab
-		if( !$roster->auth->getAuthorized($addon['config']['show_glyphs']) || !$this->show_glyphs() )
-		{
-			$roster->tpl->assign_var('S_GLYPH_TAB',false);
-		}
-*/
-		// Spell Book Tab
-		if( $roster->auth->getAuthorized($addon['config']['show_spellbook']) && $this->show_spellbook() )
-		{
-			$roster->tpl->assign_block_vars('tabs',array(
-				'NAME'     => $roster->locale->act['spellbook'],
-				'VALUE'    => 'spellbook',
-				'SELECTED' => $select_tab == 'spellbook' ? true : false
-				)
-			);
-		}
-		else
-		{
-			$roster->tpl->assign_var('S_SPELL_TAB',false);
-		}
-
-		// Currency Tab
-		if( $roster->auth->getAuthorized($addon['config']['show_currency']) && $this->show_currency() )
-		{
-			$roster->tpl->assign_block_vars('tabs',array(
-				'NAME'     => $roster->locale->act['currency'],
-				'VALUE'    => 'currency',
-				'SELECTED' => $select_tab == 'currency' ? true : false
-				)
-			);
-		}
-		else
-		{
-			$roster->tpl->assign_var('S_CURRENCY_TAB',false);
 		}
 
 		$roster->tpl->set_filenames(array('char' => $addon['basename'] . '/char.html'));

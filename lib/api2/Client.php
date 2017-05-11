@@ -755,7 +755,7 @@ class Client
     {
 		global $roster;
 		
-		echo $url.'<br>'.$http_method.'<br>';
+		//echo $url.'<br>'.$http_method.'<br>';
 		
         $curl_options = array(
             CURLOPT_RETURNTRANSFER => true,

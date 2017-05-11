@@ -293,3 +293,31 @@ $lang['month_to_en'] = array(
     "November" => "November",
     "December" => "December"
 );
+/*
+	rsync roster 3.0
+*/
+
+$lang['admin']['rsync_ajaxupdate']		= "Member Sync|Sync the guild members using ajax based on the rules selected";
+$lang['admin']['rsync_addguild']		= "Add Guild|used after installing roster to populate with the default guild";
+$lang['admin']['rsync_guildupdate']		= "Guild Update|update your guild members list";
+$lang['admin']['rsync_playerupdate']	= "Player Update|update a single character";
+
+$lang['admin']['rsync_char_achievements']	= "Achievements|a map of achievement data including completion timestamps and criteria information.";
+$lang['admin']['rsync_char_appearance']		= "Appearance|a map of a character's appearance settings such as which face texture they've selected and whether or not a healm is visible.";
+$lang['admin']['rsync_char_feed']			= "Feed|the activity feed of the character.";
+$lang['admin']['rsync_char_guild']			= "Guild|a summary of the guild that the character belongs to. if the character does not belong to a guild and this field is requested, this field will not be exposed.";
+$lang['admin']['rsync_char_hunterPets']		= "Hunter pets|a list of all of the combat pets obtained by the character.";
+$lang['admin']['rsync_char_items']			= "Items|a list of items equipped by the character. use of this field will also include the average item level and average item level equipped for the character.";
+$lang['admin']['rsync_char_mounts']			= "Mounts|a list of all of the mounts obtained by the character.";
+$lang['admin']['rsync_char_pets']			= "Pets|a list of the battle pets obtained by the character.";
+$lang['admin']['rsync_char_petSlots']		= "Pet slots|data about the current battle pet slots on this characters account.";
+$lang['admin']['rsync_char_professions']	= "Professions|a list of the character's professions. does not include class professions.";
+$lang['admin']['rsync_char_progression']	= "Progression|a list of raids and bosses indicating raid progression and completeness.";
+$lang['admin']['rsync_char_pvp']			= "Pvp|a map of pvp information including arena team membership and rated battlegrounds information.";
+$lang['admin']['rsync_char_quests']			= "Quests|a list of quests completed by the character.";
+$lang['admin']['rsync_char_reputation']		= "Reputation|a list of the factions that the character has an associated reputation with.";
+$lang['admin']['rsync_char_statistics']		= "Statistics|a map of character statistics.";
+$lang['admin']['rsync_char_stats']			= "Stats|a map of character attributes and stats.";
+$lang['admin']['rsync_char_talents']		= "Talents|a list of talent structures.";
+$lang['admin']['rsync_char_titles']			= "Titles|a list of the titles obtained by the character including the currently selected title.";
+$lang['admin']['rsync_char_audit']			= "Audit|raw character audit data that powers the character audit on the game site";

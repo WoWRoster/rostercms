@@ -55,12 +55,6 @@ class rostersyncInstall
 		$installer->add_menu_button('rsync_button2','guild', 'gprofile', 'rs_members.png');
 		$installer->add_menu_button('rsync_button3','util', 'addguild', 'rs_add_guild.png');
 		$installer->add_menu_button('rsync_button4','guild', 'memberlist', 'rs_memberlist.png');
-		
-		if( !function_exists('curl_init') )
-		{
-			$installer->seterrors('Curl not detected rsync may not work!!!!!');
-			return;
-		}
 
 		// Master and menu entries
 		$installer->add_config("'1','startpage','rsync_conf','display','master'");
@@ -71,6 +65,10 @@ class rostersyncInstall
 		$installer->add_config("'50','rsync_scan_char',NULL,'blockframe','menu'");
 		$installer->add_config("'60','rsync_access',NULL,'blockframe','menu'");
 		$installer->add_config("'70','rsync_debug',NULL,'blockframe','menu'");
+		$installer->add_config("'80','rsync_ajaxupdate','rostercp-addon-rostersync-membersupdate','makelink','menu'");
+		$installer->add_config("'81','rsync_addguild','rostercp-addon-rostersync-addguild','makelink','menu'");
+		$installer->add_config("'82','rsync_guildupdate','rostercp-addon-rostersync-guildupdate','makelink','menu'");
+		$installer->add_config("'83','rsync_playerupdate','rostercp-addon-rostersync-playerupdate','makelink','menu'");
 		
 		/*
 			rsync_conf
@@ -204,21 +202,6 @@ class rostersyncInstall
 	function upgrade($oldversion)
 	{
 		global $installer;
-
-		if( version_compare('0.0.2', $oldversion, '>') == true )
-		{
-		
-			$installer->remove_config('102');
-			$installer->remove_config('100');
-			$installer->remove_config('301');
-			$installer->remove_config('302');
-			
-			$installer->add_config("'100', 'rsync_minlevel', '10', 'text{3|3', 'rsync_conf'");
-			$installer->add_config("'301','rsync_MinLvl','10', 'text{2|2', 'rsync_scaning'");
-			$installer->add_config("'302','rsync_MaxLvl','100', 'text{3|3', 'rsync_scaning'");
-			
-			
-		}
 
 		return true;
 	}

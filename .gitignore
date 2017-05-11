@@ -1,3 +1,5 @@
+addons/main/images/news/**
+addons/main/images/slider/**
 cache/**
 conf.php
 Thumbs.db

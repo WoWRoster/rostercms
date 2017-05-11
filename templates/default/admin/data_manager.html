@@ -97,8 +97,8 @@
 			<tfoot>
 				<tr>
 					<td colspan="7" class="membersRow" style="text-align: center;">
-						<button type="submit" class="input" style="float: right;"><!-- TRANSLATE delete_checked --></button>
-						<button type="submit" class="input" style="float: left;" onclick="return confirm('<!-- TRANSLATE delete_guild_confirm -->') &amp;&amp; setvalue('deletehide','delguild_{U_GUILD_ID}');"><!-- TRANSLATE delete_guild --></button>
+						<button type="submit" class="btn btn-default btn" style="float: right;"><!-- TRANSLATE delete_checked --></button>
+						<button type="submit" class="btn btn-default btn" style="float: left;" onclick="return confirm('<!-- TRANSLATE delete_guild_confirm -->') &amp;&amp; setvalue('deletehide','delguild_{U_GUILD_ID}');"><!-- TRANSLATE delete_guild --></button>
 					</td>
 				</tr>
 			</tfoot>
@@ -110,7 +110,7 @@
 					<td class="membersRow{data_list.ROW_CLASS}">{data_list.REGION}</td>
 					<td class="membersRow{data_list.ROW_CLASS}">{data_list.CLASS}</td>
 					<td class="membersRow{data_list.ROW_CLASS}">{data_list.LEVEL}</td>
-					<td class="membersRow{data_list.ROW_CLASS}"><button type="submit" class="input" onclick="setvalue('deletehide','del_{data_list.ID}');"><!-- TRANSLATE delete --></button></td>
+					<td class="membersRow{data_list.ROW_CLASS}"><button type="submit" class="btn btn-default btn" onclick="setvalue('deletehide','del_{data_list.ID}');"><!-- TRANSLATE delete --></button></td>
 					<td class="membersRow{data_list.ROW_CLASS}"><label for="massdel_{data_list.ID}">&nbsp;</label><input type="checkbox" name="massdel[{data_list.ID}]" id="massdel_{data_list.ID}" value="1" /></td>
 				</tr>
 	<!-- END data_list -->
@@ -128,7 +128,7 @@
 <!-- ELSE -->
 	<h1>No Data</h1>
 <!-- IF U_GUILD_ID neq '' -->
-	<button type="submit" class="input" onclick="return confirm('<!-- TRANSLATE delete_guild_confirm -->') &amp;&amp; setvalue('deletehide','delguild_{U_GUILD_ID}');"><!-- TRANSLATE delete_guild --></button>
+	<button type="submit" class="btn btn-default btn" onclick="return confirm('<!-- TRANSLATE delete_guild_confirm -->') &amp;&amp; setvalue('deletehide','delguild_{U_GUILD_ID}');"><!-- TRANSLATE delete_guild --></button>
 	<!-- ENDIF -->
 </form>
 <!-- ENDIF -->

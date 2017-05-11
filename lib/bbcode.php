@@ -59,15 +59,15 @@ class bbcode
 		//$bbcode = htmlspecialchars($bbcode);
 
 		$match = array(
-			"#\[php\](.*?)\[/php\](\r\n?|\n?)#ise",
-			"#\[code\](.*?)\[/code\](\r\n?|\n?)#ise",
-			"#\[bliz\](.*?)\[/bliz\](\r\n?|\n?)#ise",
+			"#\[php\](.*?)\[/php\](\r\n?|\n?)#is",
+			"#\[code\](.*?)\[/code\](\r\n?|\n?)#is",
+			"#\[bliz\](.*?)\[/bliz\](\r\n?|\n?)#is",
 		);
 		
 		$replace = array(
-			"\$this->mycode_parse_php('$1', false, true)",
-			"\$this->mycode_parse_code('$1', true)",
-			"\$this->mycode_parse_bliz('$1')",
+			$this->mycode_parse_php('$1', false, true),
+			$this->mycode_parse_code('$1', true),
+			$this->mycode_parse_bliz('$1'),
 		);
 		
 		/* Replace "special character" with it's unicode equivilant */

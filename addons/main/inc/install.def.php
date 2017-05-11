@@ -120,24 +120,29 @@ class mainInstall
 			PRIMARY KEY (`id`)");
 
 		$installer->create_table($installer->table('news'),"
-			`news_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+			`news_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 			`name` varchar(255) DEFAULT NULL,
 			`title` varchar(200) DEFAULT NULL,
 			`text` longtext,
+			`img` varchar(255) DEFAULT NULL,
 			`news_type` varchar(25) DEFAULT NULL,
-			`comm_count` int(11) unsigned NOT NULL,
+			`comm_count` int(11) UNSIGNED NOT NULL,
 			`poster` varchar(100) DEFAULT NULL,
+			`poster_id` int(10) DEFAULT NULL,
+			`poster_ip` varchar(30) NOT NULL,
+			`poster_ipx` varchar(30) NOT NULL,
 			`date` datetime DEFAULT NULL,
-			`html` tinyint(1),
+			`html` tinyint(1) DEFAULT NULL,
 			PRIMARY KEY (`news_id`)");
 
 		$installer->create_table($installer->table('comments'),"
-			`comment_id` int(11) unsigned AUTO_INCREMENT,
-			`news_id` int(11) unsigned NOT NULL,
+			`comment_id` int(11) UNSIGNED NOT NULL,
+			`news_id` int(11) UNSIGNED NOT NULL,
 			`author` varchar(16) NOT NULL DEFAULT '',
-			`date` datetime,
+			`author_id` int(10) NOT NULL,
+			`date` datetime DEFAULT NULL,
 			`content` longtext,
-			`html` tinyint(1),
+			`html` tinyint(1) DEFAULT NULL,
 			PRIMARY KEY (`comment_id`)");
 
 		$permissions = array(

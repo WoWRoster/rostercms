@@ -35,7 +35,7 @@ if( isset( $_POST['op'] ) && $_POST['op'] == 'process' )
 
 		case 'delete':
 
-			$dir = $addon['dir'];
+			$dir = $addon['dir'] .'images'. DIR_SEP . 'slider/';
 			$filename = $_POST['image'];
 			$delete = $_POST['id'];
 			if( file_exists($dir.$filename) )

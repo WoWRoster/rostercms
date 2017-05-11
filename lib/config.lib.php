@@ -76,7 +76,7 @@ class roster_config
 		// Color Picker JS
 		roster_add_js('templates/' . $roster->tpl->tpl . '/js/colorpicker.js');
 		$jscript =
-			'$(function() {
+			'jQuery(document).ready( function($){
 				//var ' . $this->prefix . 'tabs=new tabcontent(\'' . $this->prefix . 'tabs\');
 				//' . $this->prefix . 'tabs.init();
 
@@ -106,26 +106,29 @@ class roster_config
 					$(this).prev().click();
 				});
 				
-				var menu;
+				var menu = "' . $this->prefix . 'tabs";
+				var cookiename = "admin_menu_'.$this->prefix.'";
+				var cookie = readCookie(cookiename);
+				var tab = $.urlParam("tab");
+				console.log(tab);
+				console.log(menu);
+				
 				jQuery("ul#' . $this->prefix . 'tabs li").click(function(e)
 				{
 					if ( jQuery(this).attr("rel") )
 					{
+						eraseCookie(cookiename);
 						e.preventDefault();
 						menu = "' . $this->prefix . 'tabs";
-						//alert(menu);
-						//jQuery("."+menu+"").css("display","none");
 						jQuery("ul#"+menu+" li").removeClass("active");
 
 						var tab_class = jQuery(this).attr("rel");
+						createCookie(cookiename, tab_class, 1);
 						jQuery("ul#"+menu+" li").each(function() {
 							var v = jQuery(this).attr("rel");
-							//console.log( "hiding - "+v );
 							jQuery("div#"+v+"").hide();
 						});
-						//jQuery("."+menu+"#" + tab_class).siblings().hide();
 						jQuery("#" + tab_class).show();
-						//jQuery("ul#"+menu+" li [rel=\'"+tab_class+"\']).addClass("active");
 						jQuery(this).addClass("active");
 					}
 				});
@@ -133,20 +136,27 @@ class roster_config
 				{
 					var tab_class = jQuery(" ul#' . $this->prefix . 'tabs li").first().attr("rel");
 					//console.log( "first - "+tab_class );
-					menu = "' . $this->prefix . 'tabs";
-					jQuery("ul#"+menu+" li").each(function() {
-						var v = jQuery(this).attr("rel");
-						//console.log( "hiding - "+v );
-						jQuery("div#"+v+"").hide();
-					});
-					jQuery("#" + tab_class).show();
+					show_hide(menu,tab_class);
 					jQuery("ul#"+menu+" li#" + tab_class).addClass("active");
 					
 				}
+				function show_hide(menu,tab_class)
+				{
+					jQuery("ul#"+menu+" li").each(function() {
+							var v = jQuery(this).attr("rel");
+							jQuery("div#"+v+"").hide();
+						});
+					jQuery("#" + tab_class).show();
+				}
 				var init = first();
+				
+				if ( tab )
+				{
+					show_hide(menu,tab);
+				}
 
 			});';
-		roster_add_js($jscript, 'inline', 'footer');
+		roster_add_js($jscript, 'inline', 'header');
 		roster_add_css('templates/' . $roster->tpl->tpl . '/style/colorpicker.css', 'theme');
 	}
 
@@ -161,9 +171,8 @@ class roster_config
 	{
 		global $roster;
 
-		//$menu = '<ul id="' . $this->prefix . 'tabs" class="tab_menu">' . "\n";
 		$menu = '<ul id="' . $this->prefix . 'tabs" class="list-group-3 margin-none">';
-//d($this->db_values['menu']);
+
 		if (is_array($this->db_values['menu']))
 		{
 			foreach($this->db_values['menu'] as $values)
@@ -215,12 +224,9 @@ class roster_config
 					case 'blockframe':
 					case 'blockhide':
 					case 'function':
-						$menu .= '<li class="list-group-3-item' . ( !$in_config && ($values['name'] == $this->db_values['master']['startpage']['value']) ? ' active' : '' ) . '" rel="' . $values['name'] . '">'
-						//$menu .= '<li' . ( !$in_config && ($values['name'] == $this->db_values['master']['startpage']['value']) ? ' class="selected"' : '' ) . '>'
-							. ( $in_config ? '<span class="ui-icon ui-icon-link" style="float:right;"></span>' : '' )
-							//. '<span class="ui-icon ui-icon-help" style="float:left;cursor:help;" ' . $this->createInlineTip($values['tooltip'],$values['description']) . '></span>'
+						$menu .= '<li class="list-group-3-item' . ( !$in_config && ($values['name'] == $this->db_values['master']['startpage']['value']) ? ' active' : '' ) . '" '. ( !$in_config ? 'rel="' . $values['name'] . '"' : '' ) .'>'
 							.'<i class="fa fa-pencil-square-o"></i>'
-							. '<a href="' . ( !$in_config ? '#' : makelink($in_config) ) . '" rel="' . $values['name'] . '">' . $values['description'] . '</a></li>' . "\n";
+							. '<a href="' . ( $in_config ? makelink($in_config).'&tab='.$values['name'] : '#' ) . '" '. ( !$in_config ? 'rel="' . $values['name'] . '"' : '' ) .' >' . $values['description'] . '</a></li>' . "\n";
 						break;
 
 					case 'hr':
