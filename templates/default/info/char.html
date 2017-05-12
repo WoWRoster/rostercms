@@ -1,10 +1,11 @@
 <!-- $Id: char.html 2601 2012-08-31 19:07:03Z ulminia@gmail.com $ -->
 <div id="main" class="container">
 	<div class="main-panel" align="left">
-		<div class="section-blue">
-		<div class="model-img">
-			<img src="https://render-us.worldofwarcraft.com/character/zangarmarsh/74/113337162-main.jpg" alt="" />
+		<div class="profile-background" >
+			<div class="bg-image" style="background-image:url({S_CHAR_IMG});"></div>
 		</div>
+		<div class="section-profile" >
+
 			<div class="row">
 				<div class="col-lg-12">
 					<div xmlns="http://www.w3.org/1999/xhtml" class="profile-info">
@@ -32,549 +33,432 @@
 					</div>
 				</div>
 			</div>
-<!-- BEGIN bob -->
-<!-- END bob -->
-<!-- BEGIN equip-->
-		<div class="col-lg-6">
-			<div class="character-equip character-equip--left">
-			<!-- BEGIN left -->
-				<div class="character-equip-item character-equip-item--left">
-					<div class="character-slot-item">
-						<a data-modal="item-slot-modal-head" {equip.left.TOOLTIP} class="Link Link--block" queryselectoralways="20">
-							<div>
-								<div class="GameIcon GameIcon--{equip.left.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot GameIcon--large" media-wide="GameIcon--large" queryselectoralways="0" media-original="GameIcon GameIcon--{equip.left.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot">
-									<!-- IF equip.left.ICON -->
-									<div style="background-image:url('{equip.left.ICON}')" class="GameIcon-icon">
-									<!-- ELSE -->
-									<div class="GameIcon-icon">
-									<!-- ENDIF -->
-									</div>
-									<div class="GameIcon-transmog">
-									</div>
-								</div>
-								<div class="character-slot-itemDetails">
-								<div class="character-slot-itemName color-quality-{equip.left.RARITY}">{equip.left.NAME}</div>
-									<div class="List List--left List--guttersTiny">
-										<div class="List-item character-slot-itemLevel">{equip.left.ILVL}</div>
-										<!-- BEGIN gems -->
-										<div class="List-item">
-											<div class="ItemSocket ItemSocket--PRISMATIC ItemSocket--inline">
-												<div style="background-image: url({equip.left.gems.ICON});" class="ItemSocket-icon">
-												</div>
-												<div class="ItemSocket-frame">
-												</div>
+
+			<div id="profile">
+				<!-- BEGIN equip-->
+				<div class="col-lg-6">
+					<div class="character-equip character-equip--left">
+					<!-- BEGIN left -->
+						<div class="character-equip-item character-equip-item--left">
+							<div class="character-slot-item">
+								<a data-modal="item-slot-modal-head" {equip.left.TOOLTIP} class="Link Link--block" queryselectoralways="20">
+									<div>
+										<div class="GameIcon GameIcon--{equip.left.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot GameIcon--large" media-wide="GameIcon--large" queryselectoralways="0" media-original="GameIcon GameIcon--{equip.left.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot">
+											<!-- IF equip.left.ICON -->
+											<div style="background-image:url('{equip.left.ICON}')" class="GameIcon-icon">
+											<!-- ELSE -->
+											<div class="GameIcon-icon">
+											<!-- ENDIF -->
+											</div>
+											<div class="GameIcon-transmog">
 											</div>
 										</div>
-										<!-- END gems -->
+										<div class="character-slot-itemDetails">
+										<div class="character-slot-itemName color-quality-{equip.left.RARITY}">{equip.left.NAME}</div>
+											<div class="List List--left List--guttersTiny">
+												<div class="List-item character-slot-itemLevel">{equip.left.ILVL}</div>
+												<!-- BEGIN gems -->
+												<div class="List-item">
+													<div class="ItemSocket ItemSocket--PRISMATIC ItemSocket--inline">
+														<div style="background-image: url({equip.left.gems.ICON});" class="ItemSocket-icon">
+														</div>
+														<div class="ItemSocket-frame">
+														</div>
+													</div>
+												</div>
+												<!-- END gems -->
+											</div>
+										</div>
 									</div>
-								</div>
+								</a>
 							</div>
-						</a>
+						</div>
+					<!-- END left -->
 					</div>
 				</div>
-			<!-- END left -->
-			</div>
-		</div>
 		
-		<div class="col-lg-6">
-			<div class="character-equip character-equip--right">
-			<!-- BEGIN right -->
-				<div class="character-equip-item character-equip-item--right">
-					<div class="character-slot-item">
-						<a data-modal="item-slot-modal-head" {equip.right.TOOLTIP} class="Link Link--block" queryselectoralways="20">
-							<div>
-								<div class="GameIcon GameIcon--{equip.right.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot GameIcon--large" media-wide="GameIcon--large" queryselectoralways="0" media-original="GameIcon GameIcon--{equip.right.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot">
-									<!-- IF equip.right.ICON -->
-									<div style="background-image:url('{equip.right.ICON}')" class="GameIcon-icon">
-									<!-- ELSE -->
-									<div class="GameIcon-icon">
-									<!-- ENDIF -->
+				<div class="col-lg-6">
+					<div class="character-equip character-equip--right">
+					<!-- BEGIN right -->
+						<div class="character-equip-item character-equip-item--right">
+							<div class="character-slot-item">
+								<a data-modal="item-slot-modal-head" {equip.right.TOOLTIP} class="Link Link--block" queryselectoralways="20">
+									<div>
+										<div class="GameIcon GameIcon--{equip.right.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot GameIcon--large" media-wide="GameIcon--large" queryselectoralways="0" media-original="GameIcon GameIcon--{equip.right.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot">
+											<!-- IF equip.right.ICON -->
+											<div style="background-image:url('{equip.right.ICON}')" class="GameIcon-icon">
+											<!-- ELSE -->
+											<div class="GameIcon-icon">
+											<!-- ENDIF -->
+											</div>
+											<div class="GameIcon-transmog">
+											</div>
+										</div>
+										<div class="character-slot-itemDetails">
+										<div class="character-slot-itemName color-quality-{equip.right.RARITY}">{equip.right.NAME}</div>
+											<div class="List List--right List--guttersTiny">
+												<div class="List-item character-slot-itemLevel">{equip.right.ILVL}</div>
+											</div>
+										</div>
 									</div>
-									<div class="GameIcon-transmog">
-									</div>
-								</div>
-								<div class="character-slot-itemDetails">
-								<div class="character-slot-itemName color-quality-{equip.right.RARITY}">{equip.right.NAME}</div>
-									<div class="List List--right List--guttersTiny">
-										<div class="List-item character-slot-itemLevel">{equip.right.ILVL}</div>
-									</div>
-								</div>
+								</a>
 							</div>
-						</a>
+						</div>
+					<!-- END right -->
 					</div>
 				</div>
-			<!-- END right -->
-			</div>
-		</div>
 		
-		<div class="col-lg-12">
-			<div class="character-equip character-equip--bottom">		
-			<!-- BEGIN left_bottom -->
-					<div class="character-slot-item">
-						<a data-modal="item-slot-modal-head" {equip.left_bottom.TOOLTIP} class="Link Link--block" queryselectoralways="20">
-							<div>
-								<div class="GameIcon GameIcon--{equip.left_bottom.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot GameIcon--large" media-wide="GameIcon--large" queryselectoralways="0" media-original="GameIcon GameIcon--{equip.left_bottom.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot">
-									<!-- IF equip.left_bottom.ICON -->
-									<div style="background-image:url('{equip.left_bottom.ICON}')" class="GameIcon-icon">
-									<!-- ELSE -->
-									<div class="GameIcon-icon">
-									<!-- ENDIF -->
+				<div class="col-lg-12">
+					<div class="character-equip character-equip--bottom">		
+					<!-- BEGIN left_bottom -->
+							<div class="character-slot-item">
+								<a data-modal="item-slot-modal-head" {equip.left_bottom.TOOLTIP} class="Link Link--block" queryselectoralways="20">
+									<div>
+										<div class="GameIcon GameIcon--{equip.left_bottom.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot GameIcon--large" media-wide="GameIcon--large" queryselectoralways="0" media-original="GameIcon GameIcon--{equip.left_bottom.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot">
+											<!-- IF equip.left_bottom.ICON -->
+											<div style="background-image:url('{equip.left_bottom.ICON}')" class="GameIcon-icon">
+											<!-- ELSE -->
+											<div class="GameIcon-icon">
+											<!-- ENDIF -->
+											</div>
+											<div class="GameIcon-transmog">
+											</div>
+										</div>
+										<div class="character-slot-itemDetails">
+										<div class="character-slot-itemName color-quality-{equip.left_bottom.RARITY}">{equip.left_bottom.NAME}</div>
+											<div class="List List--right List--guttersTiny">
+												<div class="List-item character-slot-itemLevel">{equip.left_bottom.ILVL}</div>
+											</div>
+										</div>
 									</div>
-									<div class="GameIcon-transmog">
-									</div>
-								</div>
-								<div class="character-slot-itemDetails">
-								<div class="character-slot-itemName color-quality-{equip.left_bottom.RARITY}">{equip.left_bottom.NAME}</div>
-									<div class="List List--right List--guttersTiny">
-										<div class="List-item character-slot-itemLevel">{equip.left_bottom.ILVL}</div>
-									</div>
-								</div>
+								</a>
 							</div>
-						</a>
-					</div>
 
-			<!-- END left_bottom -->
-			<!-- BEGIN right_bottom -->
-				<div class="character-slot-item">
-					<a data-modal="item-slot-modal-head" {equip.right_bottom.TOOLTIP} class="Link Link--block" queryselectoralways="20">
-						<div>
-							<div class="GameIcon GameIcon--{equip.right_bottom.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot GameIcon--large" media-wide="GameIcon--large" queryselectoralways="0" media-original="GameIcon GameIcon--{equip.right_bottom.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot">
-								<!-- IF equip.right_bottom.ICON -->
-								<div style="background-image:url('{equip.right_bottom.ICON}')" class="GameIcon-icon">
-								<!-- ELSE -->
-								<div class="GameIcon-icon">
-								<!-- ENDIF -->
+					<!-- END left_bottom -->
+					<!-- BEGIN right_bottom -->
+						<div class="character-slot-item">
+							<a data-modal="item-slot-modal-head" {equip.right_bottom.TOOLTIP} class="Link Link--block" queryselectoralways="20">
+								<div>
+									<div class="GameIcon GameIcon--{equip.right_bottom.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot GameIcon--large" media-wide="GameIcon--large" queryselectoralways="0" media-original="GameIcon GameIcon--{equip.right_bottom.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot">
+										<!-- IF equip.right_bottom.ICON -->
+										<div style="background-image:url('{equip.right_bottom.ICON}')" class="GameIcon-icon">
+										<!-- ELSE -->
+										<div class="GameIcon-icon">
+										<!-- ENDIF -->
+										</div>
+										<div class="GameIcon-transmog">
+										</div>
+									</div>
+									<div class="character-slot-itemDetails">
+									<div class="character-slot-itemName color-quality-{equip.right_bottom.RARITY}">{equip.right_bottom.NAME}</div>
+										<div class="List List--left List--guttersTiny">
+											<div class="List-item character-slot-itemLevel">{equip.right_bottom.ILVL}</div>
+										</div>
+									</div>
 								</div>
-								<div class="GameIcon-transmog">
+							</a>
+						</div>
+					<!-- END right_bottom -->
+					</div>
+				</div>
+				<!-- END equip -->
+		
+				<div class="equip-bg">
+					<div id="main-wrapper" >
+						<div xmlns="http://www.w3.org/1999/xhtml" class="summary-bottom">
+							<div class="summary-bottom-right">
+								<div xmlns="http://www.w3.org/1999/xhtml" class="summary-talents" id="summary-talents">
+									<h3 class="category">
+									<span class="title">Talents</span> 
+									</h3>
+									<div class="profile-box-simple">
+									<div class="talent-specs">
+									<!-- BEGIN spec -->
+										<a data-spec-id="{spec.TID}" class="spec-button spec-{spec.ID} <!-- IF spec.SELECTED -->selected active<!-- ENDIF -->" href="javascript:;" data-spec-name="{spec.NAME}">
+										<span class="inner"> 
+											<span class="frame">
+												<span class="icon">
+													<img src="http://media.blizzard.com/wow/icons/36/{spec.ICON}.jpg" alt="" />
+												</span>
+											</span> 
+											<span xmlns="http://www.w3.org/1999/xhtml" class="roles">
+												<span class="icon-{spec.ROLE}"></span>
+											</span>
+											<span class="name-build">
+												<span class="name">{spec.NAME}</span>
+											</span>
+										</span>
+										</a>
+									<!-- END spec -->
+										<span class="clear">
+										</span>
+									</div>
+								<!-- BEGIN spec -->
+									<!-- BEGIN build -->
+										<div class="talent-build <!-- IF spec.build.SELECTED -->selected<!-- ENDIF -->" id="talent-build-{spec.build.TID}">
+											<div class="talents">
+											<ul>
+											<!-- BEGIN talent -->
+											<li class="talent" data-tooltip="talent-{spec.build.talent.ID}" data-tier="0" data-column="2">
+											<span xmlns="http://www.w3.org/1999/xhtml" class="icon-frameb frame-18 " style="background-image: url('http://media.blizzard.com/wow/icons/18/{spec.build.talent.ICON}.jpg');"></span>
+											<span class="spell-name">{spec.build.talent.NAME}</span>
+											</li>
+											<!-- END talent --> 
+											</ul>
+											</div>
+										</div>
+									<!-- END build -->
+
+								<!-- END spec -->
+									</div>
 								</div>
 							</div>
-							<div class="character-slot-itemDetails">
-							<div class="character-slot-itemName color-quality-{equip.right_bottom.RARITY}">{equip.right_bottom.NAME}</div>
-								<div class="List List--left List--guttersTiny">
-									<div class="List-item character-slot-itemLevel">{equip.right_bottom.ILVL}</div>
+							
+							<div xmlns="http://www.w3.org/1999/xhtml" class="summary-bottom-left">
+								<div class="summary-health-resource">
+									<ul>
+										<li class="health" id="summary-health" data-id="health"><span class="name">Health</span><span class="value">1818420</span></li>
+										<li class="resource-2" id="summary-power" data-id="power-2"><span class="name">Focus</span><span class="value">120</span></li>
+									</ul>
+								</div>
+								<div class="summary-stats-profs-bgs">
+									<div class="summary-stats" id="summary-stats">
+										<div id="summary-stats-simple" class="summary-stats-simple" style=" display: block">
+											<div class="summary-stats-simple-base">
+										
+												<!-- BEGIN stats -->
+												<div xmlns="http://www.w3.org/1999/xhtml" class="summary-stats-column col-lg-5 col-md-5 col-xs-6 thumb">
+													<span class="stats-title">{stats.SCAT}</span>
+													<ul style="list-style-type: none;">
+														<!-- BEGIN line -->
+														<li data-id="strength" class="">
+															<span class="sname">{stats.line.LINE}</span>
+															<span class="value">{stats.line.VALUE}</span>
+															<span class="clear"></span>
+														</li>
+														<!-- END line -->
+													</ul>
+												</div>
+												<!-- END stats -->
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</a>
+					</div>
 				</div>
-
-			<!-- END right_bottom -->
 			</div>
 		</div>
-<!-- END equip -->
-	<div class="equip-bg">
-		
-		<!-- IF S_CHAR_IMG -->
-		<div class="model-img">
-			<img src="https://render-us.worldofwarcraft.com/character/zangarmarsh/74/113337162-main.jpg" alt="" />
+		<!-- IF S_PET_TAB -->
+		<div id="pets" class="container pets" style="display:none;">
+
+		<!-- IF S_PETS -->
+			<div class="tier-1-a">
+				<div class="tier-1-b">
+					<div class="tier-1-c">
+						<div class="tier-1-title"><!-- TRANSLATE pets --></div>
+
+		<!-- BEGIN pet -->
+						<div class="pet shader" >
+							<!--<div class="icon"><img class="icon" src="{INTERFACE_URL}Interface/Icons/{pet.ICON}.{IMG_SUFFIX}" alt="" /></div>-->
+
+							<div class="icon">
+								<img src="{INTERFACE_URL}Interface/Icons/{pet.ICON}.{IMG_SUFFIX}" alt="" />
+								<div class="mask"></div>
+							</div>
+
+							<div class="basics">
+								<div class="name">{pet.NAME}</div>
+								<div class="info"><!-- TRANSLATE level --> {pet.LEVEL} {pet.TYPE}</div>
+							</div>
+							<div class="powers">
+								<div class="bar">
+									<div class="power-bar health">{pet.HEALTH}</div>
+									<div class="power-name"><!-- TRANSLATE health -->:</div>
+								</div>
+								<div class="bar">
+									<div class="power-bar {pet.L_POWER}">{pet.POWER}</div>
+									<div class="power-name">{pet.L_POWER}:</div>
+								</div>
+		<!-- IF pet.S_EXP -->
+								<div class="bar">
+									<div class="power-bar xp-bar">
+										<div class="fill" style="width: {pet.EXP_PERC}%;"></div>
+										<div class="text">{EXP_AMOUNT} / {EXP_MAX} ({EXP_PERC}%)</div>
+									</div>
+									<div class="power-name">EXP:</div>
+								</div>
+		<!-- ENDIF -->
+							</div>
+
+							<div class="resist">
+		<!-- BEGIN resist -->
+								<div class="icon {pet.resist.CLASS}" {pet.resist.TOOLTIP}><b>{pet.resist.VALUE}</b><span>{pet.resist.VALUE}</span></div>
+		<!-- END resist -->
+							</div>
+
+							<div class="padding">
+		<!-- BEGIN box_stats -->
+								<div class="stats">
+		<!-- BEGIN statline -->
+									<div class="statline" {pet.box_stats.statline.TOOLTIP}>
+										<span class="value">{pet.box_stats.statline.VALUE}</span>
+										<span class="label">{pet.box_stats.statline.NAME}:</span>
+									</div>
+		<!-- END statline -->
+								</div>
+		<!-- END box_stats -->
+							</div>
+
+		<!-- IF pet.TOTAL_TP -->
+							<div class="trainingpts">{L_UNUSED_TRAINING}: {pet.UNUSED_TP} / {pet.TOTAL_TP}</div>
+		<!-- ENDIF -->
+						</div>
+
+		<!-- END pet -->
+					</div>
+				</div>
+			</div>
+		<!-- ENDIF -->
+
 		</div>
 		<!-- ENDIF -->
-		<div id="main-wrapper" >
 
-			<div xmlns="http://www.w3.org/1999/xhtml" class="summary-bottom">
-			
-				<div class="summary-bottom-right">
-					<div xmlns="http://www.w3.org/1999/xhtml" class="summary-talents" id="summary-talents">
-						<h3 class="category">
-						<span class="title">Talents</span> 
-						</h3>
-						<div class="profile-box-simple">
-						<div class="talent-specs">
-						<!-- BEGIN spec -->
-							<a data-spec-id="{spec.TID}" class="spec-button spec-{spec.ID} <!-- IF spec.SELECTED -->selected active<!-- ENDIF -->" href="javascript:;" data-spec-name="{spec.NAME}">
-							<span class="inner"> 
-								<span class="frame">
-									<span class="icon">
-										<img src="http://media.blizzard.com/wow/icons/36/{spec.ICON}.jpg" alt="" />
-									</span>
-								</span> 
-								<span xmlns="http://www.w3.org/1999/xhtml" class="roles">
-									<span class="icon-{spec.ROLE}"></span>
-								</span>
-								<span class="name-build">
-									<span class="name">{spec.NAME}</span>
-								</span>
-							</span>
-							</a>
-						<!-- END spec -->
-							<span class="clear">
-							</span>
-						</div>
-					<!-- BEGIN spec -->
-						<!-- BEGIN build -->
-							<div class="talent-build <!-- IF spec.build.SELECTED -->selected<!-- ENDIF -->" id="talent-build-{spec.build.TID}">
-								<div class="talents">
-								<ul>
-								<!-- BEGIN talent -->
-								<li class="talent" data-tooltip="talent-{spec.build.talent.ID}" data-tier="0" data-column="2">
-								<span xmlns="http://www.w3.org/1999/xhtml" class="icon-frameb frame-18 " style="background-image: url('http://media.blizzard.com/wow/icons/18/{spec.build.talent.ICON}.jpg');"></span>
-								<span class="spell-name">{spec.build.talent.NAME}</span>
-								</li>
-								<!-- END talent --> 
-								</ul>
+
+		<!-- IF S_COMPAN_TAB -->
+		<div id="companions" class="container companions" style="display:none;">
+		<!-- IF S_MOUNTS -->
+			<div class="tier-1-a">
+				<div class="tier-1-b">
+					<div class="tier-1-c">
+						<div class="tier-1-title"><!-- TRANSLATE mounts --></div>
+						
+						<div class="tier-2-a">
+							<div class="tier-2-b">
+		<!-- BEGIN mounts -->
+								<div class="item" {mounts.TOOLTIP}>
+									<img src="{INTERFACE_URL}Interface/Icons/{mounts.ICON}.{IMG_SUFFIX}" alt="" />
+									<div class="mask"></div>
 								</div>
+		<!-- END mounts -->
+								<div style="clear:both;"></div>
 							</div>
-						<!-- END build -->
-
-					<!-- END spec -->
 						</div>
 					</div>
 				</div>
-				
-				<div xmlns="http://www.w3.org/1999/xhtml" class="summary-bottom-left">
-					<div class="summary-health-resource">
-						<ul>
-							<li class="health" id="summary-health" data-id="health"><span class="name">Health</span><span class="value">1818420</span></li>
-							<li class="resource-2" id="summary-power" data-id="power-2"><span class="name">Focus</span><span class="value">120</span></li>
-						</ul>
-					</div>
-					<div class="summary-stats-profs-bgs">
-						<div class="summary-stats" id="summary-stats">
-							<div id="summary-stats-simple" class="summary-stats-simple" style=" display: block">
-								<div class="summary-stats-simple-base">
-							
-									<!-- BEGIN stats -->
-									<div xmlns="http://www.w3.org/1999/xhtml" class="summary-stats-column col-lg-5 col-md-5 col-xs-6 thumb">
-										<span class="stats-title">{stats.SCAT}</span>
-										<ul style="list-style-type: none;">
-											<!-- BEGIN line -->
-											<li data-id="strength" class="">
-												<span class="sname">{stats.line.LINE}</span>
-												<span class="value">{stats.line.VALUE}</span>
-												<span class="clear"></span>
-											</li>
-											<!-- END line -->
-										</ul>
-									</div>
-									<!-- END stats -->
+			</div>
+		<!-- ENDIF -->
+
+		<!-- IF S_COMPANIONS -->
+			<div class="tier-1-a">
+				<div class="tier-1-b">
+					<div class="tier-1-c">
+						<div class="tier-1-title"><!-- TRANSLATE companions --></div>
+						
+						<div class="tier-2-a">
+							<div class="tier-2-b">
+		<!-- BEGIN companions -->
+								<div class="item" {companions.TOOLTIP}>
+									<img src="{INTERFACE_URL}Interface/Icons/{companions.ICON}.{IMG_SUFFIX}" alt="" />
+									<div class="mask"></div>
 								</div>
+		<!-- END mounts -->
+								<div style="clear:both;"></div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		<div style="clear:both;"></div>
+		<!-- ENDIF -->
 		</div>
-	</div>
-</div>
+		<!-- ENDIF -->
 
 
-<!-- IF S_PET_TAB -->
-<div id="pets" class="container pets" style="display:none;">
 
-<!-- IF S_PETS -->
-	<div class="tier-1-a">
-		<div class="tier-1-b">
-			<div class="tier-1-c">
-				<div class="tier-1-title"><!-- TRANSLATE pets --></div>
+		<!-- IF S_REP_TAB -->
 
-<!-- BEGIN pet -->
-				<div class="pet shader" >
-					<!--<div class="icon"><img class="icon" src="{INTERFACE_URL}Interface/Icons/{pet.ICON}.{IMG_SUFFIX}" alt="" /></div>-->
-
-					<div class="icon">
-						<img src="{INTERFACE_URL}Interface/Icons/{pet.ICON}.{IMG_SUFFIX}" alt="" />
-						<div class="mask"></div>
-					</div>
-
-					<div class="basics">
-						<div class="name">{pet.NAME}</div>
-						<div class="info"><!-- TRANSLATE level --> {pet.LEVEL} {pet.TYPE}</div>
-					</div>
-					<div class="powers">
-						<div class="bar">
-							<div class="power-bar health">{pet.HEALTH}</div>
-							<div class="power-name"><!-- TRANSLATE health -->:</div>
-						</div>
-						<div class="bar">
-							<div class="power-bar {pet.L_POWER}">{pet.POWER}</div>
-							<div class="power-name">{pet.L_POWER}:</div>
-						</div>
-<!-- IF pet.S_EXP -->
-						<div class="bar">
-							<div class="power-bar xp-bar">
-								<div class="fill" style="width: {pet.EXP_PERC}%;"></div>
-								<div class="text">{EXP_AMOUNT} / {EXP_MAX} ({EXP_PERC}%)</div>
-							</div>
-							<div class="power-name">EXP:</div>
-						</div>
-<!-- ENDIF -->
-					</div>
-
-					<div class="resist">
-<!-- BEGIN resist -->
-						<div class="icon {pet.resist.CLASS}" {pet.resist.TOOLTIP}><b>{pet.resist.VALUE}</b><span>{pet.resist.VALUE}</span></div>
-<!-- END resist -->
-					</div>
-
-					<div class="padding">
-<!-- BEGIN box_stats -->
-						<div class="stats">
-<!-- BEGIN statline -->
-							<div class="statline" {pet.box_stats.statline.TOOLTIP}>
-								<span class="value">{pet.box_stats.statline.VALUE}</span>
-								<span class="label">{pet.box_stats.statline.NAME}:</span>
-							</div>
-<!-- END statline -->
-						</div>
-<!-- END box_stats -->
-					</div>
-
-<!-- IF pet.TOTAL_TP -->
-					<div class="trainingpts">{L_UNUSED_TRAINING}: {pet.UNUSED_TP} / {pet.TOTAL_TP}</div>
-<!-- ENDIF -->
-				</div>
-
-<!-- END pet -->
-			</div>
+		<!-- reputation -->
+		<div id="reputation" style="display:none;">
+		<!-- BEGIN rep -->
+		<div class="row">
+			<div class="col-md-12"><h2>{rep.NAME}</h2></div>
 		</div>
-	</div>
-<!-- ENDIF -->
-
-</div>
-<!-- ENDIF -->
-
-
-<!-- IF S_COMPAN_TAB -->
-<div id="companions" class="container companions" style="display:none;">
-<!-- IF S_MOUNTS -->
-	<div class="tier-1-a">
-		<div class="tier-1-b">
-			<div class="tier-1-c">
-				<div class="tier-1-title"><!-- TRANSLATE mounts --></div>
-				
-				<div class="tier-2-a">
-					<div class="tier-2-b">
-<!-- BEGIN mounts -->
-						<div class="item" {mounts.TOOLTIP}>
-							<img src="{INTERFACE_URL}Interface/Icons/{mounts.ICON}.{IMG_SUFFIX}" alt="" />
-							<div class="mask"></div>
-						</div>
-<!-- END mounts -->
-						<div style="clear:both;"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- ENDIF -->
-
-<!-- IF S_COMPANIONS -->
-	<div class="tier-1-a">
-		<div class="tier-1-b">
-			<div class="tier-1-c">
-				<div class="tier-1-title"><!-- TRANSLATE companions --></div>
-				
-				<div class="tier-2-a">
-					<div class="tier-2-b">
-<!-- BEGIN companions -->
-						<div class="item" {companions.TOOLTIP}>
-							<img src="{INTERFACE_URL}Interface/Icons/{companions.ICON}.{IMG_SUFFIX}" alt="" />
-							<div class="mask"></div>
-						</div>
-<!-- END mounts -->
-						<div style="clear:both;"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- ENDIF -->
-</div>
-<!-- ENDIF -->
-
-
-
-<!-- IF S_REP_TAB -->
-
-<!-- reputation -->
-<div id="reputation" style="display:none;">
-<ul class="reputation-list">
-<!-- BEGIN rep -->
-	<li class="reputation-category">
-		<h3 class="category-header">{rep.NAME}</h3>
-		<ul class="reputation-entry">
 		<!-- BEGIN bar -->
-			<li class="faction-details">
-				<div class="{rep.bar.FILL}">
-					<span class="faction-name">{rep.bar.NAME}</span>
-					<div class="faction-standing">
-						<div class="faction-bar">
-							<div class="faction-score">{rep.bar.VALUE} / {rep.bar.MAXVALUE}</div>
-							<div class="faction-fill" style="width: {rep.bar.WIDTH}%;"></div>
-						</div>
-					</div>
-					<div class="faction-level">{rep.bar.STANDING}</div>
-					<span class="clear"></span>
-				</div>
-			</li>
-		<!-- BEGIN rep2 -->
-			<li class="reputation-subcategory">
-				<div class="faction-details faction-subcategory-details  rank-7">
-					<h4 class="faction-header">{rep.bar.rep2.NAME}</h4>
-					<!-- IF rep.bar.rep2.VALUE -->
-					<div class="faction-standing">
-						<div class="faction-bar">
-							<div class="faction-score">{rep.bar.rep2.VALUE} / {rep.bar.rep2.MAXVALUE}</div>
-							<div class="faction-fill full-fill" style="width: {rep.bar.rep2.WIDTH}%;"></div>
-						</div>
-					</div>
-					<div class="faction-level">{rep.bar.rep2.STANDING}</div>
+		<div class="row">
+			<div class="col-md-3 text-right">{rep.bar.NAME}</div>
+			<div class="col-md-6">
+				<div class="progress">
+					<!-- IF rep.bar.VALUE ne '2' -->
+					<div class="faction-score">{rep.bar.VALUE} / {rep.bar.MAXVALUE}</div>
 					<!-- ENDIF -->
-					<span class="clear"></span>
-
-					<ul class="factions">
-						<!-- BEGIN bar2 -->
-						<li class="faction-details">
-							<div class="{rep.bar.rep2.bar2.FILL}">
-								<span class="faction-name">{rep.bar.rep2.bar2.NAME}</span>
-								<div class="faction-standing">
-									<div class="faction-bar">
-										<div class="faction-score">{rep.bar.rep2.bar2.VALUE} / {rep.bar.rep2.bar2.MAXVALUE}</div>
-										<div class="faction-fill" style="width: {rep.bar.rep2.bar2.WIDTH}%;"></div>
-									</div>
-								</div>
-							<div class="faction-level">{rep.bar.rep2.bar2.STANDING}</div>
-							<span class="clear"></span>
-							</div>
-						</li>
-						<!-- END bar2 -->
-
-					</ul>
+					<div class="progress-bar {rep.bar.FILL}" role="progressbar" aria-valuenow="{rep.bar.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{rep.bar.WIDTH}%">
+					</div>
 				</div>
-			</li>
+			</div>
+			<div class="col-md-3 text-left  faction-level-{rep.bar.FILL}">{rep.bar.STANDING}</div>
+		</div>
+		<!-- BEGIN rep2 -->
+		<div class="row">
+			<div class="col-md-3 text-right"><h3>{rep.bar.rep2.NAME}<h3></div>
+			<div class="col-md-9"></div>
+		</div>
+		<!-- BEGIN bar2 -->
+		<div class="row">
+			<div class="col-md-3 text-right">{rep.bar.rep2.bar2.NAME}</div>
+			<div class="col-md-6">
+				<div class="progress">
+						<!-- IF rep.bar.rep2.bar2.VALUE ne '2' -->
+						<div class="faction-score">{rep.bar.rep2.bar2.VALUE} / {rep.bar.rep2.bar2.MAXVALUE}</div>
+						<!-- ENDIF -->
+					<div class="progress-bar {rep.bar.rep2.bar2.FILL}" role="progressbar" aria-valuenow="{rep.bar.rep2.bar2.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{rep.bar.rep2.bar2.WIDTH}%">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 text-left faction-level-{rep.bar.rep2.bar2.FILL}">{rep.bar.rep2.bar2.STANDING}</div>
+		</div>
+		<!-- END bar2 -->		
 		<!-- END rep2 -->
 		<!-- END bar -->
-		</ul>
-	</li>
-<!-- END rep -->
-</ul>
-</div>
-<!-- ENDIF -->
-
-
-
-<!-- IF S_SKILL_TAB -->
-
-<!-- skills -->
-<div id="skills" style="display:none;">
-
-<!-- BEGIN skill -->
-<div class="page-header">
-  <h1>{skill.NAME}</h1>
-</div>
-<!-- BEGIN bar -->
-	<div class="row">
-		<div class="col-lg-2"></div>
-		<div class="col-lg-1">
-			<img class="icon-frame frame-24" src="{INTERFACE_URL}Interface/Icons/{skill.bar.ICON}.{IMG_SUFFIX}" alt="" />
+		<!-- END rep -->
 		</div>
-		<div class="col-lg-3">
-			{skill.bar.NAME}
+		<!-- ENDIF -->
+
+
+
+		<!-- IF S_SKILL_TAB -->
+
+		<!-- skills -->
+		<div id="skills" style="display:none;">
+
+		<!-- BEGIN skill -->
+		<div class="page-header">
+		  <h1>{skill.NAME}</h1>
 		</div>
-		<div class="col-lg-4">
-			<div class="progress">
-				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{skill.bar.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width: {skill.bar.WIDTH}%;">
-				{skill.bar.VALUE} / {skill.bar.MAXVALUE}
+		<!-- BEGIN bar -->
+			<div class="row">
+				<div class="col-lg-2"></div>
+				<div class="col-lg-1">
+					<img class="icon-frame frame-24" src="{INTERFACE_URL}Interface/Icons/{skill.bar.ICON}.{IMG_SUFFIX}" alt="" />
 				</div>
-			</div>
-		</div>
-		<div class="col-lg-2"></div>
-	</div>
-<!-- END bar -->
-<!-- END skill -->
-</div>
-<!-- ENDIF -->
-
-
-
-<!-- IF S_TALENT_TAB or S_GLYPH_TAB -->
-
-<!-- talents -->
-<div id="talents" style="display:none;">
-
-	<div class="tier-1-a">
-		<div class="tier-1-b">
-			<div class="tier-1-c">
-				<div class="tier-1-title"><!-- TRANSLATE talents -->
-					<div class="tab-navigation info-navigation">
-						<ul id="talentbuild_nav">
-<!-- BEGIN talent -->
-							<li<!-- IF talent.SELECTED --> class="selected"<!-- ENDIF -->><a rel="TS{talent.ID}"<!-- IF S_GLYPH_TAB --> rev="GL{talent.ID}"<!-- ENDIF --> class="text">{talent.NAME}</a></li>
-<!-- END talent -->
-						</ul>
-					</div>
+				<div class="col-lg-3">
+					{skill.bar.NAME}
 				</div>
-<!-- IF S_TALENT_TAB -->
-<!-- BEGIN talent -->
-				<div id="TS{talent.ID}" style="display:none;">
-					<div class="tier-2-a">
-						<div class="tier-2-b">
-							<div class="tier-2-title">
-								<div class="right">
-									<a class="input" href="{talent.TALENT_EXPORT}" target="_blank"><!-- TRANSLATE talentexport --></a>
-								</div>
-								<!-- TRANSLATE unusedtalentpoints -->: {TALENT_POINTS}
-							</div>
-	
-							<div class="frames">
-							<!-- BEGIN tree -->	
-							<div class="spec<!-- IF talent.tree.HSELECT --> tselected<!-- ELSE --> tnselected<!-- ENDIF -->">
-								<img class="tbackground" src="{INTERFACE_URL}Interface/TalentFrame/{talent.tree.ICON}.{IMG_SUFFIX}" alt="" />
-								<div class="talentcalc-core">
-							<!-- BEGIN tier -->
-									<div data-row="0" class="talentcalc-row" data-available="yes">
-										<div class="outer" data-selected="no"><div class="inner">{talent.tree.tier.UNLOCK}</div></div>
-							<!-- BEGIN cell -->
-										<div class="outer" data-row="0" data-col="0" cursor="pointer" data-selected="<!-- IF talent.tree.tier.cell.RANK eq 1 -->yes<!-- ELSE -->no<!-- ENDIF -->" {talent.tree.tier.cell.TOOLTIP}>
-											<div class="iconmedium">
-												<img src="{INTERFACE_URL}Interface/Icons/{talent.tree.tier.cell.ICON}" alt="" />
-											</div>
-											<table><tbody><tr><td>{talent.tree.tier.cell.NAME}</td></tr></tbody></table>
-											
-										</div>
-							<!-- END cell -->
-									</div>
-							<!-- END tier -->
-								</div>
-							</div>
-							<!-- END tree -->
-							</div>
-
+				<div class="col-lg-4">
+					<div class="progress">
+						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{skill.bar.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width: {skill.bar.WIDTH}%;">
+						{skill.bar.VALUE} / {skill.bar.MAXVALUE}
 						</div>
 					</div>
 				</div>
-<!-- END talent -->
-<!-- ENDIF -->
-
-
-<!-- IF S_GLYPH_TAB -->
-
-<!-- BEGIN glyphs -->
-				<div id="GL{glyphs.ID}" style="display:none;">
-					<div class="tier-2-a">
-						<div class="tier-2-b">
-							<div class="tier-2-title">{glyphs.NAME}</div>
-<!-- BEGIN glyph -->
-							<div {glyphs.glyph.TOOLTIP} class="glyph-{glyphs.glyph.TYPE}">
-								<img src="{INTERFACE_URL}Interface/Icons/{glyphs.glyph.ICON}.png" alt="" />
-								<div class="text">{glyphs.glyph.NAME}</div>
-							</div>
-<!-- END glyph -->
-							<div style="clear:both;"></div>
-						</div>
-					</div>
-				</div>
-<!-- END glyphs -->
-
-<!-- ENDIF -->
+				<div class="col-lg-2"></div>
 			</div>
+		<!-- END bar -->
+		<!-- END skill -->
 		</div>
-	</div>
-</div>
-<!-- ENDIF -->
+		<!-- ENDIF -->
 
 </div>
-
+</div>
 
 

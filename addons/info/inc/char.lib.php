@@ -214,21 +214,21 @@ class char
 		 * The only tpl vars not here are ones that need to be generated in their respective methods
 		 */
 
+		//d($this->data);
+		//d($addon);
+		$this->data['profile_main'] = 'zangarmarsh/74/113337162-main.jpg';		
 		$roster->tpl->assign_vars(array(
 			'S_MAX_LEVEL' => ROSTER_MAXCHARLEVEL,
 
-			'S_MODEL_TAB'   => $ximg_url != '' ? true : false,//false,//$roster->auth->getAuthorized($addon['config']['show_model']),
-			/*'MODEL_URL'     => $model_url != '' ? $model_url : false,*/
-			
-			'S_CHAR_IMG'	=> $ximg_url != '' ? $ximg_url : false,
-			'XIMG_URL'		=> $ximg_url,
+			'S_CHAR_IMG'	=> (!empty($this->data['profile_main']) ? 'https://render-us.worldofwarcraft.com/character/'.$this->data['profile_main'] : $addon['tpl_image_url'].'classbg/'.strtolower(str_replace(' ', '', $this->data['class'])).'.jpg' ),
+			'S_CHAR_BG'	=> (!empty($this->data['profile_main']) ? 'https://render-us.worldofwarcraft.com/character/'.$this->data['profile_main'] : $addon['tpl_image_url'].'classbg/'.strtolower(str_replace(' ', '', $this->data['class'])).'.jpg' ),
 
 			'S_PLAYED'      => $roster->auth->getAuthorized($addon['config']['show_played']),
 			'S_MONEY'       => $roster->auth->getAuthorized($addon['config']['show_money']),
 			'S_PET_TAB'     => $roster->auth->getAuthorized($addon['config']['show_pets']),
 			'S_COMPAN_TAB'  => $roster->auth->getAuthorized($addon['config']['show_companions']),
-			'S_REP_TAB'     => $roster->auth->getAuthorized($addon['config']['show_reputation']),
-			'S_SKILL_TAB'   => $roster->auth->getAuthorized($addon['config']['show_skills']),
+			'S_REP_TAB'     => true,//$roster->auth->getAuthorized($addon['config']['show_reputation']),
+			'S_SKILL_TAB'   => true,//$roster->auth->getAuthorized($addon['config']['show_skills']),
 			'S_PVP_TAB'     => $roster->auth->getAuthorized($addon['config']['show_honor']),
 			'S_TALENT_TAB'  => $roster->auth->getAuthorized($addon['config']['show_talents']),
 			'S_GLYPH_TAB'   => $roster->auth->getAuthorized($addon['config']['show_glyphs']),
@@ -242,6 +242,7 @@ class char
 			//'S_MOUNTS'      => false,
 			//'S_COMPANIONS'  => false,
 			'CLASSID'		=> $this->data['classid'],
+			'CLASS_EN'		=> strtolower( str_replace(' ', '', $this->data['class']) ),
 
 			'L_CHAR_POWER'    => $this->data['power'],
 			'L_CHAR_POWER_ID' => strtolower($this->data['power']),
@@ -750,15 +751,11 @@ class char
 
 		$repData = $this->_rep_tab_values();
 
-		//echo '<pre>';print_r($repData);echo '</pre>';
-
+		//d($repData);
 		if( is_array($repData) )
 		{
 			foreach( $repData as $findex => $faction )
 			{
-//				echo $findex.'<br>';
-//				aprint($faction);
-
 				$roster->tpl->assign_block_vars('rep',array(
 					'ID'      => $findex,
 					'NAME'    => $findex,
@@ -768,8 +765,6 @@ class char
 
 				foreach( $faction as $rep => $bar )
 				{
-//					echo $rep.' - '.$bar .'<br>';
-
 					if (isset($bar['value']))
 					{
 						$roster->tpl->assign_block_vars('rep.bar',array(
@@ -809,7 +804,6 @@ class char
 						{
 							if ($fact != 'sub')
 							{
-//								echo $fact . '<br/>';
 								$roster->tpl->assign_block_vars('rep.bar.rep2.bar2',array(
 									'ID'          => $sta['barid'],
 									'NAME'        => $fact,
@@ -868,8 +862,6 @@ class char
 
 			while($data = $roster->db->fetch($result,SQL_ASSOC))
 			{
-				//$repInfo[$data['faction']] =$i; // ]['name'] = $data['faction'];
-
 				if( $data['name'] != $data['parent'] && $data['parent']=='')
 				{
 					$i++;
@@ -880,7 +872,7 @@ class char
 					$repInfo[$factions][$data['name']] = $this->_rep_bar_values($data);
 
 				}
-				//curr_rep'] != '' && $data['max_rep'] != ''
+
 				if (isset($data['parent']) && $data['curr_rep'] != '' && $data['max_rep'] != '')//&& $data['parent']!= $data['name'])
 				{
 					$p=$data['name'];
@@ -895,7 +887,7 @@ class char
 
 				$j++;
 			}
-			//echo '<pre>';print_r($repInfo);echo '</pre>';
+
 			return $repInfo;
 		}
 		else
@@ -920,6 +912,8 @@ class char
 		$level = $repdata['curr_rep'];
 		$max = $repdata['max_rep'];
 
+		$rank = $this->_rep_to_rank($repdata['Standing']);
+		
 		$img = array(
 			$this->locale['exalted'] => 'exalted',
 			$this->locale['revered'] => 'revered',
@@ -941,7 +935,12 @@ class char
 			$this->locale['hated'] => 'rank-0',// .faction-fill { background-position: 0 -22px; }
 		);
 
-
+		if ($level == 0 && $max == 0)
+		{
+			$level = 2;
+			$max = 2;
+			$repdata['Standing'] = $this->locale['exalted'];
+		}
 		$returnData['name'] = $repdata['name'];
 		$returnData['barwidth'] = ceil($level / $max * 100);
 		$returnData['image'] = $img[$repdata['Standing']];
@@ -958,6 +957,49 @@ class char
 		return $returnData;
 	}
 
+	function _rep_to_rank($standing)
+	{
+		global $roster, $addon;
+		
+		switch ($standing) {
+			default: $ret = "0";
+			break;
+			
+			case $this->locale['exalted']:
+				$ret = 7;
+			break;
+			
+			case $this->locale['revered']:
+				$ret = 6;
+			break;
+			
+			case $this->locale['honored']:
+				$ret = 5;
+			break;
+			
+			case $this->locale['friendly']:
+				$ret = 4;
+			break;
+			
+			case $this->locale['neutral']:
+				$ret = 3;
+			break;
+			
+			case $this->locale['unfriendly']:
+				$ret = 2;
+			break;
+			
+			case $this->locale['hostile']:
+				$ret = 1;
+			break;
+			
+			case $this->locale['hated']:
+				$ret = 0;
+			break;
+
+		}
+		return $ret;
+	}
 
 	/**
 	 * Build pvp stats
@@ -2409,31 +2451,6 @@ class char
 		$this->equip_slot('Finger1');
 		$this->equip_slot('Trinket0');
 		$this->equip_slot('Trinket1');
-
-		// Resists
-		//$this->resist_value('arcane');
-		//$this->resist_value('fire');
-		//$this->resist_value('nature');
-		//$this->resist_value('frost');
-		//$this->resist_value('shadow');
-
-		if( $roster->auth->getAuthorized($addon['config']['show_played']) )
-		{
-			$TimeLevelPlayedConverted = seconds_to_time($this->data['timelevelplayed']);
-			$TimePlayedConverted = seconds_to_time($this->data['timeplayed']);
-
-			$roster->tpl->assign_block_vars('info_stats',array(
-				'NAME'  => $roster->locale->act['timeplayed'],
-				'VALUE' => $TimePlayedConverted['days'] . $TimePlayedConverted['hours'] . $TimePlayedConverted['minutes'] . $TimePlayedConverted['seconds']
-				)
-			);
-
-			$roster->tpl->assign_block_vars('info_stats',array(
-				'NAME'  => $roster->locale->act['timelevelplayed'],
-				'VALUE' => $TimeLevelPlayedConverted['days'] . $TimeLevelPlayedConverted['hours'] . $TimeLevelPlayedConverted['minutes'] . $TimeLevelPlayedConverted['seconds']
-				)
-			);
-		}
 
 		if( $roster->auth->getAuthorized($addon['config']['show_talents']) && $this->data['talent_points'] )
 		{

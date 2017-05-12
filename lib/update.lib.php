@@ -4374,13 +4374,14 @@ CREATE TABLE `renprefix_quest_task_data` (
 		//$this->do_glyphs($data, $memberId);
 		$this->do_talents($data, $memberId);
 		$this->do_reputation($data, $memberId);
-		$this->do_currency($data, $memberId);
+		//$this->do_currency($data, $memberId);
 		//$this->do_quests($data, $memberId);
 		//$this->do_buffs($data, $memberId);
 		$this->do_companions($data, $memberId);
 
 		// Adding pet info
 		// Quick fix for DK multiple pet error, we only scan the pets section for hunters and warlocks
+		/*
 		if( (strtoupper($data['ClassEn']) == 'HUNTER' || strtoupper($data['ClassEn']) == 'WARLOCK') && isset($data['Pets']) && !empty($data['Pets']) && is_array($data['Pets']) )
 		{
 			$petsdata = $data['Pets'];
@@ -4405,6 +4406,7 @@ CREATE TABLE `renprefix_quest_task_data` (
 				$this->setError('Cannot delete Pet Spell Data',$roster->db->error());
 			}
 		}
+		*/
 
 		return $memberId;
 

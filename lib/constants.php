@@ -81,8 +81,8 @@ define('ROSTER_ADDONUPDATEURL', 'http://www.wowroster.net/downloads.php?id=%1$s'
 /**
  * Some static and semi-static game data.
  */
-define('ROSTER_MAXCHARLEVEL', '100');
-define('ROSTER_MAXSKILLLEVEL', '700');
+define('ROSTER_MAXCHARLEVEL', '110');
+define('ROSTER_MAXSKILLLEVEL', '800');
 define('ROSTER_MAXQUESTS', '100');
 define('ROSTER_TALENT_ROWS', '7');//not changed new talent processor determins this
 define('ROSTER_TALENT_COLS', '4');// above note
@@ -98,6 +98,7 @@ define('ROSTER_CLASS_MAGE', 8);
 define('ROSTER_CLASS_WARLOCK', 9);
 define('ROSTER_CLASS_MONK', 10);
 define('ROSTER_CLASS_DRUID', 11);
+define('ROSTER_CLASS_DEMONHUNTER', 12);
 
 define('ROSTER_RACE_HUMAN', 1);
 define('ROSTER_RACE_ORC', 2);

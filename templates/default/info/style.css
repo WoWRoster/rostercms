@@ -14,7 +14,29 @@
 /*********** Common Elements ***********/
 .main-panel .container { padding: 0 0 20px; background: #eaca81 url(../images/section_bg.jpg) repeat center top; margin-bottom: 3px; border: 1px solid #EEDBA2; }
 
+.section-profile {
+color: #ebdec2;
+padding-top: 25px;
+background-position: 50% 50%;
+background-color: #13040a;
+z-index:10;
+}
 
+.profile-background {
+    width: 100%;
+	height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.profile-background .bg-image {
+	position: absolute;
+	background-repeat: no-repeat;
+	background-position:center 50%;
+	/*background-size: contain;*/
+		padding-top: 75%;
+	width: 100%;
+}
 /*********** Profile Page ***********/
 .shader { background: url(../images/shader.png) repeat; border: 1px solid #000000; }
 
@@ -700,6 +722,42 @@ td .faction-level { padding: 0; margin: 0; }
 .rank-1 .faction-level { color: #a00000; }
 .rank-0 .faction-level { color: #a00000; }
 
+.faction-level-rank-7{color:#28a687;}
+.faction-level-rank-6{color:#0f9601;}
+.faction-level-rank-5{color:#0f9601;}
+.faction-level-rank-4{color:#0f9601;}
+.faction-level-rank-3{color:#e07a03;}
+.faction-level-rank-2{color:#cc3609;}
+.faction-level-rank-1{color:#d90e03;}
+.faction-level-rank-0{color:#d90e03;}
+.progress {
+	overflow: hidden;
+	height: 20px;
+	margin-bottom: 10px;
+	background-color: #212121;
+	border-radius: 0px;
+	/* -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); */
+	/* box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); */
+	border: 1px solid rgba(177,153,127,.5);
+}
+.rank-7{background:#28a687;background:linear-gradient(to right,#196855 0,#28a687 100%)}
+.rank-6{background:#0f9601;background:linear-gradient(to right,#074a00 0,#0f9601 100%)}
+.rank-5{background:#0f9601;background:linear-gradient(to right,#074a00 0,#0f9601 100%)}
+.rank-4{background:#0f9601;background:linear-gradient(to right,#074a00 0,#0f9601 100%)}
+.rank-3{background:#e07a03;background:linear-gradient(to right,#955102 0,#e07a03 100%)}
+.rank-2{background:#cc3609;background:linear-gradient(to right,#832306 0,#cc3609 100%)}
+.rank-1{background:#d90e03;background:linear-gradient(to right,#8e0902 0,#d90e03 100%)}
+.rank-0{background:#d90e03;background:linear-gradient(to right,#8e0902 0,#d90e03 100%)}
+.Progressbar--STRANGER>.Progressbar-progress{background:#cc3609;background:linear-gradient(to right,#832306 0,#cc3609 100%)}
+.Progressbar--ACQUAINTANCE>.Progressbar-progress{background:#e07a03;background:linear-gradient(to right,#955102 0,#e07a03 100%)}
+.Progressbar--BUDDY>.Progressbar-progress{background:#0f9601;background:linear-gradient(to right,#074a00 0,#0f9601 100%)}
+.Progressbar--FRIEND>.Progressbar-progress{background:#0f9601;background:linear-gradient(to right,#074a00 0,#0f9601 100%)}
+.Progressbar--GOOD_FRIEND>.Progressbar-progress{background:#0f9601;background:linear-gradient(to right,#074a00 0,#0f9601 100%)}
+.Progressbar--BEST_FRIEND>.Progressbar-progress{background:#28a687;background:linear-gradient(to right,#196855 0,#28a687 100%)}
+.Progressbar--BODYGUARD>.Progressbar-progress{background:#0f9601;background:linear-gradient(to right,#074a00 0,#0f9601 100%)}
+.Progressbar--TRUSTED_BODYGUARD>.Progressbar-progress{background:#0f9601;background:linear-gradient(to right,#074a00 0,#0f9601 100%)}
+.Progressbar--PERSONAL_WINGMAN>.Progressbar-progress{background:#0f9601;background:linear-gradient(to right,#074a00 0,#0f9601 100%)}
+
 .summary-health-resource { float: left; margin: 0 0px 10px; color: white; }
 .summary-health-resource li { margin-right: 11px; padding-left: 11px; text-shadow: 1px 1px 1px #000; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; cursor: help; display: inline-block; width: 157px;}
 .summary-health-resource li, .summary-health-resource span { height: 23px; line-height: 23px; }
@@ -1011,7 +1069,9 @@ float: right;
 .character-equip--left .character-slot-item,.character-equip--right .character-slot-item{margin:5px 0}
 @media (min-width:540px){.character-equip--left .character-slot-item,.character-equip--right .character-slot-item{margin:10px 0}
 }
-.character-equip--bottom{position:absolute;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);bottom:20px;width:100%}
+.character-equip--bottom{	position: relative;
+	display: block;
+	margin-bottom: 70px;}
 .character-equip--bottom .character-slot-item{margin:0 1px}
 @media (min-width:540px){.character-equip--bottom .character-slot-item{margin:0 3px}
 }
@@ -1054,7 +1114,9 @@ html.filter .character-slot-itemDetails::before{content:"";position:absolute;dis
 .character-slot-gear--left .character-slot-item,.character-slot-gear--right .character-slot-item{margin:5px 0}
 @media (min-width:540px){.character-slot-gear--left .character-slot-item,.character-slot-gear--right .character-slot-item{margin:10px 0}
 }
-.character-equip--bottom{position:absolute;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);bottom:20px;width:100%}
+.character-equip--bottom{	position: relative;
+	display: block;
+	margin-bottom: 70px;}
 .character-equip--bottoms .character-slot-item{margin:0 1px}
 @media (min-width:540px){.character-equip--bottoms .character-slot-item{margin:0 3px}
 }
@@ -1073,6 +1135,24 @@ html.filter .character-slot-itemDetails::before{content:"";position:absolute;dis
 @media (min-width:1280px){.character-slot-itemEnchantment{font-size:1rem}
 }
 .character-slot-itemEnchantment--ARTIFACT,.character-slot-itemEnchantment--COMMON,.character-slot-itemEnchantment--EPIC,.character-slot-itemEnchantment--HEIRLOOM,.character-slot-itemEnchantment--LEGENDARY,.character-slot-itemEnchantment--POOR,.character-slot-itemEnchantment--RARE,.character-slot-itemEnchantment--UNCOMMON{color:#1eff00}
+
+.CharacterProfile-render{margin:-36% -80px 0;position:absolute;left:0;right:0;top:0;z-index:-1}
+@media (min-width:540px){.CharacterProfile-render{margin:-36% -50px 0}
+}
+@media (min-width:998px){.CharacterProfile-render{width:100%;margin:0 auto;top:-36%;max-width:940px}
+}
+.CharacterProfile-bg{position:absolute}
+.CharacterProfile-image{z-index:-1}
+.Art-image {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-position: center;
+	background-size: cover;
+}
+
 .Link{cursor:pointer}
 .Link--inline{display:inline-block}
 .Link--block{display:block}

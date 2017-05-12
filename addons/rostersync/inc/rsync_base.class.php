@@ -476,10 +476,11 @@ class rsyncBase {
 	{
 		global $roster, $addon;
 
+		//$roster->api2->ignore_cache = true;
 		$char = $roster->api2->fetch('character',array('name'=>$this->memberName,'server'=>$this->server,'fields'=>$this->_char_fields()));
 		//$roster->api->Char->getCharInfo($this->server,$this->memberName,'1:2:3:4:5:7:11:14');
 		//$this->_guild_fields('1:2:3')
-
+		d($char);
 		$this->apidata = $char;
 
 		if ( isset($char['name']) )
@@ -542,16 +543,11 @@ class rsyncBase {
 			// This is an ugly workaround for an encoding error in the armory
 
 			$this->data["SexId"] = $char['gender'];
-			$this->data["Money"]["Copper"] = 0;
-			$this->data["Money"]["Silver"] = 0;
-			$this->data["Money"]["Gold"] = 0;
-			$this->data["Experience"] = 0;
 			$this->data["Attributes"]['ITEMLEVEL'] = $char['items']['averageItemLevel'];
 			$this->data["timestamp"]["init"]["DateUTC"] = ''.$this->_getDate($char['lastModified']).'';
 			$this->data['timestamp']['init']['datakey'] = $roster->data['region']. ":";
 			$this->data['Region']=$roster->data['region'];
 			$this->data["Locale"] = $roster->config['locale'];
-			$this->data["Inventory"] = array();
 			$this->data["Equipment"] = array();
 			$this->data["Skills"] = array();
 			$this->data["Reputation"] = array();
@@ -572,6 +568,7 @@ class rsyncBase {
 				$equip = $char['items'];
 				$this->_getEquipmentInfo( $equip );
 			}
+			d($this->data);
 		//echo '<pre>';print_r($this->data);echo '</pre>';
 		}
 		else 
