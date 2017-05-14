@@ -52,9 +52,9 @@ class rostersyncInstall
 		}
 
 		$installer->add_menu_button('rsync_button1','char', 'profile', 'rs_player.png');
-		$installer->add_menu_button('rsync_button2','guild', 'gprofile', 'rs_members.png');
-		$installer->add_menu_button('rsync_button3','util', 'addguild', 'rs_add_guild.png');
-		$installer->add_menu_button('rsync_button4','guild', 'memberlist', 'rs_memberlist.png');
+		//$installer->add_menu_button('rsync_button2','guild', 'gprofile', 'rs_members.png');
+		//$installer->add_menu_button('rsync_button3','util', 'addguild', 'rs_add_guild.png');
+		//$installer->add_menu_button('rsync_button4','guild', 'memberlist', 'rs_memberlist.png');
 
 		// Master and menu entries
 		$installer->add_config("'1','startpage','rsync_conf','display','master'");

@@ -64,6 +64,7 @@ INSERT INTO `renprefix_config` VALUES (2000, 'default_name', 'WoWRoster', 'text{
 INSERT INTO `renprefix_config` VALUES (2010, 'default_desc', 'THE original Roster for World of Warcraft', 'text{255|60', 'defaults_conf');
 INSERT INTO `renprefix_config` VALUES (2020, 'alt_type', 'alt', 'text{30|30', 'defaults_conf');
 INSERT INTO `renprefix_config` VALUES (2030, 'alt_location', 'note', 'select{Player Note^note|Officer Note^officer_note|Guild Rank Number^guild_rank|Guild Title^guild_title', 'defaults_conf');
+INSERT INTO `renprefix_config` VALUES (2040, 'menu_title', 'WoWRoster', 'text{30|30', 'defaults_conf');
 
 # --------------------------------------------------------
 ### debug_conf  

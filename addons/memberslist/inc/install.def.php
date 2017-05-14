@@ -53,20 +53,19 @@ class memberslistInstall
 		$installer->add_config("120,'members',NULL,'blockframe','menu'");
 		$installer->add_config("130,'stats',NULL,'blockframe','menu'");
 		$installer->add_config("150,'log',NULL,'blockframe','menu'");
-		$installer->add_config("160,'build',NULL,'blockframe','menu'");
+		//$installer->add_config("160,'build',NULL,'blockframe','menu'");
 		$installer->add_config("170,'ml_wiki','http://www.wowroster.net/MediaWiki/MembersList','newlink','menu'");
 
 		# Generic display settings
 		$installer->add_config("1000,'openfilter','0','radio{Show^1|Hide^0','display'");
 		$installer->add_config("1010,'nojs','0','radio{Server^1|Client^0','display'");
-		$installer->add_config("1020,'def_sort','','select{Default Sort^|Name^name|Class^class|Level^level|Guild Title^guild_title|Highest Rank^lifetimeHighestRank|Note^note|Hearthstone Location^hearth|Zone Location^zone|Last Online^last_online_f|Last Updated^last_update','display'");
+		$installer->add_config("1020,'def_sort','','select{Default Sort^|Name^name|Class^class|Level^level|Guild Title^guild_title|Highest Rank^lifetimeHighestRank','display'");
 		$installer->add_config("1030,'member_tooltip','1','radio{On^1|Off^0','display'");
 		$installer->add_config("1040,'group_alts','1','radio{Open^2|Closed^1|Ungrouped^0','display'");
 		$installer->add_config("1060,'class_icon','2','radio{Full^2|On^1|Off^0','display'");
 		$installer->add_config("1070,'class_text','0','radio{Color^2|On^1|Off^0','display'");
 		$installer->add_config("1080,'talent_text','0','radio{On^1|Off^0','display'");
 		$installer->add_config("1090,'level_bar','1','radio{On^1|Off^0','display'");
-		$installer->add_config("1110,'compress_note','1','radio{On^1|Off^0','display'");
 		$installer->add_config("1120,'page_size','0','text{4|30','display'");
 
 		# Per page settings: Memberlist
@@ -78,12 +77,6 @@ class memberslistInstall
 		$installer->add_config("2060,'member_gtitle','2','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','members'");
 		$installer->add_config("2070,'member_hrank','0','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','members'");
 		$installer->add_config("2080,'member_prof','2','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','members'");
-		$installer->add_config("2090,'member_hearth','2','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','members'");
-		$installer->add_config("2100,'member_zone','2','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','members'");
-		$installer->add_config("2110,'member_online','2','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','members'");
-		$installer->add_config("2120,'member_update','2','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','members'");
-		$installer->add_config("2130,'member_note','2','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','members'");
-		$installer->add_config("2140,'member_onote','0','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','members'");
 
 		# Per page settings: Statslist
 		$installer->add_config("3010,'stats_motd','0','radio{Off^0|On^1','stats'");
@@ -114,9 +107,6 @@ class memberslistInstall
 		$installer->add_config("5050,'log_level','2','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','log'");
 		$installer->add_config("5060,'log_gtitle','2','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','log'");
 		$installer->add_config("5070,'log_type','2','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','log'");
-		$installer->add_config("5080,'log_date','2','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','log'");
-		$installer->add_config("5090,'log_note','2','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','log'");
-		$installer->add_config("5100,'log_onote','0','radio{Force Hidden^0|Default Hidden^1|Default Shown^2|Force Shown^3','log'");
 
 		$installer->create_table($installer->table('alts'),"
 			`member_id` int(11)    unsigned NOT NULL default '0',

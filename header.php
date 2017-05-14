@@ -125,6 +125,7 @@ $roster->tpl->assign_vars(array(
 	'ROSTER_SCOPE'         => $roster->scope,
 	'PAGE_TITLE'           => $roster_title,
 	'ROSTER_PAGE_TITLE'		=> apply_filters('roster_page_title', $roster_title),
+	'MENU_TITLE'			=> apply_filters('roster_menu_title', $roster_title),
 	'ROSTER_HEAD'          => $roster->output['html_head'],
 	'ROSTER_HEAD_JS'       => roster_get_js(),
 	'ROSTER_HEAD_CSS'      => roster_get_css(),
@@ -135,7 +136,6 @@ $roster->tpl->assign_vars(array(
 
 	'L_MENU_LABEL'         => $roster->scope,
 	'L_MENU_LABEL_NAME'    => $roster->locale->act[$roster->scope],
-	'MENU_TITLE'			=> apply_filters('roster_menu_title', $roster->config['menu_title']),
 
 	'S_LOCALE_SELECT'      => (bool)$roster->config['header_locale'],
 	'S_HEADER_SEARCH'      => (bool)$roster->config['header_search'],
