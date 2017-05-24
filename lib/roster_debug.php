@@ -33,12 +33,11 @@ class roster_debug
 			'line' => isset($trace['line']) ? $trace['line'] : '',
 			'function' => isset($trace['function']) ? $trace['function'] : '',
 			'class' => isset($trace['class']) ? $trace['class'] : '',
-			//'object' => isset($trace['object']) ? $trace['object'] : '',
-			//'type' => isset($trace['type']) ? $trace['class'] : '',
-			'args' => ( $addon['config']['rsync_debugdata'] != 0 && isset($trace['args']) && !is_object($trace['args']) ) ? $trace['args'] : '',
-			'ret' => ( $addon['config']['rsync_debugdata'] != 0 && isset($ret) && !is_object($ret)) ? $ret : '',
+			'type' => isset($trace['type']) ? $trace['class'] : '',
+			'ret' => ( $level != 0 && isset($ret) && !is_object($ret)) ? $ret : '',
 			'info' => isset($info) ? $info : '',
 			'status' => isset($status) ? $status : '',
+			'level' => $level,
 		);
 		
         $this->debugmessages[] = $array;
@@ -59,18 +58,17 @@ class roster_debug
 			foreach ( $this->debugmessages as $message )
 			{
 				$roster->tpl->assign_block_vars('d_row', array(
-				'FILE' => $message['file'],
-				'LINE' => $message['line'],
-				'TIME' => $message['time'],
-				'CLASS' => $message['class'],
-				'FUNC' => $message['function'],
-				'INFO' => $message['info'],
-				'STATUS' => $message['status'],
-				'ARGS' => aprint($message['args'], '', 1),
-				'RET'  => aprint($message['ret'], '' , 1),
-				'ROW_CLASS1' => $addon['config']['rsync_debugdata'] ? 1 : $roster->switch_row_class(),
-				'ROW_CLASS2' => 1,
-				'ROW_CLASS3' => 1,
+				'FILE' 			=> $message['file'],
+				'LINE' 			=> $message['line'],
+				'TIME' 			=> $message['time'],
+				'CLASS' 		=> $message['class'],
+				'FUNC' 			=> $message['function'],
+				'INFO' 			=> $message['info'],
+				'STATUS' 		=> $message['status'],
+				'ROW_CLASS1'	=> $addon['config']['rsync_debugdata'] ? 1 : $roster->switch_row_class(),
+				'ROW_CLASS2'	=> 1,
+				'ROW_CLASS3'	=> 1,
+				'LEVEL'			=> $message['level'],
 				));
 			}
 			return true;

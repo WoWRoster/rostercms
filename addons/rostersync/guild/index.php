@@ -42,3 +42,4 @@ if($roster->pages[2] == 'gprofile')
 		$job->_start_gprofile();
 	}
 }
+$job->_showFooter();

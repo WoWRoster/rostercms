@@ -60,12 +60,18 @@ class rsync extends rsyncBase {
 		<form action="' . makelink() . '" method="post" id="allow">
 		<input type="hidden" id="start" name="action" value="'.$type.'" />
 		<input type="hidden" name="job_id" value="" />
-		<button type="submit" class="input" onclick="setvalue(\'job_id\',\'0\');setvalue(\'start\',\'start\');">' . $roster->locale->act['start'] . '</button>
+		<button type="submit" class="btn btn-default btn" onclick="setvalue(\'job_id\',\'0\');setvalue(\'start\',\'start\');">' . $roster->locale->act['start'] . '</button>
 		</form>
 		<br />';
 		
 		$out = messagebox( $message, $this->title,'sred', '500px');
 		$this->_debug( 1, $out, 'Printed start page', $out ? 'OK' : 'Failed');
+		
+		$out ='<div class="content-box-header">
+				<div class="panel-title">'.$roster->locale->act['start_message_the_'.$type.''].'</div>
+			</div>
+			<div class="content-box-large box-with-header">'.$message.'</div>';
+							
 		print $out;
 	}
 	
@@ -280,7 +286,7 @@ class rsync extends rsyncBase {
 		$year = 365 * $day;
 		foreach ( $content['members'] as $id => $member )
 		{
-			$cname = $member['character']['name'].'-'.$member['character']['realm'];;
+			$cname = $member['character']['name'].'-'.$member['character']['realm'];
 			$player['AchRank'] = '';
 			$player['Zone'] = "";
 			$player['Class'] = $roster->locale->act['id_to_class'][$member['character']['class']];

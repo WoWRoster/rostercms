@@ -407,13 +407,14 @@ class Client
 		$url = $this->baseurl[$this->region]['urlbase'];
 		//$url .= $path;
 		$url .= self::_buildtype($path,$params);
-		$this->usage['url'] = $url;
 		unset($params['name']);
 		unset($params['server']);
 		$url .= (count($params)) ? '?' . $this->_build_strings($params, '&') : '';
-		$this->usage['type'] = $path;
-		
-		$this->usage['locale'] = $this->locale;
+		$this->usage = array (
+			'type'		=> $path,
+			'url'		=> $url,
+			'locale'	=> $this->locale
+		);
 		//echo $url;
 		return $url;
 		
@@ -442,6 +443,7 @@ class Client
 		{
 			case 'achievement':
 						$q = 'wow/achievement/'.$fields['id'];
+						$this->ignore_cache = true;
 					break;
 			case 'auction':
 						$q = 'wow/auction/data/'.$fields['server'];
@@ -484,6 +486,7 @@ class Client
 					break;
 			case 'guild':
 						$q = 'wow/guild/'.$fields['server'].'/'.$fields['name'];
+						$this->ignore_cache = true;
 					break;
 			case 'leaderboards':
 						$q = 'wow/leaderboard/'.$fields['size'];
@@ -493,9 +496,11 @@ class Client
 					break;
 			case 'realmstatus':
 						$q = 'wow/realm/status';
+						$this->ignore_cache = true;
 					break;
 			case '_realmstatus':
 						$q = 'wow/realm/status/'.$fields['name'];
+						$this->ignore_cache = true;
 					break;
 			case 'recipe':
 						$q = 'wow/recipe/'.$fields['id'];
@@ -529,6 +534,7 @@ class Client
 					break;
 			case 'talents':
 						$q = 'wow/data/talents';
+						$this->ignore_cache = true;
 					break;
 			case 'pet_types':
 						$q = 'wow/data/pet/types';
@@ -546,6 +552,7 @@ class Client
 						$q = 'wow/zone/'.$fields['id'];
 					break;
 			case 'sc2profile':
+						$this->ignore_cache = true;
 					if ($this->access_token)
 					{
 						$q = 'sc2/profile/user';
@@ -554,6 +561,7 @@ class Client
 					}
 					break;
 			case 'wowprofile':
+						$this->ignore_cache = true;
 					if ($this->access_token)
 					{
 						$q = 'wow/user/characters';
@@ -563,6 +571,7 @@ class Client
 					}
 					break;
 			case 'account':
+						$this->ignore_cache = true;
 					if ($this->access_token)
 					{
 						$q = 'account/user';
@@ -571,6 +580,7 @@ class Client
 					}
 					break;
 			case 'accountid':
+						$this->ignore_cache = true;
 					if ($this->access_token)
 					{
 						$q = 'account/user/id';
@@ -579,6 +589,7 @@ class Client
 					}
 					break;
 			case 'battletag':
+						$this->ignore_cache = true;
 					if ($this->access_token)
 					{
 						$q = 'account/user/battletag';
@@ -613,14 +624,15 @@ class Client
 		$lmh=null;
 		if ( !$this->ignore_cache )
 		{
-			$ret = date('Y/m/d H:i:s', ($string/1000));
-			$roster->debug->_debug( 2, $ret, 'Cache not ignored checking LMH', 'OK' );
+			$ret = $this->ignore_cache;//date('Y/m/d H:i:s', ($string/1000));
+			$roster->debug->_debug( 2, false, '['.$this->usage['type'].'] Cache not ignored checking LMH', 'OK' );
 		
 			$lmh = $this->cache->_get_lmh( $parameters );
-			//echo'<pre>~~';print_r($lmh);echo '~~</pre>';
+			
 			//if no header info make the call as normal if there is a header apply it
 			if (isset($lmh['Last-Modified']))
 			{
+				$roster->debug->_debug( 2, false, '['.$this->usage['type'].'] LMH EXISTS setting IF-MOD header', 'OK' );
 				$http_headers['If-Modified-Since'] = gmdate('D, d M Y H:i:s \G\M\T',$lmh['Last-Modified']);
 			}
 		}
@@ -654,22 +666,32 @@ class Client
 		/*
 			now some cache-jutsu
 		*/
-		//are we using the cache
-		if ( $this->ignore_cache && empty($lmh) )
+		// normal caching does not apply to character info just lmh
+		if (isset($lmh['Last-Modified']))
 		{
-			$ret = date('Y/m/d H:i:s', ($string/1000));
-			$roster->debug->_debug( 2, $ret, 'No Cache!', 'OK' );
-		
-			// we are ignoring the cache ignore it make the call return the data
+			$roster->debug->_debug( 2, $ret, '['.$this->usage['type'].'] Fetching IF-MOD data', 'OK' );
 			$result = $this->executeRequest($protected_resource_url, $parameters, $http_method, $http_headers, $form_content_type);
-			// we are still going to update lmh and data tho...
-			$this->cache->put_lmh($result,$parameters);
-			call_user_func(array($this->cache, 'insert'.$this->usage['type']),$result,$this->usage,$parameters);
+			
+			return $result;
+		}
+		//are we using the cache
+		elseif ( $this->ignore_cache && $this->usage['type'] == 'character' )
+		{
+			$roster->debug->_debug( 2, $ret, '['.$this->usage['type'].'] LMH Ignored Fetching Character!', 'OK' );
+			$result = $this->executeRequest($protected_resource_url, $parameters, $http_method, $http_headers, $form_content_type);
+			return $result;
+		}
+		elseif ( $this->ignore_cache && $this->usage['type'] != 'character' )
+		{
+			$ret = true;
+			$roster->debug->_debug( 2, $ret, '['.$this->usage['type'].'] Cache Bybased fetching data', 'OK' );
+			$result = $this->executeRequest($protected_resource_url, $parameters, $http_method, $http_headers, $form_content_type);
+
 			return $result;
 		}
 		else
 		{
-			$ret = date('Y/m/d H:i:s', ($string/1000));
+			$ret = true;
 			$roster->debug->_debug( 2, $ret, 'Return Cache', 'OK' );
 		
 			//we are using the cacahe
@@ -826,6 +848,17 @@ class Client
 		$this->errno	= curl_errno($ch);
 		$this->error	= curl_error($ch);
 
+		$this->usage['responce_code'] = $http_code;
+		$this->usage['content_type'] = $content_type;
+		if (isset($this->usage['type']) && isset($this->usage['url']))
+		{
+			$this->cache->api_track($this->usage['type'], $this->usage['url'], $this->usage['responce_code'], $this->usage['content_type']);
+		}
+		else
+		{
+			$roster->debug->_debug( 0, false, 'api usage track failed' .d($this->usage). ' ', false );
+		}
+
         if ($this->errno)
 		{
 			$roster->set_message( "".print_r($this->errno)."<br/>\n\r [".print_r($this->error).']', 'API Error', 'error' );
@@ -841,13 +874,6 @@ class Client
 			$json_decode['last_url'] = curl_getinfo($ch,CURLINFO_EFFECTIVE_URL);
         }
         curl_close($ch);
-
-		$this->usage['responce_code'] = $http_code;
-		$this->usage['content_type'] = $content_type;
-		if (isset($this->usage['type']) && isset($this->usage['url']))
-		{
-			$this->cache->api_track($this->usage['type'], $this->usage['url'], $this->usage['responce_code'], $this->usage['content_type']);
-		}
 
 		if (isset($json_decode['status']) && $json_decode['status'] == 'nok')
 		{

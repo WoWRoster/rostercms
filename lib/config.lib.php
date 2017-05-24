@@ -184,8 +184,6 @@ class roster_config
 					// in the left menu bar, we print external links and all page/config block types.
 					case 'link':
 						$menu .= '<li class="list-group-3-item' . ( ($values['value'] == ROSTER_PAGE_NAME) ? ' active' : '' ) . '">'
-						//	. '<span class="ui-icon ui-icon-link" style="float:right;"></span>'
-						//	. '<span class="ui-icon ui-icon-help" style="float:left;cursor:help;" ' . $this->createInlineTip($values['tooltip'],$values['description']) . '></span>'
 							. '<a href="' . $values['value'] . '">'
 							.'<i class="fa fa-external-link"></i>'
 							. $values['description'] . '</a></li>' . "\n";
@@ -193,8 +191,6 @@ class roster_config
 
 					case 'newlink':
 						$menu .= '<li class="list-group-3-item' . ( ($values['value'] == ROSTER_PAGE_NAME) ? ' active' : '' ) . '">'
-						//	. '<span class="ui-icon ui-icon-extlink" style="float:right;"></span>'
-						//	. '<span class="ui-icon ui-icon-help" style="float:left;cursor:help;" ' . $this->createInlineTip($values['tooltip'],$values['description']) . '></span>'
 							. '<a href="' . $values['value'] . '" target="_blank">'
 							.'<i class="fa fa-external-link"></i>'
 							. $values['description'] . '</a></li>' . "\n";
@@ -202,8 +198,6 @@ class roster_config
 
 					case 'makelink':
 						$menu .= '<li class="list-group-3-item' . ( ($values['value'] == ROSTER_PAGE_NAME) ? ' active' : '' ) . '">'
-						//	. '<span class="ui-icon ui-icon-link" style="float:right;"></span>'
-						//	. '<span class="ui-icon ui-icon-help" style="float:left;cursor:help;" ' . $this->createInlineTip($values['tooltip'],$values['description']) . '></span>'
 							. '<a href="' . makelink($values['value']) . '">'
 							.'<i class="fa fa-link"></i>'
 							. $values['description'] . '</a></li>' . "\n";
@@ -211,8 +205,6 @@ class roster_config
 
 					case 'makenewlink':
 						$menu .= '<li class="list-group-3-item' . ( ($values['value'] == ROSTER_PAGE_NAME) ? ' active' : '' ) . '">'
-						//	. '<span class="ui-icon ui-icon-newwin" style="float:right;"></span>'
-						//	. '<span class="ui-icon ui-icon-help" style="float:left;cursor:help;" ' . $this->createInlineTip($values['tooltip'],$values['description']) . '></span>'
 							. '<a href="' . makelink($values['value']) . '" target="_blank">'
 							.'<i class="fa fa-link"></i>'
 							. $values['description'] . '</a></li>' . "\n";
@@ -269,32 +261,13 @@ class roster_config
 					break;
 
 				case 'pageframe':
-					$page .= '
-<div class="tier-2-a">
-	<div class="tier-2-b">
-' . ($header_text ? '		<div class="tier-2-title">' . $header_text . "</div>\n" : '') .
-$this->buildPage($values['name'],$type[1]) . '
-	</div>
-</div>
-';
+					$page .= '<div class="panel panel-default">' . ($header_text ? '<div class="panel-heading"><h3 class="panel-title">' . $header_text . "</h3></div>\n" : '') . '<div class="panel-body">'.$this->buildPage($values['name'],$type[1]) . '</div></div>';
 					$addpage = true;
 					break;
 
 				case 'pagehide':
 					$addpage = true;
-					$page .= '
-<div class="tier-2-a">
-	<div class="tier-2-b">
-		<div class="tier-2-title" style="cursor:pointer;" onclick="showHide(\'table_' . $values['name'] . '\',\'img_' . $values['name'] . '\',\'' . $roster->config['theme_path'] . '/images/button_open.png\',\'' . $roster->config['theme_path'] . '/images/button_close.png\');">
-			' . ($header_text ? $header_text : '&nbsp;') . '
-			<img style="float:right;" id="img_' . $values['name'] . '" src="' . $roster->config['theme_path'] . '/images/button_open.png" alt="" />
-		</div>
-		<div id="table_' . $values['name'] . '">
-' . $this->buildPage($values['name'],$type[1]) . '
-		</div>
-	</div>
-</div>
-';
+					$page .= '<div class="panel panel-default"><div class="panel-heading" onclick="showHide(\'table_' . $values['name'] . '\',\'img_' . $values['name'] . '\',\'' . $roster->config['theme_path'] . '/images/button_open.png\',\'' . $roster->config['theme_path'] . '/images/button_close.png\');">' . ($header_text ? '<h3 class="panel-title">' . $header_text . '</h3>' : '&nbsp;') . '<img style="float:right;" id="img_' . $values['name'] . '" src="' . $roster->config['theme_path'] . '/images/button_open.png" alt="" /></div><div class="panel-body" id="table_' . $values['name'] . '">'.$this->buildPage($values['name'],$type[1]) . '</div></div>';
 					break;
 
 				case 'blockframe':
@@ -305,19 +278,8 @@ $this->buildPage($values['name'],$type[1]) . '
 
 				case 'blockhide':
 					$addpage = true;
-					$page .= '
-<div class="tier-2-a">
-	<div class="tier-2-b">
-		<div class="tier-2-title" style="cursor:pointer;" onclick="showHide(\'table_' . $values['name'] . '\',\'img_' . $values['name'] . '\',\'' . $roster->config['theme_path'] . '/images/button_open.png\',\'' . $roster->config['theme_path'] . '/images/button_close.png\');">
-			' . ($header_text ? $header_text : '&nbsp;') . '
-			<img style="float:right;" id="img_' . $values['name'] . '" src="' . $roster->config['theme_path'] . '/images/button_open.png" alt="" />
-		</div>
-		<div id="table_' . $values['name'] . '">
-' . $this->buildBlock($values['name']) . '
-		</div>
-	</div>
-</div>
-';
+					$page .= '<div class="panel panel-default"><div class="panel-heading" onclick="showHide(\'table_' . $values['name'] . '\',\'img_' . $values['name'] . '\',\'' . $roster->config['theme_path'] . '/images/button_open.png\',\'' . $roster->config['theme_path'] . '/images/button_close.png\');">' . ($header_text ? '<h3 class="panel-title">' . $header_text . '</h3>' : '&nbsp;') . '<img style="float:right;" id="img_' . $values['name'] . '" src="' . $roster->config['theme_path'] . '/images/button_open.png" alt="" /></div><div class="panel-body" id="table_' . $values['name'] . '">'.$this->buildBlock($values['name']) . '</div></div>';
+					
 					break;
 
 				case 'function':

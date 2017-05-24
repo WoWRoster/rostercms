@@ -22,3 +22,4 @@ if($roster->pages[2] == 'profile')
 	}
 }
 
+$job->_showFooter();

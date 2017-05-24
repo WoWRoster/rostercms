@@ -2198,6 +2198,7 @@ CREATE TABLE `renprefix_quest_task_data` (
 
 										$this->add_ifvalue( $v, 'AtWar' );
 										$this->add_ifvalue( $v, 'Standing' );
+										$this->add_ifvalue( $v, 'standing_id' );
 										$this->add_ifvalue( $v, 'Description' );
 										$this->add_ifvalue( $v, 'sort' );
 
@@ -2245,6 +2246,7 @@ CREATE TABLE `renprefix_quest_task_data` (
 
 							$this->add_ifvalue( $data, 'AtWar' );
 							$this->add_ifvalue( $data, 'Standing' );
+							$this->add_ifvalue( $data, 'standing_id' );
 							$this->add_ifvalue( $data, 'Description' );
 							$this->add_ifvalue( $data, 'sort' );
 
@@ -4037,197 +4039,17 @@ CREATE TABLE `renprefix_quest_task_data` (
 				}
 			}
 			
-		// BEGIN HONOR VALUES
-		if( isset($data['Honor']) && is_array($data['Honor']) && count($data['Honor']) > 0 )
-		{
-			$honor = $data['Honor'];
-
-			$this->add_ifvalue($honor['Session'], 'HK', 'sessionHK', 0);
-			$this->add_ifvalue($honor['Session'], 'CP', 'sessionCP', 0);
-			$this->add_ifvalue($honor['Yesterday'], 'HK', 'yesterdayHK', 0);
-			$this->add_ifvalue($honor['Yesterday'], 'CP', 'yesterdayContribution', 0);
-			$this->add_ifvalue($honor['Lifetime'], 'HK', 'lifetimeHK', 0);
-			$this->add_ifvalue($honor['Lifetime'], 'Rank', 'lifetimeHighestRank', 0);
-			$this->add_ifvalue($honor['Lifetime'], 'Name', 'lifetimeRankname', '');
-			$this->add_ifvalue($honor['Current'], 'HonorPoints', 'honorpoints', 0);
-			$this->add_ifvalue($honor['Current'], 'ArenaPoints', 'arenapoints', 0);
-
-			unset($honor);
-		}
-		// END HONOR VALUES
+		
 		if ( isset($data['Attributes']['Melee']) && is_array($data['Attributes']['Melee']) )
 		{
 			$this->add_ifvalue($data['Attributes']['Melee'], 'CritChance', 'crit', 0);
 		}
-		// BEGIN STATS
-		if( isset($data['Attributes']['Stats']) && is_array($data['Attributes']['Stats']) )
-		{
-			$main_stats = $data['Attributes']['Stats'];
-
-			$this->add_rating('stat_int', $main_stats['Intellect']);
-			$this->add_rating('stat_agl', $main_stats['Agility']);
-			$this->add_rating('stat_sta', $main_stats['Stamina']);
-			$this->add_rating('stat_str', $main_stats['Strength']);
-			$this->add_rating('stat_spr', $main_stats['Spirit']);
-
-			unset($main_stats);
-		}
+		
 		// END STATS
-
-		// BEGIN DEFENSE
-		if( isset($data['Attributes']['Defense']) && is_array($data['Attributes']['Defense']) )
-		{
-			$main_stats = $data['Attributes']['Defense'];
-
-			$this->add_ifvalue($main_stats, 'DodgeChance', 'dodge');
-			$this->add_ifvalue($main_stats, 'ParryChance', 'parry');
-			$this->add_ifvalue($main_stats, 'BlockChance', 'block');
-			$this->add_ifvalue($main_stats, 'ArmorReduction', 'mitigation');
-			$this->add_ifvalue($main_stats, 'PvPPower', 'pvppower');
-			$this->add_ifvalue($main_stats, 'PvPPowerBonus', 'pvppower_bonus');
-
-			$this->add_rating('stat_armor', $main_stats['Armor']);
-			$this->add_rating('stat_def', $main_stats['Defense']);
-			$this->add_rating('stat_block', $main_stats['BlockRating']);
-			$this->add_rating('stat_parry', $main_stats['ParryRating']);
-			$this->add_rating('stat_defr', $main_stats['DefenseRating']);
-			$this->add_rating('stat_dodge', $main_stats['DodgeRating']);
-
-			$this->add_ifvalue($main_stats['Resilience'], 'Ranged', 'stat_res_ranged');
-			$this->add_ifvalue($main_stats['Resilience'], 'Spell', 'stat_res_spell');
-			$this->add_ifvalue($main_stats['Resilience'], 'Melee', 'stat_res_melee');
-		}
-		// END DEFENSE
-
-		// BEGIN RESISTS
-		if( isset($data['Attributes']['Resists']) && is_array($data['Attributes']['Resists']) )
-		{
-			$main_res = $data['Attributes']['Resists'];
-
-			$this->add_rating('res_holy', $main_res['Holy']);
-			$this->add_rating('res_frost', $main_res['Frost']);
-			$this->add_rating('res_arcane', $main_res['Arcane']);
-			$this->add_rating('res_fire', $main_res['Fire']);
-			$this->add_rating('res_shadow', $main_res['Shadow']);
-			$this->add_rating('res_nature', $main_res['Nature']);
-
-			unset($main_res);
-		}
-		// END RESISTS
-
-		// BEGIN MELEE
-		if( isset($data['Attributes']['Melee']) && is_array($data['Attributes']['Melee']) )
-		{
-			$attack = $data['Attributes']['Melee'];
-
-			$this->add_rating('melee_power', $attack['AttackPower']);
-			$this->add_rating('melee_hit', $attack['HitRating']);
-			$this->add_rating('melee_crit', $attack['CritRating']);
-			$this->add_rating('melee_haste', $attack['HasteRating']);
-
-			if (isset($attack['Expertise']))
-			{
-				$this->add_rating('melee_expertise', $attack['Expertise']);
-			}
-
-			$this->add_ifvalue($attack, 'CritChance', 'melee_crit_chance');
-			$this->add_ifvalue($attack, 'AttackPowerDPS', 'melee_power_dps');
-
-			if( isset($attack['MainHand']) && is_array($attack['MainHand']) )
-			{
-				$hand = $attack['MainHand'];
-
-				$this->add_ifvalue($hand, 'AttackSpeed', 'melee_mhand_speed');
-				$this->add_ifvalue($hand, 'AttackDPS', 'melee_mhand_dps');
-				$this->add_ifvalue($hand, 'AttackSkill', 'melee_mhand_skill');
-
-				list($mindam, $maxdam) = explode(':',$hand['DamageRangeBase']);
-				$this->add_value('melee_mhand_mindam', $mindam);
-				$this->add_value('melee_mhand_maxdam', $maxdam);
-				unset($mindam, $maxdam);
-
-				$this->add_rating('melee_mhand_rating', $hand['AttackRating']);
-			}
-
-			if( isset($attack['OffHand']) && is_array($attack['OffHand']) )
-			{
-				$hand = $attack['OffHand'];
-
-				$this->add_ifvalue($hand, 'AttackSpeed', 'melee_ohand_speed');
-				$this->add_ifvalue($hand, 'AttackDPS', 'melee_ohand_dps');
-				$this->add_ifvalue($hand, 'AttackSkill', 'melee_ohand_skill');
-
-				list($mindam, $maxdam) = explode(':',$hand['DamageRangeBase']);
-				$this->add_value('melee_ohand_mindam', $mindam);
-				$this->add_value('melee_ohand_maxdam', $maxdam);
-				unset($mindam, $maxdam);
-
-				$this->add_rating('melee_ohand_rating', $hand['AttackRating']);
-			}
-			else
-			{
-				$this->add_value('melee_ohand_speed', 0);
-				$this->add_value('melee_ohand_dps', 0);
-				$this->add_value('melee_ohand_skill', 0);
-
-				$this->add_value('melee_ohand_mindam', 0);
-				$this->add_value('melee_ohand_maxdam', 0);
-
-				$this->add_rating('melee_ohand_rating', 0);
-			}
-
-			if( isset($attack['DamageRangeTooltip']) )
-			{
-				$this->add_value('melee_range_tooltip', $this->tooltip($attack['DamageRangeTooltip']));
-			}
-			if( isset($attack['AttackPowerTooltip']) )
-			{
-				$this->add_value('melee_power_tooltip', $this->tooltip($attack['AttackPowerTooltip']));
-			}
-
-			unset($hand, $attack);
-		}
-		// END MELEE
-
-		// BEGIN RANGED
-		if( isset($data['Attributes']['Ranged']) && is_array($data['Attributes']['Ranged']) )
-		{
-			$attack = $data['Attributes']['Ranged'];
-
-			$this->add_rating('ranged_power', ( isset($attack['AttackPower']) ? $attack['AttackPower'] : '0' ));
-			$this->add_rating('ranged_hit', $attack['HitRating']);
-			$this->add_rating('ranged_crit', $attack['CritRating']);
-			$this->add_rating('ranged_haste', $attack['HasteRating']);
-
-			$this->add_ifvalue($attack, 'CritChance', 'ranged_crit_chance');
-			$this->add_ifvalue($attack, 'AttackPowerDPS', 'ranged_power_dps', 0);
-
-			$this->add_ifvalue($attack, 'AttackSpeed', 'ranged_speed');
-			$this->add_ifvalue($attack, 'AttackDPS', 'ranged_dps');
-			$this->add_ifvalue($attack, 'AttackSkill', 'ranged_skill');
-
-			list($mindam, $maxdam) = explode(':',$attack['DamageRangeBase']);
-			$this->add_value('ranged_mindam', $mindam);
-			$this->add_value('ranged_maxdam', $maxdam);
-			unset($mindam, $maxdam);
-
-			$this->add_rating( 'ranged_rating', $attack['AttackRating']);
-
-			if( isset($attack['DamageRangeTooltip']) )
-			{
-				$this->add_value('ranged_range_tooltip', $this->tooltip($attack['DamageRangeTooltip']));
-			}
-			if( isset($attack['AttackPowerTooltip']) )
-			{
-				$this->add_value('ranged_power_tooltip', $this->tooltip($attack['AttackPowerTooltip']));
-			}
-			unset($attack);
-		}
-		// END RANGED
 
 		if( isset($data['Attributes']['ITEMLEVEL']))
 		{
-			$this->add_value('ilevel', $data['Attributes']['ITEMLEVEL']);
+			$this->add_value('ilvl', $data['Attributes']['ITEMLEVEL']);
 		}
 		// BEGIN mastery
 		if( isset($data['Attributes']['Mastery']) && is_array($data['Attributes']['Mastery']) )
@@ -4299,14 +4121,7 @@ CREATE TABLE `renprefix_quest_task_data` (
 		//$this->add_ifvalue('money_c', $data['Money']['Copper']);
 		//$this->add_ifvalue('money_s', $data['Money']['Silver']);
 		//$this->add_ifvalue('money_g', $data['Money']['Gold']);
-		if (isset($data['Money']))
-		{
-		$this->add_ifvalue($data['Money'], 'Silver', 'money_s');
-		$this->add_ifvalue($data['Money'], 'Copper', 'money_c');
-		$this->add_ifvalue($data['Money'], 'Gold', 'money_g');
-		}
-
-		$this->add_ifvalue($data, 'Experience', 'exp');
+		
 		$this->add_ifvalue($data, 'Race', 'race');
 		$this->add_ifvalue($data, 'RaceId', 'raceid');
 		$this->add_ifvalue($data, 'RaceEn', 'raceEn');
@@ -4324,18 +4139,9 @@ CREATE TABLE `renprefix_quest_task_data` (
 
 		$this->add_ifvalue($data, 'DBversion');
 		$this->add_ifvalue($data, 'CPversion');
-
-		$this->add_ifvalue($data,'TimePlayed','timeplayed',0);
-		$this->add_ifvalue($data,'TimeLevelPlayed','timelevelplayed',0);
-
-		// Capture mailbox update time/date
-		if( isset($data['timestamp']['MailBox']) )
-		{
-			$this->add_timestamp('maildateutc',$data['timestamp']['MailBox']);
-		}
-
+		
 		// Capture client language
-		$this->add_ifvalue($data, 'Locale', 'clientLocale');
+		//$this->add_ifvalue($data, 'Locale', 'clientLocale');
 
 		$this->setMessage('<li>About to update player</li>');
 

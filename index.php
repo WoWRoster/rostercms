@@ -124,8 +124,6 @@ switch( $roster->pages[0] )
 				include_once (ROSTER_BASE . 'header.php');
 			}
 
-			
-
 			echo $content;
 
 			if( $roster->output['show_footer'] )

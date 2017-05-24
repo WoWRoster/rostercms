@@ -50,15 +50,15 @@ class infoInstall
 
 		$installer->add_config("'1000', 'recipe_disp', '0', 'radio{show^1|collapse^0', 'char_conf'");
 		$installer->add_config("'1010', 'mail_disp', '1', 'radio{Table^0|Bag^1|Both^2', 'char_conf'");
-		$installer->add_config("'1011', 'api_image', '0', 'radio{No^0|Yes^1', 'char_conf'");
-		$installer->add_config("'1040', 'show_pets', '0', 'function{infoAccess', 'char_conf'");
-		$installer->add_config("'1050', 'show_reputation', '0', 'function{infoAccess', 'char_conf'");
-		$installer->add_config("'1070', 'show_honor', '0', 'function{infoAccess', 'char_conf'");
-		$installer->add_config("'1080', 'show_talents', '0', 'function{infoAccess', 'char_conf'");
-		$installer->add_config("'1085', 'show_glyphs', '0', 'function{infoAccess', 'char_conf'");;
-		$installer->add_config("'1160', 'show_pet_talents', '0', 'function{infoAccess', 'char_conf'");
-		$installer->add_config("'1180', 'show_companions', '0', 'function{infoAccess', 'char_conf'");
-		$installer->add_config("'1190', 'show_mounts', '0', 'function{infoAccess', 'char_conf'");
+		$installer->add_config("'1020', 'api_image', '0', 'radio{No^0|Yes^1', 'char_conf'");
+		$installer->add_config("'1030', 'show_pets', '0', 'radio{No^0|Yes^1', 'char_conf'");
+		$installer->add_config("'1040', 'show_reputation', '0', 'radio{No^0|Yes^1', 'char_conf'");
+		$installer->add_config("'1050', 'show_skills', '0', 'radio{No^0|Yes^1', 'char_conf'");
+		$installer->add_config("'1060', 'show_talents', '0', 'radio{No^0|Yes^1', 'char_conf'");
+		$installer->add_config("'1070', 'show_glyphs', '0', 'radio{No^0|Yes^1', 'char_conf'");
+		$installer->add_config("'1080', 'show_pet_talents', '0', 'radio{No^0|Yes^1', 'char_conf'");
+		$installer->add_config("'1090', 'show_companions', '0', 'radio{No^0|Yes^1', 'char_conf'");
+		$installer->add_config("'1091', 'show_mounts', '0', 'radio{No^0|Yes^1', 'char_conf'");
 
 		$installer->create_table($installer->table('display'),"
 		  `member_id` int(11) NOT NULL default '0',
@@ -98,6 +98,18 @@ class infoInstall
 		$installer->add_query('INSERT INTO `' . $installer->table('display') . '` SELECT `p`.`member_id` , `d` . * FROM `' . $roster->db->table('players') . '` p, `' . $installer->table('default') . '` d ');
 
 		$installer->add_menu_button('cb_character', 'char', '', 'spell_holy_divinespirit');
+		
+		$permissions = array(
+			array('catagory'	=> 'info', 'name' => 'show_pets',		'info' => 'show_pets_info',			'cfg_name' => 'show_pets'),
+			array('catagory'	=> 'info', 'name' => 'show_reputation',	'info' => 'show_reputation_info',	'cfg_name' => 'show_reputation'),
+			array('catagory'	=> 'info', 'name' => 'show_skills',		'info' => 'show_skills_info',		'cfg_name' => 'show_skills'),
+			array('catagory'	=> 'info', 'name' => 'show_talents',	'info' => 'show_talents_info',		'cfg_name' => 'show_talents'),
+			array('catagory'	=> 'info', 'name' => 'show_pet_talents','info' => 'show_pet_talents_info',	'cfg_name' => 'show_pet_talents'),
+			array('catagory'	=> 'info', 'name' => 'show_companions',	'info' => 'show_companions_info',	'cfg_name' => 'show_companions'),
+			array('catagory'	=> 'info', 'name' => 'show_mounts',		'info' => 'show_mounts_info',		'cfg_name' => 'show_mounts')
+		);
+		$installer->add_permissions($permissions);
+		
 
 		return true;
 	}

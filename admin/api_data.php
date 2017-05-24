@@ -17,6 +17,7 @@ if( !defined('IN_ROSTER') || !defined('IN_ROSTER_ADMIN') )
 }
 if (isset($_POST['process']) && $_POST['process'] == 'process')
 {
+	d($_POST);
 	$count=1;
 	if (isset($_POST['class_id']))
 	{
@@ -122,6 +123,24 @@ if (isset($_POST['process']) && $_POST['process'] == 'process')
 				$resultitem = $roster->db->query($qenchant);
 				
 				$roster->set_message(sprintf($roster->locale->act['installer_purge_0'],' Api Error '));
+			break;
+			
+			case 'talents_data':
+				$querystr = "TRUNCATE TABLE `" . $roster->db->table('talents_data') . "`;";
+				if (!$roster->db->query($querystr))
+				{
+					$roster->set_message('Talent Data Table could not be emptied.', '', 'error');
+					$roster->set_message('<pre>' . $roster->db->error() . '</pre>', 'MySQL Said', 'error');
+					return;
+				}
+
+				$querystr = "TRUNCATE TABLE `" . $roster->db->table('talenttree_data') . "`;";
+				if (!$roster->db->query($querystr))
+				{
+					$roster->set_message('Talent Tree Data Table could not be emptied.', '', 'error');
+					$roster->set_message('<pre>' . $roster->db->error() . '</pre>', 'MySQL Said', 'error');
+					return;
+				}
 			break;
 		}
 	}
@@ -232,7 +251,7 @@ $classes = $roster->locale->act['class_to_id'];
 $roster->tpl->assign_block_vars('sections', array(
 					'ID'        => 'class',
 					'NAME'		=> 'class data',
-					'TYPE'		=> 'ALL',
+					'TYPE'		=> 'truncate',
 					'VALUE'		=> 'talents_data',
 				)
 			);

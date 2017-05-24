@@ -480,7 +480,7 @@ class rsyncBase {
 		$char = $roster->api2->fetch('character',array('name'=>$this->memberName,'server'=>$this->server,'fields'=>$this->_char_fields()));
 		//$roster->api->Char->getCharInfo($this->server,$this->memberName,'1:2:3:4:5:7:11:14');
 		//$this->_guild_fields('1:2:3')
-		d($char);
+		//d($char);
 		$this->apidata = $char;
 
 		if ( isset($char['name']) )
@@ -568,7 +568,7 @@ class rsyncBase {
 				$equip = $char['items'];
 				$this->_getEquipmentInfo( $equip );
 			}
-			d($this->data);
+			//d($this->data);
 		//echo '<pre>';print_r($this->data);echo '</pre>';
 		}
 		else 
@@ -736,7 +736,7 @@ class rsyncBase {
 				if ( isset( $gam['gem0'] ) ){$gem0 = $gam['gem0']; $gem_json['gems'][0]=$roster->api2->fetch('item',array('id'=>$gem0));}
 				if ( isset( $gam['gem1'] ) ){$gem1 = $gam['gem1']; $gem_json['gems'][1]=$roster->api2->fetch('item',array('id'=>$gem1));}
 				if ( isset( $gam['gem2'] ) ){$gem2 = $gam['gem2']; $gem_json['gems'][2]=$roster->api2->fetch('item',array('id'=>$gem2));}
-				if ( isset( $gam['gem3'] ) ){$gem3 = $gam['gem3']; $gem_json['gems'][2]=$roster->api2->fetch('item',array('id'=>$gem3));}
+				if ( isset( $gam['gem3'] ) ){$gem3 = $gam['gem3']; $gem_json['gems'][3]=$roster->api2->fetch('item',array('id'=>$gem3));}
 				//$enchant = 0;
 				$item_api = $roster->api2->fetch('item',$params);
 				//echo $slot.'<br>';
@@ -766,7 +766,7 @@ class rsyncBase {
 				$this->data["Equipment"][$slot]['Item'] .= ":". $gem3; // GemId2
 				$this->data["Equipment"][$slot]['Item'] .= ":". "0"; // suffixID
 				$this->data["Equipment"][$slot]['Item'] .= ":". "0"; // uniqueID
-				$this->data["Equipment"][$slot]['Item'] .= ":". "0"; // level
+				$this->data["Equipment"][$slot]['Item'] .= ":". (isset($item['requiredLevel']) ? $item['requiredLevel'] :'0'); // level
 				$this->data["Equipment"][$slot]['Item'] .= ":". $reforge; // reforgeId
 				$this->data["Equipment"][$slot]['Item'] .= ":". $upgrade; // upgradeId
 				$this->data["Equipment"][$slot]['Item'] .= ":".(isset($item['bonusLists'][0]) ? $item['bonusLists'][0] : '');
@@ -1026,6 +1026,7 @@ class rsyncBase {
 						$this->data["Reputation"][$xrep[$ft2]['parent']][''.$xrep[$ft2]['faction'].''][''.$ft2.''] = array();
 						$this->data["Reputation"][$xrep[$ft2]['parent']][''.$xrep[$ft2]['faction'].''][''.$ft2.'']["Value"] = $info['value'] . ":" . $info['max'];
 						$this->data["Reputation"][$xrep[$ft2]['parent']][''.$xrep[$ft2]['faction'].''][''.$ft2.'']["Standing"] = $this->_getRepStanding($info['standing']);
+						$this->data["Reputation"][$xrep[$ft2]['parent']][''.$xrep[$ft2]['faction'].''][''.$ft2.'']["standing_id"] = $info['standing'];
 						$this->data["Reputation"][$xrep[$ft2]['parent']][''.$xrep[$ft2]['faction'].''][''.$ft2.'']["AtWar"] = $this->_getRepAtWar($info['value']);
 						$this->data["Reputation"][$xrep[$ft2]['parent']][''.$xrep[$ft2]['faction'].''][''.$ft2.'']["sort"] = $xrep[$ft2]['sort'];
 					}
@@ -1037,6 +1038,7 @@ class rsyncBase {
 						$this->data["Reputation"][$xrep[$ft2]['parent']][''.$ft2.''] = array();
 						$this->data["Reputation"][$xrep[$ft2]['parent']][''.$ft2.'']["Value"] = $info['value'] . ":" . $info['max'];
 						$this->data["Reputation"][$xrep[$ft2]['parent']][''.$ft2.'']["Standing"] = $this->_getRepStanding($info['standing']);
+						$this->data["Reputation"][$xrep[$ft2]['parent']][''.$ft2.'']["standing_id"] = $info['standing'];
 						$this->data["Reputation"][$xrep[$ft2]['parent']][''.$ft2.'']["AtWar"] = $this->_getRepAtWar($info['value']);
 						$this->data["Reputation"][$xrep[$ft2]['parent']][''.$ft2.'']["sort"] = $xrep[$ft2]['sort'];
 					}

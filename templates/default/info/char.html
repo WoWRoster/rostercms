@@ -1,7 +1,7 @@
 <!-- $Id: char.html 2601 2012-08-31 19:07:03Z ulminia@gmail.com $ -->
-<div id="main" class="container">
+<div id="main" class="container" style="background-color:#0f091b">
 	<div class="main-panel" align="left">
-		<div class="profile-background" >
+		<div class="profile-background" style="background-color:#0f091b" >
 			<div class="bg-image" style="background-image:url({S_CHAR_IMG});"></div>
 		</div>
 		<div class="section-profile" >
@@ -12,7 +12,7 @@
 						<div class="name"><a href="https://worldofwarcraft.com/en-us/character/{SERVER}/{NAME}/" rel="np">{NAME}</a></div>
 						<span class="clear"><!-- --></span>
 						<div class="under-name color-c{CLASSID}">
-								<span class="level"><strong>{LEVEL}</strong></span> {RACE} <a id="profile-info-spec" href="#talents" class="spec tip">{SPEC}</a> {CLASS}<span class="comma">,</span>
+								<span class="level"><strong>{LEVEL}</strong></span> {RACE} <a id="profile-info-spec" href="#" class="spec tip">{SPEC}</a> {CLASS}<span class="comma">,</span>
 							<span class="realm tip" id="profile-info-realm" data-battlegroup="Rampage">
 								{SERVER}
 							</span>
@@ -97,6 +97,16 @@
 										<div class="character-slot-itemDetails">
 										<div class="character-slot-itemName color-quality-{equip.right.RARITY}">{equip.right.NAME}</div>
 											<div class="List List--right List--guttersTiny">
+												<!-- BEGIN gems -->
+												<div class="List-item">
+													<div class="ItemSocket ItemSocket--PRISMATIC ItemSocket--inline">
+														<div style="background-image: url({equip.right.gems.ICON});" class="ItemSocket-icon">
+														</div>
+														<div class="ItemSocket-frame">
+														</div>
+													</div>
+												</div>
+												<!-- END gems -->
 												<div class="List-item character-slot-itemLevel">{equip.right.ILVL}</div>
 											</div>
 										</div>
@@ -162,57 +172,56 @@
 					</div>
 				</div>
 				<!-- END equip -->
-		
+				<div class="row">
+					<div class="col-md-9">
+						<h3><!-- TRANSLATE talents --></h3>
+					</div>
+					<div class="col-md-3 talent-specs">
+						<!-- BEGIN spec -->
+						<span class="inner">
+							<a data-spec-id="{spec.TID}" class="spec-button spec-{spec.ID} <!-- IF spec.SELECTED -->selected active<!-- ENDIF -->" href="javascript:;" data-spec-name="{spec.NAME}">
+							<span class="frame">
+								<span class="icon">
+									<img src="http://media.blizzard.com/wow/icons/36/{spec.ICON}.jpg" alt="" />
+								</span>
+							</span>
+							</a>
+						</span>
+						<!-- END spec -->
+					</div>
+				</div>
+				<!-- BEGIN spec -->
+				<!-- BEGIN build -->
+				<div class="row talent-build <!-- IF spec.build.SELECTED -->selected<!-- ENDIF -->" id="talent-build-{spec.build.TID}">
+					<div class="col-md-5" style="padding:6px;">
+						<div style="border: 1px solid #444;padding:10px;background-image:url('{INTERFACE_URL}Interface/TalentFrame/{spec.BGIMG}.{IMG_SUFFIX}');	min-height: 194px;">
+						<h2>{spec.NAME}</h2><br>{spec.DESC}
+						</div>
+					</div>
+					<div class="col-md-7" style="padding:6px;">
+						<div style="border: 1px solid #444;padding:10px;">
+							<div class="">
+							<!-- BEGIN talent -->
+							<div class="talents-talent" data-tooltip="talent-{spec.build.talent.ID}" data-tier="0" data-column="2" queryselectoralways="20" >
+								<div class="GameIcon Media-icon">
+									<div style="background-image:url('{INTERFACE_URL}Interface/Icons/{spec.build.talent.ICON}.{IMG_SUFFIX}')" class="GameIcon-icon">
+									</div>
+									<div class="GameIcon-transmog">
+									</div>
+								</div>
+								<div class="spell-name">{spec.build.talent.NAME}</div>
+							</div>
+							<!-- END talent --> 
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END build -->
+				<!-- END spec -->
 				<div class="equip-bg">
 					<div id="main-wrapper" >
 						<div xmlns="http://www.w3.org/1999/xhtml" class="summary-bottom">
-							<div class="summary-bottom-right">
-								<div xmlns="http://www.w3.org/1999/xhtml" class="summary-talents" id="summary-talents">
-									<h3 class="category">
-									<span class="title">Talents</span> 
-									</h3>
-									<div class="profile-box-simple">
-									<div class="talent-specs">
-									<!-- BEGIN spec -->
-										<a data-spec-id="{spec.TID}" class="spec-button spec-{spec.ID} <!-- IF spec.SELECTED -->selected active<!-- ENDIF -->" href="javascript:;" data-spec-name="{spec.NAME}">
-										<span class="inner"> 
-											<span class="frame">
-												<span class="icon">
-													<img src="http://media.blizzard.com/wow/icons/36/{spec.ICON}.jpg" alt="" />
-												</span>
-											</span> 
-											<span xmlns="http://www.w3.org/1999/xhtml" class="roles">
-												<span class="icon-{spec.ROLE}"></span>
-											</span>
-											<span class="name-build">
-												<span class="name">{spec.NAME}</span>
-											</span>
-										</span>
-										</a>
-									<!-- END spec -->
-										<span class="clear">
-										</span>
-									</div>
-								<!-- BEGIN spec -->
-									<!-- BEGIN build -->
-										<div class="talent-build <!-- IF spec.build.SELECTED -->selected<!-- ENDIF -->" id="talent-build-{spec.build.TID}">
-											<div class="talents">
-											<ul>
-											<!-- BEGIN talent -->
-											<li class="talent" data-tooltip="talent-{spec.build.talent.ID}" data-tier="0" data-column="2">
-											<span xmlns="http://www.w3.org/1999/xhtml" class="icon-frameb frame-18 " style="background-image: url('http://media.blizzard.com/wow/icons/18/{spec.build.talent.ICON}.jpg');"></span>
-											<span class="spell-name">{spec.build.talent.NAME}</span>
-											</li>
-											<!-- END talent --> 
-											</ul>
-											</div>
-										</div>
-									<!-- END build -->
-
-								<!-- END spec -->
-									</div>
-								</div>
-							</div>
+							
 							
 							<div xmlns="http://www.w3.org/1999/xhtml" class="summary-bottom-left">
 								<div class="summary-health-resource">
@@ -380,48 +389,68 @@
 
 		<!-- reputation -->
 		<div id="reputation" style="display:none;">
-		<!-- BEGIN rep -->
+		<!-- BEGIN expantion -->
 		<div class="row">
-			<div class="col-md-12"><h2>{rep.NAME}</h2></div>
+			<div class="col-md-12"><h2>{expantion.NAME}</h2></div>
 		</div>
-		<!-- BEGIN bar -->
+		<!-- BEGIN faction -->
 		<div class="row">
-			<div class="col-md-3 text-right">{rep.bar.NAME}</div>
+			<div class="col-md-3 text-right">{expantion.faction.NAME}</div>
 			<div class="col-md-6">
 				<div class="progress">
-					<!-- IF rep.bar.VALUE ne '2' -->
-					<div class="faction-score">{rep.bar.VALUE} / {rep.bar.MAXVALUE}</div>
+					<!-- IF expantion.faction.VALUE ne '2' -->
+					<div class="faction-score">{expantion.faction.VALUE} / {expantion.faction.MAXVALUE}</div>
 					<!-- ENDIF -->
-					<div class="progress-bar {rep.bar.FILL}" role="progressbar" aria-valuenow="{rep.bar.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{rep.bar.WIDTH}%">
+					<div class="progress-bar {expantion.faction.FILL}" role="progressbar" aria-valuenow="{expantion.faction.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{expantion.faction.WIDTH}%">
 					</div>
 				</div>
 			</div>
-			<div class="col-md-3 text-left  faction-level-{rep.bar.FILL}">{rep.bar.STANDING}</div>
+			<div class="col-md-3 text-left  faction-level-{expantion.faction.FILL}">{expantion.faction.STANDING}</div>
 		</div>
-		<!-- BEGIN rep2 -->
-		<div class="row">
-			<div class="col-md-3 text-right"><h3>{rep.bar.rep2.NAME}<h3></div>
-			<div class="col-md-9"></div>
+		<!-- END faction -->
+		
+		<!-- BEGIN group -->
+		
+		<div class="row row-eq-height">
+			<div class="col-md-3 text-right"><h3>{expantion.group.NAME}<h3></div>
+			<!-- IF expantion.group.ISBAR -->
+			<div class="col-md-6" style="padding-top: 23px;">
+				<div class="progress">
+						<!-- IF expantion.group.VALUE ne '2' -->
+						<div class="faction-score">{expantion.group.VALUE} / {expantion.group.MAXVALUE}</div>
+						<!-- ENDIF -->
+					<div class="progress-bar {expantion.group.FILL}" role="progressbar" aria-valuenow="{expantion.group.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{expantion.group.WIDTH}%">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 text-left faction-level-{expantion.group.FILL}"  style="padding-top: 23px;">{expantion.group.STANDING}</div>
 		</div>
-		<!-- BEGIN bar2 -->
+		<!-- ELSE -->
+		<div class="col-md-9"></div>
+		</div>
+		<!-- ENDIF -->
+		<!-- BEGIN sub -->
 		<div class="row">
-			<div class="col-md-3 text-right">{rep.bar.rep2.bar2.NAME}</div>
+			<div class="col-md-3 text-right">{expantion.group.sub.NAME}</div>
 			<div class="col-md-6">
 				<div class="progress">
-						<!-- IF rep.bar.rep2.bar2.VALUE ne '2' -->
-						<div class="faction-score">{rep.bar.rep2.bar2.VALUE} / {rep.bar.rep2.bar2.MAXVALUE}</div>
-						<!-- ENDIF -->
-					<div class="progress-bar {rep.bar.rep2.bar2.FILL}" role="progressbar" aria-valuenow="{rep.bar.rep2.bar2.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{rep.bar.rep2.bar2.WIDTH}%">
+					<!-- IF expantion.group.sub.VALUE ne '2' -->
+					<div class="faction-score">{expantion.group.sub.VALUE} / {expantion.group.sub.MAXVALUE}</div>
+					<!-- ENDIF -->
+					<div class="progress-bar {expantion.group.sub.FILL}" role="progressbar" aria-valuenow="{expantion.group.sub.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{expantion.group.sub.WIDTH}%">
 					</div>
 				</div>
 			</div>
-			<div class="col-md-3 text-left faction-level-{rep.bar.rep2.bar2.FILL}">{rep.bar.rep2.bar2.STANDING}</div>
+			<div class="col-md-3 text-left  faction-level-{expantion.group.sub.FILL}">{expantion.group.sub.STANDING}</div>
 		</div>
-		<!-- END bar2 -->		
-		<!-- END rep2 -->
-		<!-- END bar -->
-		<!-- END rep -->
+		
+		<!-- END sub -->
+		
+		<!-- END group -->
+		<!-- END expantion -->
 		</div>
+		
+		
 		<!-- ENDIF -->
 
 
@@ -431,30 +460,29 @@
 		<!-- skills -->
 		<div id="skills" style="display:none;">
 
-		<!-- BEGIN skill -->
-		<div class="page-header">
-		  <h1>{skill.NAME}</h1>
-		</div>
-		<!-- BEGIN bar -->
+			<!-- BEGIN skill -->
+			<div class="page-header">
+			  <h1>{skill.NAME}</h1>
+			</div>
+			<!-- BEGIN bar -->
 			<div class="row">
-				<div class="col-lg-2"></div>
-				<div class="col-lg-1">
-					<img class="icon-frame frame-24" src="{INTERFACE_URL}Interface/Icons/{skill.bar.ICON}.{IMG_SUFFIX}" alt="" />
-				</div>
-				<div class="col-lg-3">
-					{skill.bar.NAME}
-				</div>
-				<div class="col-lg-4">
+				<div class="col-md-1">
+						<img class="icon-frame frame-24" src="{INTERFACE_URL}Interface/Icons/{skill.bar.ICON}.{IMG_SUFFIX}" alt="" />
+					</div>
+				<div class="col-md-2 text-right">{skill.bar.NAME}</div>
+				<div class="col-md-7">
 					<div class="progress">
-						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{skill.bar.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width: {skill.bar.WIDTH}%;">
-						{skill.bar.VALUE} / {skill.bar.MAXVALUE}
+						<div class="faction-score">{skill.bar.VALUE} / {skill.bar.MAXVALUE}</div>
+						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{skill.bar.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{skill.bar.WIDTH}%">
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-2"></div>
+				<div class="col-md-2">
+				</div>
+				
 			</div>
-		<!-- END bar -->
-		<!-- END skill -->
+			<!-- END bar -->
+			<!-- END skill -->
 		</div>
 		<!-- ENDIF -->
 

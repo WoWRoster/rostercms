@@ -6,7 +6,7 @@
 # --------------------------------------------------------
 ### Account
 
-CREATE TABLE IF NOT EXISTS `roster_account` (
+CREATE TABLE IF NOT EXISTS `renprefix_account` (
   `account_id` smallint(6) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL DEFAULT '',
   `hash` varchar(32) NOT NULL DEFAULT '',
@@ -16,10 +16,10 @@ CREATE TABLE IF NOT EXISTS `roster_account` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_addon`
+## Table structure for table `renprefix_addon`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_addon` (
+CREATE TABLE IF NOT EXISTS `renprefix_addon` (
   `addon_id` int(11) NOT NULL AUTO_INCREMENT,
   `basename` varchar(16) NOT NULL DEFAULT '',
   `version` varchar(16) NOT NULL DEFAULT '0',
@@ -37,10 +37,10 @@ CREATE TABLE IF NOT EXISTS `roster_addon` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_addon_config`
+## Table structure for table `renprefix_addon_config`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_addon_config` (
+CREATE TABLE IF NOT EXISTS `renprefix_addon_config` (
   `addon_id` int(11) NOT NULL DEFAULT '0',
   `id` int(11) UNSIGNED NOT NULL,
   `config_name` varchar(255) DEFAULT NULL,
@@ -53,10 +53,10 @@ CREATE TABLE IF NOT EXISTS `roster_addon_config` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_all_gems`
+## Table structure for table `renprefix_all_gems`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_all_gems` (
+CREATE TABLE IF NOT EXISTS `renprefix_all_gems` (
   `gem_id` int(11) NOT NULL,
   `gem_name` varchar(96) NOT NULL,
   `gem_color` varchar(16) NOT NULL,
@@ -74,10 +74,10 @@ CREATE TABLE IF NOT EXISTS `roster_all_gems` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_api_cache`
+## Table structure for table `renprefix_api_cache`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_api_cache` (
+CREATE TABLE IF NOT EXISTS `renprefix_api_cache` (
   `id` int(11) NOT NULL,
   `type` varchar(96) NOT NULL,
   `lastmodified` varchar(16) NOT NULL,
@@ -90,10 +90,10 @@ CREATE TABLE IF NOT EXISTS `roster_api_cache` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_api_enchant`
+## Table structure for table `renprefix_api_enchant`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_api_enchant` (
+CREATE TABLE IF NOT EXISTS `renprefix_api_enchant` (
   `id` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `name` varchar(200) NOT NULL,
   `bonus` mediumtext,
@@ -108,10 +108,10 @@ CREATE TABLE IF NOT EXISTS `roster_api_enchant` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_api_error`
+## Table structure for table `renprefix_api_error`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_api_error` (
+CREATE TABLE IF NOT EXISTS `renprefix_api_error` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(50) DEFAULT NULL,
   `error` varchar(250) DEFAULT NULL,
@@ -127,10 +127,10 @@ CREATE TABLE IF NOT EXISTS `roster_api_error` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_api_gems`
+## Table structure for table `renprefix_api_gems`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_api_gems` (
+CREATE TABLE IF NOT EXISTS `renprefix_api_gems` (
   `gem_id` int(11) NOT NULL,
   `gem_name` varchar(96) NOT NULL DEFAULT '',
   `gem_color` varchar(16) NOT NULL DEFAULT '',
@@ -146,10 +146,10 @@ CREATE TABLE IF NOT EXISTS `roster_api_gems` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_api_items`
+## Table structure for table `renprefix_api_items`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_api_items` (
+CREATE TABLE IF NOT EXISTS `renprefix_api_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `item_id` int(11) NOT NULL,
   `context` varchar(100) DEFAULT NULL,
@@ -173,10 +173,10 @@ CREATE TABLE IF NOT EXISTS `roster_api_items` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_api_lmh`
+## Table structure for table `renprefix_api_lmh`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_api_lmh` (
+CREATE TABLE IF NOT EXISTS `renprefix_api_lmh` (
   `idx` int(10) NOT NULL AUTO_INCREMENT,
   `type` varchar(50) DEFAULT NULL,
   `battletag` varchar(25) DEFAULT '',
@@ -200,10 +200,10 @@ CREATE TABLE IF NOT EXISTS `roster_api_lmh` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_api_usage`
+## Table structure for table `renprefix_api_usage`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_api_usage` (
+CREATE TABLE IF NOT EXISTS `renprefix_api_usage` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(50) DEFAULT NULL,
   `url` mediumtext,
@@ -217,10 +217,10 @@ CREATE TABLE IF NOT EXISTS `roster_api_usage` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_companions`
+## Table structure for table `renprefix_companions`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_companions` (
+CREATE TABLE IF NOT EXISTS `renprefix_companions` (
   `comp_id` int(11) NOT NULL AUTO_INCREMENT,
   `member_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `name` varchar(96) NOT NULL,
@@ -236,10 +236,10 @@ CREATE TABLE IF NOT EXISTS `roster_companions` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_config`
+## Table structure for table `renprefix_config`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_config` (
+CREATE TABLE IF NOT EXISTS `renprefix_config` (
   `id` int(11) UNSIGNED NOT NULL,
   `config_name` varchar(255) DEFAULT NULL,
   `config_value` tinytext,
@@ -251,10 +251,10 @@ CREATE TABLE IF NOT EXISTS `roster_config` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_error_msg`
+## Table structure for table `renprefix_error_msg`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_error_msg` (
+CREATE TABLE IF NOT EXISTS `renprefix_error_msg` (
   `id` int(11) NOT NULL,
   `type` varchar(50) DEFAULT NULL,
   `error` varchar(250) DEFAULT NULL,
@@ -269,10 +269,10 @@ CREATE TABLE IF NOT EXISTS `roster_error_msg` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_gems`
+## Table structure for table `renprefix_gems`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_gems` (
+CREATE TABLE IF NOT EXISTS `renprefix_gems` (
   `gem_id` int(11) NOT NULL DEFAULT '0',
   `gem_name` varchar(96) NOT NULL DEFAULT '',
   `gem_color` varchar(16) NOT NULL DEFAULT '',
@@ -288,10 +288,10 @@ CREATE TABLE IF NOT EXISTS `roster_gems` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_glyphs`
+## Table structure for table `renprefix_glyphs`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_glyphs` (
+CREATE TABLE IF NOT EXISTS `renprefix_glyphs` (
   `member_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `glyph_build` tinyint(2) NOT NULL DEFAULT '0',
   `glyph_order` tinyint(4) NOT NULL DEFAULT '0',
@@ -304,10 +304,10 @@ CREATE TABLE IF NOT EXISTS `roster_glyphs` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_guild`
+## Table structure for table `renprefix_guild`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_guild` (
+CREATE TABLE IF NOT EXISTS `renprefix_guild` (
   `guild_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `guild_name` varchar(64) NOT NULL DEFAULT '',
   `server` varchar(32) NOT NULL DEFAULT '',
@@ -331,10 +331,10 @@ CREATE TABLE IF NOT EXISTS `roster_guild` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_guild_rank`
+## Table structure for table `renprefix_guild_rank`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_guild_rank` (
+CREATE TABLE IF NOT EXISTS `renprefix_guild_rank` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rank` tinyint(4) NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
@@ -346,10 +346,10 @@ CREATE TABLE IF NOT EXISTS `roster_guild_rank` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_items`
+## Table structure for table `renprefix_items`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_items` (
+CREATE TABLE IF NOT EXISTS `renprefix_items` (
   `member_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `item_name` varchar(96) NOT NULL DEFAULT '',
   `item_parent` varchar(64) NOT NULL DEFAULT '',
@@ -375,10 +375,10 @@ CREATE TABLE IF NOT EXISTS `roster_items` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_memberlog`
+## Table structure for table `renprefix_memberlog`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_memberlog` (
+CREATE TABLE IF NOT EXISTS `renprefix_memberlog` (
   `log_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `member_id` int(11) UNSIGNED NOT NULL,
   `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
@@ -400,10 +400,10 @@ CREATE TABLE IF NOT EXISTS `roster_memberlog` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_members`
+## Table structure for table `renprefix_members`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_members` (
+CREATE TABLE IF NOT EXISTS `renprefix_members` (
   `member_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `server` varchar(32) NOT NULL DEFAULT '',
@@ -435,10 +435,10 @@ CREATE TABLE IF NOT EXISTS `roster_members` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_menu`
+## Table structure for table `renprefix_menu`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_menu` (
+CREATE TABLE IF NOT EXISTS `renprefix_menu` (
   `config_id` int(11) NOT NULL AUTO_INCREMENT,
   `section` varchar(64) DEFAULT NULL,
   `config` mediumtext,
@@ -449,10 +449,10 @@ CREATE TABLE IF NOT EXISTS `roster_menu` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_menu_button`
+## Table structure for table `renprefix_menu_button`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_menu_button` (
+CREATE TABLE IF NOT EXISTS `renprefix_menu_button` (
   `button_id` int(11) NOT NULL AUTO_INCREMENT,
   `addon_id` int(11) NOT NULL COMMENT '0 for main roster',
   `title` varchar(32) DEFAULT NULL,
@@ -466,10 +466,10 @@ CREATE TABLE IF NOT EXISTS `roster_menu_button` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_permissions`
+## Table structure for table `renprefix_permissions`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_permissions` (
+CREATE TABLE IF NOT EXISTS `renprefix_permissions` (
   `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `type` varchar(255) NOT NULL DEFAULT '',
   `type_id` int(5) DEFAULT NULL,
@@ -483,10 +483,10 @@ CREATE TABLE IF NOT EXISTS `roster_permissions` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_pets`
+## Table structure for table `renprefix_pets`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_pets` (
+CREATE TABLE IF NOT EXISTS `renprefix_pets` (
   `pet_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `member_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
@@ -613,10 +613,10 @@ CREATE TABLE IF NOT EXISTS `roster_pets` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_pet_talents`
+## Table structure for table `renprefix_pet_talents`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_pet_talents` (
+CREATE TABLE IF NOT EXISTS `renprefix_pet_talents` (
   `member_id` int(11) NOT NULL DEFAULT '0',
   `pet_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `name` varchar(64) NOT NULL DEFAULT '',
@@ -633,10 +633,10 @@ CREATE TABLE IF NOT EXISTS `roster_pet_talents` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_pet_talenttree`
+## Table structure for table `renprefix_pet_talenttree`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_pet_talenttree` (
+CREATE TABLE IF NOT EXISTS `renprefix_pet_talenttree` (
   `member_id` int(11) NOT NULL DEFAULT '0',
   `pet_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `tree` varchar(64) NOT NULL DEFAULT '',
@@ -649,14 +649,16 @@ CREATE TABLE IF NOT EXISTS `roster_pet_talenttree` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_players`
+## Table structure for table `renprefix_players`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_players` (
+CREATE TABLE IF NOT EXISTS `renprefix_players` (
+
   `member_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `guild_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `dateupdatedutc` datetime DEFAULT NULL,
+  `api_udt` int(10) NOT NULL DEFAULT '0',
   `CPversion` varchar(6) NOT NULL DEFAULT '0.0.0',
   `DBversion` varchar(6) NOT NULL DEFAULT '0.0.0',
   `race` varchar(32) NOT NULL DEFAULT '',
@@ -670,118 +672,13 @@ CREATE TABLE IF NOT EXISTS `roster_players` (
   `region` char(2) NOT NULL DEFAULT '',
   `ilvl` int(10) DEFAULT NULL,
   `talent_points` int(11) NOT NULL DEFAULT '0',
-  `money_c` int(11) NOT NULL DEFAULT '0',
-  `money_s` int(11) NOT NULL DEFAULT '0',
-  `money_g` int(11) NOT NULL DEFAULT '0',
-  `exp` varchar(32) NOT NULL DEFAULT '',
   `class` varchar(32) NOT NULL DEFAULT '',
   `classid` tinyint(1) NOT NULL DEFAULT '0',
   `classEn` varchar(32) NOT NULL DEFAULT '',
   `health` int(11) NOT NULL DEFAULT '0',
-  `maildateutc` datetime DEFAULT NULL,
-  `melee_power` int(11) NOT NULL DEFAULT '0',
-  `melee_hit` int(11) NOT NULL DEFAULT '0',
-  `melee_crit` int(11) NOT NULL DEFAULT '0',
-  `melee_haste` int(11) NOT NULL DEFAULT '0',
-  `melee_expertise` int(11) NOT NULL DEFAULT '0',
-  `melee_crit_chance` float NOT NULL DEFAULT '0',
-  `melee_power_dps` float NOT NULL DEFAULT '0',
-  `melee_mhand_speed` float NOT NULL DEFAULT '0',
-  `melee_mhand_dps` float NOT NULL DEFAULT '0',
-  `melee_mhand_skill` int(11) NOT NULL DEFAULT '0',
-  `melee_mhand_mindam` int(11) NOT NULL DEFAULT '0',
-  `melee_mhand_maxdam` int(11) NOT NULL DEFAULT '0',
-  `melee_mhand_rating` int(11) NOT NULL DEFAULT '0',
-  `melee_ohand_speed` float NOT NULL DEFAULT '0',
-  `melee_ohand_dps` float NOT NULL DEFAULT '0',
-  `melee_ohand_skill` int(11) NOT NULL DEFAULT '0',
-  `melee_ohand_mindam` int(11) NOT NULL DEFAULT '0',
-  `melee_ohand_maxdam` int(11) NOT NULL DEFAULT '0',
-  `melee_ohand_rating` int(11) NOT NULL DEFAULT '0',
-  `melee_range_tooltip` tinytext,
-  `melee_power_tooltip` tinytext,
-  `ranged_power` int(11) NOT NULL DEFAULT '0',
-  `ranged_hit` int(11) NOT NULL DEFAULT '0',
-  `ranged_crit` int(11) NOT NULL DEFAULT '0',
-  `ranged_haste` int(11) NOT NULL DEFAULT '0',
-  `ranged_crit_chance` float NOT NULL DEFAULT '0',
-  `ranged_power_dps` float NOT NULL DEFAULT '0',
-  `ranged_speed` float NOT NULL DEFAULT '0',
-  `ranged_dps` float NOT NULL DEFAULT '0',
-  `ranged_skill` int(11) NOT NULL DEFAULT '0',
-  `ranged_mindam` int(11) NOT NULL DEFAULT '0',
-  `ranged_maxdam` int(11) NOT NULL DEFAULT '0',
-  `ranged_rating` int(11) NOT NULL DEFAULT '0',
-  `ranged_range_tooltip` tinytext,
-  `ranged_power_tooltip` tinytext,
-  `spell_hit` int(11) NOT NULL DEFAULT '0',
-  `spell_crit` int(11) NOT NULL DEFAULT '0',
-  `spell_haste` int(11) NOT NULL DEFAULT '0',
-  `spell_crit_chance` float NOT NULL DEFAULT '0',
-  `spell_crit_chance_holy` float NOT NULL DEFAULT '0',
-  `spell_crit_chance_frost` float NOT NULL DEFAULT '0',
-  `spell_crit_chance_arcane` float NOT NULL DEFAULT '0',
-  `spell_crit_chance_fire` float NOT NULL DEFAULT '0',
-  `spell_crit_chance_shadow` float NOT NULL DEFAULT '0',
-  `spell_crit_chance_nature` float NOT NULL DEFAULT '0',
-  `mana_regen` int(11) NOT NULL DEFAULT '0',
-  `mana_regen_cast` int(11) NOT NULL DEFAULT '0',
-  `spell_penetration` int(11) NOT NULL DEFAULT '0',
-  `spell_damage` int(11) NOT NULL DEFAULT '0',
-  `spell_healing` int(11) NOT NULL DEFAULT '0',
-  `spell_damage_holy` int(11) NOT NULL DEFAULT '0',
-  `spell_damage_frost` int(11) NOT NULL DEFAULT '0',
-  `spell_damage_arcane` int(11) NOT NULL DEFAULT '0',
-  `spell_damage_fire` int(11) NOT NULL DEFAULT '0',
-  `spell_damage_shadow` int(11) NOT NULL DEFAULT '0',
-  `spell_damage_nature` int(11) NOT NULL DEFAULT '0',
   `mana` int(11) NOT NULL DEFAULT '0',
   `power` varchar(32) NOT NULL DEFAULT '',
-  `stat_int` int(11) NOT NULL DEFAULT '0',
-  `stat_agl` int(11) NOT NULL DEFAULT '0',
-  `stat_sta` int(11) NOT NULL DEFAULT '0',
-  `stat_str` int(11) NOT NULL DEFAULT '0',
-  `stat_spr` int(11) NOT NULL DEFAULT '0',
-  `stat_def` int(11) NOT NULL DEFAULT '0',
-  `stat_armor` int(11) NOT NULL DEFAULT '0',
-  `stat_block` int(11) NOT NULL DEFAULT '0',
-  `stat_parry` int(11) NOT NULL DEFAULT '0',
-  `stat_defr` int(11) NOT NULL DEFAULT '0',
-  `stat_dodge` int(11) NOT NULL DEFAULT '0',
-  `stat_res_ranged` int(11) NOT NULL DEFAULT '0',
-  `stat_res_spell` int(11) NOT NULL DEFAULT '0',
-  `stat_res_melee` int(11) NOT NULL DEFAULT '0',
-  `res_holy` int(11) NOT NULL DEFAULT '0',
-  `res_frost` int(11) NOT NULL DEFAULT '0',
-  `res_arcane` int(11) NOT NULL DEFAULT '0',
-  `res_fire` int(11) NOT NULL DEFAULT '0',
-  `res_shadow` int(11) NOT NULL DEFAULT '0',
-  `res_shadow_d` int(11) NOT NULL DEFAULT '0',
-  `res_nature` int(11) NOT NULL DEFAULT '0',
-  `pvp_ratio` float NOT NULL DEFAULT '0',
-  `sessionHK` int(11) NOT NULL DEFAULT '0',
-  `sessionCP` int(11) NOT NULL DEFAULT '0',
-  `yesterdayHK` int(11) NOT NULL DEFAULT '0',
-  `yesterdayContribution` int(11) NOT NULL DEFAULT '0',
-  `lifetimeHK` int(11) NOT NULL DEFAULT '0',
-  `lifetimeRankName` varchar(64) NOT NULL DEFAULT '0',
-  `honorpoints` int(11) NOT NULL DEFAULT '0',
-  `arenapoints` int(11) NOT NULL DEFAULT '0',
-  `dodge` float NOT NULL DEFAULT '0',
-  `parry` float NOT NULL DEFAULT '0',
-  `block` float NOT NULL DEFAULT '0',
-  `mitigation` float NOT NULL DEFAULT '0',
-  `crit` float NOT NULL DEFAULT '0',
-  `mastery` varchar(10) NOT NULL DEFAULT '0',
-  `mastery_tooltip` mediumtext,
-  `ilevel` varchar(20) NOT NULL DEFAULT '0',
-  `pvppower` varchar(20) NOT NULL DEFAULT '0',
-  `pvppower_bonus` varchar(20) NOT NULL DEFAULT '0',
-  `lifetimeHighestRank` int(11) NOT NULL DEFAULT '0',
-  `clientLocale` varchar(4) NOT NULL DEFAULT '',
-  `timeplayed` int(11) NOT NULL DEFAULT '0',
-  `timelevelplayed` int(11) NOT NULL DEFAULT '0',
-  `api_udt` int(10) NOT NULL DEFAULT '0',
+  `power_type` varchar(32) NOT NULL DEFAULT '',
   `powerType` int(10) NOT NULL DEFAULT '0',
   `str` int(10) NOT NULL DEFAULT '0',
   `agi` int(10) NOT NULL DEFAULT '0',
@@ -832,10 +729,10 @@ CREATE TABLE IF NOT EXISTS `roster_players` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_plugin`
+## Table structure for table `renprefix_plugin`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_plugin` (
+CREATE TABLE IF NOT EXISTS `renprefix_plugin` (
   `addon_id` int(11) NOT NULL AUTO_INCREMENT,
   `basename` varchar(16) NOT NULL DEFAULT '',
   `parent` varchar(100) DEFAULT NULL,
@@ -855,10 +752,10 @@ CREATE TABLE IF NOT EXISTS `roster_plugin` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_plugin_config`
+## Table structure for table `renprefix_plugin_config`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_plugin_config` (
+CREATE TABLE IF NOT EXISTS `renprefix_plugin_config` (
   `addon_id` int(11) NOT NULL DEFAULT '0',
   `id` int(11) UNSIGNED NOT NULL,
   `config_name` varchar(255) DEFAULT NULL,
@@ -871,10 +768,10 @@ CREATE TABLE IF NOT EXISTS `roster_plugin_config` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_realmstatus`
+## Table structure for table `renprefix_realmstatus`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_realmstatus` (
+CREATE TABLE IF NOT EXISTS `renprefix_realmstatus` (
   `server_name` varchar(20) NOT NULL DEFAULT '',
   `server_region` varchar(2) NOT NULL DEFAULT '',
   `servertype` varchar(20) NOT NULL DEFAULT '',
@@ -887,10 +784,10 @@ CREATE TABLE IF NOT EXISTS `roster_realmstatus` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_reputation`
+## Table structure for table `renprefix_reputation`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_reputation` (
+CREATE TABLE IF NOT EXISTS `renprefix_reputation` (
   `member_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `faction` varchar(32) NOT NULL DEFAULT '',
   `parent` varchar(32) DEFAULT NULL,
@@ -906,10 +803,10 @@ CREATE TABLE IF NOT EXISTS `roster_reputation` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_sessions`
+## Table structure for table `renprefix_sessions`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_sessions` (
+CREATE TABLE IF NOT EXISTS `renprefix_sessions` (
   `sess_id` varchar(35) DEFAULT NULL,
   `session_id` char(32) NOT NULL DEFAULT '',
   `session_user_id` varchar(5) DEFAULT NULL,
@@ -929,10 +826,10 @@ CREATE TABLE IF NOT EXISTS `roster_sessions` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_sessions_keys`
+## Table structure for table `renprefix_sessions_keys`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_sessions_keys` (
+CREATE TABLE IF NOT EXISTS `renprefix_sessions_keys` (
   `key_id` char(32) NOT NULL,
   `user_id` mediumint(8) UNSIGNED NOT NULL DEFAULT '0',
   `last_ip` varchar(40) NOT NULL,
@@ -944,10 +841,10 @@ CREATE TABLE IF NOT EXISTS `roster_sessions_keys` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_skills`
+## Table structure for table `renprefix_skills`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_skills` (
+CREATE TABLE IF NOT EXISTS `renprefix_skills` (
   `member_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `skill_type` varchar(32) NOT NULL DEFAULT '',
   `skill_name` varchar(32) NOT NULL DEFAULT '',
@@ -962,10 +859,10 @@ CREATE TABLE IF NOT EXISTS `roster_skills` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_talents`
+## Table structure for table `renprefix_talents`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_talents` (
+CREATE TABLE IF NOT EXISTS `renprefix_talents` (
   `member_id` int(11) NOT NULL DEFAULT '0',
   `build` tinyint(2) NOT NULL DEFAULT '0',
   `name` varchar(64) NOT NULL DEFAULT '',
@@ -983,10 +880,10 @@ CREATE TABLE IF NOT EXISTS `roster_talents` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_talents_data`
+## Table structure for table `renprefix_talents_data`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_talents_data` (
+CREATE TABLE IF NOT EXISTS `renprefix_talents_data` (
   `talent_id` int(11) NOT NULL DEFAULT '0',
   `talent_num` int(11) NOT NULL DEFAULT '0',
   `tree_order` int(11) NOT NULL DEFAULT '0',
@@ -1005,10 +902,10 @@ CREATE TABLE IF NOT EXISTS `roster_talents_data` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_talenttree`
+## Table structure for table `renprefix_talenttree`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_talenttree` (
+CREATE TABLE IF NOT EXISTS `renprefix_talenttree` (
   `member_id` int(11) NOT NULL DEFAULT '0',
   `build` tinyint(2) NOT NULL DEFAULT '0',
   `tree` varchar(64) NOT NULL DEFAULT '',
@@ -1021,10 +918,10 @@ CREATE TABLE IF NOT EXISTS `roster_talenttree` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_talenttree_data`
+## Table structure for table `renprefix_talenttree_data`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_talenttree_data` (
+CREATE TABLE IF NOT EXISTS `renprefix_talenttree_data` (
   `class_id` int(11) NOT NULL DEFAULT '0',
   `build` tinyint(2) NOT NULL DEFAULT '0',
   `tree` varchar(64) NOT NULL DEFAULT '',
@@ -1040,10 +937,10 @@ CREATE TABLE IF NOT EXISTS `roster_talenttree_data` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_talent_builds`
+## Table structure for table `renprefix_talent_builds`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_talent_builds` (
+CREATE TABLE IF NOT EXISTS `renprefix_talent_builds` (
   `member_id` int(11) NOT NULL DEFAULT '0',
   `build` tinyint(2) NOT NULL DEFAULT '0',
   `tree` varchar(200) NOT NULL DEFAULT '',
@@ -1054,10 +951,10 @@ CREATE TABLE IF NOT EXISTS `roster_talent_builds` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_talent_mastery`
+## Table structure for table `renprefix_talent_mastery`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_talent_mastery` (
+CREATE TABLE IF NOT EXISTS `renprefix_talent_mastery` (
   `class_id` int(11) NOT NULL DEFAULT '0',
   `tree` varchar(64) NOT NULL DEFAULT '',
   `tree_num` varchar(64) NOT NULL DEFAULT '',
@@ -1071,10 +968,10 @@ CREATE TABLE IF NOT EXISTS `roster_talent_mastery` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_upload`
+## Table structure for table `renprefix_upload`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_upload` (
+CREATE TABLE IF NOT EXISTS `renprefix_upload` (
   `rule_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL DEFAULT '',
   `server` varchar(32) NOT NULL DEFAULT '',
@@ -1087,10 +984,10 @@ CREATE TABLE IF NOT EXISTS `roster_upload` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_user_groups`
+## Table structure for table `renprefix_user_groups`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_user_groups` (
+CREATE TABLE IF NOT EXISTS `renprefix_user_groups` (
   `group_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `group_type` tinyint(4) NOT NULL DEFAULT '1',
   `group_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
@@ -1103,10 +1000,10 @@ CREATE TABLE IF NOT EXISTS `roster_user_groups` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_user_members`
+## Table structure for table `renprefix_user_members`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_user_members` (
+CREATE TABLE IF NOT EXISTS `renprefix_user_members` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `usr` varchar(32) DEFAULT NULL,
   `user_display` varchar(100) NOT NULL,
@@ -1147,10 +1044,10 @@ CREATE TABLE IF NOT EXISTS `roster_user_members` (
 ## --------------------------------------------------------
 
 ##
-## Table structure for table `roster_webdb_cache`
+## Table structure for table `renprefix_webdb_cache`
 ##
 
-CREATE TABLE IF NOT EXISTS `roster_webdb_cache` (
+CREATE TABLE IF NOT EXISTS `renprefix_webdb_cache` (
   `item_id` int(11) NOT NULL,
   `texture` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,

@@ -106,21 +106,19 @@ else
 		break;
 		
 		case 'talent':
-		
-			$a = $roster->api2->fetch('spell',array('id'=>$id));
+			$sqlg = "SELECT * FROM `".$roster->db->table('talents_data') ."` WHERE `talent_id` = '".$id."' ";
+			$resultg = $roster->db->query($sqlg);
+			$row = $roster->db->fetch($resultg);
 
 			$roster->tpl->assign_vars(array(
-					'TYPE'			=> 'talent',
-					'NAME'			=> $a['name'],
-					'DESCRIPTION'	=> str_replace('\n\n','<br>',$a['description']),//$a['description'],
-					'RANGE'			=> ( isset( $a['range'] ) ? $a['range'] : ''),
-					'POWERCOST'		=> ( isset( $a['powerCost'] ) ? $a['powerCost'] : ''),
-					'CASTTIME'		=> ( isset( $a['castTime'] ) ? $a['castTime'] : ''),
-					'COOLDOWN'		=> ( isset( $a['cooldown'] ) ? $a['cooldown'] : ''),
+					'TYPE'		=> 'basic',
+					'NAME'		=> $row['name'],
+					'INFO'		=> $row['tooltip'],
 				)
 			);
 			$roster->tpl->set_filenames(array('tooltip' => 'api.html'));
 			$output = $roster->tpl->fetch('tooltip');
+
 		break;
 		
 		case 'glyph':

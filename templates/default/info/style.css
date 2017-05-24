@@ -13,7 +13,12 @@
 
 /*********** Common Elements ***********/
 .main-panel .container { padding: 0 0 20px; background: #eaca81 url(../images/section_bg.jpg) repeat center top; margin-bottom: 3px; border: 1px solid #EEDBA2; }
-
+.row-eq-height {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
 .section-profile {
 color: #ebdec2;
 padding-top: 25px;
@@ -28,6 +33,7 @@ z-index:10;
     position: absolute;
     right: 0;
     top: 0;
+		overflow: hidden;
 }
 .profile-background .bg-image {
 	position: absolute;
@@ -1057,6 +1063,33 @@ float: right;
 .summary-bonus-tally .other .comma { letter-spacing: 1px; }
 .summary-bonus-tally .tip { border-bottom: 0; }
 
+.talent-build {display:none;}
+.talent-build.selected {display:block;}
+.talents-talent {
+	width:30%;
+	display: inline-block;
+	padding: 3px;
+	height: 56px;
+	position: relative;
+}
+.talents-talent .spell-name {
+	align-content: center;
+	display: inline-grid;
+	position: absolute;
+	margin: 1px;
+	height: 48px;
+}
+.spec-button {
+	border: 1px solid;
+	border-color:#fff;
+	display: inline-block;
+}
+.spec-button:not(.selected) {
+	opacity: .4;
+}
+.spec-button.selected {
+	border-color:#e5cc80
+}
 
 /*
 	new layout.. maybe

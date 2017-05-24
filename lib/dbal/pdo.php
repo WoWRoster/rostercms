@@ -226,12 +226,15 @@ class roster_db
 		unset($this->query_id);
 
 		//$query = preg_replace('/;.*$/', '', $query);
-
-		$this->querytime = format_microtime();
-
-		try
+		if( $query != '' )
 		{
-			if( $query != '' )
+			$this->querytime = format_microtime();
+
+			if( $this->log_level > 0 )
+			{
+				$this->_log($query);
+			}
+			try
 			{
 				$this->query_count++;
 				//$this->query_id = $this->link_id->query($query);//, $this->link_id);
@@ -240,47 +243,25 @@ class roster_db
 				//print_r($res);echo ' ~~<br>';
 				$this->query_id->execute();
 				//print_r($this->query_id);echo ' ~~~<br>';
-			}
 
-			if( !empty($this->query_id) )
-			{
-				if( $this->log_level > 0 )
+				if( !empty($this->query_id) )
 				{
-					$this->_log($query);
+					
+					unset($this->record[spl_object_hash($this->query_id)]);
+					unset($this->record_set[spl_object_hash($this->query_id)]);
+					return $this->query_id;
 				}
-				unset($this->record[spl_object_hash($this->query_id)]);
-				unset($this->record_set[spl_object_hash($this->query_id)]);
-				return $this->query_id;
 			}
-		}
-		catch (PDOException $e)
-		{
-			$err = "The statement failed.<br />";
-			$err .= "getCode: ". $e->getCode () . "<br />";
-			$err .= "getMessage: ". $e->getMessage () . "<br />";
-			$this->queries[$this->file][$this->query_count]['error'] =  $e->getMessage ();
-			//die(__FILE__ . ': line[' . __LINE__ . ']<br />Database Error "' . $query . '"<br />PDO said:<br />' .  $err . ' <br />' . $this->_backtrace());
-		}
-		/*
-		if( $query != '' )
-		{
-			$this->query_count++;
-			$this->query_id = $this->link_id->query($query);//, $this->link_id);
-			//print_r($this->query_id);
-		}
-
-		if( !empty($this->query_id) )
-		{
-			if( $this->log_level > 0 )
+			catch (PDOException $e)
 			{
-				$this->_log($query);
+				$err = "The statement failed.<br />";
+				$err .= "getCode: ". $e->getCode () . "<br />";
+				$err .= "getMessage: ". $e->getMessage () . "<br />";
+				$this->queries[$this->file][$this->query_count]['error'] =  $e->getMessage ();
+				//die(__FILE__ . ': line[' . __LINE__ . ']<br />Database Error "' . $query . '"<br />PDO said:<br />' .  $err . ' <br />' . $this->_backtrace());
 			}
-			unset($this->record[spl_object_hash($this->query_id)]);
-			unset($this->record_set[spl_object_hash($this->query_id)]);
-			return $this->query_id;
 		}
-		else
-		*/
+		
 		if( $this->error_die )
 		{
 			// I think we should use this method for dying
@@ -348,6 +329,34 @@ class roster_db
 
 			$query = ' (' . implode(', ', $fields) . ') VALUES (' . implode(', ', $values) . ')';
 		}
+		elseif( $query == 'INSERT_ARRAY' )
+		{
+			$v = array();
+			foreach ($array as $a)
+			{
+				$values= array();
+				foreach( $a as $field => $value )
+				{
+					$fields[$field] = "`$field`";
+
+					if( is_null($value) )
+					{
+						$values[] = 'NULL';
+					}
+					elseif( is_string($value) )
+					{
+						$values[] = $this->link_id->quote($value);
+					}
+					else
+					{
+						$values[] = ( is_bool($value) ) ? intval($value) : $value;
+					}
+				}
+				$v[] = implode(', ', $values);
+			}
+
+			$query = ' (' . implode(', ', $fields) . ') VALUES (' . implode('), (', $v) . ')';
+		}
 		elseif( $query == 'UPDATE' )
 		{
 			foreach( $array as $field => $value )
@@ -409,6 +418,34 @@ class roster_db
 			}
 
 			$query = ' VALUES (' . implode(', ', $values) . ')';
+		}
+		elseif( $query == 'REPLACE_ARRAY' )
+		{
+			$v = array();
+			foreach ($array as $a)
+			{
+				$values= array();
+				foreach( $a as $field => $value )
+				{
+					$fields[] = "`$field`";
+
+					if( is_null($value) )
+					{
+						$values[] = 'NULL';
+					}
+					elseif( is_string($value) )
+					{
+						$values[] = $this->link_id->quote($value);
+					}
+					else
+					{
+						$values[] = ( is_bool($value) ) ? intval($value) : $value;
+					}
+				}
+				$v[] = implode(', ', $values);
+			}
+
+			$query = ' VALUES (' . implode('), (', $v) . ')';
 		}
 
 		return $query;

@@ -69,8 +69,8 @@ margin:2px;
 .dropdown-menu .smenuitem a:hover{
 	color: #fff;
 }
+.faction-score { font-weight: bold; color: #fff; text-shadow: 1px 1px 1px black; text-align: center; z-index: 2; position: absolute; top: 0; left: 0; width: 100%; }
 
-*/
 .xmbox {  background: rgba(0, 0, 0, 0.19);  margin: 2px;}
 .xmboxo { height: 180px; background: rgba(0, 0, 0, 0.19);  margin: 2px;}
 
@@ -2345,4 +2345,41 @@ a.list-group-item-danger.active:focus {
 	width: 100%;
 	text-align: center;
 }
+.content-box, .content-box-large {
+   margin-bottom:30px;
+   background:#385b7d;
+   border-radius:10px;
+   padding:10px;
+   border-left:1px solid #eee;
+   border-top:1px solid #eee;
+   border-right:2px solid #eee;
+   border-bottom:2px solid #eee; 
+}
 
+.content-box-large {
+  padding: 20px;
+}
+
+.box-with-header {
+  border-top: none;
+  border-top-left-radius:0px;
+  border-top-right-radius:0px;
+}
+
+.content-box-header {
+  min-height: 40px;
+   font-size: 16px;
+   background:#2c3742;
+   border-top-left-radius:5px;
+   border-top-right-radius:5px;
+   padding:10px;
+   border-left:1px solid #eee;
+   border-top:1px solid #eee;
+   border-right:2px solid #eee;
+}
+
+.alert-status {
+	color: #31708f;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}

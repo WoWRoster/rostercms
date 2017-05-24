@@ -98,7 +98,7 @@ $lang['admin']['rsync_realm_update_access'] 			= 'Realm Update Access|Who is abl
 $lang['admin']['rsync_guild_add_access'] 				= 'Guild Add Access|Who is able to add new guilds';
 
 $lang['start'] = "Start";
-$lang['start_message'] = "You're about to start Roster Sync for %s.<br><br>By doing this, all data for %s will be overwritten<br />with details from Blizzard Api. This can only be undone<br />by uploading a current wowroster.lua.<br /><br />Do you want to start this process yet?";
+$lang['start_message'] = "You're about to start Roster Sync for %s.<br><br>By doing this, all data for %s will be overwritten<br />with details from Blizzard Api.<br /><br />Do you want to start this process yet?";
 
 $lang['start_message_the_char']			= "the character";
 $lang['start_message_this_char']		= "this character";
@@ -110,7 +110,7 @@ $lang['start_message_this_memberlist']	= "the guild memberslist";
 $lang['start_message_the_profile']		= "Profiles";
 $lang['start_message_the_gprofile']		= "Guild profiles";
 $lang['start_message_the_addguild']		= "Adding a Guild";
-$lang['start_message_the_memberlist']	= "Guild Memberslist";
+$lang['start_message_the_memberlist']	= "Guild Members List";
 
 $lang['start_message_this_profile']		= "this character";
 $lang['start_message_this_gprofile']	= "the guild characters";

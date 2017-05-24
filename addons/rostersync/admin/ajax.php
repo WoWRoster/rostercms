@@ -17,6 +17,8 @@ var t;
 				setTimeout(function() {
 				}, 500);
 			},
+			async: false,
+			cache: false,
 			success: function(data)
 			{
 				//console.log(data);
@@ -51,17 +53,17 @@ var t;
 			data: members[next],
 			dataType: "html",
 			async: false,
+			cache: false,
 			success: function(r){
 				jQuery(\'#results\').prepend(r);
 				processed = processed+1;
 				_getper();
 				members.splice(next, 1);
 				_updateNext();
-				setTimeout(function() {
-				}, 500);
+				t = setTimeout( process_many, nextRequest );
 			},
 		});
-		t = setTimeout( process_many, nextRequest );
+		
 	}
 	
 	jQuery(document).on(\'click\', \'#STOP\', function (e) {
@@ -82,6 +84,7 @@ var t;
 			data: members[next],
 			dataType: "html",
 			async: false,
+			cache: false,
 			success: function(r){
 				jQuery(\'#results\').prepend(r);
 				processed = processed+1;

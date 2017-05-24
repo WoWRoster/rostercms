@@ -49,58 +49,35 @@
 
 
 <!-- IF S_DEBUG -->
-			<br />
-			<div class="tier-1-a">
-				<div class="tier-1-b">
-					<div class="tier-1-c">
-						<div class="tier-1-title">Roster Debugging</div>
-						<div class="tier-2-a">
-							<div class="tier-2-b">
-								<div class="tier-2-title">
-									<table width=100%>
-										<td width="10%">Line</td>
-										<td width="10%">Time</td>
-										<td width="10%">Class</td>
-										<td width="20%">Function</td>
-										<td width="30%">Info</td>
-										<td width="10%">Status</td>
-									</table>
-								</div>
-			<!-- BEGIN d_row -->
-								<div class="tier-6-a">
-									<div class="tier-6-b">
-										<table width="100%">
-											<tr>
-												<td width="10%">{d_row.LINE}</td>
-												<td width="10%">{d_row.TIME}</td>
-												<td width="10%">{d_row.CLASS}</td>
-												<td width="20%">{d_row.FUNC}</td>
-												<td width="30%">{d_row.INFO}</td>
-												<td width="10%">{d_row.STATUS}</td>
-											</tr>
-										</table>
-									</div>
-								</div>
-			<!-- IF DEBUG_DATA -->
-								<div class="tier-1-a">
-									<div class="tier-1-b">
-										<div class="tier-1-c">
-											<div class="tier-1-title">Arguments</div>
-											{d_row.ARGS}
-										</div>
-										<div class="tier-1-title">Returns</div>
-											{d_row.RET}
-									</div>
-								</div>
+<br />
+	<div class="tier-1-title">Roster Debugging</div>
 
-
-			<!-- ENDIF -->
-			<!-- END d_row -->
-							</div>
-						</div>
-					</div>
+		<table class="table table-striped">
+			<thead>
+				<th width="10%">Line</th>
+				<th width="10%">Time</th>
+				<th width="10%">Class</th>
+				<th width="20%">Function</th>
+				<th width="30%">Info</th>
+				<th width="10%">Status</th>
+			</thead>
+		
+<!-- BEGIN d_row -->
+			<tr>
+				<td width="10%">{d_row.LINE}</td>
+				<td width="10%">{d_row.TIME}</td>
+				<td width="10%">{d_row.CLASS}</td>
+				<td width="20%">{d_row.FUNC}</td>
+				<td width="30%">{d_row.INFO}</td>
+				<td width="10%">{d_row.STATUS}</td>
+			</tr>
+<!-- END d_row -->
+		</table>
 				</div>
 			</div>
+		</div>
+	</div>
+</div>
 
 			<!-- ENDIF -->
 			

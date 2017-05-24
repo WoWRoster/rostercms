@@ -215,7 +215,7 @@ footer .copy{
    border-bottom-color: #fff !important;
 }
 
-/* Sidebar navigation */
+/* Sidebar navigation *
 
 .content-box, .content-box-large {
    margin-bottom:30px;
@@ -249,7 +249,7 @@ footer .copy{
    border-top:1px solid #eee;
    border-right:2px solid #eee;
 }
-
+*/
 .striped-bar {
 	background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
 	background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);

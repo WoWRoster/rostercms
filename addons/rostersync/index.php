@@ -29,3 +29,4 @@ if($roster->pages[2] == 'addguild')
 	}
 
 }
+$job->_showFooter();

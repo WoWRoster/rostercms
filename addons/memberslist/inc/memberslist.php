@@ -284,17 +284,7 @@ roster_add_js($js, 'inline', 'header', false, false);
 			$result = $roster->db->query($rowsqry);
 			$data = $roster->db->fetch($result);
 			$num_rows = $roster->db->num_rows($result);
-			/*
-			if ($num_rows > 1)
-			{
-				$num_rows = $nn = 0;
-				while( $data = $roster->db->fetch($result, SQL_NUM) )
-				{
-					$nn++;
-				}
-				$num_rows = $nn;
-			}
-			*/
+			
 		}
 		
 		// --[ Add sorting SQL ]--
@@ -524,11 +514,11 @@ roster_add_js($js, 'inline', 'header', false, false);
 			}
 
 			// Cache lines for main/alt stuff
-			if( $this->addon['config']['group_alts'] < 0 )
-			{
+			//if( $this->addon['config']['group_alts'] < 0 )
+			//{
 				$lookup[] = count($lines);
 				$lines[]['main'] = $line;
-			}
+		/*	}
 			elseif( $row['main_id'] == $row['member_id'] )
 			{
 				$lookup[] = $row['member_id'];
@@ -539,7 +529,7 @@ roster_add_js($js, 'inline', 'header', false, false);
 				$lookup[] = $row['member_id'];
 				$lines[$row['member_id']]['amain'] = $line;
 				$lines[$row['main_id']]['alts'][] = $line;
-			}
+			}*/
 		}
 
 		// Main/Alt block
@@ -718,7 +708,6 @@ roster_add_js($js, 'inline', 'header', false, false);
 			$tooltip = $roster->locale->act['level'] . ' ' . $row['level'] . ' ' . $row['sex'] . ' ' . $row['race'] . ' ' . $row['class'] . "\n";
 
 			$tooltip .= ($row['last_online'] ? $roster->locale->act['lastonline'] . ': ' . $row['last_online'] : '') . ($row['zone'] ? ' in ' . $row['zone'] : '');
-			$tooltip .= ( $this->addon['config']['member_note'] == 0 || $row['nisnull'] ? '' : "\n" . $roster->locale->act['note'] . ': ' . $row['note'] );
 
 			$tooltip = ' style="cursor:help;" ' . makeOverlib($tooltip,$tooltip_h,'',1,'',',WRAP');
 		}
@@ -966,13 +955,14 @@ roster_add_js($js, 'inline', 'header', false, false);
 		
 		foreach( $talents as $talent )
 		{
+			//d($talent);
 			list($_s, $name, $points, $icon, $_b) = explode('|', $talent);
-			$_t[$_b]['tip'][] = $name.' - '.$_d[$_b]['role'];
-			if( !isset($_t[$_b]['point']) || $points > $_t[$_b]['point'] )
+			$_t[$_s]['tip'][] = $name.' - '.$_d[$_s]['role'];
+			if( !isset($_t[$_s]['point']) || $points > $_t[$_s]['point'] )
 			{
 			//	$_t[$_b]['point'] = $points;
-				$_t[$_b]['name'] = $name;
-				$_t[$_b]['icon'] = strtolower($_d[$_b]['icon']);
+				$_t[$_s]['name'] = $name;
+				$_t[$_s]['icon'] = strtolower($_d[$_s]['icon']);
 				$notalent = false;
 			}
 		}
@@ -985,7 +975,7 @@ roster_add_js($js, 'inline', 'header', false, false);
 				$tooltip .= $icon . implode(' / ', $build['tip']) . '<br />';
 			}
 			$tooltip = '<div style="font-size:12px;font-weight:bold;">' . $tooltip . '</div>';
-			$specicon = '<div class="item-sm" ' . makeOverlib($tooltip, $_t[1]['name'], '', 2, '', ',WRAP') . '><img src="' . $roster->config['interface_url'] . 'Interface/Icons/' . $_t[1]['icon'] . '.' . $roster->config['img_suffix'] . '" alt="" /><div class="mask"></div></div>';
+			$specicon = '<div class="item-sm" ' . makeOverlib($tooltip, $_t[0]['name'], '', 2, '', ',WRAP') . '><img src="' . $roster->config['interface_url'] . 'Interface/Icons/' . $_t[0]['icon'] . '.' . $roster->config['img_suffix'] . '" alt="" /><div class="mask"></div></div>';
 		}
 
 		if( active_addon('info') )

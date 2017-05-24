@@ -1951,3 +1951,16 @@ $lang['admin']['default_group'] = 'Dafault User Group|The Default Group for new 
 $lang['admin']['minifyjs'] = 'Compress JS|chose to minify the js files thata re not minifyd already';
 $lang['admin']['bootstrap'] = 'Bootstrap|Select the bootstrap color theme for roster';
 
+/*
+	Info addon strings new
+*/
+$lang['standing_to_local'] = array (
+	7	=> 'Exalted',
+	6	=> 'Revered',
+	5	=> 'Honored',
+	4	=> 'Friendly',
+	3	=> 'Neutral',
+	2	=> 'Unfriendly',
+	1	=> 'Hostile',
+	0	=> 'Hated',
+);

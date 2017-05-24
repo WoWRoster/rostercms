@@ -179,6 +179,7 @@ class char
 		$this->data = $data;
 		$this->locale = $roster->locale->wordings[$this->data['clientLocale']];
 
+		/*
 		// Get display column names
 		$query = 'SELECT * FROM `' . $roster->db->table('default',$addon['basename']) . '`;';
 
@@ -200,6 +201,7 @@ class char
 				$addon['config'][$name] = $row[$name];
 			}
 		}
+		*/
 
 		//echo '<pre>';		print_r($this->data);		echo '</pre>';
 		//d($this->data);
@@ -216,27 +218,20 @@ class char
 
 		//d($this->data);
 		//d($addon);
-		$this->data['profile_main'] = 'zangarmarsh/74/113337162-main.jpg';		
+		//$this->data['profile_main'] = 'zangarmarsh/74/113337162-main.jpg';		
 		$roster->tpl->assign_vars(array(
 			'S_MAX_LEVEL' => ROSTER_MAXCHARLEVEL,
 
-			'S_CHAR_IMG'	=> (!empty($this->data['profile_main']) ? 'https://render-us.worldofwarcraft.com/character/'.$this->data['profile_main'] : $addon['tpl_image_url'].'classbg/'.strtolower(str_replace(' ', '', $this->data['class'])).'.jpg' ),
+			'S_CHAR_IMG'	=> (!empty($this->data['background']) ? 'https://render-us.worldofwarcraft.com/character/'.$this->data['background'] : $addon['tpl_image_url'].'classbg/'.strtolower(str_replace(' ', '', $this->data['class'])).'.jpg' ),
 			'S_CHAR_BG'	=> (!empty($this->data['profile_main']) ? 'https://render-us.worldofwarcraft.com/character/'.$this->data['profile_main'] : $addon['tpl_image_url'].'classbg/'.strtolower(str_replace(' ', '', $this->data['class'])).'.jpg' ),
 
-			'S_PLAYED'      => $roster->auth->getAuthorized($addon['config']['show_played']),
-			'S_MONEY'       => $roster->auth->getAuthorized($addon['config']['show_money']),
 			'S_PET_TAB'     => $roster->auth->getAuthorized($addon['config']['show_pets']),
 			'S_COMPAN_TAB'  => $roster->auth->getAuthorized($addon['config']['show_companions']),
 			'S_REP_TAB'     => true,//$roster->auth->getAuthorized($addon['config']['show_reputation']),
 			'S_SKILL_TAB'   => true,//$roster->auth->getAuthorized($addon['config']['show_skills']),
-			'S_PVP_TAB'     => $roster->auth->getAuthorized($addon['config']['show_honor']),
 			'S_TALENT_TAB'  => $roster->auth->getAuthorized($addon['config']['show_talents']),
 			'S_GLYPH_TAB'   => $roster->auth->getAuthorized($addon['config']['show_glyphs']),
-			'S_SPELL_TAB'   => $roster->auth->getAuthorized($addon['config']['show_spellbook']),
-			'S_BONUS_TAB'   => $roster->auth->getAuthorized($addon['config']['show_item_bonuses']),
 			'S_PET_TALENT_TAB' => $roster->auth->getAuthorized($addon['config']['show_pet_talents']),
-			'S_PET_SPELL_TAB'  => $roster->auth->getAuthorized($addon['config']['show_pet_spells']),
-			'S_CURRENCY_TAB'   => $roster->auth->getAuthorized($addon['config']['show_currency']),
 
 			'S_PETS'        => false,
 			//'S_MOUNTS'      => false,
@@ -249,11 +244,7 @@ class char
 
 			'HEALTH'        => $this->data['health'],
 			'POWER'         => $this->data['mana'],
-			'TALENT_POINTS' => $this->data['talent_points'],
-
-			'MONEY_G' => $this->data['money_g'],
-			'MONEY_S' => $this->data['money_s'],
-			'MONEY_C' => $this->data['money_c']
+			'TALENT_POINTS' => $this->data['talent_points']
 			)
 		);
 	}
@@ -386,35 +377,16 @@ class char
 				'S_COMPANIONS' => (bool)$comp_num,
 				)
 			);
-
 			return true;
 		}
 		return false;
 	}
 
-	/**
-		got pissed off with tryen to fix old talent system .. so now im just gona build a better faster one...
-		NumTalents == 18 ALLWAYS
-		3 colums 
-		6 rows
-		1..1 talent tree per class
-		here we go
-	*/
-	
 	function show_talents( )
 	{
 		global $roster, $addon;
 
-		$sqlquery = "SELECT "
-			. " `builds`.`tree`,"
-			. " `builds`.`build`,"
-			. " `builds`.`spec`,"
-			. " `specs`.`order`,"
-			. " `specs`.`pointsspent` "
-			. "FROM `" . $roster->db->table('talent_builds') . "` as builds "
-			. "LEFT JOIN `".$roster->db->table('talenttree')."` AS specs ON `builds`.`member_id` = `specs`.`member_id`  "
-			. " WHERE `builds`.`member_id` = '" . $this->data['member_id'] . "' and `specs`.`build` = `builds`.`build`"
-			. " ORDER BY `specs`.`order` ASC,`builds`.`build` ASC;";
+		$sqlquery = "SELECT * FROM `" . $roster->db->table('talenttree')."` WHERE `member_id` = '" . $this->data['member_id'] . "' ORDER BY `order` ASC;";
 
 		$result = $roster->db->query($sqlquery);
 
@@ -422,12 +394,8 @@ class char
 		
 		while( $t = $roster->db->fetch($result, SQL_ASSOC) )
 		{
-			//d($t);
 			$spec[$t['build']]=array();
-			$spec[$t['build']]['build'] = $t['build'];
-			$spec[$t['build']]['spec'] = $t['spec'];
-			$spec[$t['build']]['order'] = $t['order'];
-			//$spec[$t['build']]['spent'] = $t['pointsspent'];
+			$spec[$t['build']]=$t;
 		}
 
 		$tree_rows = $roster->db->num_rows($result);
@@ -441,8 +409,7 @@ class char
 
 		// Temp var for talent spec detection
 		$spec_points_temp = array();
-		//d($specs);
-		//echo '<pre>';		print_r($spec);		echo '</pre>';
+
 		foreach($spec as $build => $build_data)
 		{
 			$spc = $build;
@@ -451,60 +418,55 @@ class char
 			$treeindex = $build.'t';
 			//echo $build_data['spec'].'<br>';
 			$specdata[$build]['order'] = $order;
-			$specdata[$build]['name'] = $build_data['spec'];
-			$specdata[$build]['role'] = $specs[$build_data['spec']]['roles'];
-			$specdata[$build]['icon'] = $specs[$build_data['spec']]['icon'];
-			// Store our talent points for later use
+			$specdata[$build]['name'] = $build_data['tree'];
+			$specdata[$build]['role'] = $specs[$build_data['tree']]['roles'];
+			$specdata[$build]['desc'] = $specs[$build_data['tree']]['desc'];
+			$specdata[$build]['icon'] = $specs[$build_data['tree']]['icon'];
+			$specdata[$build]['image'] = $build_data['background'];
 
-			// Set talent tree data
-			$talentdata[$build]['name'] = $build_data['spec'];
-			$talentdata[$build]['image'] = $specs[$build_data['spec']]['background'];
-			//$talentdata[$build]['points'] = $build_data['spent'];
-			$talentdata[$build]['role'] =  strtolower($specs[$build_data['spec']]['roles']);
-			$talentdata[$build]['talents'] = $talents;
-			
 			$roster->tpl->assign_block_vars('spec', array(
 				'TALENT_EXPORT' => sprintf($roster->locale->act['export_url2'], strtolower($roster->locale->act['id_to_class'][$this->data['classid']]), $build_data['build']),
-				// old code keeping for now  sprintf($roster->locale->act['export_url'], $this->data['classid'], $builddata),
 				'ID'    => $build,
 				'TID'	=> $treeindex,
-				'NAME'  => $specdata[$build]['name'],
+				'NAME'  => $build_data['tree'],
+				'DESC'  => $specdata[$build]['desc'],
 				'ROLE'  => strtolower($specdata[$build]['role']),
 				'TYPE'  => $roster->locale->act['talent_build_' . ($build_data['order'] == 1 ? 0 : 1)],
-				//'BUILD' => $build_data['spent'],
-				'ICON'  => $specs[$build_data['spec']]['icon'],
-				'SELECTED' => ($build_data['order'] == 1 ? true : false)
+				'ICON'  => $specdata[$build]['icon'],
+				'BGIMG'  => $specdata[$build]['image'],
+				'SELECTED' => ($build_data['selected'] == 1 ? true : false)
 				)
 			);
-			$talentArray = preg_split('//', $build_data['build'], -1, PREG_SPLIT_NO_EMPTY);
-			
-			$roster->tpl->assign_block_vars('spec.build', array(
-					'L_POINTS_SPENT' => sprintf($roster->locale->act['pointsspent'], $build_data['spec']),
-					'NAME' => $specdata[$build]['name'],
-					'ROLE'  => $specdata[$build]['role'],
-					'ID'    => $build,
-					'TID'	=> $treeindex,
-					'ICON' => $specs[$build_data['spec']]['background'],
-					'HSELECT' => true,
-					'SELECTED' => ($build_data['order'] == 1 ? true : false)
+			if ($build_data['selected'] == 1)
+			{
+				$roster->tpl->assign_vars(array(
+					'SPEC' => $build_data['tree'],
 					)
 				);
-				$i=0;
-				$unl = 15;
-				foreach( $talents[$build] as $row )
-				{
-					$roster->tpl->assign_block_vars('spec.build.talent', array(
-						'NAME'		=> $row['name'],
-						'ID'		=> $row['id'],
-						'TOOLTIP'   => (isset($row['tooltip']) ? $row['tooltip'] : ''),
-						'ICON'      => (isset($row['icon']) ? $row['icon'] : '')
-						));
-				}
-				
+			}
 			
-			
-		}
+			$roster->tpl->assign_block_vars('spec.build', array(
+				'L_POINTS_SPENT' => sprintf($roster->locale->act['pointsspent'], $build_data['pointsspent']),
+				'NAME' => $specdata[$build]['name'],
+				'ROLE'  => $specdata[$build]['role'],
+				'ID'    => $build,
+				'TID'	=> $treeindex,
+				//'ICON' => $specs[$build_data['spec']]['background'],
+				'HSELECT' => true,
+				'SELECTED' => ($build_data['selected'] == 1 ? true : false)
+				)
+			);
 
+			foreach( $talents[$build] as $row )
+			{
+				$roster->tpl->assign_block_vars('spec.build.talent', array(
+					'NAME'		=> $row['name'],
+					'ID'		=> $row['id'],
+					'TOOLTIP'   => (isset($row['tooltip']) ? $row['tooltip'] : ''),
+					'ICON'      => (isset($row['icon']) ? $row['icon'] : '')
+				));
+			}
+		}
 		return true;
 	}
 	
@@ -545,10 +507,8 @@ class char
 		{
 			$talents[$row['build']][$row['row']]['name'] = $row['name'];
 			$talents[$row['build']][$row['row']]['id'] = $row['talent_id'];
-			$talents[$row['build']][$row['row']]['tooltip'] = makeOverlib($row['talent_id'], $row['name'], '', 2,'','','talent');//$row['tooltip'];
+			$talents[$row['build']][$row['row']]['tooltip'] = makeOverlib($row['talent_id'], $row['name'], '', 2,'','','talent');
 			$talents[$row['build']][$row['row']]['icon'] = $row['texture'];
-			//$talents[$row['build']][$row['row']]['isspell'] = $row['isspell'];
-			//$talents[$row['build']][$row['row']]['spec'] = $row['tree_order'];
 		}
 
 		return $talents;
@@ -629,7 +589,7 @@ class char
 				$roster->tpl->assign_block_vars('skill',array(
 					'ID'      => $sindex,
 					'NAME'    => $skill['name'],
-					'NAME_ID' => $this->locale['skill_to_id'][$skill['name']]
+					'NAME_ID' => $roster->locale->act['skill_to_id'][$skill['name']]
 					)
 				);
 
@@ -640,7 +600,7 @@ class char
 						'WIDTH'    => $skillbar['barwidth'],
 						'VALUE'    => $skillbar['value'],
 						'MAXVALUE' => $skillbar['maxvalue'],
-						'ICON'     => $this->locale['ts_iconArray'][$skillbar['name']]
+						'ICON'     => $roster->locale->act['ts_iconArray'][$skillbar['name']]
 						)
 					);
 
@@ -651,7 +611,7 @@ class char
 							'WIDTH'    => $skillbar['barwidth'],
 							'VALUE'    => $skillbar['value'],
 							'MAXVALUE' => $skillbar['maxvalue'],
-							'ICON'     => $this->locale['ts_iconArray'][$skillbar['name']]
+							'ICON'     => $roster->locale->act['ts_iconArray'][$skillbar['name']]
 							)
 						);
 					}
@@ -739,19 +699,202 @@ class char
 		}
 	}
 
+	/**
+	*
+	*	rep 2 functions fixing this bitch
+	*
+	*/
+	function show_reputation()
+	{
+		global $roster, $addon;
 
+		$repData = $this->_rep_array();
+		
+		foreach ($repData as $exp => $f)
+		{
+			$roster->tpl->assign_block_vars('expantion',array(
+				'ID'			=> $exp,
+				'NAME'			=> $exp,
+				'NAME_ID'		=> $this->locale['faction_to_id'][$exp]
+			));
+			foreach ($f as $faction => $val)
+			{
+				if ( !isset($val['sub']) )
+				{
+					$level = $val['value'];
+					$max = $val['max'];
+					$standing = $this->_standing_to_image($val['standing']);
+					if ($level == 0 && $max == 0)
+					{
+						$level = 2;
+						$max = 2;
+					}
+		
+					$width = ceil($level / $max * 100);
+					$fill = $this->_standing_to_image($val['standing']);
+					$roster->tpl->assign_block_vars('expantion.faction',array(
+						'NAME'			=> $faction,
+						'WIDTH'			=> $width,
+						'FILL'      	=> $fill,
+						'STANDING'		=> $this->_standing_to_local($val['standing']),
+						'VALUE'			=> $level,
+						'MAXVALUE'		=> $max
+						)
+					);
+				}
+				else
+				{
+					if ( !isset($val['standing']) )
+					{
+						$roster->tpl->assign_block_vars('expantion.group',array(
+							'NAME'			=> $faction,
+							'ISBAR'			=> false,
+							)
+						);
+					}
+					else
+					{
+						$level = $val['value'];
+						$max = $val['max'];
+						$standing = $this->_standing_to_image($val['standing']);
+						if ($level == 0 && $max == 0)
+						{
+							$level = 2;
+							$max = 2;
+						}
+			
+						$width = ceil($level / $max * 100);
+						$fill = $this->_standing_to_image($val['standing']);
+						$roster->tpl->assign_block_vars('expantion.group',array(
+							'NAME'			=> $faction,
+							'WIDTH'			=> $width,
+							'FILL'      	=> $fill,
+							'STANDING'		=> $this->_standing_to_local($val['standing']),
+							'VALUE'			=> $level,
+							'MAXVALUE'		=> $max,
+							'ISBAR'			=> true,
+							)
+						);
+					}
+					if ( isset($val['sub']) && count($val['sub']) > 0)
+					{
+						foreach($val['sub'] as $sub => $s)
+						{
+							$level = $s['value'];
+							$max = $s['max'];
+							$standing = $this->_standing_to_image($s['standing']);
+							if ($level == 0 && $max == 0)
+							{
+								$level = 2;
+								$max = 2;
+							}
+				
+							$width = ceil($level / $max * 100);
+							$fill = $this->_standing_to_image($s['standing']);
+							$roster->tpl->assign_block_vars('expantion.group.sub',array(
+								'NAME'			=> $sub,
+								'WIDTH'			=> $width,
+								'FILL'      	=> $fill,
+								'STANDING'		=> $this->_standing_to_local($s['standing']),
+								'VALUE'			=> $level,
+								'MAXVALUE'		=> $max,
+								'ISBAR'			=> false,
+								)
+							);
+						}
+					}
+				}
+			}
+		}
+		return true;
+		
+		
+	}
+
+	function _rep_array()
+	{
+		global $roster;
+		$rid = json_decode('{"1740":"Aeda Brightdawn","2099":"Akule Riverhorn","1037":"Alliance Vanguard","1515":"Arakkoa Outcasts","1862":"Arcane Thirst (Oculeth)","1861":"Arcane Thirst (Silgryn) DEPRECATED","1860":"Arcane Thirst (Thalyssra)","1919":"Arcane Thirst (Valtrois)","1106":"Argent Crusade","529":"Argent Dawn","2045":"Armies of Legionfall","2091":"Armies of Legionfall (Paragon)","2062":"Arne Test - Paragon Reputation","2063":"Arne Test - Paragon Reputation Stormwind","1012":"Ashtongue Deathsworn","1204":"Avengers of Hyjal","1177":"Baradin\'s Wardens","1735":"Barracks Bodyguards","1133":"Bilgewater Cartel","2011":"Bizmo\'s Brawlpub","1419":"Bizmo\'s Brawlpub (Season 1)","1691":"Bizmo\'s Brawlpub (Season 2)","87":"Bloodsail Buccaneers","21":"Booty Bay","2010":"Brawl\'gar Arena","1374":"Brawl\'gar Arena (Season 1)","1690":"Brawl\'gar Arena (Season 2)","910":"Brood of Nozdormu","609":"Cenarion Circle","942":"Cenarion Expedition","1277":"Chee Chee","1975":"Conjurer Margoss","2100":"Corbyn","1731":"Council of Exarchs","1900":"Court of Farondis","2087":"Court of Farondis (Paragon)","909":"Darkmoon Faire","1440":"Darkspear Rebellion","530":"Darkspear Trolls","69":"Darnassus","1738":"Defender Illona","1733":"Delvar Ironfist","1375":"Dominance Offensive","1172":"Dragonmaw Clan","1883":"Dreamweavers","2088":"Dreamweavers (Paragon)","1275":"Ella","1492":"Emperor Shaohao","577":"Everlook","930":"Exodar","1068":"Explorers\' League","1283":"Farmer Fung","1282":"Fish Fellreed","1228":"Forest Hozen","1104":"Frenzyheart Tribe","729":"Frostwolf Clan","1445":"Frostwolf Orcs","369":"Gadgetzan","92":"Gelkis Clan Centaur","1815":"Gilnean Survivors","1134":"Gilneas","1281":"Gina Mudclaw","54":"Gnomeregan","1269":"Golden Lotus","1158":"Guardians of Hyjal","1168":"Guild","1847":"Hand of the Prophet","1279":"Haohan Mudclaw","1178":"Hellscream\'s Reach","1828":"Highmountain Tribe","2085":"Highmountain Tribe (Paragon)","946":"Honor Hold","1052":"Horde Expedition","1352":"Huojin Pandaren","749":"Hydraxian Waterlords","1947":"Illidari","2097":"Ilyssia of the Waters","2102":"Impus","47":"Ironforge","1888":"Jandvik Vrykul","1273":"Jogu the Drunk","2098":"Keeper Raynae","989":"Keepers of Time","1090":"Kirin Tor","1387":"Kirin Tor Offensive","1098":"Knights of the Ebon Blade","978":"Kurenai","1708":"Laughing Skull Orcs","1741":"Leorajh","1011":"Lower City","93":"Magram Clan Centaur","1989":"Moon Guard","1899":"Moonguard","1358":"Nat Pagle","1015":"Netherwing","1357":"Nomi","1038":"Ogri\'la","1276":"Old Hillpaw","1376":"Operation: Shieldwall","1849":"Order of the Awakened","1271":"Order of the Cloud Serpent","76":"Orgrimmar","1242":"Pearlfin Jinyu","1173":"Ramkahen","470":"Ratchet","349":"Ravenholdt","2101":"Sha\'leth","1710":"Sha\'tari Defense","1031":"Sha\'tari Skyguard","1270":"Shado-Pan","1435":"Shado-Pan Assault","1520":"Shadowmoon Exiles","1216":"Shang Xi\'s Academy","1077":"Shattered Sun Offensive","809":"Shen\'dralar","1278":"Sho","911":"Silvermoon City","890":"Silverwing Sentinels","970":"Sporeggar","1732":"Steamwheedle Draenor Expedition","1711":"Steamwheedle Preservation Society","730":"Stormpike Guard","72":"Stormwind","1388":"Sunreaver Onslaught","70":"Syndicate","2018":"Talon\'s Vengeance","1737":"Talonpriest Ishaal","932":"The Aldor","1302":"The Anglers","1156":"The Ashen Verdict","1341":"The August Celestials","1359":"The Black Prince","1351":"The Brewmasters","933":"The Consortium","510":"The Defilers","1135":"The Earthen Ring","1984":"The First Responders","1126":"The Frostborn","1067":"The Hand of Vengeance","1073":"The Kalu\'ak","1337":"The Klaxxi","509":"The League of Arathor","1345":"The Lorewalkers","941":"The Mag\'har","1859":"The Nightfallen","2089":"The Nightfallen (Paragon)","1105":"The Oracles","1850":"The Saberstalkers","990":"The Scale of the Sands","934":"The Scryers","935":"The Sha\'tar","1094":"The Silver Covenant","1119":"The Sons of Hodir","1124":"The Sunreavers","1064":"The Taunka","1272":"The Tillers","967":"The Violet Eye","1894":"The Wardens","2090":"The Wardens (Paragon)","1091":"The Wyrmrest Accord","1171":"Therazane","59":"Thorium Brotherhood","947":"Thrallmar","81":"Thunder Bluff","576":"Timbermaw Hold","1280":"Tina Mudclaw","1736":"Tormmok","922":"Tranquillien","1353":"Tushui Pandaren","68":"Undercity","1948":"Valarjar","2086":"Valarjar (Paragon)","1050":"Valiance Expedition","1739":"Vivianne","1848":"Vol\'jin\'s Headhunters","1681":"Vol\'jin\'s Spear","1085":"Warsong Offensive","889":"Warsong Outriders","1174":"Wildhammer Clan","589":"Wintersaber Trainers","1682":"Wrynn\'s Vanguard","270":"Zandalar Tribe","1117":"Sholazar Basin","936":"Shattrath City","169":"Steamwheedle Cartel","1118":"Classic","1162":"Cataclysm","1169":"Guild","1834":"Legion","1245":"Mists of Pandaria","0":"Other","980":"The Burning Crusade","1444":"Warlords of Draenor","1097":"Wrath of the Lich King","891":"Alliance Forces","892":"Horde Forces","469":"Alliance","67":"Horde"}',true);
+		$query= "SELECT * FROM `".$roster->db->table('reputation')."` WHERE `member_id` = '".$this->data['member_id']."' ORDER BY `expansion` DESC";
+		$result = $roster->db->query( $query );
+
+		$exp = array(
+			0 => 'Classic',
+			1 => 'The Burning Crusade',
+			2 => 'Wrath of the Lich King',
+			3 => 'Cataclism',
+			4 => 'Mists of Pandaria',
+			5 => 'Warlords of Draenor',
+			6 => 'Legion',
+		);
+		$exp_en = array(
+			0 => 'Classic',
+			1 => 'The Burning Crusade',
+			2 => 'Wrath of the Lich King',
+			3 => 'Cataclism',
+			4 => 'Mists of Pandaria',
+			5 => 'Warlords of Draenor',
+			6 => 'Legion',
+		);
+
+		$rep_rows = $roster->db->num_rows($result);
+
+		if ( $rep_rows > 0 )
+		{
+			$repInfo = array();
+			
+			while($data = $roster->db->fetch($result))
+			{
+				$repInfo[$data['id']] = $data;
+			}
+			
+			$repTree = array();
+			foreach ($repInfo as $i => $f)
+			{
+				if ($f['category'] == 0)
+				{
+					if ($f['category2'] != 0)
+					{
+						$repTree[$rid[$f['category2']]][$f['name']]=$f;
+					}
+					else if ( isset($f['expansion']) )
+					{
+						$repTree[$exp[$f['expansion']]][$f['name']]=$f;
+					}
+					if ($f['category2'] == 0)
+					{
+						$repTree[$exp['0']][$f['name']]=$f;
+					}
+				}
+			}
+			foreach ($repInfo as $i => $f)
+			{	
+				if ($f['category'] != 0)
+				{
+					if ($f['category2'] != 0)
+					{
+						$a = $rid[$f['category2']];
+						$b = $rid[$f['category']];
+						$repTree[$a][$b]['sub'][$f['name']] = $f;
+					}
+				}
+			}
+			//+d($repTree);
+		}
+		return $repTree;
+	}
 	/**
 	 * Build character reputation
 	 *
 	 * @return mixed Array on success, false on fail
 	 */
-	function show_reputation()
+	function show_reputation2()
 	{
 		global $roster, $addon;
 
 		$repData = $this->_rep_tab_values();
 
-		//d($repData);
+		//+d($repData);
 		if( is_array($repData) )
 		{
 			foreach( $repData as $findex => $faction )
@@ -765,59 +908,62 @@ class char
 
 				foreach( $faction as $rep => $bar )
 				{
-					if (isset($bar['value']))
+					if ($rep !='')
 					{
-						$roster->tpl->assign_block_vars('rep.bar',array(
-							'ID'			=> $bar['barid'],
-							'NAME'			=> $rep,
-							'WIDTH'			=> $bar['barwidth'],
-							'IMAGE'			=> $bar['image'],
-							'FILL'      	=> $bar['fill'],
-							'STANDING'		=> $bar['standing'],
-							'DESCRIPTION'	=> $bar['description'],
-							'TOOLTIP'		=> makeOverlib($bar['description'], $rep, '' , 2, '', ', WIDTH, 325'),
-							'VALUE'			=> $bar['value'],
-							'MAXVALUE'		=> $bar['maxvalue'],
-							'ATWAR'			=> $bar['atwar'],
-							'SUB'			=> (isset($bar['sub']) ? '1' : '0' ),
-							)
-						);
-					}
-					else
-					{
-						$roster->tpl->assign_block_vars('rep.bar.rep2',array(
-							'ID'      		=> $rep,
-							'NAME'    		=> $rep,
-							'NAME_ID' 		=> $this->locale['faction_to_id'][$rep],
-							
-							'WIDTH'			=> '',
-							'STANDING'		=> '',
-							'VALUE'			=> '',
-							'MAXVALUE'		=> '',
-							'ATWAR'			=> '',
-							)
-						);
-					}
-					if (isset($bar['sub']))
-					{
-						foreach($bar as $fact => $sta)
+						if (isset($bar['value']) && !$bar['sub'])
 						{
-							if ($fact != 'sub')
+							$roster->tpl->assign_block_vars('rep.bar',array(
+								'ID'			=> $bar['barid'],
+								'NAME'			=> $rep,
+								'WIDTH'			=> $bar['barwidth'],
+								'IMAGE'			=> $bar['image'],
+								'FILL'      	=> $bar['fill'],
+								'STANDING'		=> $bar['standing'],
+								'DESCRIPTION'	=> $bar['description'],
+								'TOOLTIP'		=> makeOverlib($bar['description'], $rep, '' , 2, '', ', WIDTH, 325'),
+								'VALUE'			=> $bar['value'],
+								'MAXVALUE'		=> $bar['maxvalue'],
+								'ATWAR'			=> $bar['atwar'],
+								'SUB'			=> $bar['sub'],
+								)
+							);
+						}
+						else
+						{
+							$roster->tpl->assign_block_vars('rep.rep2',array(
+								'ID'      		=> $rep,
+								'NAME'    		=> $rep,
+								'NAME_ID' 		=> $this->locale['faction_to_id'][$rep],
+								
+								'WIDTH'			=> '',
+								'STANDING'		=> '',
+								'VALUE'			=> '',
+								'MAXVALUE'		=> '',
+								'ATWAR'			=> '',
+								)
+							);
+						}
+						if (isset($bar['sub']))
+						{
+							foreach($bar as $fact => $sta)
 							{
-								$roster->tpl->assign_block_vars('rep.bar.rep2.bar2',array(
-									'ID'          => $sta['barid'],
-									'NAME'        => $fact,
-									'WIDTH'       => $sta['barwidth'],
-									'IMAGE'       => $sta['image'],
-									'FILL'       => $sta['fill'],
-									'STANDING'    => $sta['standing'],
-									'DESCRIPTION' => $sta['description'],
-									'TOOLTIP'     => makeOverlib($sta['description'], $fact, '' , 2, '', ', WIDTH, 325'),
-									'VALUE'       => $sta['value'],
-									'MAXVALUE'    => $sta['maxvalue'],
-									'ATWAR'       => $sta['atwar']
-									)
-								);
+								if ($fact != 'sub' && $fact != 'barwidth' && $fact != 'image' && $fact != 'fill' && $fact != 'barid' && $fact != 'standing' && $fact != 'description' && $fact != 'value' && $fact != 'maxvalue' && $fact != 'atwar')
+								{
+									$roster->tpl->assign_block_vars('rep.rep2.bar2',array(
+										'ID'          => $sta['barid'],
+										'NAME'        => $fact,
+										'WIDTH'       => $sta['barwidth'],
+										'IMAGE'       => $sta['image'],
+										'FILL'       => $sta['fill'],
+										'STANDING'    => $sta['standing'],
+										'DESCRIPTION' => $sta['description'],
+										'TOOLTIP'     => makeOverlib($sta['description'], $fact, '' , 2, '', ', WIDTH, 325'),
+										'VALUE'       => $sta['value'],
+										'MAXVALUE'    => $sta['maxvalue'],
+										'ATWAR'       => $sta['atwar']
+										)
+									);
+								}
 							}
 						}
 					}
@@ -862,7 +1008,7 @@ class char
 
 			while($data = $roster->db->fetch($result,SQL_ASSOC))
 			{
-				if( $data['name'] != $data['parent'] && $data['parent']=='')
+				if( $data['name'] != $data['parent'] && $data['parent']=='' && $data['name']!='')
 				{
 					$i++;
 					$j=0;
@@ -870,14 +1016,15 @@ class char
 					$factions = $data['faction'];
 					$repInfo[$factions][$data['name']] = $i++;
 					$repInfo[$factions][$data['name']] = $this->_rep_bar_values($data);
+					$repInfo[$factions][$data['name']]['sub'] = false;
 
 				}
 
-				if (isset($data['parent']) && $data['curr_rep'] != '' && $data['max_rep'] != '')//&& $data['parent']!= $data['name'])
+				if (isset($data['parent']) && $data['curr_rep'] != '' && $data['max_rep'] != '' && $data['name']!='')//&& $data['parent']!= $data['name'])
 				{
 					$p=$data['name'];
-					$repInfo[$factions][$data['parent']]['sub'] = 'Y';
 					$repInfo[$factions][$data['parent']][$data['name']] = $this->_rep_bar_values($data);
+					$repInfo[$factions][$data['parent']]['sub'] = true;
 					$k++;
 				}
 				else
@@ -915,24 +1062,24 @@ class char
 		$rank = $this->_rep_to_rank($repdata['Standing']);
 		
 		$img = array(
-			$this->locale['exalted'] => 'exalted',
-			$this->locale['revered'] => 'revered',
-			$this->locale['honored'] => 'honored',
-			$this->locale['friendly'] => 'friendly',
-			$this->locale['neutral'] => 'neutral',
-			$this->locale['unfriendly'] => 'unfriendly',
-			$this->locale['hostile'] => 'hostile',
-			$this->locale['hated'] => 'hated'
+			'7' => 'exalted',
+			'6' => 'revered',
+			'5' => 'honored',
+			'4' => 'friendly',
+			'3' => 'neutral',
+			'2' => 'unfriendly',
+			'1' => 'hostile',
+			'0' => 'hated'
 		);
 		$bimg = array(
-			$this->locale['exalted'] => 'rank-7',// .faction-fill { background-position: 0 -88px; }
-			$this->locale['revered'] => 'rank-6',// .faction-fill { background-position: 0 -66px; }
-			$this->locale['honored'] => 'rank-5',// .faction-fill { background-position: 0 -66px; }
-			$this->locale['friendly'] => 'rank-4',// .faction-fill { background-position: 0 -66px; }
-			$this->locale['neutral'] => 'rank-3',// .faction-fill { background-position: 0 -44px; }
-			$this->locale['unfriendly'] => 'rank-2',// .faction-fill { background-position: 0 -22px; }
-			$this->locale['hostile'] => 'rank-1',// .faction-fill { background-position: 0 -22px; }
-			$this->locale['hated'] => 'rank-0',// .faction-fill { background-position: 0 -22px; }
+			'7' => 'rank-7',// .faction-fill { background-position: 0 -88px; }
+			'6' => 'rank-6',// .faction-fill { background-position: 0 -66px; }
+			'5' => 'rank-5',// .faction-fill { background-position: 0 -66px; }
+			'4' => 'rank-4',// .faction-fill { background-position: 0 -66px; }
+			'3' => 'rank-3',// .faction-fill { background-position: 0 -44px; }
+			'2' => 'rank-2',// .faction-fill { background-position: 0 -22px; }
+			'1' => 'rank-1',// .faction-fill { background-position: 0 -22px; }
+			'0' => 'rank-0',// .faction-fill { background-position: 0 -22px; }
 		);
 
 		if ($level == 0 && $max == 0)
@@ -941,10 +1088,11 @@ class char
 			$max = 2;
 			$repdata['Standing'] = $this->locale['exalted'];
 		}
+		//d($repdata);
 		$returnData['name'] = $repdata['name'];
 		$returnData['barwidth'] = ceil($level / $max * 100);
-		$returnData['image'] = $img[$repdata['Standing']];
-		$returnData['fill'] = $bimg[$repdata['Standing']];
+		$returnData['image'] = $img[$repdata['standing_id']];
+		$returnData['fill'] = $bimg[$repdata['standing_id']];
 		$returnData['barid'] = $repnum;
 		$returnData['standing'] = $repdata['Standing'];
 		$returnData['description'] = $repdata['Description'];
@@ -957,6 +1105,27 @@ class char
 		return $returnData;
 	}
 
+	function _standing_to_local($standing)
+	{
+		global $roster, $addon;
+		
+		return $roster->locale->act['standing_to_local'][$standing];
+	}
+	
+	function _standing_to_image($standing)
+	{
+		$bimg = array(
+			'7' => 'rank-7',// .faction-fill { background-position: 0 -88px; }
+			'6' => 'rank-6',// .faction-fill { background-position: 0 -66px; }
+			'5' => 'rank-5',// .faction-fill { background-position: 0 -66px; }
+			'4' => 'rank-4',// .faction-fill { background-position: 0 -66px; }
+			'3' => 'rank-3',// .faction-fill { background-position: 0 -44px; }
+			'2' => 'rank-2',// .faction-fill { background-position: 0 -22px; }
+			'1' => 'rank-1',// .faction-fill { background-position: 0 -22px; }
+			'0' => 'rank-0',// .faction-fill { background-position: 0 -22px; }
+		);
+		return $bimg[$standing];
+	}
 	function _rep_to_rank($standing)
 	{
 		global $roster, $addon;
@@ -2524,7 +2693,7 @@ class char
 		$roster->tpl->assign_var('RIGHTBOX', $rightbox);
 
 		// PvP
-		$this->show_pvp();
+		//$this->show_pvp();
 		$this->show_talents();
 
 		// Selected default tab
@@ -2539,7 +2708,7 @@ class char
 		);
 
 		// Pet Tab
-		if( $roster->auth->getAuthorized($addon['config']['show_pets']) && $this->show_pets() )
+		if( $roster->auth->getAuthorized('show_pets') && $this->show_pets() )
 		{
 			$roster->tpl->assign_block_vars('tabs',array(
 				'NAME'     => $roster->locale->act['pets'],
@@ -2554,7 +2723,7 @@ class char
 		}
 
 		// Companion tab
-		if( $roster->auth->getAuthorized($addon['config']['show_companions']) && $this->show_companions() )
+		if( $roster->auth->getAuthorized('show_companions') && $this->show_companions() )
 		{
 			$roster->tpl->assign_block_vars('tabs',array(
 				'NAME'     => $roster->locale->act['companions'],
@@ -2569,7 +2738,7 @@ class char
 		}
 
 		// Reputation Tab
-		if( $roster->auth->getAuthorized($addon['config']['show_reputation']) && $this->show_reputation() )
+		if( $roster->auth->getAuthorized('show_reputation') && $this->show_reputation() )
 		{
 			$roster->tpl->assign_block_vars('tabs',array(
 				'NAME'     => $roster->locale->act['reputation'],
@@ -2584,7 +2753,7 @@ class char
 		}
 
 		// Skills Tab
-		if( $roster->auth->getAuthorized($addon['config']['show_skills']) && $this->show_skills() )
+		if( $roster->auth->getAuthorized('show_skills') && $this->show_skills() )
 		{
 			$roster->tpl->assign_block_vars('tabs',array(
 				'NAME'     => $roster->locale->act['skills'],

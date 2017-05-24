@@ -125,11 +125,31 @@ jQuery(document).on('click', '[data-toggle="collapse"]', function (e) {
 	}
 });
 
+jQuery(document).on('click', '[data-dismiss="alert"]', function (e) {
+	//e.preventDefault();
+	console.log('bob '+jQuery(this));
+	if (jQuery(this).attr('data-dismiss')){
+		e.preventDefault();
+		var target = jQuery(this).parent();
+		console.log('im a target '+target);
+		jQuery(target).toggle( "slow" );
+	}
+});
+
+
 // new button menue looper
 jQuery(document).ready( function($){
 
 	// this is the id of the ul to use
-
+$.urlParam = function(name){
+    var results = new RegExp('[\?&#]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
+}
 	jQuery('#bnetloginm').click(function(e)
 		{
 			e.preventDefault();
@@ -142,33 +162,32 @@ jQuery(document).ready( function($){
 			//alert('boo');
 			oAuth2AuthWindow = window.open('index.php?p=redirect&state=login', 'masheryOAuth2AuthWindow', 'width=430,height=660');
 		});
-		
+	
+	var tab = $.urlParam("tab");
+	var menu;
 	jQuery("#menu ul li").click(function(e)
 	{
 		e.preventDefault();
 		menu = jQuery(this).parent().attr("id");
-		//alert(menu);
-		//jQuery("."+menu+"").css("display","none");
 		jQuery("ul#"+menu+" li").removeClass("active");
 
 		var tab_class = jQuery(this).attr("id");
 		jQuery("ul#"+menu+" li").each(function() {
 			var v = jQuery(this).attr("id");
-			//console.log( "hiding - "+v );
 			jQuery("div#"+v+"").hide();
 		});
-		//jQuery("."+menu+"#" + tab_class).siblings().hide();
+		
 		jQuery("div#" + tab_class).show();
 		jQuery("ul#"+menu+" li#" + tab_class).addClass("active");
+		
+		window.location.hash = 'tab='+tab_class;
 	});
 	function first(menu)
 	{
 		var tab_class = jQuery("#menu ul#"+menu+" li").first().attr("id");
-		////console.log( "first - "+tab_class );
-		//menu = jQuery(".bs-component ul").attr("id");
+		
 		jQuery("#menu ul#"+menu+" li").each(function() {
 			var v = jQuery(this).attr("id");
-			//console.log( "hiding - "+v );
 			jQuery("div#"+v+"").hide();
 		});
 		jQuery("div#" + tab_class).show();
@@ -176,12 +195,24 @@ jQuery(document).ready( function($){
 		
 	}
 	jQuery("#menu ul").map(function() {
-		////console.log( "menux "+$(this).attr("id") );
-		menu = $(this).attr("id")
-		//console.log( "menu "+menu );
+		menu = $(this).attr("id");
 		first(menu);
 	});
-	
+	function show_hide(menu,tab_class)
+	{
+		jQuery("ul#"+menu+" li").removeClass("active");
+		jQuery("#menu ul#"+menu+" li").each(function() {
+				var v = jQuery(this).attr("id");
+				jQuery("div#"+v+"").hide();
+			});
+		jQuery("div#" + tab_class).show();
+		jQuery("ul#"+menu+" li#" + tab_class).addClass("active");
+	}
+	if ( tab )
+	{
+		console.log(tab);
+		show_hide(menu,tab);
+	}
 	
 	
 	//var $talent = jQuery('#summary-talents');
@@ -196,7 +227,7 @@ jQuery(document).ready( function($){
 	
 		
 	// Show/Hide Talent Builds on spec-button click
-	jQuery('#summary-talents').find(".spec-button").each(function(){
+	jQuery('.talent-specs').find(".spec-button").each(function(){
 		var $this = $(this);
 		var specId = $this.data("spec-id");
 		var specName = $this.data("spec-name");
@@ -222,15 +253,7 @@ jQuery(document).ready( function($){
 			}
 		});
 	});
-$.urlParam = function(name){
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    if (results==null){
-       return null;
-    }
-    else{
-       return results[1] || 0;
-    }
-}
+
 	
 
 

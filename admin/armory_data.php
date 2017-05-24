@@ -157,7 +157,7 @@ if (isset($_POST['process']) && $_POST['process'] == 'process')
 	{
 
 		$classes = array('1','2','3','4','5','6','7','8','9','10','11','12','0');
-		$talent = $roster->api2->fetch('talents');//$roster->api->Data->getTalents();
+		$talent = $roster->api2->fetch('talents');
 		echo '<prE>';
 		//print_r($talent);
 		echo '</pre>';
@@ -198,12 +198,8 @@ if (isset($_POST['process']) && $_POST['process'] == 'process')
 					{
 					
 						//echo '<pre>';print_r($talent);echo '</pre><br>';
-						$tooltip = '';
-						$tooltip .= (isset($talent['spell']['powerCost']) 	? $talent['spell']['powerCost'].'<br />' 	: '');
-						$tooltip .=	(isset($talent['spell']['range']) 		? $talent['spell']['range'].'<br />' 	: '');
-						$tooltip .=	(isset($talent['spell']['castTime']) 	? $talent['spell']['castTime'].'<br />' 	: '');
-						$tooltip .=	(isset($talent['spell']['cooldown']) 	? $talent['spell']['cooldown'].'<br />' 	: '');
-						$tooltip .= '<br><span style="color:#00bbff;">'.$talent['spell']['description'].'</span>';
+						$tooltip = '<div><span class="float-right">'.(isset($talent['spell']['range']) ? $talent['spell']['range'] : '').'</span>'.(isset($talent['spell']['powerCost']) ? $talent['spell']['powerCost'] : '').'<span class="clear"><!-- --></span></div><div><span class="float-right">'.(isset($talent['spell']['cooldown']) ? $talent['spell']['cooldown'] : '').'</span>'.(isset($talent['spell']['castTime']) ? $talent['spell']['castTime'] : '').'<span class="clear"><!-- --></span></div><div class="color-tooltip-yellow">'.$talent['spell']['description'].'</div>';
+	
 						$values = array(
 							'talent_id'  => $talent['spell']['id'],
 							'talent_num' => $t,
