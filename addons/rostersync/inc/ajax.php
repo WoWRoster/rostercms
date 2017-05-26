@@ -1,6 +1,6 @@
 <?php
 
-$ajaxfuncs['status_update'] = array(
+$ajaxfuncs['guildupdate'] = array(
 	'file'=>$addon['dir'] . 'ajax/apiajax.php',
 );
 
@@ -16,3 +16,6 @@ $ajaxfuncs['guildmembers'] = array(
 	'file'=>$addon['dir'] . 'ajax/apiajax.php',
 );
 
+$ajaxfuncs['makelist'] = array(
+	'file'=>$addon['dir'] . 'ajax/apiajax.php',
+);

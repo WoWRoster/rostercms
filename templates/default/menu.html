@@ -127,10 +127,49 @@
 					<!-- END menu_button_section -->
 					</ul>
 				</li>
+				<li class="right">
+				<a class="mlink" id="menu-search" href="#"><i id="search-icon" class="fa fa-search fa-3" aria-hidden="true"></i></a>
+				</li>
 				
 			</ul>
 		</div>
 	</div>
 </nav>
+	<div class="nav-search" id="nav-search">
+		<div class="container">
+			<div class="row">
+				<form name="menu_search" action="{U_SEARCH_FORM_ACTION}" method="post">
+				<input id="searchInput" name="search" type="search" placeholder="Search for characters, pages, and more..." autocomplete="off" tabindex="1" class="form-control">
+				</form>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+				<strong><!-- TRANSLATE fan_sites_en --></strong>
+					<ul>
+					<!-- BEGIN fan_sites -->
+						<li><a href="{fan_sites.LINK}" target="_blank">{fan_sites.NAME}</a></li>
+					<!-- END fan_sites -->
+					</ul>
+				</div>
+				<div class="col-md-4">
+				<strong><!-- TRANSLATE addon_sites_en --></strong>
+					<ul>
+					<!-- BEGIN addon_sites -->
+						<li><a href="{addon_sites.LINK}" target="_blank">{addon_sites.NAME}</a></li>
+					<!-- END addon_sites -->
+					</ul>
+				</div>
+				<div class="col-md-4">
+				<strong><!-- TRANSLATE roster_hel_en --></strong>
+					<ul>
+					<!-- BEGIN roster_hel -->
+						<li><a href="{roster_hel.LINK}" target="_blank">{roster_hel.NAME}</a></li>
+					<!-- END roster_hel -->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 <!-- ENDIF -->
 <!-- PHP --> do_action('roster_after_menu'); <!-- ENDPHP -->

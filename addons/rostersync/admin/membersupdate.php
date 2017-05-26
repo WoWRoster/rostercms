@@ -27,7 +27,7 @@ var t;
 
 		jQuery.ajax({
 			type: "GET",
-			url: "'. makelink('util-rostersync-makelist').'",
+			url: "'. makelink('ajax-addon-rostersync-makelist').'",
 			beforeSend: function() {
 				setTimeout(function() {
 				}, 500);
@@ -60,9 +60,10 @@ var t;
 	function process_many()
 	{
 		next = members.length - 1;
+		//console.log( members[next].name+\' - \'+members[next].member_id);
 		$.ajax({
 			type: "GET",
-			url: "'. makelink('util-rostersync-process').'",
+			url: "'. makelink('ajax-addon-rostersync-character').'",
 			data: members[next],
 			dataType: "html",
 			async: false,
@@ -93,7 +94,7 @@ var t;
 		next = members.length - 1;
 		$.ajax({
 			type: "GET",
-			url: "'. makelink('util-rostersync-process').'",
+			url: "'. makelink('ajax-addon-rostersync-character').'",
 			data: members[next],
 			dataType: "html",
 			async: false,
@@ -125,11 +126,31 @@ var t;
 		jQuery(\'#pro_bar\').css( "width", per.toFixed(2)+"%" );
 	}
 
+	/*
+	function show_log(mid)
+	{
+		console.log(mid);
+		$(\'#\'+mid+\'\').toggle(\'fast\');
+	}*/
+	jQuery(document).on(\'click\', \'#logbutton\', function (e) {
+		var $this = $(this);
+		var member = $this.data("member");
+		$(\'#\'+member+\'\').toggle(\'fast\');
+	});
+	
+	jQuery(document).on(\'click\', \'[data-dismiss]\', function (e) {
+		var $this = $(this);
+		if ($this.data(\'dismiss\') == "modal" )
+		{
+			var member = $this.data("member");
+			$(\'#\'+member+\'\').toggle(\'fast\');
+		}
+	});
 
 ';
 
 roster_add_js($js, 'inline', 'header', false, false);
-d($addon);
+
 echo '<div class="page-header">
 			<h1>Member update</h1>
 		</div>

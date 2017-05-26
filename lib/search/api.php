@@ -19,7 +19,7 @@ if( !defined('IN_ROSTER') )
  * @package    WoWRoster
  * @subpackage Search
  */
-class roster_itemSearch
+class apiSearch
 {
 	var $options;
 	var $result = array();
@@ -38,17 +38,16 @@ class roster_itemSearch
 	var $quality_sql;
 
 	// class constructor
-	function roster_itemSearch()
+	function apiSearch()
 	{
 		global $roster;
 
 		require_once (ROSTER_LIB . 'item.php');
 
-			$this->open_table = '<div class="row">
-					<div class="col-md-3">' . $roster->locale->act['item'] . '</div>
-					<div class="col-md-3">' . $roster->locale->act['level'] . '</div>
-					<div class="col-md-3">' . $roster->locale->act['name'] . '</span></div>
-					<div class="col-md-3">' . $roster->locale->act['character'] . '</div></div>';
+		$this->open_table = '<tr><th class="membersHeader ts_string">' . $roster->locale->act['item'] . '</th>'
+			. '<th class="membersHeader ts_string">' . $roster->locale->act['level'] . '</th>'
+			. '<th class="membersHeader ts_string">' . $roster->locale->act['name'] . '</th>'
+			. '<th class="membersHeaderRight ts_string">' . $roster->locale->act['character'] . '</th></tr>';
 
 		$this->minlvl = isset($_POST['item_minle']) ? (int)$_POST['item_minle'] : ( isset($_GET['item_minle']) ? (int)$_GET['item_minle'] : '' );
 		$this->maxlvl = isset($_POST['item_maxle']) ? (int)$_POST['item_maxle'] : ( isset($_GET['item_maxle']) ? (int)$_GET['item_maxle'] : '' );
@@ -94,14 +93,7 @@ class roster_itemSearch
 
 		$first = $page * $limit;
 
-		$sql = "SELECT `players`.`name`, `players`.`member_id`, `players`.`server`, `players`.`region`, `items`.*"
-			. " FROM `" . $roster->db->table('items') . "` AS items,`" . $roster->db->table('players') . "` AS players"
-			. " WHERE `items`.`member_id` = `players`.`member_id`"
-				. " AND (`items`.`item_name` LIKE '%$search%' OR `items`.`item_tooltip` LIKE '%$search%')"
-				. ( $this->minlvl != '' ? " AND `items`.`level` >= '$this->minlvl'" : '' )
-				. ( $this->maxlvl != '' ? " AND `items`.`level` <= '$this->maxlvl'" : '' )
-				. $this->quality_sql
-			. " ORDER BY `items`.`item_name` ASC"
+		$sql = "SELECT * FROM `" . $roster->db->table('api_cache') . "`  WHERE `name` LIKE '%$search%' ORDER BY `name` ASC"
 			. ( $limit > 0 ? " LIMIT $first," . $limit : '' ) . ';';
 
 		//calculating the search time
@@ -120,14 +112,12 @@ class roster_itemSearch
 			while( $x > 0 )
 			{
 				$row = $roster->db->fetch($result);
-				//d($row);
-				$icon = new item($row);
-
+				
 				$item['html'] = '<div class="row">
-					<div class="col-md-3">' . $this->_out_item($row) . '</div>
-					<div class="col-md-3">' . $icon->requires_level . '</div>
-					<div class="col-md-3"><span style="color:#' . $icon->color . '">[' . $icon->name . ']</span></div>
-					<div class="col-md-3"><a href="' . makelink('char-info&amp;a=c:' . $row['member_id']) . '"><strong>' . $row['name'] . '</strong></a></div></div>';
+					<div class="col-md-4">'.$row['type'].'</div>
+					<div class="col-md-4">'.$row['name'].'</div>
+					<div class="col-md-4">'.$row['id'].'</div>
+				</div>';
 
 				$this->add_result($item);
 				unset($item);
@@ -141,46 +131,6 @@ class roster_itemSearch
 		$roster->db->free_result($result);
 	}
 
-	function _out_item($row)
-	{
-		global $roster;
-			$e = '<a data-modal="item-slot-modal-head" data-tooltip="item-'.$row['item_id'].''.(isset($row['member_id']) ? '|'.$row['member_id'] : '').'" class="Link Link--block" queryselectoralways="20">
-					<div class="GameIcon GameIcon--'.$this->_getItemQuality($row['item_rarity']).' GameIcon--slot character-slot-itemIcon character-slot-itemSlot GameIcon--small" media-wide="GameIcon--small" queryselectoralways="0" media-original="GameIcon GameIcon--'.$this->_getItemQuality($row['item_rarity']).' GameIcon--slot character-slot-itemIcon character-slot-itemSlot">
-						<div style="background-image:url(\''.$roster->config['interface_url'] . 'Interface/Icons/' . $row['item_texture'] . '.' . $roster->config['img_suffix'].'\')" class="GameIcon-icon">
-						</div>
-						<div class="GameIcon-transmog">
-						</div>
-					</div>
-			</a>';
-			return $e;
-	}
-	function _getItemQuality($value)
-	{
-		$ret = '';
-		switch ($value) {
-			default: $ret = "POOR"; //Grey
-				break;
-			case 0: $ret = "POOR"; /* poor (gray) */
-			break;
-			case 1: $ret = "COMMON"; /* common (white) */
-			break;
-			case 2: $ret = "UNCOMMON"; /* uncommon (green) */
-			break;
-			case 3: $ret = "RARE"; /* #0070dd rare (blue) */
-			break;
-			case 4: $ret = "EPIC"; /* #a335ee epic (purple) */
-			break;
-			case 5: $ret = "LEGENDARY"; /* lengendary (orange) */
-			break;
-			case 6: $ret = "ARTIFACT"; /* artifact (gold) */
-			break;
-			case 7: $ret = "HEIRLOOM"; /* heirloom (lt blue) */
-			break;
-
-		}
-		return $ret;
-	}
-	
 	function add_result( $resultarray )
 	{
 		$this->result[$this->result_count++] = $resultarray;

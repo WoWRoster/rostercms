@@ -707,8 +707,6 @@ roster_add_js($js, 'inline', 'header', false, false);
 
 			$tooltip = $roster->locale->act['level'] . ' ' . $row['level'] . ' ' . $row['sex'] . ' ' . $row['race'] . ' ' . $row['class'] . "\n";
 
-			$tooltip .= ($row['last_online'] ? $roster->locale->act['lastonline'] . ': ' . $row['last_online'] : '') . ($row['zone'] ? ' in ' . $row['zone'] : '');
-
 			$tooltip = ' style="cursor:help;" ' . makeOverlib($tooltip,$tooltip_h,'',1,'',',WRAP');
 		}
 

@@ -18,10 +18,8 @@
 
 if( !defined('IN_ROSTER') )
 {
-    exit('Detected invalid access to this file!');
+    //exit('Detected invalid access to this file!');
 }
-//d($method);
-//d($_POST, $_GET);
 
 require_once ($addon['dir'] . 'inc/rostersync.lib.php');
 $rsync = new rostersync;
@@ -29,9 +27,10 @@ switch ($method)
 {
 	case 'character':
 		$rsync = new rostersync('character');
-		$rsync->_sync_member($_GET['server'], $_GET['memberId'], $_GET['memberName'], $_GET['region'], $_GET['guildId']);
-		d($rsync->status['character']);
-		echo $rsync->status['character']['log'];
+		$rsync->_sync_member($_GET['server'], $_GET['member_id'], $_GET['name'], $_GET['region'], $_GET['guild_id']);
+
+		echo $rsync->build_update_table('character-success');
+
 	break;
 	
 	case 'makelist':
@@ -39,36 +38,14 @@ switch ($method)
 		echo json_encode($e);
 	break;
 	
-    case 'guild_update':
-        if( isset($_POST['job_id']) )
-        {
-            $job_id = $_POST['job_id'];
-            require_once ($addon['dir'] . 'inc/ApiSyncjobajax.class.php');
+    case 'guildupdate':
+        $rsync = new rostersync('guild');
+		$rsync->_sync_guild($_GET['server'], $_GET['guildname'], $_GET['region'], $_GET['guild_id']);
+		
+		echo $rsync->build_update_table('guild-success');
 
-            $job = new ApiSyncJobAjax();
-            $ret = $job->startAjaxStatusUpdate();
-
-            if ( isset( $ret['status'] ) ) {
-                $status = $ret['status'];
-            }
-            if ( isset( $ret['errmsg'] ) ) {
-                $errmsg = $ret['errmsg'];
-            }
-            if ( isset( $ret['result'] ) ) {
-                $result = $ret['result'];
-            }
-            return;
-        }
-        else
-        {
-            $status = 104;
-            $errmsg = 'Faild to update: Not enough data ( no job_id given) ';
-            return;
-        }
-       break;
+	break;
 	   
 	   
 }
-
-
-include_once (ROSTER_BASE . 'footer.php');
+//include_once (ROSTER_BASE . 'footer.php');

@@ -37,6 +37,7 @@ class roster_db
 	var $queries     = array();             // Queries                  @var queries
 	var $error_die   = true;                // Die on errors?           @var error_die
 	var $log_level   = 0;                   // Log SQL transactions     @var log_level
+	var $this_error	 = '';
 
 	var $prefix      = '';
 	var $dbname      = '';
@@ -258,6 +259,7 @@ class roster_db
 				$err .= "getCode: ". $e->getCode () . "<br />";
 				$err .= "getMessage: ". $e->getMessage () . "<br />";
 				$this->queries[$this->file][$this->query_count]['error'] =  $e->getMessage ();
+				$this->this_error = $err;
 				//die(__FILE__ . ': line[' . __LINE__ . ']<br />Database Error "' . $query . '"<br />PDO said:<br />' .  $err . ' <br />' . $this->_backtrace());
 			}
 		}

@@ -19,8 +19,13 @@ div.item img {display: inline-block;position: absolute;width: 49px;height: 49px;
 .mitem { position:relative; display:inline-block; float: left; margin: 3px; height: 40px; width: 40px; border: 1px solid #000;}
 .mitem img{ position: absolute; display:block; height: 38px; width: 38px; }
 .mitem .mask { position: absolute; display:block; background: url(../images/mask/item_mask.png) no-repeat left top; height: 40px; width: 40px; z-index: 100; left: 0; top: 0; }
-
-
+.navbar {
+	border: 1px solid #9d9c9a !important;
+		border-width: 1px !important;
+}
+.modal-dialog {
+	color: #000 !important;
+}
 .mitem .none,
 .mitem .poor {		border: 1px solid #9d9d9d; box-shadow: 0 0 10px 1px #9d9d9d, inset 0 0 8px 1px #9d9d9d;} /* poor (gray) */
 .mitem .common {		border: 1px solid #ffffff; box-shadow: 0 0 10px 1px #ffffff, inset 0 0 8px 1px #ffffff;} /* common (white) */

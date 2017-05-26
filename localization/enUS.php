@@ -1021,7 +1021,24 @@ $lang['questlinks'][] = array(
 	'name'=>'',
 	'url'=>''
 );*/
-
+$lang['fan_sites'] = array(
+	'WoWHead'			=> 'http://www.wowhead.com/',
+	'Blizzard Watch'	=> 'blizzardwatch.com/',
+	'Icy Veins'			=> 'https://www.icy-veins.com/',
+	'MMO-Champion'		=> 'http://www.mmo-champion.com/',
+);
+$lang['addon_sites'] = array(
+	'WoWInterface'		=> 'www.wowinterface.com/',
+	'Curse'				=> 'https://mods.curse.com/addons/wow',
+);
+$lang['roster_hel'] = array(
+	'WoWRoster'			=> 'http://wowroster.net',
+	'API Forums'		=> 'https://us.battle.net/forums/en/bnet/15051532/',
+	'API Docs'			=> 'https://dev.battle.net/',
+);
+$lang['fan_sites_en'] = 'Fan Sites';
+$lang['addon_sites_en'] = 'Addon Sites';
+$lang['roster_hel_en'] = 'Roster Help';
 // Items external link
 // Add as many item links as you need
 // Just make sure their names are unique

@@ -24,7 +24,21 @@ $(function() {
   // Apply jQuery UI button styles on EVERYTHING
   //$('button, input:submit, input:reset, input:button, .input').button();
 
- 
+ jQuery(document).on('click', 'a#menu-search', function (e) {
+	e.preventDefault();
+	console.log('menusearch '+jQuery(this));
+	var target = $('div#nav-search');
+	if(target.hasClass('show') == false) {
+      $('#search-icon').removeClass('fa fa-search fa-3').addClass('fa fa-times fa-3');
+      target.slideDown('slow');
+	  target.addClass('show');
+    }
+    else {
+      $('#search-icon').removeClass('fa fa-times fa-3').addClass('fa fa-search fa-3');
+	  target.removeClass('show');
+      target.slideUp('slow');
+    }
+});
 
   // Create button sets for radio and checkbox groups
   //$('.radioset').buttonset();

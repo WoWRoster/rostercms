@@ -351,8 +351,8 @@ class apicache {
 		$update->add_value('id',		$parameters['id']);
 		$update->add_value('type',		$vars['type']);
 		$update->add_value('timestamp',	time());
-		$update->add_value('name',		'');
-		$update->add_value('locale',	$vars['locale']);
+		$update->add_value('name',		( isset($data['name']) ? $data['name'] : ''));
+		$update->add_value('locale',	( isset($vars['locale']) ? $vars['locale'] : 'enUS'));
 		$update->add_value('json',		json_encode($data, true));
 		
 		$querystr = "REPLACE INTO `" .$roster->db->table('api_cache') . "` SET " . $update->assignstr;

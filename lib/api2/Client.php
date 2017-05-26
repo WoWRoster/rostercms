@@ -874,11 +874,35 @@ class Client
 			$json_decode['last_url'] = curl_getinfo($ch,CURLINFO_EFFECTIVE_URL);
         }
         curl_close($ch);
+/*
 
-		if (isset($json_decode['status']) && $json_decode['status'] == 'nok')
+Array (
+
+	[code] => 504 
+	[type] => Gateway Timeout 
+	[header] => Array ( 
+	[http_code] => HTTP/1.1 504 Gateway Timeout 
+	[Content-Type] => application/json 
+	[Date] => Thu, 25 May 2017 00:05:32 GMT 
+	[Server] => Mashery Proxy 
+	[X-Mashery-Error-Code] => ERR_504_GATEWAY_TIMEOUT 
+	[X-Mashery-Responder] => prod-j-worker-us-east-1b-121.mashery.com 
+	[X-Plan-QPS-Allotted] => 100 
+	[X-Plan-QPS-Current] => 1 
+	[X-Plan-Quota-Allotted] => 36000 
+	[X-Plan-Quota-Current] => 151 
+	[X-Plan-Quota-Reset] => Thursday, May 25, 2017 1:00:00 AM GMT 
+	[Content-Length] => 38 
+	[Connection] => Close 
+) 
+[http_code] => 504 
+[last_url] => https://us.api.battle.net/wow/character/Zangarmarsh/Tiktaalik?fields=achievements,appearance,guild,hunterPets,items,mounts,pets,professions,progression,quests,reputation,stats,talents,hunterPets&apikey=hmtxw3wkj7h4hku972fd37ms299ne6vv&locale=en_US )
+*/
+		//if (isset($json_decode['status']) OR $json_decode['status'] == 'nok' OR 
+		if ( $json_decode['http_code'] != 200 && $json_decode['http_code'] != 304 )
 		{
-			$roster->set_message( "".$json_decode['reason']."<br/>\n\r [".$this->usage['url'].'] : '.$this->usage['responce_code'].'', 'API Error', 'error' );
-			$this->cache->api_error($this->usage['type'], $this->usage['url'], $this->errno.' - '.$json_decode['status'], $json_decode['reason'], $http_code, $content_type);
+			$roster->set_message( "".( isset($json_decode['reason']) ? $json_decode['reason'] : '' )."<br/>\n\r [".$this->usage['url'].'] : '.$this->usage['responce_code'].'', 'API Error', 'error' );
+			$this->cache->api_error($this->usage['type'], $this->usage['url'], $this->errno.' - '.( isset($json_decode['status']) ? $json_decode['status'] : '' ), ( isset($json_decode['reason']) ? $json_decode['reason'] : '' ), $http_code, $content_type);
 			return;
 		}
 		return (null === $json_decode) ? $result : $json_decode;

@@ -720,8 +720,16 @@ function makeOverlib( $tooltip , $caption='' , $caption_color='' , $mode=0 , $lo
 				$tooltip = colorTooltip($tooltip,$caption_color,$locale,$caption_mode);
 				break;
 		}
-		//$t = 
-		return 'data-tooltip="text-' . base64_encode( $tooltip ) . '" data-caption="'.base64_encode($caption).'"';
+		$t = '';
+		if ( isset($tooltip) )
+		{
+			$t .= 'data-tooltip="text-' . base64_encode( $tooltip ) . '"';
+		}
+		if ( isset($caption) && !empty($caption) )
+		{
+			$t .= ' data-caption="'.base64_encode($caption).'"';
+		}
+		return $t;
 	}
 	else if ($type == 'item')
 	{

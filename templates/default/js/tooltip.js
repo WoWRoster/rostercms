@@ -146,6 +146,16 @@ jQuery(document).ready( function($){
         wrapper = tooltipDiv;
     }
 	
+	jQuery('[data-tooltip]').click(function(e){
+		var t = jQuery(this).data('tooltip');
+		var cap = jQuery(this).data('caption');
+		content = _get_content(t, cap);
+		
+		position(e,this.offsetLeft,this.offsetTop);
+		
+		jQuery('.ui-tooltip').show();var t = jQuery(this).data('tooltip');
+	});
+		
 	jQuery('[data-tooltip]').hover(function(e){ // Hover event
 
 		var t = jQuery(this).data('tooltip');
@@ -208,13 +218,12 @@ jQuery(document).ready( function($){
 		
 		if (typeid[0] == 'text')
 		{			
-			url = roster_js.roster_path+'index.php?p=ajax-'+typeid[0]+'&id=plain';//'http://pvp-live.com/'+cont;
+			url = roster_js.roster_path+'index.php?p=ajax-'+typeid[0]+'&id=plain';
 		}
 		else
 		{
-			url = 'index.php?p=ajax-'+typeid[0]+'&id='+ typeid[1] +'';//'http://pvp-live.com/'+cont;
+			url = 'index.php?p=ajax-'+typeid[0]+'&id='+ typeid[1] +'';
 		}
-		//url = 'http://localhost/item.php?itemid='+typeid[1];
 		
 		if (cache[content] != null)
 		{

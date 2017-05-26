@@ -239,6 +239,8 @@ if( isset($roster->pages[1]) )
 	}
 }
 
+$rostercp_title = apply_filters('roster_cp_title', $rostercp_title);
+
 $roster->tpl->assign_vars(array(
 	'ROSTERCP_TITLE'  => (!empty($rostercp_title) ? $rostercp_title : $roster->locale->act['roster_cp_ab']),
 	'HEADER' => $header,

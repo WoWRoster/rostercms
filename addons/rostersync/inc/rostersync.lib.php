@@ -10,6 +10,8 @@ class rostersync {
 	
 	var $status = array(
 		'guild' => array(
+			'name'			=> '',
+			'server'		=> '',
 			'updated'	=> 0,
 			'added'		=> 0,
 			'removed'	=> 0,
@@ -17,6 +19,9 @@ class rostersync {
 			'stop'		=> null,
 		),
 		'character' => array(
+			'name'			=> '',
+			'server'		=> '',
+			'member_id'		=> 0,
 			'profile'		=> 0,
 			'reputation'	=> 0,
 			'equipment'		=> 0,
@@ -85,31 +90,59 @@ class rostersync {
 	{
 		global $roster, $addon;
 		
-		
+		$this->status[$this->type]['name'] = $memberName;
+		$this->status[$this->type]['server'] = $server;
+		$this->status[$this->type]['member_id'] = $memberId;
 		$this->data = $roster->api2->fetch('character',array('name'=>$memberName,'server'=>$server,'fields'=>$this->fields['character'] ));
 		if ($this->data['http_code'] == 304)
 		{
-			$this->setMessage(' Not Modified ');
-			return;
+			$this->status[$this->type]['message'] = 'Not Modified ';
+			$this->setMessage($this->_processheader($this->data['header']));
+			$this->status[$this->type]['log'] = $this->getMessages();
+			return false;
 		}
+		if ($this->data['http_code'] != 200)
+		{
+			$this->status[$this->type]['message'] = $this->data['header']['http_code'].'<br>'.$this->data['status'] .'<br>'.$this->data['reason'];
+			$this->setMessage($this->_processheader($this->data['header']));
+			$this->status[$this->type]['log'] = $this->getMessages();
+			return false;
+		}
+		
 		$this->status[$this->type]['start'] = time();
 		$this->setMessage('<ul><li>Updating '.$memberName.'@'.$server.'</li>');
 		//d($this->data);
 		$pre = do_action('char_pre',$this->data);
 		$this->setMessage($pre);
-		$this->_sync_member_profile($server, $memberId, $memberName, $region, $guildId);
-		$this->_sync_member_equipment($memberId);
-		$this->_sync_member_reputation($memberId);
-		$this->_sync_member_talents($memberId);
-		$this->_sync_member_skills($memberId);
+		
+		$p = $this->_sync_member_profile($server, $memberId, $memberName, $region, $guildId);
+		if($p)
+		{
+			$e = $this->_sync_member_equipment($memberId);
+			$r = $this->_sync_member_reputation($memberId);
+			$t = $this->_sync_member_talents($memberId);
+			$s = $this->_sync_member_skills($memberId);
+		}
+		
 		$post = do_action('char_post',$this->data);
 		$this->setMessage($post);
 		$this->setMessage('</ul>');
+		$this->setMessage($this->_processheader($this->data['header']));
 		$this->status[$this->type]['stop'] = time();
 		$this->status[$this->type]['log'] = $this->getMessages();
 		//
+		return true;
 	}
 	
+	function _processheader($header)
+	{
+		$head = '';
+		foreach ($header as $n => $v)
+		{
+			$head.= "".$n.": ".$v."<br>\r\n";
+		}
+		return $head;
+	}
 	function _sync_member_profile($server, $memberId, $memberName, $region, $guildId)
 	{
 		global $roster, $addon;
@@ -136,9 +169,10 @@ class rostersync {
 			'name'							=> $memberName,
 			'guild_id'						=> $guildId,
 			'dateupdatedutc'				=> time(),
-			'api_udt'						=> $this->data['lastModified'],
+			'api_udt'						=> ( isset($this->data['lastModified']) ? $this->data['lastModified'] : time()),
 			'CPversion'						=> '3.0',
 			'DBversion'						=> '3.0',
+			'clientLocale'					=> $roster->api2->locale,
 			'race'							=> $roster->locale->act['id_to_race'][$this->data['race']],
 			'raceid'						=> $this->data['race'],
 			'raceEn'						=> $raceEn,
@@ -227,8 +261,9 @@ class rostersync {
 		$this->setMessage(($result ? 'OK' : 'Failed').'</li>');
 		if( !$result )
 		{
-			//echo $querystr.'<br>'.$roster->db->error().'<br>';
-			$this->status[$this->type]['message'] = $querystr.'<br>'.$roster->db->error().'<br>';
+			$this->status[$this->type]['message'] = $roster->db->this_error;
+			$this->setMessage($querystr);
+			$this->setMessage($this->_processheader($this->data['header']));
 			$this->status[$this->type]['profile'] = 0;
 			return false;
 		}
@@ -348,7 +383,7 @@ class rostersync {
 			
 				$output = $roster->api2->item->item($item['id'],$item_api,$item,null);
 				
-				$items = array(
+				$items[] = array(
 					'member_id'			=> $memberId,
 					'item_name'			=> $item['name'],
 					'item_parent'		=> 'equip',
@@ -367,13 +402,24 @@ class rostersync {
 					'json'				=> json_encode( array_merge( $item, $gem_json ), true ),
 				);
 				
-				$querystr = "INSERT INTO `" . $roster->db->table('items') . "` ". $roster->db->build_query('INSERT', $items) . ";";
 				$this->status[$this->type]['equipment'] += 1;
-				$result = $roster->db->query($querystr);//d($items);
-				$this->setMessage( ($result ? '.' : 'x') );
+				$this->setMessage('.');
 			}
 		}
+		$querystr = "INSERT INTO `" . $roster->db->table('items') . "` ". $roster->db->build_query('INSERT_ARRAY', $items) . ";";
+		$result = $roster->db->query($querystr);//d($items);
 		$this->setMessage('</li>');
+	
+		if( !$result )
+		{
+			$this->status[$this->type]['message'] = $roster->db->this_error;
+			$this->setMessage($querystr);
+			$this->setMessage($this->_processheader($this->data['header']));
+			$this->status[$this->type]['skills'] = 0;
+			return false;
+		}
+
+		return true;
 	}
 	
 	function _sync_member_reputation($memberId)
@@ -463,7 +509,15 @@ class rostersync {
 		$querystr = "INSERT INTO `" . $roster->db->table('reputation') . "` ". $roster->db->build_query('INSERT_ARRAY', $rept) . ";";
 		$result = $roster->db->query($querystr);
 		
-		
+		if( !$result )
+		{
+			$this->status[$this->type]['message'] = $roster->db->this_error;
+			$this->setMessage($querystr);
+			$this->setMessage($this->_processheader($this->data['header']));
+			$this->status[$this->type]['skills'] = 0;
+			return false;
+		}
+		return true;
 	}
 	
 	function _sync_member_talents($memberId)
@@ -527,8 +581,28 @@ class rostersync {
 		
 		$querystr1 = "INSERT INTO `" . $roster->db->table('talents') . "` ". $roster->db->build_query('INSERT_ARRAY', $talent) . ";";
 		$result1 = $roster->db->query($querystr1);
+		
+		if( !$result1 )
+		{
+			$this->status[$this->type]['message'] = $roster->db->this_error;
+			$this->setMessage($querystr);
+			$this->setMessage($this->_processheader($this->data['header']));
+			$this->status[$this->type]['skills'] = 0;
+			return false;
+		}
 		$querystr2 = "INSERT INTO `" . $roster->db->table('talenttree') . "` ". $roster->db->build_query('INSERT_ARRAY', $trees) . ";";
 		$result2 = $roster->db->query($querystr2);
+		
+		if( !$result2 )
+		{
+			$this->status[$this->type]['message'] = $roster->db->this_error;
+			$this->setMessage($querystr);
+			$this->setMessage($this->_processheader($this->data['header']));
+			$this->status[$this->type]['skills'] = 0;
+			return false;
+		}
+		
+		return true;
 
 	}
 	
@@ -597,17 +671,27 @@ class rostersync {
 		$querystr1 = "INSERT INTO `" . $roster->db->table('skills') . "` ". $roster->db->build_query('INSERT_ARRAY', $s) . ";";
 		$result1 = $roster->db->query($querystr1);
 	
+		if( !$result1 )
+		{
+			$this->status[$this->type]['message'] = $roster->db->this_error;
+			$this->setMessage($querystr);
+			$this->setMessage($this->_processheader($this->data['header']));
+			$this->status[$this->type]['skills'] = 0;
+			return false;
+		}
+
+		return true;
 	}
 
 	function build_update_table($type)
 	{
 		global $roster, $addon;
 		
-		$form = '';
+		$row = '';
 		switch ($type)
 		{
 			case 'guild':
-			$form = '<div class="row cfg-row">
+			$row = '<div class="row cfg-row">
 				<div class="col-md-2">'.$roster->locale->act['name'].'</div>
 				<div class="col-md-2">'.$roster->locale->act['server'].'</div>
 				<div class="col-md-1">'.$roster->locale->act['members'].'</div>
@@ -617,7 +701,7 @@ class rostersync {
 			break;
 			
 			case 'guild_members':
-			$form = '<div class="row cfg-row">
+			$row = '<div class="row cfg-row">
 				<div class="col-md-2">'.$roster->locale->act['name'].'</div>
 				<div class="col-md-2">'.$roster->locale->act['guild'].'</div>
 				<div class="col-md-2">'.$roster->locale->act['server'].'</div>
@@ -632,21 +716,98 @@ class rostersync {
 			
 			case 'character':
 			
-			$form = '<div class="row cfg-row">
+			$row = '<div class="row cfg-row">
 				<div class="col-md-2">'.$roster->locale->act['name'].'</div>
 				<div class="col-md-2">'.$roster->locale->act['server'].'</div>
-				<div class="col-md-2">'.$roster->locale->act['character_short'].'</div>
+				<div class="col-md-1">'.$roster->locale->act['character_short'].'</div>
 				<div class="col-md-1">'.$roster->locale->act['reputation_short'].'</div>
 				<div class="col-md-1">'.$roster->locale->act['equipment_short'].'</div>
 				<div class="col-md-1">'.$roster->locale->act['talents_short'].'</div>
 				<div class="col-md-1">'.$roster->locale->act['skill_short'].'</div>
+				<div class="col-md-1">'.$roster->locale->act['time'].'</div>
 				<div class="col-md-2">'.$roster->locale->act['update_log'].'</div>
 			</div>';
 
 			break;
+			
+			case 'guild-success':
+				$row .= $this->status[$this->type]['log'];
+			break;
+			
+			case 'character-success':
+			
+			$stop = time();
+			$row = '<div class="row cfg-row">
+					<div class="col-md-2">'.$this->status[$this->type]['name'].'</div>
+					<div class="col-md-2">'.$this->status[$this->type]['server'].'</div>';
+					
+			if ( isset($this->status[$this->type]['message']) && !empty($this->status[$this->type]['message']) )
+			{
+				ob_start();
+				+d($this->data);
+			$content = ob_get_clean();
+				$row .= '
+					<div class="col-md-3">'.$this->status[$this->type]['message'].'</div>
+					<div class="col-md-5">
+					
+						<button type="button" class="btn btn-primary btn-md" id="logbutton" data-member="log-'.$this->status[$this->type]['member_id'].'" data-target="log-'.$this->status[$this->type]['member_id'].'">
+							'.$roster->locale->act['error_log'].'
+						</button>
+					<!-- Modal -->
+					<div class="modal" id="log-'.$this->status[$this->type]['member_id'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					  <div class="modal-dialog" role="document">
+						<div class="modal-content">
+						  <div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close" data-member="log-'.$this->status[$this->type]['member_id'].'" data-target="log-'.$this->status[$this->type]['member_id'].'"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">'.$roster->locale->act['error_log'].'</h4>
+						  </div>
+						  <div class="modal-body" style="color: #000 !important;">'.$this->status[$this->type]['log'].'<br>'.$this->status[$this->type]['message'].'<br>'.$content.'</div>
+						  <div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal" data-member="log-'.$this->status[$this->type]['member_id'].'" data-target="log-'.$this->status[$this->type]['member_id'].'">Close</button>
+						  </div>
+						</div>
+					  </div>
+					</div>
+					
+					</div>
+					</div>';
+			}
+			else
+			{
+				$row .= '
+					<div class="col-md-1">'.$this->status[$this->type]['profile'].'</div>
+					<div class="col-md-1">'.$this->status[$this->type]['reputation'].'</div>
+					<div class="col-md-1">'.$this->status[$this->type]['equipment'].'</div>
+					<div class="col-md-1">'.$this->status[$this->type]['talents'].'</div>
+					<div class="col-md-1">'.$this->status[$this->type]['skills'].'</div>
+					<div class="col-md-1">'.$this->status[$this->type]['start'].'-'.$stop.'</div>
+					<div class="col-md-2">
+						<button type="button" class="btn btn-primary btn-md" id="logbutton" data-member="log-'.$this->status[$this->type]['member_id'].'" data-target="log-'.$this->status[$this->type]['member_id'].'">
+							'.$roster->locale->act['update_log'].'
+						</button>
+					<!-- Modal -->
+					<div class="modal" id="log-'.$this->status[$this->type]['member_id'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					  <div class="modal-dialog" role="document">
+						<div class="modal-content">
+						  <div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close" data-member="log-'.$this->status[$this->type]['member_id'].'" data-target="log-'.$this->status[$this->type]['member_id'].'"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">'.$roster->locale->act['update_log'].'</h4>
+						  </div>
+						  <div class="modal-body" style="color: #000 !important;">'.$this->status[$this->type]['log'].'</div>
+						  <div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal" data-member="log-'.$this->status[$this->type]['member_id'].'" data-target="log-'.$this->status[$this->type]['member_id'].'">Close</button>
+						  </div>
+						</div>
+					  </div>
+					</div>
+					</div>
+				</div>';
+			}
+			
+			break;
 		}
 		
-		return $form;
+		return $row;
 	}
 	
 	/*
@@ -656,57 +817,66 @@ class rostersync {
 	{
 		global $roster, $addon;
 		$this->data = $roster->api2->fetch('guild',array('name'=>$guildName,'server'=>$server,'fields'=>$this->fields['guild'] ));
-
+//d($this->data);
 		$members = 0;
 		$this->setMessage('<ul><li>Updating '.$guildName.'@'.$server.' Members<ul>');
 		foreach ($this->data['members'] as $i => $m)
 		{
-			$queryst = "SELECT `member_id` FROM `" . $roster->db->table('members') . "` WHERE `name` = '".$member['character']['name']."' AND `server` = '".$member['character']['realm']."';";
-			$result = $roster->db->query($queryst);
-			if( !$result )
+			if (isset($m['character']['name']) && isset($m['character']['realm']))
 			{
-				return false;
-			}
+				$queryst = "SELECT `member_id` FROM `" . $roster->db->table('members') . "` WHERE `name` = '".$m['character']['name']."' AND `server` = '".$m['character']['realm']."';";
+				$result = $roster->db->query($queryst);
+				if( !$result )
+				{
+					return false;
+				}
 
-			$update = $roster->db->num_rows($result) == 1;
-			$member_id = $roster->db->fetch($result);
-			$roster->db->free_result($result);
-			
-			$member = array(
-				'name'			=> $member['character']['name'],
-				'server'		=> $member['character']['realm'],
-				'region'		=> $region,
-				'guild_id'		=> $guildId,
-				'class'			=> $roster->locale->act['id_to_class'][$member['character']['class']],
-				'classid'		=> $member['character']['class'],
-				'level'			=> $member['character']['level'],
-				'note'			=> '',
-				'guild_rank'	=> $member['rank'],
-				'guild_title'	=> 'Rank'.$member['rank'],
-				'zone'			=> '',
-				'status'		=> '',
-				'active'		=> '1',
-				'online'		=> '0',
-				'last_online'	=>	time(),
-			);
-			
-			if( $update )
-			{
-				$querystr = "UPDATE `" . $roster->db->table('members') . "` SET ". $roster->db->build_query('UPDATE', $member) . " WHERE `member_id` = '".$member_id['member_id']."';";
-				$this->status[$this->type]['member'] = 2;
-				$this->setMessage('<li>[ ' . $name . ' ]</li>');
+				$update = ($roster->db->num_rows($result) == 1 ? true : false );
+				
+				$member_id = $roster->db->fetch($result);
+				$roster->db->free_result($result);
+				
+				$name = $m['character']['name'];
+				$member = array(
+					'name'			=> $m['character']['name'],
+					'server'		=> $m['character']['realm'],
+					'region'		=> $region,
+					'guild_id'		=> $guildId,
+					'class'			=> $roster->locale->act['id_to_class'][$m['character']['class']],
+					'classid'		=> $m['character']['class'],
+					'level'			=> $m['character']['level'],
+					'note'			=> '',
+					'guild_rank'	=> $m['rank'],
+					'guild_title'	=> 'Rank'.$m['rank'],
+					'zone'			=> '',
+					'status'		=> '',
+					'active'		=> '1',
+					'online'		=> '0',
+					'last_online'	=>	time(),
+				);
+				
+				if( $update )
+				{
+					$querystr = "UPDATE `" . $roster->db->table('members') . "` SET ". $roster->db->build_query('UPDATE', $member) . " WHERE `member_id` = '".$member_id['member_id']."';";
+					$this->status[$this->type]['member'] = 2;
+					$this->setMessage('<li>[ ' . $name . ' ] - updated</li>');
+				}
+				else
+				{
+					$querystr = "INSERT INTO `" . $roster->db->table('members') . "` ". $roster->db->build_query('INSERT', $member) . ";";
+					$this->status[$this->type]['member'] = 1;
+					$this->setMessage('<li><span class="color-green-medium">[ ' . $name . ' ] - Added</span></li>');
+				}
+
+				$result = $roster->db->query($querystr);
 			}
 			else
 			{
-				$querystr = "INSERT INTO `" . $roster->db->table('members') . "` ". $roster->db->build_query('INSERT', $member) . ";";
-				$this->status[$this->type]['member'] = 1;
-				$this->setMessage('<li><span class="green">[ ' . $name . ' ] - Added</span></li>');
+				$this->setMessage('<li><span class="color-red-medium">'.$m['character']['name'].' data missing</span></li>');
 			}
-
-			$result = $roster->db->query($querystr);
 		}
 		$this->setMessage('</ul></li></ul>');
-		$this->status['log'] = $this->getMessages();
+		$this->status[$this->type]['log'] = $this->getMessages();
 	}	
 	/*
 		guild member list generage

@@ -35,6 +35,19 @@ class RosterMenu
 			)
 		);
 
+		$search_bar = array('fan_sites','addon_sites','roster_hel');
+		foreach($search_bar as $col)
+		{
+			foreach( $roster->locale->act[$col] as $name => $glink )
+			{
+				$roster->tpl->assign_block_vars($col, array(
+					'LINK' => $glink,
+					'NAME' => $name
+					)
+				);
+			}
+		}
+		
 		$this->makeButtonList($sections);
 	}
 

@@ -154,8 +154,6 @@ $roster->tpl->assign_vars(array(
 
 	'U_SEARCH_FORM_ACTION' => makelink('search'),
 	'U_MENU_UPDATE_LUA'    => makelink('update'),
-	'FORUM'					=> makelink('guild-forum'),
-	'GALLERY'				=> makelink('util-gallery'),
 	'ISADMIN'				=>  $roster->auth->getAuthorized( 'roster_cp' ),
 	'RCP'					=>  makelink('rostercp')
 ));

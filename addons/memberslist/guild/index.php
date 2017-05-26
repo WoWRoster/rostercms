@@ -45,7 +45,7 @@ $mainQuery =
 	"IF( `members`.`officer_note` IS NULL OR `members`.`officer_note` = '', 1, 0 ) AS 'onisnull', ".
 	"$members_list_select".
 	'`members`.`guild_rank`, '.
-
+	'`players`.`clientLocale`, '.
 	'`players`.`server`, '.
 	'`players`.`race`, '.
 	'`players`.`sex`, '.
@@ -167,67 +167,19 @@ function tradeskill_icons ( $row )
 		return '<div>&nbsp;</div>';
 	}
 
-	$lang = $row['clientLocale'];
-
 	$profs = explode(',',$row['professions']);
 	foreach ( $profs as $prof )
 	{
-		$r_prof = explode('|',$prof);
-		$value = isset( $r_prof[1] ) ? explode( ':', $r_prof[1] ) : array( 1, 1 );
-		$curr = $value[0];
-		$max = isset( $value[1] ) ? $value[1] : floor($skill_curr/75)*75;
-		$toolTip = $curr . "/" . $max;
-		$toolTiph = $r_prof[0];
-
-		if( $r_prof[0] == $roster->locale->wordings[$lang]['riding'] )
-		{
-			// Flying
-			if( $curr > 150 )
-			{
-				// Class-specific flying mount
-				if( isset( $roster->locale->wordings[$lang]['ts_flyingIcon'][$row['class']] ) )
-				{
-					$icon = $roster->locale->wordings[$lang]['ts_flyingIcon'][$row['class']];
-				}
-				// Standard faction flying mount
-				else
-				{
-					$icon = $roster->locale->wordings[$lang]['ts_flyingIcon'][$row['factionEn']];
-				}
-			}
-			// Riding
-			else
-			{
-				// Class-specific riding mount
-				if( isset( $roster->locale->wordings[$lang]['ts_ridingIcon'][$row['class']] ) )
-				{
-					$icon = $roster->locale->wordings[$lang]['ts_ridingIcon'][$row['class']];
-				}
-				// Standard racial riding mount
-				else
-				{
-					$icon = $roster->locale->wordings[$lang]['ts_ridingIcon'][$row['race']];
-				}
-			}
-		}
-		else
-		{
-			$icon = isset($roster->locale->wordings[$lang]['ts_iconArray'][$r_prof[0]])?$roster->locale->wordings[$lang]['ts_iconArray'][$r_prof[0]]:'';
-		}
-
-		// Don't add professions we don't have an icon for. This keeps other skills out.
+		$tip=$toolTip=$toolTip=$pname=$vals=$min=$maxnull=null;
+		list($pname,$vals) = explode("|",$prof);
+		list($min,$max) = explode (":",$vals);
+		$tip = $pname."<br>".$min.":".$max;
+		$icon = isset($roster->locale->act['ts_iconArray'][$pname])?$roster->locale->act['ts_iconArray'][$pname]:'';
 		if ($icon != '')
 		{
-			$icon = '<div class="item-sm" '.makeOverlib($toolTip,$toolTiph,'',2,'',',WRAP').'><img src="'.$roster->config['interface_url'].'Interface/Icons/'.$icon.'.'.$roster->config['img_suffix'].'" alt="" /><div class="mask"></div></div>';
-
-			if( active_addon('info') )
-			{
-				$cell_value .= '<a href="' . makelink('char-info-recipes&amp;a=c:' . $row['member_id'] . '#' . strtolower(str_replace(' ','',$r_prof[0]))) . '">' . $icon . '</a>';
-			}
-			else
-			{
-				$cell_value .= $icon;
-			}
+			$toolTip = makeOverlib($tip,'','',2,'',',WRAP');
+			$icons = '<div class="item-sm" '.$toolTip.'><img src="'.$roster->config['interface_url'].'Interface/Icons/'.$icon.'.'.$roster->config['img_suffix'].'" alt="" /><div class="mask"></div></div>';
+			$cell_value .= $icons;
 		}
 	}
 	return $cell_value;
