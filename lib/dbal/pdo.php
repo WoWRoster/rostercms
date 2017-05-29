@@ -132,7 +132,10 @@ class roster_db
 				//$this->link_id->exec("SET GLOBAL general_log = 'ON'");
 				//new PDO ("mysql:host=$dbhost;dbname=$dbname", $dbuser);
 			} catch (PDOException $e) {
-			echo 'Connection failed: ' . $e->getMessage();
+				$err = "Connection Failed(nopass).<br />";
+				$err .= "getCode: ". $e->getCode () . "<br />";
+				$err .= "getMessage: ". $e->getMessage () . "<br />";
+				$this->this_error = $err;
 			}
 		}
 		else
@@ -145,7 +148,10 @@ class roster_db
 				//$this->link_id->exec("SET GLOBAL general_log = 'ON'");
 				//new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 			} catch (PDOException $e) {
-			echo 'Connection failed: ' . $e->getMessage();
+				$err = "Connection Failed failed.<br />";
+				$err .= "getCode: ". $e->getCode () . "<br />";
+				$err .= "getMessage: ". $e->getMessage () . "<br />";
+				$this->this_error = $err;
 			}
 		}
 
