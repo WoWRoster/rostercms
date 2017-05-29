@@ -341,17 +341,6 @@ $roster->tpl->assign_vars(array(
 	'ROSTER_CREDITS'  => sprintf($roster->locale->act['roster_credits'], makelink('credits')),
 	'XML_LANG'        => substr($roster->config['locale'], 0, 2),
 
-	'T_BORDER_WHITE'  => border('swhite', 'start'),
-	'T_BORDER_GRAY'   => border('sgray', 'start'),
-	'T_BORDER_GOLD'   => border('sgold', 'start'),
-	'T_BORDER_RED'    => border('sred', 'start'),
-	'T_BORDER_ORANGE' => border('sorange', 'start'),
-	'T_BORDER_YELLOW' => border('syellow', 'start'),
-	'T_BORDER_GREEN'  => border('sgreen', 'start'),
-	'T_BORDER_PURPLE' => border('spurple', 'start'),
-	'T_BORDER_BLUE'   => border('sblue', 'start'),
-	'T_BORDER_END'    => border('sgray', 'end'),
-
 	'ROSTER_SCOPE'    => 'util',
 	'PAGE_TITLE'      => 'WoWRoster',
 	'ROSTER_HEAD'     => '',
