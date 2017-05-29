@@ -158,7 +158,7 @@ class roster_db
 		//@mysql_query("SET NAMES 'utf8'");
 		//@mysql_query("SET GLOBAL general_log = 'ON'");
 
-		//return $this->link_id;
+		return $this->link_id;
 
 	}
 
@@ -191,7 +191,7 @@ class roster_db
 	function error()
 	{
 		
-		//$result = @mysql_errno($this->link_id) . ': ' . mysql_error($this->link_id);
+		$result = @mysql_errno($this->link_id) . ': ' . mysql_error($this->link_id);
 		return $result;
 	}
 
