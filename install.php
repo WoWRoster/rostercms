@@ -746,7 +746,8 @@ function process_step3( )
 					'DESCRIBE'  => aprint($query['describe'], '', true)
 				));
 			}
-	
+		}
+	}
 	
 		$tpl->message_die('Failed to get version information for database <strong>' . $db_config['database'] . '</strong> as <strong>' . $db_config['username'] . '@' . $db_config['host'] . '</strong><br />'
 			. $db->connect_error() . '<br /><br />'
@@ -1049,6 +1050,5 @@ function parse_sql( $sql , $delim )
 
 	return $retval;
 }
-	}
-	}
+
 	
