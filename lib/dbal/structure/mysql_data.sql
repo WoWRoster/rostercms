@@ -125,10 +125,10 @@ INSERT INTO `renprefix_config` VALUES (4020, 'use_temp_tables', '0', 'radio{on^1
 INSERT INTO `renprefix_config` VALUES (4030, 'preprocess_js', '0', 'radio{on^1|off^0', 'theme_conf');
 INSERT INTO `renprefix_config` VALUES (4040, 'preprocess_css', '0', 'radio{on^1|off^0', 'theme_conf');
 INSERT INTO `renprefix_config` VALUES (4050, 'minifyjs', '0', 'radio{on^1|off^0', 'theme_conf');
-INSERT INTO `renprefix_config` VALUES (4050, 'theme', 'default', 'function{templateList', 'theme_conf');
-INSERT INTO `renprefix_config` VALUES (4060, 'logo', '', 'text{128|60', 'theme_conf');
-INSERT INTO `renprefix_config` VALUES (4070, 'roster_bg', '', 'text{128|60', 'theme_conf');
-INSERT INTO `renprefix_config` VALUES (4080, 'header_locale', '1', 'radio{on^1|off^0', 'theme_conf');
+INSERT INTO `renprefix_config` VALUES (4060, 'theme', 'default', 'function{templateList', 'theme_conf');
+INSERT INTO `renprefix_config` VALUES (4070, 'logo', '', 'text{128|60', 'theme_conf');
+INSERT INTO `renprefix_config` VALUES (4080, 'roster_bg', '', 'text{128|60', 'theme_conf');
+INSERT INTO `renprefix_config` VALUES (4090, 'header_locale', '1', 'radio{on^1|off^0', 'theme_conf');
 INSERT INTO `renprefix_config` VALUES (4100, 'header_login', '1', 'radio{on^1|off^0', 'theme_conf');
 INSERT INTO `renprefix_config` VALUES (4110, 'header_search', '1', 'radio{on^1|off^0', 'theme_conf');
 INSERT INTO `renprefix_config` VALUES (4120, 'bootstrap', 'default', 'function{ThemeList', 'theme_conf');
