@@ -711,6 +711,43 @@ function process_step3( )
 	}
 	else
 	{
+		if( is_array($error_report) )
+	{
+		foreach( $error_report as $file => $errors )
+		{
+			$tpl->assign_block_vars('php_debug', array(
+				'FILE' => substr($file, strlen(ROSTER_BASE))
+			));
+			foreach( $errors as $error )
+			{
+				$tpl->assign_block_vars('php_debug.row', array(
+					'ROW_CLASS' => $switch_row_class(),
+					'ERROR'     => $error
+				));
+			}
+		}
+	}
+
+	if( count($db->queries) > 0 )
+	{
+		foreach( $db->queries as $file => $queries )
+		{
+			$tpl->assign_block_vars('sql_debug', array(
+				'FILE' => substr($file, strlen(ROSTER_BASE))
+			));
+			foreach( $queries as $query )
+			{
+				$tpl->assign_block_vars('sql_debug.row', array(
+					'ROW_CLASS' => $switch_row_class(),
+					'LINE'      => $query['line'],
+					'TIME'      => $query['time'],
+					'QUERY'     => nl2br(htmlentities($query['query'])) . (empty($query['error']) ? '' : '<hr />'
+						. nl2br(htmlentities($query['error']))),
+					'DESCRIBE'  => aprint($query['describe'], '', true)
+				));
+			}
+	
+	
 		$tpl->message_die('Failed to get version information for database <strong>' . $db_config['database'] . '</strong> as <strong>' . $db_config['username'] . '@' . $db_config['host'] . '</strong><br />'
 			. $db->connect_error() . '<br /><br />'
 			. '<form method="post" action="index.php" name="post"><input type="hidden" name="install_step" value="2" /><div align="center"><input type="submit" name="submit" value="Try Again" /></div></form>');
@@ -1012,3 +1049,6 @@ function parse_sql( $sql , $delim )
 
 	return $retval;
 }
+	}
+	}
+	
