@@ -131,7 +131,7 @@ INSERT INTO `renprefix_config` VALUES (4080, 'roster_bg', '', 'text{128|60', 'th
 INSERT INTO `renprefix_config` VALUES (4090, 'header_locale', '1', 'radio{on^1|off^0', 'theme_conf');
 INSERT INTO `renprefix_config` VALUES (4100, 'header_login', '1', 'radio{on^1|off^0', 'theme_conf');
 INSERT INTO `renprefix_config` VALUES (4110, 'header_search', '1', 'radio{on^1|off^0', 'theme_conf');
-INSERT INTO `renprefix_config` VALUES (4120, 'bootstrap', 'default', 'function{ThemeList', 'theme_conf');
+INSERT INTO `renprefix_config` VALUES (4120, 'bootstrap', 'custom', 'function{ThemeList', 'theme_conf');
 
 # --------------------------------------------------------
 ### Menu table entries

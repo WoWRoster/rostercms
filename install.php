@@ -656,6 +656,8 @@ function process_step3( )
 	 */
 	include_once ($dbal_file);
 
+	$roster->config['debug_mode'] = $roster->config['sql_window']= 1;
+	
 	// Hey, looks like we are making the database, YAY!
 	if( $create['username'] != '' && $create['password'] != '' )
 	{
@@ -674,7 +676,7 @@ function process_step3( )
 	if( !is_resource($db->link_id) )
 	{
 		// Attempt to
-		$tpl->message_die('Failed to connect to database <strong>' . $db_config['database'] . '</strong> as <strong>' . $db_config['username'] . '@' . $db_config['host'] . '</strong><br />' . $db->connect_error() . '<br /><br />' . '<form method="post" action="index.php" name="post"><input type="hidden" name="install_step" value="2" /><div align="center"><input type="submit" name="submit" value="Try Again" /></div></form>');
+		$tpl->message_die('Failed to connect to database <strong>' . $db_config['database'] . '</strong> as <strong>' . $db_config['username'] . '@' . $db_config['host'] . '</strong><br />' . $db->this_error . '<br /><br />' . '<form method="post" action="index.php" name="post"><input type="hidden" name="install_step" value="2" /><div align="center"><input type="submit" name="submit" value="Try Again" /></div></form>');
 	}
 
 	$db_structure_file = ROSTER_DB_DIR . 'structure' . DIR_SEP . $db_config['dbtype'] . '_structure.sql';
