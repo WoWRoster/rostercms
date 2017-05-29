@@ -347,11 +347,11 @@ class apicache {
 		$update = new update();
 		
 		$update->reset_values();
-		
+		//d($data);
 		$update->add_value('id',		$parameters['id']);
 		$update->add_value('type',		$vars['type']);
 		$update->add_value('timestamp',	time());
-		$update->add_value('name',		( isset($data['name']) ? $data['name'] : ''));
+		$update->add_value('name',		( isset($data['name']) ? $data['name'] : ( isset( $data['title'] ) ? $data['title'] : '') ) );
 		$update->add_value('locale',	( isset($vars['locale']) ? $vars['locale'] : 'enUS'));
 		$update->add_value('json',		json_encode($data, true));
 		

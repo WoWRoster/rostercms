@@ -121,12 +121,12 @@ class roster_itemSearch
 			{
 				$row = $roster->db->fetch($result);
 				//d($row);
-				$icon = new item($row);
+				//$icon = new item($row);
 
-				$item['html'] = '<div class="row">
+				$item['html'] = '<div class="row row-m-t">
 					<div class="col-md-3">' . $this->_out_item($row) . '</div>
-					<div class="col-md-3">' . $icon->requires_level . '</div>
-					<div class="col-md-3"><span style="color:#' . $icon->color . '">[' . $icon->name . ']</span></div>
+					<div class="col-md-3">' . $row['level'] . '</div>
+					<div class="col-md-3"><span style="color:#' . $row['item_color'] . '">[' . $row['item_name'] . ']</span></div>
 					<div class="col-md-3"><a href="' . makelink('char-info&amp;a=c:' . $row['member_id']) . '"><strong>' . $row['name'] . '</strong></a></div></div>';
 
 				$this->add_result($item);

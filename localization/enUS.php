@@ -1021,6 +1021,11 @@ $lang['questlinks'][] = array(
 	'name'=>'',
 	'url'=>''
 );*/
+/*
+	Search Fields
+*/
+$lang['roster_apicache'] = 'API Cache';
+$lang['apicache'] = 'API Cache';
 $lang['fan_sites'] = array(
 	'WoWHead'			=> 'http://www.wowhead.com/',
 	'Blizzard Watch'	=> 'blizzardwatch.com/',

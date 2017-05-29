@@ -20,6 +20,7 @@ require_once(ROSTER_BASE . 'settings.php');
 
 $roster->output['title'] = $roster->locale->act['search'];
 
+//d($_POST);
 
 $roster->tpl->assign_vars(array(
 	'S_NO_RESULTS'      => false,

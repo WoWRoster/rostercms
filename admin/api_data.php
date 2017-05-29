@@ -378,8 +378,8 @@ $roster->tpl->assign_block_vars('sections', array(
 	while ($row = $roster->db->fetch($resulterr))
 	{
 		$roster->tpl->assign_block_vars('sections.lines', array(
-			'NAME'       => $row['error_info'],
-			'ROWS'       => $row['url'].' - '.$row['total'],
+			'NAME'       => $row['type'],
+			'ROWS'       => $row['responce_code'].'</td><td>'.$row['date'].'</td><td>'.$row['total'],
 			'ROW'        => (($i % 2) + 1)
 			)
 		);

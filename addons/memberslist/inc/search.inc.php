@@ -37,10 +37,12 @@ class memberslistSearch
 	{
 		global $roster;
 
-		$this->open_table = '<tr><th class="membersHeader ts_string">' . $roster->locale->act['level'] . '</th>'
-						  . '<th class="membersHeader ts_string">' . $roster->locale->act['class'] . '</th>'
-						  . '<th class="membersHeader ts_string">' . $roster->locale->act['name'] . '</th>'
-						  . '<th class="membersHeaderRight ts_string">' . $roster->locale->act['title'] . '</th></tr>';
+		$this->open_table = '<div class="row">
+	<div class="col-md-3">' . $roster->locale->act['level'] . '</div>
+	<div class="col-md-3">' . $roster->locale->act['class'] . '</div>
+	<div class="col-md-3">' . $roster->locale->act['name'] . '</div>
+	<div class="col-md-3">' . $roster->locale->act['title'] . '</div>
+</div>';
 	}
 
 	function search( $search , $limit=10 , $page=0 )
@@ -84,7 +86,12 @@ class memberslistSearch
 			{
 				list($member_id, $name, $server, $region, $guild_id, $class, $level, $note, $guild_rank, $guild_title, $zone, $last_online) = $roster->db->fetch($result);
 
-				$item['html'] = '<td class="SearchRowCell">' . $level . '</td><td class="SearchRowCell">' . $class . '</td><td class="SearchRowCell"><a href="' . makelink("char-info&amp;a=c:$member_id") . '"><strong>' . $name . '</strong></a></td><td class="SearchRowCellRight">' . $guild_title . '</td>';
+				$item['html'] = '<div class="row">
+	<div class="col-md-3">' . $level . '</div>
+	<div class="col-md-3">' . $class . '</div>
+	<div class="col-md-3"><a href="' . makelink("char-info&amp;a=c:$member_id") . '"><strong>' . $name . '</strong></a></div>
+	<div class="col-md-3">' . $guild_title . '</div>
+</div>';
 				$this->add_result($item);
 				unset($item);
 

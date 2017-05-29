@@ -83,7 +83,7 @@ margin:2px;
 .dropdown-menu .smenuitem a:hover{
 	color: #fff;
 }
-.faction-score { font-weight: bold; color: #fff; text-shadow: 1px 1px 1px black; text-align: center; z-index: 2; position: absolute; top: 0; left: 0; width: 100%; }
+.faction-score { font-weight: bold; color: #fff; text-shadow: 1px 1px 1px black; text-align: center; z-index: 2; position: absolute; left: 0; width: 100%; }
 
 .xmbox {  background: rgba(0, 0, 0, 0.19);  margin: 2px;}
 .xmboxo { height: 180px; background: rgba(0, 0, 0, 0.19);  margin: 2px;}
@@ -114,7 +114,14 @@ text-shadow: black 0 0 3px; padding: 0 9px; background: url(../images/row_n.png)
 .roster-footer .wr-info { color: #FFF8E1; text-align: center; }
 .roster-footer .bliz { color: #FFF8E1; text-align: center; margin-top: 25px; font-size: 12px; }
 
-
+.row-m-t{
+  margin-top : 5px;
+  margin-bottom : 5px;
+}
+.row-l-t{
+  margin-top : 20px;
+  margin-bottom : 5px;
+}
 .menuform {
 display: inline-block;
     position: relative;
@@ -2211,7 +2218,7 @@ a.list-group-item-danger.active:focus {
 }
 @media (min-width:1280px){.panel-subtitle{font-size:18px;line-height:30px}
 }
-.panel-title{font-family:"semplicita pro","open sans",arial,helvetica,sans-serif;font-weight:700;font-size:48px;line-height:63px;color:#fff;text-shadow:0 0 5px rgba(0,0,0,.8)}
+.panel-title{position:absolute;font-family:"semplicita pro","open sans",arial,helvetica,sans-serif;font-weight:700;font-size:48px;line-height:63px;color:#fff;text-shadow:0 0 5px rgba(0,0,0,.8)}
 @media (min-width:720px){.panel-title{font-size:54.4px;line-height:71.4px}
 }
 @media (min-width:1280px){.panel-title{font-size:64px;line-height:84px}
@@ -2371,7 +2378,7 @@ a.list-group-item-danger.active:focus {
 }
 
 .content-box-large {
-  padding: 20px;
+  padding: 5px;
 }
 
 .box-with-header {
@@ -2397,7 +2404,14 @@ a.list-group-item-danger.active:focus {
 	background-color: #d9edf7;
 	border-color: #bce8f1;
 }
+.panel-heading>.panel-options, .content-box-header .panel-options {
+    float: right;
+    padding-right: 15px;
+}
 
+.panel-heading>.panel-options>a, .content-box-header .panel-options>a {
+    margin-top: 10px;
+}
 .GameIcon{position:relative;box-sizing:content-box;background-color:#000;display:inline-block;max-width:168px;width:48px;border:1px solid #504137}
 .GameIcon::before{content:"";display:block;padding-top:100%}
 .GameIcon-icon{position:absolute;top:0;right:0;bottom:0;left:0;background-color:#000;background-size:cover;border-radius:9%}

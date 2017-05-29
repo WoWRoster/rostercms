@@ -705,7 +705,7 @@ td .faction-level { padding: 0; margin: 0; }
 
 .faction-standing { width: 300px; overflow: hidden; }
 .faction-bar { width: 300px; height: 22px; background: #542b19 url("../images/bar-background.png") no-repeat 0 0; position: relative; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
-.faction-score { font-weight: bold; color: #fff; text-shadow: 1px 1px 1px black; text-align: center; z-index: 2; position: absolute; top: 0; left: 0; width: 100%; }
+.faction-score { font-weight: bold; color: #fff; text-shadow: 1px 1px 1px black; text-align: center; z-index: 2; position: absolute; left: 0; width: 100%; }
 .faction-fill { height: 22px; z-index: 1; background: url("../images/bar-background.png") no-repeat 0 -44px; -moz-border-radius: 3px; -moz-border-radius-topright: 0; -moz-border-radius-bottomright: 0; -webkit-border-radius: 3px; -webkit-border-top-right-radius: 0; -webkit-border-bottom-right-radius: 0; border-radius: 3px; border-radius-topright: 0; border-radius-bottomright: 0; }
 .full-fill { -moz-border-radius: inherit; -webkit-border-radius: inherit; border-radius: inherit;}
 

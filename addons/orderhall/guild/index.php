@@ -54,6 +54,7 @@ else
 	$roster->api2->set_region($_POST['region']);
 	$a = $roster->api2->fetch('character',array('name'=>$_POST['char'],'server'=>$_POST['server'],'fields'=>'quests'));
 
+	$roster->api2->ignore_cache = false;
 	$comp = 0;
 	$total = count($classes[$a['class']]);
 	foreach ($classes[$a['class']] as $quest)

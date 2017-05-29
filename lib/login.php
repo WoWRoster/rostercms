@@ -96,6 +96,7 @@ class RosterLogin
 			setcookie('roster_remember', NULL, time() - (60*60*24*30*100), ROSTER_PATH);
 		}
 	}
+	
 	function endSession($uid=null)
 	{
 		global $roster;
@@ -197,17 +198,14 @@ class RosterLogin
 	function bnetlogin($data,$token = null)
 	{
 		global $roster;
-		//echo '<pre>';
-		//print_r($data);
-		//echo '</pre>';
+
 		$pass = md5($data['battletag'].'#'.$data['id']);
 		//first see if the user exists
 		$query = "SELECT * FROM `" . $roster->db->table('user_members') . "` WHERE `bnet_id`='" . $data['id'] . "' LIMIT 1;";
 		$result = $roster->db->query($query);
-		//echo (bool)$result;
+
 		$row = $roster->db->fetch($result);
 		$count = $roster->db->num_rows($result);
-		//echo $count;
 
 		// ok the user does not exist create the user
 		if( $count == 0 )
@@ -249,89 +247,66 @@ class RosterLogin
 		return false;
 	}
 
+	// this function should no longer be used
+	// if it is send it to the new proper function
 	function _getAuthorized( $access )
 	{
 		global $roster;
 
-		$this->approved = false;
-		$default = $roster->config['default_group'];
-		$page = array();
-		$page = explode(":",$access);
-		$user = array();
-		if (isset($this->access))
-		{
-			$user = explode(':',$this->access);
-		}
-		else
-		{
-			$user = array($default);
-		}
-		foreach ($user as $x => $ac)
-		{
-			if (in_array($ac, $page))
-			{
-				return true;
-			}
-		}
-		//$roster->set_message( sprintf($roster->locale->act['addon_no_access'], $roster->pages[0]), 'Roster Auth', 'warning');
-		return false;
+		return $this->getAuthorized( $access );
+		
 	}
 
 	function getAuthorized( $access )
 	{
 		global $roster;
 		
-		//d($access);
-		if (strpos($access, ':') !== false)
+		// this is allways set so we dont need to check
+		$groups = explode(':',$this->access);
+		//BUT see if the user is loged in and has permissions
+		$user = '';
+		if ( isset($this->user['user_permissions']) )
 		{
-			//__debug__('triped');
-			return $this->_getAuthorized( $access );
+			$user = json_decode($this->user['user_permissions'],true);
 		}
 		else
 		{
-			// set the default group in roster now 
-			$default = $roster->config['default_group'];
-			$pass = false;
-
-			//get the groups the user has access with can be more then 1
-			if (isset($this->access))
-			{
-				$groups = explode(':',$this->access);
-			}
-			else
-			{
-				$groups = array($default);
-			}
-			// check user groups if opne matches it passes fails are not held
-			// retuens on true
-			//d($groups);
-			arsort($groups);
-			foreach ($groups as $id)
-			{
-				if(isset($this->groups_p[$id][$access]) && $this->groups_p[$id][$access] == 1)
-				{
-					return true;
-				}
-			}
-			/*
-			foreach($a as $i)
-			{
-				if (in_array($i,$groups))
-				{
-					return true;
-				}
-				if (isset($up[$i]) && $up[$i] == '1')
-				{
-					return true;
-				}
-			}
-			*/
-			// fail save to make sure cp admin allways hass access
-			
-			return false;
-		
+			$user = json_decode($this->groups_p[$roster->config['default_group']]['group_permissions'],true);
 		}
 		
+		// roster cp override
+		if ($user['roster_cp'] == 1)
+		{
+			return true;
+		}
+		
+		/*
+			see if user has permissions first
+		*/
+		if ($user[$access] == 1)
+		{
+			return true;
+		}
+		
+		// user permissions not set check if user has many groups
+		if (isset($this->access))
+		{
+			$groups = explode(':',$this->access);
+		}
+		else
+		{
+			$groups = array($default);
+		}
+		foreach ($groups as $id)
+		{
+			if(isset($this->groups_p[$id][$access]) && $this->groups_p[$id][$access] == 1)
+			{
+				return true;
+			}
+		}
+		
+		// if all fail return false
+		return false;		
 	}
 	
 	function getgroups()

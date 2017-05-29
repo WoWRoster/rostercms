@@ -20,7 +20,10 @@ if( !defined('IN_ROSTER') )
 {
     //exit('Detected invalid access to this file!');
 }
-
+if (isset($_GET['adebug']) && $_GET['adebug'] == true)
+{
+	$roster->api2->ignore_cache = true;
+}
 require_once ($addon['dir'] . 'inc/rostersync.lib.php');
 $rsync = new rostersync;
 switch ($method)
@@ -48,4 +51,8 @@ switch ($method)
 	   
 	   
 }
-//include_once (ROSTER_BASE . 'footer.php');
+//
+if (isset($_GET['adebug']) && $_GET['adebug'] == true)
+{
+	include_once (ROSTER_BASE . 'footer.php');
+}

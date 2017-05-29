@@ -151,6 +151,8 @@ class rostersync {
 		$result = $roster->db->query($querystr);
 		if( !$result )
 		{
+			$this->status[$this->type]['message'] = $roster->db->this_error;
+			$this->setMessage($roster->db->this_error.'<br>');
 			return false;
 		}
 

@@ -34,10 +34,9 @@ var t;
 			},
 			success: function(data)
 			{
-				//console.log(data);
 				members = jQuery.parseJSON( data );
-				count = mcount = members.length - 1;
-				//jQuery(\'#ajaxdata\').html(data);
+				count = members.length - 1;
+				mcount = members.length;
 				jQuery(\'#mcurrent\').html(members[count].name);
 				jQuery(\'#mnext\').html(members[count-1].name);
 				jQuery(\'#mtotal\').html(mcount);
@@ -49,48 +48,58 @@ var t;
 			}
 		});
 	});
+	
 	jQuery(document).on(\'click\', \'#process\', function (e) {
-		//for each (var member in members) {
-		//	jQuery(\'#urls\').html("" + member.name + " - " + member.member_id + " <br>");
-		//}
 		nextRequest = 2000;
 		process_many();
 	});
 	
 	function process_many()
 	{
-		next = members.length - 1;
-		//console.log( members[next].name+\' - \'+members[next].member_id);
-		$.ajax({
-			type: "GET",
-			url: "'. makelink('ajax-addon-rostersync-character').'",
-			data: members[next],
-			dataType: "html",
-			async: false,
-			success: function(r){
-				jQuery(\'#results\').prepend(r);
-				processed = processed+1;
-				_getper();
-				members.splice(next, 1);
-				_updateNext();
-				setTimeout(function() {
-				}, 500);
-			},
-		});
-		t = setTimeout( process_many, nextRequest );
+		if ( members.length > 0 )
+		{
+			next = members.length - 1;
+			$.ajax({
+				type: "GET",
+				url: "'. makelink('ajax-addon-rostersync-character').'",
+				data: members[next],
+				dataType: "html",
+				async: false,
+				success: function(r){
+					jQuery(\'#results\').prepend(r);
+					processed = processed+1;
+					_getper();
+					members.splice(next, 1);
+					if ( members.length > 0 )
+					{
+						_updateNext();
+						setTimeout(function() {
+						}, 500);
+					}
+					else
+					{
+						clearTimeout(t);
+						return;
+					}
+				},
+			});
+			t = setTimeout( process_many, nextRequest );
+		}
+		else
+		{
+			clearTimeout(t);
+		}
 	}
 	
 	jQuery(document).on(\'click\', \'#STOP\', function (e) {
 		myStopFunction();
 	});
+	
 	function myStopFunction() {
 		clearTimeout(t);
 	}
 
 	jQuery(document).on(\'click\', \'#OneProcess\', function (e) {
-		//for each (var member in members) {
-		//	jQuery(\'#urls\').html("" + member.name + " - " + member.member_id + " <br>");
-		//}
 		next = members.length - 1;
 		$.ajax({
 			type: "GET",
@@ -112,12 +121,15 @@ var t;
 	function _updateNext()
 	{
 		count = members.length - 1;
-		//jQuery(\'#ajaxdata\').html(data);
 		jQuery(\'#mcurrent\').html(members[count].name);
-		jQuery(\'#mnext\').html(members[count-1].name);
+		if ( members.length > 1 )
+		{
+			jQuery(\'#mnext\').html(members[count-1].name);
+		}
 		jQuery(\'#mtotal\').html(mcount);
 		jQuery(\'#mcomplete\').html(processed);
 	}
+
 	function _getper()
 	{
 		per = (processed / mcount * 100);
@@ -126,12 +138,6 @@ var t;
 		jQuery(\'#pro_bar\').css( "width", per.toFixed(2)+"%" );
 	}
 
-	/*
-	function show_log(mid)
-	{
-		console.log(mid);
-		$(\'#\'+mid+\'\').toggle(\'fast\');
-	}*/
 	jQuery(document).on(\'click\', \'#logbutton\', function (e) {
 		var $this = $(this);
 		var member = $this.data("member");
