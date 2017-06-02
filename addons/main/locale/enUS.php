@@ -111,3 +111,14 @@ $lang['admin']['slider_slideOn']           = 'Slide On|When the transition effec
 $lang['admin']['slider_thumbnails']        = 'Thumbnails|Display thumbnails when you hover the pagination icons';
 $lang['admin']['slider_time']              = 'Time|milliseconds between the end of the sliding effect and the start of the next one';
 $lang['admin']['slider_transPeriod']       = 'Transition Period|Length of the sliding effect in milliseconds';
+
+
+$lang['admin']['main_news']						= 'Portal News';
+$lang['admin']['news_can_edit_comment_info']	= 'Can Edit Comments';
+$lang['admin']['news_can_post_comment_info']	= 'Can Post a comment';
+$lang['admin']['news_can_post_edit_info']		= 'Can Edit News';
+$lang['admin']['news_can_post_info']			= 'Can Post news';
+$lang['admin']['can_edit_comment']				= 'Edit Comments';
+$lang['admin']['can_post_comment']				= 'Post Comment';
+$lang['admin']['can_edit_post']					= 'Edit News';
+$lang['admin']['can_post']						= 'Post News';

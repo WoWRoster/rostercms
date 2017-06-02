@@ -21,7 +21,11 @@ roster_add_js(getAllTooltips(), 'inline', 'footer', FALSE, FALSE);
 $totaltime = round(format_microtime() - ROSTER_STARTTIME, 2);
 
 $error_report = $roster->error->stop();
-$debug_report = $roster->debug->get_debug();
+$debug_report = '';
+if ( $roster->config['debug_window'] )
+{
+	$debug_report = $roster->debug->get_debug();
+}
 // Assign template vars
 $roster->tpl->assign_vars(array(
 	'S_PROCESSTIME'   => $roster->config['processtime'],

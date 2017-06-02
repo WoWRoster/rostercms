@@ -306,6 +306,8 @@ CREATE TABLE `renprefix_guild` (
   `guild_xp` varchar(32) DEFAULT '',
   `guild_xpcap` varchar(32) DEFAULT '',
   `guild_level` varchar(32) DEFAULT '',
+  `achievementPoints` INT(20) DEFAULT NULL,
+  `battlegroup` VARCHAR(50) DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   `GPversion` varchar(6) NOT NULL DEFAULT '0.0.0',
   `DBversion` varchar(6) NOT NULL DEFAULT '0.0.0',

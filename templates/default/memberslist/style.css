@@ -111,3 +111,97 @@ table #memberslist thead tr .headerSortDown, table #memberslist thead tr .header
 
 }
 */
+
+
+@media (min-width:540px){.GuildHeader{display:table;position:relative}
+.GuildHeader .GuildHeader-character{margin-bottom:0}
+.GuildHeader .GuildHeader-nameTitle{padding-right:20px;margin-right:20px;border-right:1px solid rgba(255,255,255,.2)}
+}
+.GuildHeader-info{display:table-cell;vertical-align:middle;height:100%}
+.GuildHeader-character{display:table;position:relative;margin-bottom:10px}
+.GuildHeader-title{font-family:"Semplicita Pro","Open Sans",Arial,Helvetica,sans-serif;font-weight:700;font-size:1.08rem;line-height:1.5em;color:#fff;text-shadow:0 0 1px transparent,0 1px 2px rgba(0,0,0,.8);max-width:350px}
+.GuildHeader-title.zh-cn,.zh-cn .GuildHeader-title{font-family:Arial,Helvetica,"å¾®è½¯é›…é»‘","Microsoft YaHei","Hei SC",sans-serif}
+.GuildHeader-title.ko-kr,.ko-kr .GuildHeader-title{font-family:"Nanum Gothic",Arial,Helvetica,"ë§‘ì€ ê³ ë”•","Malgun Gothic","ì• í”Œì‚°ëŒê³ ë”•ë„¤ì˜¤",AppleSDGothicNeo,"ì• í”Œê³ ë”•",AppleGothic,"ë‹ì›€",Dotum,sans-serif}
+.GuildHeader-title.ru-ru,.ru-ru .GuildHeader-title{font-family:"Futura Demi","Open Sans",Arial,Helvetica,sans-serif}
+.GuildHeader-title.zh-tw,.zh-tw .GuildHeader-title{font-family:Arial,Helvetica,"é»‘é«”-ç¹","Heiti TC","å¾®è»Ÿæ­£é»‘","Microsoft JhengHei","Tei TC",sans-serif}
+@media (min-width:720px){.GuildHeader-title{font-size:1.224rem}
+}
+@media (min-width:1280px){.GuildHeader-title{font-size:1.44rem}
+}
+.GuildHeader-logoArea{display:table-cell;vertical-align:middle;height:100%;display:none}
+@media (min-width:720px){.GuildHeader-logoArea{display:block}
+}
+.GuildHeader-logo.Logo--alliance,.GuildHeader-logo.Logo--horde{margin-right:20px}
+.GuildHeader-nameArea{display:table-cell;vertical-align:middle;height:100%}
+.GuildHeader-name{font-family:"Semplicita Pro","Open Sans",Arial,Helvetica,sans-serif;font-weight:700;font-size:2.2395rem;line-height:1.5em;line-height:1em}
+.GuildHeader-name.zh-cn,.zh-cn .GuildHeader-name{font-family:Arial,Helvetica,"å¾®è½¯é›…é»‘","Microsoft YaHei","Hei SC",sans-serif}
+.GuildHeader-name.ko-kr,.ko-kr .GuildHeader-name{font-family:"Nanum Gothic",Arial,Helvetica,"ë§‘ì€ ê³ ë”•","Malgun Gothic","ì• í”Œì‚°ëŒê³ ë”•ë„¤ì˜¤",AppleSDGothicNeo,"ì• í”Œê³ ë”•",AppleGothic,"ë‹ì›€",Dotum,sans-serif}
+.GuildHeader-name.ru-ru,.ru-ru .GuildHeader-name{font-family:"Futura Demi","Open Sans",Arial,Helvetica,sans-serif}
+.GuildHeader-name.zh-tw,.zh-tw .GuildHeader-name{font-family:Arial,Helvetica,"é»‘é«”-ç¹","Heiti TC","å¾®è»Ÿæ­£é»‘","Microsoft JhengHei","Tei TC",sans-serif}
+@media (min-width:720px){.GuildHeader-name{font-size:2.5381rem}
+}
+@media (min-width:1280px){.GuildHeader-name{font-size:2.986rem}
+}
+.GuildHeader-media{text-transform:uppercase}
+.GuildHeader-media .Media-image{padding-right:4px}
+.GuildHeader-links{display:table;position:relative;font-size:1.296rem;line-height:1.5em;color:#f8b700;margin:-10px}
+@media (min-width:720px){.GuildHeader-links{font-size:1.4688rem}
+}
+@media (min-width:1280px){.GuildHeader-links{font-size:1.728rem}
+}
+.GuildHeader-links>*{display:table-cell;vertical-align:middle;height:100%;padding:10px}
+.GuildHeader-details{font-size:.9rem;line-height:1.5em}
+@media (min-width:720px){.GuildHeader-details{font-size:1.02rem}
+}
+@media (min-width:1280px){.GuildHeader-details{font-size:1.2rem}
+}
+.GuildHeader-detail{display:inline-block}
+.GuildHeader--DEATHKNIGHT .GuildHeader-name{color:#c41e3b}
+.GuildHeader--DEMONHUNTER .GuildHeader-name{color:#a330c9}
+.GuildHeader--DRUID .GuildHeader-name{color:#ff7c0a}
+.GuildHeader--HUNTER .GuildHeader-name{color:#aad372}
+.GuildHeader--MAGE .GuildHeader-name{color:#68ccef}
+.GuildHeader--MONK .GuildHeader-name{color:#00ffba}
+.GuildHeader--PALADIN .GuildHeader-name{color:#f48cba}
+.GuildHeader--PRIEST .GuildHeader-name{color:#f0ebe0}
+.GuildHeader--ROGUE .GuildHeader-name{color:#fff468}
+.GuildHeader--SHAMAN .GuildHeader-name{color:#2359ff}
+.GuildHeader--WARLOCK .GuildHeader-name{color:#9382c9}
+.GuildHeader--WARRIOR .GuildHeader-name{color:#c69b6d}
+.GuildHeader--horizontal{display:table;position:relative}
+.GuildHeader--horizontal .GuildHeader-character{margin-bottom:0}
+.GuildHeader--horizontal .GuildHeader-nameTitle{padding-right:20px;margin-right:20px;border-right:1px solid rgba(255,255,255,.2)}
+
+.Logo--Horde.Logo--smaller {
+	background-image: url('images/Logo-alliance.png');
+	position: relative;
+	width: 77.5px;
+}
+.Logo--Horde {
+	background-image: url('images/Logo-alliance.png');
+	position: relative;
+	width: 232.5px;
+}
+
+.Logo--Alliance.Logo--smaller {
+	background-image: url('images/Logo-alliance.png');
+	position: relative;
+	width: 77.5px;
+}
+.Logo--Alliance {
+	background-image: url('images/Logo-alliance.png');
+	position: relative;
+	width: 232.5px;
+}
+.Logo {
+	background-repeat: no-repeat;
+	background-size: 100%;
+	display: inline-block;
+	max-width: 100%;
+	position: relative;
+	height: 110px;
+	margin: 0 10px;
+}
+.GuildHeader-logo.Logo--alliance, .GuildHeader-logo.Logo--horde {
+	margin-right: 20px;
+}

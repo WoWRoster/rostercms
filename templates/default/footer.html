@@ -19,6 +19,29 @@
 	</div>
 </div>
 
+<!-- IF S_MESSAGES -->
+<div id="noticebox_content" class="noticebox">
+
+	<div class="noticeboxhead" id="cbmin">
+		<div class="noticeboxtitle">Roster Notices</div>
+		<div class="noticeboxoptions">
+			<button id="cbminx" class="v2 qp Ou" title="Minimize"><i class="fa fa-window-minimize" aria-hidden="true"></i></button>
+		</div>
+		<br clear="all">
+	</div>
+	<div id="notice-content" style="display:none;">
+		<!-- BEGIN messages -->
+		<!-- BEGIN item -->
+		<div class="alert alert-{messages.item.TYPE} alert-dismissable">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>{messages.item.TITLE}</strong>{messages.item.TEXT}
+		</div>
+		<!-- END item -->
+		<!-- END messages -->
+	</div>
+</div>
+<!-- ENDIF -->
+
 <!-- IF S_DEBUG_MODE -->
 <br />
 

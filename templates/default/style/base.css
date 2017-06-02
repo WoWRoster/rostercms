@@ -3,8 +3,10 @@ a:link,
 a:visited,
 a:active { color:#E5950A; text-decoration:none; font-weight:bold; }
 a:hover { color:#FFF; text-decoration:none; font-weight:bold; }
-
-body {background: url(../images/silvermoon-1920x1200.png) fixed no-repeat; background-color: #000000; color: #ffffff;}
+html{	height: 100%;
+	display: flex;
+flex-direction: column;}
+body {background: url(../images/silvermoon-1920x1200.png) fixed no-repeat; background-color: #000000; color: #ffffff;height: 100%;display: flex; flex-direction: column;}
 .roster-wrap { font:12px arial,helvetica,sans-serif; color:#FFFFFF; min-width: 420px; max-width: 1224px; margin: 20px auto 20px auto; position: relative; padding-top: 1px; float: center; }
 .theme-wrap { position: relative; min-width: 420px; max-width: 1224px; margin: auto; border: 1px solid #7E2217;   /* background: url(../images/GarrisonMissionParchment.png); */
   background-color: #353a41; padding: 0;text-align: left; }
@@ -14,6 +16,7 @@ body {background: url(../images/silvermoon-1920x1200.png) fixed no-repeat; backg
 	padding: 30px 0 30px 0;
 	border-left: 1px solid rgba(255,255,255,0.1);
 	border-right: 1px solid rgba(255,255,255,0.1);
+		height: 100%;
 }
 
 a:-webkit-any-link {
@@ -2609,3 +2612,89 @@ a.list-group-item-danger.active:focus {
 
 .character-slot-item{position:relative}
 .character-slot-itemDetails{font-family:"Open Sans",Arial,Helvetica,sans-serif;font-weight:400;font-size:.9rem;line-height:1.5em;text-shadow:0 0 1px transparent,0 1px 2px rgba(0,0,0,.8);display:block;position:absolute;top:0;width:300px;padding:4px;min-height:58px}
+
+
+
+.noticebox {
+	bottom: 10px;
+	right: 10px;
+	width: 550px;
+	/*height: 600px;*/
+	display: block;
+	position: absolute;
+	background-color: #e5e5e5;
+	border:1px solid #2A2A2A;
+	z-index: 300;
+}
+
+
+.noticeboxhead {
+	background-color: #385b7d;
+	padding:7px;
+	color: #ffffff;
+
+	border-right:1px solid #2A2A2A;
+	border-left:1px solid #2A2A2A;
+}
+
+.noticeboxblink {
+	background-color: #176689;
+	border-right:1px solid #176689;
+	border-left:1px solid #176689;
+}
+
+.noticeboxcontent {
+	font-family: arial,sans-serif;
+	font-size: 13px;
+	color: #2A2A2A;
+	height:275px;
+	width:249px;
+	overflow-y:auto;
+	overflow-x:auto;
+	padding:7px;
+	border-left:1px solid #2A2A2A;
+	border-right:1px solid #2A2A2A;
+	border-bottom:1px solid #2A2A2A;
+	background-color: #e5e5e5;
+	line-height: 1.3em;
+}
+.noticeboxcontent .chat .text{
+	color: #2A2A2A;
+	/*display:inline-block;*/
+	font-size:12px;
+	font-family: arial,sans-serif;
+	word-wrap: break-word;
+	vertical-align:top;
+}
+
+.noticeboxtitle {
+float: left;
+}
+
+.noticeboxoptions {
+float: right;
+}
+.noticeboxoptions button {
+border: 0 solid transparent;
+padding: 0;
+cursor:pointer
+}
+.V2{height:24px;white-space:nowrap;font-size:11px;color:#aaa; margin-right:2px; z-index: 999999999;}
+.Ou{height:24px;width:24px}
+.DI{background:no-repeat url('../images/common/buttons.png') -258px -178px;height:24px;width:24px}
+.SD{background:no-repeat url('../images/common/buttons.png') -189px 0;height:24px;width:24px}
+.hA{background:no-repeat url('../images/common/buttons.png') -517px -237px;height:24px;width:24px}
+
+.AL{background:no-repeat url('../images/common/icon_alliance.png');height:24px;width:24px}
+.HO{background:no-repeat url('../images/common/icon_horde.png');height:24px;width:24px}
+.US{background:no-repeat url('../images/common/icon_us.png');height:24px;width:24px}
+.EU{background:no-repeat url('../images/common/icon_eu.png');height:24px;width:24px}
+
+.icon_grey { filter:gray;opacity:0.4; }
+.icon_grey:hover{ opacity:0.6; }
+.qp:hover {
+filter: alpha(opacity=100);
+opacity: 1;
+background-color: #e5e5e5;
+}
+

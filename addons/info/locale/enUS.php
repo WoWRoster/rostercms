@@ -281,6 +281,25 @@ $lang['item_bonuses_tabs'] = array(
 		'TempEnchantment'	=> 'Temp Effects'
 		);
 
+/*
+		permission strings
+*/
+
+$lang['admin']['per_show_pets'] = "Pets";
+$lang['admin']['per_show_pets_info'] = "Controls the display of Pets";
+$lang['admin']['per_show_reputation'] = "Reputation";
+$lang['admin']['per_show_reputation_info'] = "Controls the display of Reputation";
+$lang['admin']['per_show_skills'] = "Skills";
+$lang['admin']['per_show_skills_info'] = "Controls the display of Skills";
+$lang['admin']['per_show_talents'] = "Talents";
+$lang['admin']['per_show_talents_info'] = "Controls the display of Talents";
+$lang['admin']['per_show_pet_talents'] = "Pet Talents";
+$lang['admin']['per_show_pet_talents_info'] = "Controls the display of Pet Talents";
+$lang['admin']['per_show_companions'] = "Companions";
+$lang['admin']['per_show_companions_info'] = "Controls the display of Companions";
+$lang['admin']['per_show_mounts'] = "Mounts";
+$lang['admin']['per_show_mounts_info'] = "Controls the display of Mounts";
+
 // item_bonus end //
 $lang['inactive'] = 'Inactive';
 

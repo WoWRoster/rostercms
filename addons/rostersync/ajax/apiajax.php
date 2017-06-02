@@ -43,13 +43,27 @@ switch ($method)
 	
     case 'guildupdate':
         $rsync = new rostersync('guild');
-		$rsync->_sync_guild($_GET['server'], $_GET['guildname'], $_GET['region'], $_GET['guild_id']);
+		$rsync->_sync_guild_members($_GET['server'], $_GET['guildname'], $_GET['region'], $_GET['guild_id']);
 		
 		echo $rsync->build_update_table('guild-success');
 
 	break;
-	   
-	   
+	
+	case 'guildsync':
+        $rsync = new rostersync('guild');
+		$rsync->_sync_guild_update($_GET['server'], $_GET['guildname'], $_GET['region'], $_GET['guild_id']);
+		
+		echo $rsync->build_update_table('guild-success');
+
+	break;
+	
+	case 'guildadd':
+        $rsync = new rostersync('guild');
+		$rsync->_sync_guild_add($_GET['server'], $_GET['guildname'], $_GET['region']);
+		
+		echo $rsync->build_update_table('guild-success');
+
+	break;
 }
 //
 if (isset($_GET['adebug']) && $_GET['adebug'] == true)

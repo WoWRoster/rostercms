@@ -100,13 +100,13 @@ class infoInstall
 		$installer->add_menu_button('cb_character', 'char', '', 'spell_holy_divinespirit');
 		
 		$permissions = array(
-			array('catagory'	=> 'info', 'name' => 'show_pets',		'info' => 'show_pets_info',			'cfg_name' => 'show_pets'),
-			array('catagory'	=> 'info', 'name' => 'show_reputation',	'info' => 'show_reputation_info',	'cfg_name' => 'show_reputation'),
-			array('catagory'	=> 'info', 'name' => 'show_skills',		'info' => 'show_skills_info',		'cfg_name' => 'show_skills'),
-			array('catagory'	=> 'info', 'name' => 'show_talents',	'info' => 'show_talents_info',		'cfg_name' => 'show_talents'),
-			array('catagory'	=> 'info', 'name' => 'show_pet_talents','info' => 'show_pet_talents_info',	'cfg_name' => 'show_pet_talents'),
-			array('catagory'	=> 'info', 'name' => 'show_companions',	'info' => 'show_companions_info',	'cfg_name' => 'show_companions'),
-			array('catagory'	=> 'info', 'name' => 'show_mounts',		'info' => 'show_mounts_info',		'cfg_name' => 'show_mounts')
+			array('catagory'	=> 'info', 'name' => 'per_show_pets',		'info' => 'per_show_pets_info',			'cfg_name' => 'show_pets'),
+			array('catagory'	=> 'info', 'name' => 'per_show_reputation',	'info' => 'per_show_reputation_info',	'cfg_name' => 'show_reputation'),
+			array('catagory'	=> 'info', 'name' => 'per_show_skills',		'info' => 'per_show_skills_info',		'cfg_name' => 'show_skills'),
+			array('catagory'	=> 'info', 'name' => 'per_show_talents',	'info' => 'per_show_talents_info',		'cfg_name' => 'show_talents'),
+			array('catagory'	=> 'info', 'name' => 'per_show_pet_talents','info' => 'per_show_pet_talents_info',	'cfg_name' => 'show_pet_talents'),
+			array('catagory'	=> 'info', 'name' => 'per_show_companions',	'info' => 'per_show_companions_info',	'cfg_name' => 'show_companions'),
+			array('catagory'	=> 'info', 'name' => 'per_show_mounts',		'info' => 'per_show_mounts_info',		'cfg_name' => 'show_mounts')
 		);
 		$installer->add_permissions($permissions);
 		

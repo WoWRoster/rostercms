@@ -77,9 +77,7 @@ class roster_config
 		roster_add_js('templates/' . $roster->tpl->tpl . '/js/colorpicker.js');
 		$jscript =
 			'jQuery(document).ready( function($){
-				//var ' . $this->prefix . 'tabs=new tabcontent(\'' . $this->prefix . 'tabs\');
-				//' . $this->prefix . 'tabs.init();
-
+				
 				$(".color-picker").ColorPicker({
 					onSubmit: function(hsb, hex, rgb, el) {
 						$(el).val("#" + hex.toUpperCase());
@@ -107,23 +105,18 @@ class roster_config
 				});
 				
 				var menu = "' . $this->prefix . 'tabs";
-				var cookiename = "admin_menu_'.$this->prefix.'";
-				var cookie = readCookie(cookiename);
 				var tab = $.urlParam("tab");
-				console.log(tab);
-				console.log(menu);
 				
 				jQuery("ul#' . $this->prefix . 'tabs li").click(function(e)
 				{
 					if ( jQuery(this).attr("rel") )
 					{
-						eraseCookie(cookiename);
 						e.preventDefault();
 						menu = "' . $this->prefix . 'tabs";
 						jQuery("ul#"+menu+" li").removeClass("active");
 
 						var tab_class = jQuery(this).attr("rel");
-						createCookie(cookiename, tab_class, 1);
+						window.location.hash = \'tab=\'+tab_class;
 						jQuery("ul#"+menu+" li").each(function() {
 							var v = jQuery(this).attr("rel");
 							jQuery("div#"+v+"").hide();
@@ -135,7 +128,6 @@ class roster_config
 				function first()
 				{
 					var tab_class = jQuery(" ul#' . $this->prefix . 'tabs li").first().attr("rel");
-					//console.log( "first - "+tab_class );
 					show_hide(menu,tab_class);
 					jQuery("ul#"+menu+" li#" + tab_class).addClass("active");
 					
@@ -149,7 +141,6 @@ class roster_config
 					jQuery("#" + tab_class).show();
 				}
 				var init = first();
-				
 				if ( tab )
 				{
 					show_hide(menu,tab);

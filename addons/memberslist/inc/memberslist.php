@@ -54,6 +54,15 @@ class memberslist
 
 		$basename = basename(dirname(dirname(__FILE__)));
 
+		$roster->tpl->assign_vars(array(
+			'GUILD_NAME'		=> $roster->data['guild_name'],
+			'GUILD_SERVER'		=> $roster->data['server'],
+			'GUILD_MEMBERS'		=> $roster->data['guild_num_members'],
+			'GUILD_FACTION'		=> $roster->data['faction'],
+			'GUILD_REGION'		=> $roster->data['region'],
+			'ACHIEVEMENTPOINTS'	=> $roster->data['achievementPoints'],
+			)
+		);
 		// --[ Get addon array only if not passed ]--
 		if( !empty($addon) )
 		{

@@ -73,7 +73,8 @@ $lang['armor_tooltip']			= 'Reduces physical damage taken by %1$s%%';
 
 $lang['motd']                   = 'MOTD';
 $lang['accounts']               = 'Accounts';
-
+$lang['achievements']			= 'Achievements';
+$lang['achievement_points']		= 'Achievement Points';
 // Configuration
 $lang['memberslist_config']		= 'Go to memberslist configuration';
 $lang['memberslist_config_page']= 'Members List Configuration';

@@ -622,7 +622,13 @@ class Client
 
 		//echo $protected_resource_url.'<br>';
 		$lmh=null;
-		if ( !$this->ignore_cache )
+		if ( isset($http_headers['If-Modified-Since']) && $http_headers['If-Modified-Since'] != '')
+		{
+			$roster->debug->_debug( 2, false, '['.$this->usage['type'].'] LMH SENT IN REQUEST using IF-MOD header', 'OK' );
+			$http_headers['If-Modified-Since'] = $http_headers['If-Modified-Since'];
+			$lmh['Last-Modified'] = $http_headers['If-Modified-Since'];
+		}
+		else if ( !$this->ignore_cache )
 		{
 			$ret = $this->ignore_cache;//date('Y/m/d H:i:s', ($string/1000));
 			$roster->debug->_debug( 2, false, '['.$this->usage['type'].'] Cache not ignored checking LMH', 'OK' );

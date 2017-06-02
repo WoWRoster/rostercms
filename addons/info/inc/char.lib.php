@@ -218,7 +218,8 @@ class char
 
 		//d($this->data);
 		//d($addon);
-		//$this->data['profile_main'] = 'zangarmarsh/74/113337162-main.jpg';		
+		//$this->data['profile_main'] = 'zangarmarsh/74/113337162-main.jpg';
+		$templates = '';
 		$roster->tpl->assign_vars(array(
 			'S_MAX_LEVEL' => ROSTER_MAXCHARLEVEL,
 
@@ -244,7 +245,8 @@ class char
 
 			'HEALTH'        => $this->data['health'],
 			'POWER'         => $this->data['mana'],
-			'TALENT_POINTS' => $this->data['talent_points']
+			'TALENT_POINTS' => $this->data['talent_points'],
+			'ADD_TEMPLATES'	=> apply_filters('info_char_template', $templates) //$templates
 			)
 		);
 	}
@@ -2767,6 +2769,8 @@ class char
 			$roster->tpl->assign_var('S_SKILL_TAB',false);
 		}
 
+		do_action('info_menu_after');
+		
 		$roster->tpl->set_filenames(array('char' => $addon['basename'] . '/char.html'));
 		return $roster->tpl->fetch('char');
 	}

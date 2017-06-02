@@ -43,8 +43,9 @@ INSERT INTO `renprefix_config` VALUES (2030, 'alt_location', 'note', 'select{Pla
 # --------------------------------------------------------
 ### debug_conf  
 INSERT INTO `renprefix_config` VALUES (3010, 'debug_mode', '1', 'radio{extended^2|on^1|off^0', 'debug_conf');
-INSERT INTO `renprefix_config` VALUES (3020, 'sql_window', '1', 'radio{extended^2|on^1|off^0', 'debug_conf');
-INSERT INTO `renprefix_config` VALUES (3030, 'processtime', '1', 'radio{on^1|off^0', 'debug_conf');
+INSERT INTO `renprefix_config` VALUES (3020, 'debug_window', '1', 'radio{on^1|off^0', 'debug_conf');
+INSERT INTO `renprefix_config` VALUES (3030, 'sql_window', '1', 'radio{extended^2|on^1|off^0', 'debug_conf');
+INSERT INTO `renprefix_config` VALUES (3040, 'processtime', '1', 'radio{on^1|off^0', 'debug_conf');
 # --------------------------------------------------------
 ### display_conf 
 # --------------------------------------------------------

@@ -41,6 +41,9 @@ class rostersync {
 	var $lua = array();
 	var $messages = array();
 	
+	var $factionEN = array(0 => 'Alliance',
+	1 => 'Horde');
+	
 	/**
 	 * Adds a message to the $messages array
 	 *
@@ -813,13 +816,107 @@ class rostersync {
 	}
 	
 	/*
+		Add Guild
+	*/
+	function _sync_guild_add($server, $guildName, $region, $guildId)
+	{
+		global $roster, $addon;
+		
+		$this->status[$this->type]['name'] = $guildName;
+		$this->status[$this->type]['server'] = $server;
+		
+		$this->data = $roster->api2->fetch('guild',array('name'=>$guildName,'server'=>$server,'fields'=>$this->fields['guild'] ));
+		
+		$this->setMessage('<ul><li>Adding '.$guildName.'@'.$server.'<ul>');
+			
+		$guild = array(
+			'guild_name'			=> $guildName,
+			'server'				=> $server,
+			'region'				=> $region,
+			'faction'				=> $this->factionEN[$this->data['side']],
+			'factionEn'				=> $this->factionEN[$this->data['side']],
+			'guild_motd'			=> '',
+			'guild_num_members'		=> count($this->data['members']),
+			'guild_num_accounts'	=> count($this->data['members']),
+			'guild_xp'				=> '',
+			'guild_xpcap'			=> '',
+			'guild_level'			=> $this->data['level'],
+			'achievementPoints'		=> $this->data['achievementPoints'],
+			'battlegroup'			=> $this->data['battlegroup'],
+			'update_time'			=> date('Y-m-d H:i:s'),
+			'GPversion'				=> '',
+			'DBversion'				=> '',
+			'guild_info_text'		=> '',
+		);
+		$querystr = "INSERT `" . $roster->db->table('guild') . "` SET ". $roster->db->build_query('UPDATE', $guild) . " WHERE `guild_id` = '".$guildId."';";
+		$result = $roster->db->query($querystr);
+		if( !$result )
+		{
+			$this->status[$this->type]['message'] = $roster->db->this_error;
+			$this->setMessage($roster->db->this_error.'<br>');
+			return false;
+		}
+		
+		$this->status[$this->type]['updated'] = 2;
+		$this->setMessage('</ul></li></ul>');
+		
+	}
+	/*
+		Update Guild
+	*/
+	function _sync_guild_update($server, $guildName, $region, $guildId)
+	{
+		global $roster, $addon;
+		
+		$this->status[$this->type]['name'] = $guildName;
+		$this->status[$this->type]['server'] = $server;
+		
+		//$this->data = $roster->api2->fetch('guild',array('name'=>$guildName,'server'=>$server,'fields'=>$this->fields['guild'] ));
+		
+		$this->setMessage('<ul><li>Updating '.$guildName.'@'.$server.'<ul>');
+			
+		$guild = array(
+			'guild_name'			=> $guildName,
+			'server'				=> $server,
+			'region'				=> $region,
+			'faction'				=> $this->factionEN[$this->data['side']],
+			'factionEn'				=> $this->factionEN[$this->data['side']],
+			'guild_motd'			=> '',
+			'guild_num_members'		=> count($this->data['members']),
+			'guild_num_accounts'	=> count($this->data['members']),
+			'guild_xp'				=> '',
+			'guild_xpcap'			=> '',
+			'guild_level'			=> $this->data['level'],
+			'achievementPoints'		=> $this->data['achievementPoints'],
+			'battlegroup'			=> $this->data['battlegroup'],
+			'update_time'			=> date('Y-m-d H:i:s'),
+			'GPversion'				=> '',
+			'DBversion'				=> '',
+			'guild_info_text'		=> '',
+		);
+		$querystr = "UPDATE `" . $roster->db->table('guild') . "` SET ". $roster->db->build_query('UPDATE', $guild) . " WHERE `guild_id` = '".$guildId."';";
+		$result = $roster->db->query($querystr);
+		if( !$result )
+		{
+			$this->status[$this->type]['message'] = $roster->db->this_error;
+			$this->setMessage($roster->db->this_error.'<br>');
+			return false;
+		}
+		
+		$this->status[$this->type]['updated'] = 2;
+		$this->setMessage('</ul></li></ul>');
+		
+	}
+	/*
 		begin guild update and memberlist update
 	*/
-	function _sync_guild($server, $guildName, $region, $guildId)
+	function _sync_guild_members($server, $guildName, $region, $guildId)
 	{
 		global $roster, $addon;
 		$this->data = $roster->api2->fetch('guild',array('name'=>$guildName,'server'=>$server,'fields'=>$this->fields['guild'] ));
-//d($this->data);
+		
+		 $this->_sync_guild_update($server, $guildName, $region, $guildId);
+
 		$members = 0;
 		$this->setMessage('<ul><li>Updating '.$guildName.'@'.$server.' Members<ul>');
 		foreach ($this->data['members'] as $i => $m)
@@ -840,21 +937,21 @@ class rostersync {
 				
 				$name = $m['character']['name'];
 				$member = array(
-					'name'			=> $m['character']['name'],
-					'server'		=> $m['character']['realm'],
-					'region'		=> $region,
-					'guild_id'		=> $guildId,
-					'class'			=> $roster->locale->act['id_to_class'][$m['character']['class']],
-					'classid'		=> $m['character']['class'],
-					'level'			=> $m['character']['level'],
-					'note'			=> '',
-					'guild_rank'	=> $m['rank'],
-					'guild_title'	=> 'Rank'.$m['rank'],
-					'zone'			=> '',
-					'status'		=> '',
-					'active'		=> '1',
-					'online'		=> '0',
-					'last_online'	=>	time(),
+					'name'				=> $m['character']['name'],
+					'server'			=> $m['character']['realm'],
+					'region'			=> $region,
+					'guild_id'			=> $guildId,
+					'class'				=> $roster->locale->act['id_to_class'][$m['character']['class']],
+					'classid'			=> $m['character']['class'],
+					'level'				=> $m['character']['level'],
+					'note'				=> '',
+					'guild_rank'		=> $m['rank'],
+					'guild_title'		=> 'Rank'.$m['rank'],
+					'zone'				=> '',
+					'status'			=> '',
+					'active'			=> '1',
+					'online'			=> '0',
+					'last_online'		=>	time(),
 				);
 				
 				if( $update )
@@ -882,12 +979,6 @@ class rostersync {
 	}	
 	/*
 		guild member list generage
-	*/
-	
-	/**
-		* Get that match prerequesists from db for update
-		*
-		* @return array ()
 	*/
 	function _getMembersToUpdate( $where = false )
 	{
@@ -1089,7 +1180,6 @@ class rostersync {
 	{
 		global $roster, $addon;
 		
-
 		$ret = '';
 		if ($value == '7') { $ret = $roster->locale->act['exalted']; }
 		if ($value == '6') { $ret = $roster->locale->act['revered']; }

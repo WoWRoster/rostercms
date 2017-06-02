@@ -21,10 +21,11 @@ INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'roster_
 INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'gp_update', 'gp_update_desc' , 'gp_update');
 INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'cp_update', 'cp_update_desc' , 'cp_update');
 INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'lua_update', 'lua_update_desc' , 'lua_update');
+INSERT INTO `renprefix_permissions` VALUES ('', 'roster', '00', 'core', 'debug_window', 'debug_window_desc' , 'debug_window');
 
 # --------------------------------------------------------
 ### User groups
-INSERT INTO `renprefix_user_groups` VALUES ('1', '1', 'Admin', 'Admin user group', '{"roster_cp": "1","gp_update": "1","cp_update": "1","lua_update": "1"}', '0');
+INSERT INTO `renprefix_user_groups` VALUES ('1', '1', 'Admin', 'Admin user group', '{"roster_cp": "1","gp_update": "1","cp_update": "1","lua_update": "1","debug_window":"1"}', '0');
 INSERT INTO `renprefix_user_groups` VALUES ('2', '1', 'Public', 'general public access group auth use only', NULL, '0');
 
 # --------------------------------------------------------
@@ -68,8 +69,9 @@ INSERT INTO `renprefix_config` VALUES (2040, 'menu_title', 'WoWRoster', 'text{30
 # --------------------------------------------------------
 ### debug_conf  
 INSERT INTO `renprefix_config` VALUES (3010, 'debug_mode', '1', 'radio{extended^2|on^1|off^0', 'debug_conf');
-INSERT INTO `renprefix_config` VALUES (3020, 'sql_window', '1', 'radio{extended^2|on^1|off^0', 'debug_conf');
-INSERT INTO `renprefix_config` VALUES (3030, 'processtime', '1', 'radio{on^1|off^0', 'debug_conf');
+INSERT INTO `renprefix_config` VALUES (3020, 'debug_window', '1', 'radio{on^1|off^0', 'debug_conf');
+INSERT INTO `renprefix_config` VALUES (3030, 'sql_window', '1', 'radio{extended^2|on^1|off^0', 'debug_conf');
+INSERT INTO `renprefix_config` VALUES (3040, 'processtime', '1', 'radio{on^1|off^0', 'debug_conf');
 
 # --------------------------------------------------------
 ### realmstatus_conf 

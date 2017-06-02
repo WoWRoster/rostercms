@@ -1,0 +1,1 @@
+ALTER TABLE `roster_guild` ADD `achievementPoints` INT(20) NULL DEFAULT NULL AFTER `guild_level`, ADD `battlegroup` VARCHAR(50) NULL DEFAULT NULL AFTER `achievementPoints`;

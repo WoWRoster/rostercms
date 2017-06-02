@@ -269,7 +269,14 @@ $.urlParam = function(name){
 	});
 
 	
-
+$('#cbmin').click(function(e)
+{
+	e.preventDefault();
+	//var chatboxtitle = $(this).data('ch');
+	//var chatboxtitle = $('.content').attr('id').replace('chatbox_','');
+	
+	$( "#notice-content" ).toggle();
+});
 
 });
 /*
