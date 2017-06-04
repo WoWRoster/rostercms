@@ -671,10 +671,10 @@ function process_step3( )
 	$db->error_die();
 
 	// Check to make sure a connection was made
-	if( !is_resource($db->link_id) )
+	if( !is_resource($db->link_id) && !$db->connection)
 	{
 		// Attempt to
-		$tpl->message_die('Failed to connect to database <strong>' . $db_config['database'] . '</strong> as <strong>' . $db_config['username'] . '@' . $db_config['host'] . '</strong><br />' . $db->this_error . '<br /><br />' . '<form method="post" action="index.php" name="post"><input type="hidden" name="install_step" value="2" /><div align="center"><input type="submit" name="submit" value="Try Again" /></div></form>');
+		$tpl->message_die('Failed to connect to database <strong>' . $db_config['database'] . '</strong> as <strong>' . $db_config['username'] . '@' . $db_config['host'] . '</strong><br />' . $db->this_error . ' - '.$db->connect_error().' - '.$db->error().'<br /><br />' . '<form method="post" action="index.php" name="post"><input type="hidden" name="install_step" value="2" /><div align="center"><input type="submit" name="submit" value="Try Again" /></div></form>');
 	}
 
 	$db_structure_file = ROSTER_DB_DIR . 'structure' . DIR_SEP . $db_config['dbtype'] . '_structure.sql';

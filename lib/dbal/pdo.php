@@ -30,6 +30,7 @@ define('SQL_BOTH',PDO::FETCH_BOTH);
 class roster_db
 {
 	var $link_id     = 0;                   // Connection link ID       @var link_id
+	var $connected	 = false;				// Was a connection made	@var connection
 	var $query_id    = 0;                   // Query ID                 @var query_id
 	var $record      = array();             // Record                   @var record
 	var $record_set  = array();             // Record set               @var record_set
@@ -58,10 +59,6 @@ class roster_db
 		$this->queries[$this->file][$this->query_count]['query'] = $query;
 		$this->queries[$this->file][$this->query_count]['time'] = round((format_microtime()-$this->querytime), 4);
 		$this->queries[$this->file][$this->query_count]['line'] = $this->line;
-
-		// Error message in case of failed query
-		//print_r($this->link_id);echo ' - '; print_r($this->query_id);echo '<br>';
-		//$this->queries[$this->file][$this->query_count]['error'] = empty($this->query_id) ? $this->error() : '';
 
 		// Describe
 		$this->queries[$this->file][$this->query_count]['describe'] = array();
@@ -124,42 +121,37 @@ class roster_db
 
 		if( empty($dbpass) )
 		{
-			//$this->link_id = @mysql_connect($dbhost, $dbuser);
 			try {
-				$this->link_id = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser);
+				$this->link_id = new PDO("mysql: host=$dbhost;dbname=$dbname", $dbuser);
 				$this->link_id->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 				$this->link_id->exec("set names utf8");
-				//$this->link_id->exec("SET GLOBAL general_log = 'ON'");
-				//new PDO ("mysql:host=$dbhost;dbname=$dbname", $dbuser);
+				$this->connection = true;
+
 			} catch (PDOException $e) {
 				$err = "Connection Failed(nopass).<br />";
 				$err .= "getCode: ". $e->getCode () . "<br />";
 				$err .= "getMessage: ". $e->getMessage () . "<br />";
 				$this->this_error = $err;
+				$this->connection = false;
 			}
 		}
 		else
 		{
-			//$this->link_id = @mysql_connect($dbhost, $dbuser, $dbpass);
 			try {
-				$this->link_id = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+				$this->link_id = new PDO("mysql: host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 				$this->link_id->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 				$this->link_id->exec("set names utf8");
-				//$this->link_id->exec("SET GLOBAL general_log = 'ON'");
-				//new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+				$this->connection = true;
+
 			} catch (PDOException $e) {
 				$err = "Connection Failed failed.<br />";
 				$err .= "getCode: ". $e->getCode () . "<br />";
 				$err .= "getMessage: ". $e->getMessage () . "<br />";
 				$this->this_error = $err;
+				$this->connection = false;
 			}
 		}
-
-		//@mysql_query("SET NAMES 'utf8'");
-		//@mysql_query("SET GLOBAL general_log = 'ON'");
-
 		return $this->link_id;
-
 	}
 
 	/**
@@ -719,9 +711,11 @@ class roster_db
 	 */
 	function server_info()
 	{
-		if( is_resource($this->link_id) )
+		if( $this->connection )
 		{
-			return mysql_get_server_info($this->link_id);
+			$v = $this->query('SELECT VERSION() as mysql_version');
+			$r = $this->fetch($v);
+			return $r['mysql_version'];
 		}
 		else
 		{
