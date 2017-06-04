@@ -6,7 +6,7 @@ a:hover { color:#FFF; text-decoration:none; font-weight:bold; }
 html{	height: 100%;
 	display: flex;
 flex-direction: column;}
-body {background: url(../images/silvermoon-1920x1200.png) fixed no-repeat; background-color: #000000; color: #ffffff;height: 100%;display: flex; flex-direction: column;}
+body {background: url(../images/silvermoon-1920x1200.png) fixed no-repeat; background-color: #000000; color: #ffffff;}
 .roster-wrap { font:12px arial,helvetica,sans-serif; color:#FFFFFF; min-width: 420px; max-width: 1224px; margin: 20px auto 20px auto; position: relative; padding-top: 1px; float: center; }
 .theme-wrap { position: relative; min-width: 420px; max-width: 1224px; margin: auto; border: 1px solid #7E2217;   /* background: url(../images/GarrisonMissionParchment.png); */
   background-color: #353a41; padding: 0;text-align: left; }
@@ -16,7 +16,6 @@ body {background: url(../images/silvermoon-1920x1200.png) fixed no-repeat; backg
 	padding: 30px 0 30px 0;
 	border-left: 1px solid rgba(255,255,255,0.1);
 	border-right: 1px solid rgba(255,255,255,0.1);
-		height: 100%;
 }
 
 a:-webkit-any-link {
@@ -2698,3 +2697,16 @@ opacity: 1;
 background-color: #e5e5e5;
 }
 
+.quote-blizz, .quote-wh {clear: both;}
+.quote-blizz, .quote-wh { background: #1b1b1b;border-collapse: separate;border-radius: 3px;font-style: normal;margin: 15px 0;padding: 15px;}
+.quote-blizz{background:#13181e url(../images/bluepost-bg.png) left top no-repeat;color:#00c0ff}
+.quote-blizz .quote-header a{color:#BEF;font-size:13px}
+.quote-blizz .quote-header a:hover{color:#FFF}
+.quote-blizz .quote-body a,
+.quote-blizz .quote-body .q1 a{color:#bef}
+.quote-blizz .quote-body a:hover,
+.quote-blizz quote-body .q1 a:hover{color:#fff !important}
+.quote-blizz .quote-body a b{color:#bef !important;text-decoration:none}
+.quote-blizz .quote-body a:hover b{color:#fff !important}
+.quote-blizz .quote-body b a{text-decoration:none}
+.quote-blizz hr{background:transparent;border-top:1px dotted #333;height:1px;margin:5px 0 10px 0}

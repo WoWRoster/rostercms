@@ -1,11 +1,7 @@
 <!-- $Id: char.html 2601 2012-08-31 19:07:03Z ulminia@gmail.com $ -->
-<div id="main" class="container" style="background-color:#0f091b">
-	<div class="main-panel" align="left">
-		<div class="profile-background" style="background-color:#0f091b" >
-			<div class="bg-image" style="background-image:url({S_CHAR_IMG});"></div>
-		</div>
+<div id="main" class="container" >
+	<div class="main-panel" align="left" style="background-color:#0f091b;background-image:url({S_CHAR_IMG});background-repeat: no-repeat;background-position:center top;">
 		<div class="section-profile" >
-
 			<div class="row">
 				<div class="col-lg-12">
 					<div xmlns="http://www.w3.org/1999/xhtml" class="profile-info">
@@ -46,10 +42,11 @@
 										<div class="GameIcon GameIcon--{equip.left.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot GameIcon--large" media-wide="GameIcon--large" queryselectoralways="0" media-original="GameIcon GameIcon--{equip.left.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot">
 											<!-- IF equip.left.ICON -->
 											<div style="background-image:url('{equip.left.ICON}')" class="GameIcon-icon">
+											</div>
 											<!-- ELSE -->
 											<div class="GameIcon-icon">
-											<!-- ENDIF -->
 											</div>
+											<!-- ENDIF -->
 											<div class="GameIcon-transmog">
 											</div>
 										</div>
@@ -87,10 +84,11 @@
 										<div class="GameIcon GameIcon--{equip.right.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot GameIcon--large" media-wide="GameIcon--large" queryselectoralways="0" media-original="GameIcon GameIcon--{equip.right.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot">
 											<!-- IF equip.right.ICON -->
 											<div style="background-image:url('{equip.right.ICON}')" class="GameIcon-icon">
+											</div>
 											<!-- ELSE -->
 											<div class="GameIcon-icon">
-											<!-- ENDIF -->
 											</div>
+											<!-- ENDIF -->
 											<div class="GameIcon-transmog">
 											</div>
 										</div>
@@ -126,16 +124,17 @@
 									<div>
 										<div class="GameIcon GameIcon--{equip.left_bottom.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot GameIcon--large" media-wide="GameIcon--large" queryselectoralways="0" media-original="GameIcon GameIcon--{equip.left_bottom.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot">
 											<!-- IF equip.left_bottom.ICON -->
-											<div style="background-image:url('{equip.left_bottom.ICON}')" class="GameIcon-icon">
+											<div style="background-image:url('{equip.left_bottom.ICON}')" class="GameIcon-icon">\
+											</div>
 											<!-- ELSE -->
 											<div class="GameIcon-icon">
-											<!-- ENDIF -->
 											</div>
+											<!-- ENDIF -->
 											<div class="GameIcon-transmog">
 											</div>
 										</div>
 										<div class="character-slot-itemDetails">
-										<div class="character-slot-itemName color-quality-{equip.left_bottom.RARITY}">{equip.left_bottom.NAME}</div>
+											<div class="character-slot-itemName color-quality-{equip.left_bottom.RARITY}">{equip.left_bottom.NAME}</div>
 											<div class="List List--right List--guttersTiny">
 												<div class="List-item character-slot-itemLevel">{equip.left_bottom.ILVL}</div>
 											</div>
@@ -152,10 +151,11 @@
 									<div class="GameIcon GameIcon--{equip.right_bottom.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot GameIcon--large" media-wide="GameIcon--large" queryselectoralways="0" media-original="GameIcon GameIcon--{equip.right_bottom.RARITY} GameIcon--slot character-slot-itemIcon character-slot-itemSlot">
 										<!-- IF equip.right_bottom.ICON -->
 										<div style="background-image:url('{equip.right_bottom.ICON}')" class="GameIcon-icon">
+										</div>
 										<!-- ELSE -->
 										<div class="GameIcon-icon">
-										<!-- ENDIF -->
 										</div>
+										<!-- ENDIF -->
 										<div class="GameIcon-transmog">
 										</div>
 									</div>
@@ -192,7 +192,7 @@
 				</div>
 				<!-- BEGIN spec -->
 				<!-- BEGIN build -->
-				<div class="row talent-build <!-- IF spec.build.SELECTED -->selected<!-- ENDIF -->" id="talent-build-{spec.build.TID}">
+				<div class="row talent-build <!-- IF spec.build.SELECTED -->selected<!-- ENDIF -->" id="talent-build-{spec.build.TID}" >
 					<div class="col-md-5" style="padding:6px;">
 						<div style="border: 1px solid #444;padding:10px;background-image:url('{INTERFACE_URL}Interface/TalentFrame/{spec.BGIMG}.{IMG_SUFFIX}');	min-height: 194px;">
 						<h2>{spec.NAME}</h2><br>{spec.DESC}
@@ -226,8 +226,8 @@
 							<div xmlns="http://www.w3.org/1999/xhtml" class="summary-bottom-left">
 								<div class="summary-health-resource">
 									<ul>
-										<li class="health" id="summary-health" data-id="health"><span class="name">Health</span><span class="value">1818420</span></li>
-										<li class="resource-2" id="summary-power" data-id="power-2"><span class="name">Focus</span><span class="value">120</span></li>
+										<li class="health" id="summary-health" data-id="health"><span class="name">Health</span><span class="value">{HEALTH}</span></li>
+										<li class="resource-2" id="summary-power" data-id="power-2"><span class="name">{POWERTYPE}</span><span class="value">{POWER}</span></li>
 									</ul>
 								</div>
 								<div class="summary-stats-profs-bgs">
@@ -258,237 +258,106 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- IF S_PET_TAB -->
-		<div id="pets" class="container pets" style="display:none;">
+		
+			<!-- IF S_REP_TAB -->
 
-		<!-- IF S_PETS -->
-			<div class="tier-1-a">
-				<div class="tier-1-b">
-					<div class="tier-1-c">
-						<div class="tier-1-title"><!-- TRANSLATE pets --></div>
-
-		<!-- BEGIN pet -->
-						<div class="pet shader" >
-							<!--<div class="icon"><img class="icon" src="{INTERFACE_URL}Interface/Icons/{pet.ICON}.{IMG_SUFFIX}" alt="" /></div>-->
-
-							<div class="icon">
-								<img src="{INTERFACE_URL}Interface/Icons/{pet.ICON}.{IMG_SUFFIX}" alt="" />
-								<div class="mask"></div>
-							</div>
-
-							<div class="basics">
-								<div class="name">{pet.NAME}</div>
-								<div class="info"><!-- TRANSLATE level --> {pet.LEVEL} {pet.TYPE}</div>
-							</div>
-							<div class="powers">
-								<div class="bar">
-									<div class="power-bar health">{pet.HEALTH}</div>
-									<div class="power-name"><!-- TRANSLATE health -->:</div>
-								</div>
-								<div class="bar">
-									<div class="power-bar {pet.L_POWER}">{pet.POWER}</div>
-									<div class="power-name">{pet.L_POWER}:</div>
-								</div>
-		<!-- IF pet.S_EXP -->
-								<div class="bar">
-									<div class="power-bar xp-bar">
-										<div class="fill" style="width: {pet.EXP_PERC}%;"></div>
-										<div class="text">{EXP_AMOUNT} / {EXP_MAX} ({EXP_PERC}%)</div>
-									</div>
-									<div class="power-name">EXP:</div>
-								</div>
-		<!-- ENDIF -->
-							</div>
-
-							<div class="resist">
-		<!-- BEGIN resist -->
-								<div class="icon {pet.resist.CLASS}" {pet.resist.TOOLTIP}><b>{pet.resist.VALUE}</b><span>{pet.resist.VALUE}</span></div>
-		<!-- END resist -->
-							</div>
-
-							<div class="padding">
-		<!-- BEGIN box_stats -->
-								<div class="stats">
-		<!-- BEGIN statline -->
-									<div class="statline" {pet.box_stats.statline.TOOLTIP}>
-										<span class="value">{pet.box_stats.statline.VALUE}</span>
-										<span class="label">{pet.box_stats.statline.NAME}:</span>
-									</div>
-		<!-- END statline -->
-								</div>
-		<!-- END box_stats -->
-							</div>
-
-		<!-- IF pet.TOTAL_TP -->
-							<div class="trainingpts">{L_UNUSED_TRAINING}: {pet.UNUSED_TP} / {pet.TOTAL_TP}</div>
-		<!-- ENDIF -->
-						</div>
-
-		<!-- END pet -->
-					</div>
+			<!-- reputation -->
+			<div id="reputation" style="display:none;">
+			<!-- BEGIN expantion -->
+				<div class="row">
+					<div class="col-md-12"><h2>{expantion.NAME}</h2></div>
 				</div>
-			</div>
-		<!-- ENDIF -->
-
-		</div>
-		<!-- ENDIF -->
-
-
-		<!-- IF S_COMPAN_TAB -->
-		<div id="companions" class="container companions" style="display:none;">
-		<!-- IF S_MOUNTS -->
-			<div class="tier-1-a">
-				<div class="tier-1-b">
-					<div class="tier-1-c">
-						<div class="tier-1-title"><!-- TRANSLATE mounts --></div>
-						
-						<div class="tier-2-a">
-							<div class="tier-2-b">
-		<!-- BEGIN mounts -->
-								<div class="item" {mounts.TOOLTIP}>
-									<img src="{INTERFACE_URL}Interface/Icons/{mounts.ICON}.{IMG_SUFFIX}" alt="" />
-									<div class="mask"></div>
-								</div>
-		<!-- END mounts -->
-								<div style="clear:both;"></div>
+				<!-- BEGIN faction -->
+				<div class="row">
+					<div class="col-md-3 text-right">{expantion.faction.NAME}</div>
+					<div class="col-md-6">
+						<div class="progress">
+							<!-- IF expantion.faction.VALUE ne '2' -->
+							<div class="faction-score">{expantion.faction.VALUE} / {expantion.faction.MAXVALUE}</div>
+							<!-- ENDIF -->
+							<div class="progress-bar {expantion.faction.FILL}" role="progressbar" aria-valuenow="{expantion.faction.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{expantion.faction.WIDTH}%">
 							</div>
 						</div>
 					</div>
+					<div class="col-md-3 text-left  faction-level-{expantion.faction.FILL}">{expantion.faction.STANDING}</div>
 				</div>
-			</div>
-		<!-- ENDIF -->
-
-		<!-- IF S_COMPANIONS -->
-			<div class="tier-1-a">
-				<div class="tier-1-b">
-					<div class="tier-1-c">
-						<div class="tier-1-title"><!-- TRANSLATE companions --></div>
-						
-						<div class="tier-2-a">
-							<div class="tier-2-b">
-		<!-- BEGIN companions -->
-								<div class="item" {companions.TOOLTIP}>
-									<img src="{INTERFACE_URL}Interface/Icons/{companions.ICON}.{IMG_SUFFIX}" alt="" />
-									<div class="mask"></div>
-								</div>
-		<!-- END mounts -->
-								<div style="clear:both;"></div>
+				<!-- END faction -->
+				
+				<!-- BEGIN group -->
+				
+				<div class="row row-eq-height">
+					<div class="col-md-3 text-right"><h3>{expantion.group.NAME}<h3></div>
+					<!-- IF expantion.group.ISBAR -->
+					<div class="col-md-6" style="padding-top: 23px;">
+						<div class="progress">
+								<!-- IF expantion.group.VALUE ne '2' -->
+								<div class="faction-score">{expantion.group.VALUE} / {expantion.group.MAXVALUE}</div>
+								<!-- ENDIF -->
+							<div class="progress-bar {expantion.group.FILL}" role="progressbar" aria-valuenow="{expantion.group.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{expantion.group.WIDTH}%">
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		<!-- ENDIF -->
-		</div>
-		<!-- ENDIF -->
-
-
-
-		<!-- IF S_REP_TAB -->
-
-		<!-- reputation -->
-		<div id="reputation" style="display:none;">
-		<!-- BEGIN expantion -->
-		<div class="row">
-			<div class="col-md-12"><h2>{expantion.NAME}</h2></div>
-		</div>
-		<!-- BEGIN faction -->
-		<div class="row">
-			<div class="col-md-3 text-right">{expantion.faction.NAME}</div>
-			<div class="col-md-6">
-				<div class="progress">
-					<!-- IF expantion.faction.VALUE ne '2' -->
-					<div class="faction-score">{expantion.faction.VALUE} / {expantion.faction.MAXVALUE}</div>
+					<div class="col-md-3 text-left faction-level-{expantion.group.FILL}"  style="padding-top: 23px;">{expantion.group.STANDING}</div>
+					<!-- ELSE -->
+					<div class="col-md-9"></div>
 					<!-- ENDIF -->
-					<div class="progress-bar {expantion.faction.FILL}" role="progressbar" aria-valuenow="{expantion.faction.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{expantion.faction.WIDTH}%">
-					</div>
 				</div>
-			</div>
-			<div class="col-md-3 text-left  faction-level-{expantion.faction.FILL}">{expantion.faction.STANDING}</div>
-		</div>
-		<!-- END faction -->
-		
-		<!-- BEGIN group -->
-		
-		<div class="row row-eq-height">
-			<div class="col-md-3 text-right"><h3>{expantion.group.NAME}<h3></div>
-			<!-- IF expantion.group.ISBAR -->
-			<div class="col-md-6" style="padding-top: 23px;">
-				<div class="progress">
-						<!-- IF expantion.group.VALUE ne '2' -->
-						<div class="faction-score">{expantion.group.VALUE} / {expantion.group.MAXVALUE}</div>
-						<!-- ENDIF -->
-					<div class="progress-bar {expantion.group.FILL}" role="progressbar" aria-valuenow="{expantion.group.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{expantion.group.WIDTH}%">
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 text-left faction-level-{expantion.group.FILL}"  style="padding-top: 23px;">{expantion.group.STANDING}</div>
-		</div>
-		<!-- ELSE -->
-		<div class="col-md-9"></div>
-		</div>
-		<!-- ENDIF -->
-		<!-- BEGIN sub -->
-		<div class="row">
-			<div class="col-md-3 text-right">{expantion.group.sub.NAME}</div>
-			<div class="col-md-6">
-				<div class="progress">
-					<!-- IF expantion.group.sub.VALUE ne '2' -->
-					<div class="faction-score">{expantion.group.sub.VALUE} / {expantion.group.sub.MAXVALUE}</div>
-					<!-- ENDIF -->
-					<div class="progress-bar {expantion.group.sub.FILL}" role="progressbar" aria-valuenow="{expantion.group.sub.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{expantion.group.sub.WIDTH}%">
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 text-left  faction-level-{expantion.group.sub.FILL}">{expantion.group.sub.STANDING}</div>
-		</div>
-		
-		<!-- END sub -->
-		
-		<!-- END group -->
-		<!-- END expantion -->
-		</div>
-		
-		
-		<!-- ENDIF -->
-
-
-
-		<!-- IF S_SKILL_TAB -->
-
-		<!-- skills -->
-		<div id="skills" style="display:none;">
-
-			<!-- BEGIN skill -->
-			<div class="page-header">
-			  <h1>{skill.NAME}</h1>
-			</div>
-			<!-- BEGIN bar -->
-			<div class="row">
-				<div class="col-md-1">
-						<img class="icon-frame frame-24" src="{INTERFACE_URL}Interface/Icons/{skill.bar.ICON}.{IMG_SUFFIX}" alt="" />
-					</div>
-				<div class="col-md-2 text-right">{skill.bar.NAME}</div>
-				<div class="col-md-7">
-					<div class="progress">
-						<div class="faction-score">{skill.bar.VALUE} / {skill.bar.MAXVALUE}</div>
-						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{skill.bar.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{skill.bar.WIDTH}%">
+				<!-- BEGIN sub -->
+				<div class="row">
+					<div class="col-md-3 text-right">{expantion.group.sub.NAME}</div>
+					<div class="col-md-6">
+						<div class="progress">
+							<!-- IF expantion.group.sub.VALUE ne '2' -->
+							<div class="faction-score">{expantion.group.sub.VALUE} / {expantion.group.sub.MAXVALUE}</div>
+							<!-- ENDIF -->
+							<div class="progress-bar {expantion.group.sub.FILL}" role="progressbar" aria-valuenow="{expantion.group.sub.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{expantion.group.sub.WIDTH}%">
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-2">
+					<div class="col-md-3 text-left  faction-level-{expantion.group.sub.FILL}">{expantion.group.sub.STANDING}</div>
 				</div>
 				
-			</div>
-			<!-- END bar -->
-			<!-- END skill -->
-		</div>
-		<!-- ENDIF -->
-		
-		{ADD_TEMPLATES}
+				<!-- END sub -->
+				
+				<!-- END group -->
+				<!-- END expantion -->
+			</div>			
+			<!-- ENDIF -->
 
-</div>
+			<!-- IF S_SKILL_TAB -->
+
+			<!-- skills -->
+			<div id="skills" style="display:none;">
+
+				<!-- BEGIN skill -->
+				<div class="page-header">
+				  <h1>{skill.NAME}</h1>
+				</div>
+				<!-- BEGIN bar -->
+				<div class="row">
+					<div class="col-md-1">
+							<img class="icon-frame frame-24" src="{INTERFACE_URL}Interface/Icons/{skill.bar.ICON}.{IMG_SUFFIX}" alt="" />
+						</div>
+					<div class="col-md-2 text-right">{skill.bar.NAME}</div>
+					<div class="col-md-7">
+						<div class="progress">
+							<div class="faction-score">{skill.bar.VALUE} / {skill.bar.MAXVALUE}</div>
+							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{skill.bar.WIDTH}" aria-valuemin="0" aria-valuemax="100" style="width:{skill.bar.WIDTH}%">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2">
+					</div>
+					
+				</div>
+				<!-- END bar -->
+				<!-- END skill -->
+			</div>
+			<!-- ENDIF -->
+			
+			{ADD_TEMPLATES}
+		</div>
+	</div>
 </div>
 
 
