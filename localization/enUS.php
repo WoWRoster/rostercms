@@ -1973,6 +1973,8 @@ $lang['admin']['default_group'] = 'Dafault User Group|The Default Group for new 
 $lang['admin']['minifyjs'] = 'Compress JS|chose to minify the js files thata re not minifyd already';
 $lang['admin']['bootstrap'] = 'Bootstrap|Select the bootstrap color theme for roster';
 $lang['admin']['debug_window'] = "Debug Info|<ul class='ul-no-m'><li>off: Do not show debug window</li><li>on: Display debug window in the footer</li></ul>";
+$lang['admin']['debug_windows'] = "Debug Info";
+$lang['admin']['debug_window_desc'] = "ability to see the debug info or notifications window";
 
 /*
 	Info addon strings new
