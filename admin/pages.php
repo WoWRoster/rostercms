@@ -81,6 +81,34 @@ if( $roster->config['external_auth'] == 'roster' )
 		);
 }
 */
+$config_pages['user'] = array(
+	'special'	=> 'group',
+	'title'		=> 'USER_GROUP',
+	'icon'		=> 'glyphicon-user',
+	'pages' 	=> array (
+		'userman' => array(
+			'href'=>	'userman',
+			'title'=>	'pagebar_userman',
+			'file'=>	'user_manager.php',
+		),
+		'usergroups' => array(
+			'href'=>	'usergroups',
+			'title'=>	'pagebar_usergroups',
+			'file'=>	'user_groups.php',
+		),
+		'permissions' => array(
+			'href'=>	'permissions',
+			'title'=>	'pagebar_permissions',
+			'file'=>	'permissions.php',
+		),
+		'rosterranks' => array(
+			'href'=>	'rosterranks',
+			'title'=>	'pagebar_rosterranks',
+			'file'=>	'rosterranks.php',
+		),
+	),
+);
+
 $config_pages['userman'] = array(
 	'href'=>	$roster->pages[0].'-userman',
 	'title'=>	'pagebar_userman',
@@ -97,24 +125,19 @@ $config_pages['usergroups'] = array(
 	);
 $config_pages['permissions'] = array(
 	'href'=>	$roster->pages[0].'-permissions',
-	'special'=>	'hidden',
 	'title'=>	'pagebar_permissions',
 	'file'=>	'permissions.php',
+	);
+$config_pages['rosterranks'] = array(
+	'href'=>	$roster->pages[0].'-rosterranks',
+	'title'=>	'pagebar_rosterranks',
+	'file'=>	'rosterranks.php',
 	);
 $config_pages['config_reset'] = array(
 	'href'=>	$roster->pages[0].'-config_reset',
 	'title'=>	'pagebar_configreset',
 	'file'=>	'config_reset.php',
 	);
-	/*
-$config_pages['hr'] = array(
-	'special'=>	'divider',
-	);
-$config_pages['rosterdiag'] = array(
-	'href'=>	'rosterdiag',
-	'title'=>	'pagebar_rosterdiag',
-	);
-	*/
 $config_pages['rosterdiag2'] = array(
 	'href'=>	'rosterdiag2',
 	'title'=>	'pagebar_rosterdiag',

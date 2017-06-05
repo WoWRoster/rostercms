@@ -47,11 +47,12 @@ include_once(ROSTER_ADMIN . 'pages.php');
 
 $header = $menu = $footer = $body = '';
 $roster->tpl->assign_vars(array(
-	'SHOW_MENU'				=> $roster->output['show_menu'],
-	'TEMPLATE_PATH'			=> 'templates/' . $roster->tpl->tpl . '/',
-	'ADDON_PAGE_S' 			=> (isset($roster->pages[1]) && $roster->pages[1] == 'addon' ? true : false),
-	'PLUGIN_PAGE_S' 		=> (isset($roster->pages[1]) && $roster->pages[1] == 'plugin' ? true : false),
-	'BOXOPTIONS'			=> '',
+	'SHOW_MENU'			=> $roster->output['show_menu'],
+	'TEMPLATE_PATH'		=> 'templates/' . $roster->tpl->tpl . '/',
+	'ADDON_PAGE_S' 		=> (isset($roster->pages[1]) && $roster->pages[1] == 'addon' ? true : false),
+	'PLUGIN_PAGE_S' 	=> (isset($roster->pages[1]) && $roster->pages[1] == 'plugin' ? true : false),
+	'USER_PAGE_S' 		=> (isset($roster->pages[1]) && $roster->pages[1] == 'user' ? true : false),
+	'BOXOPTIONS'		=> '',
 	'BEGIN_FORM'		=> '',
 	'END_FORM'			=> '',
 	));
@@ -110,7 +111,14 @@ if( $roster->config['check_updates'] && isset($roster->config['versioncache']) )
 // Find out what subpage to include, and do so
 $page = (isset($roster->pages[1]) && ($roster->pages[1]!='')) ? $roster->pages[1] : 'roster';
 
-if( isset($config_pages[$page]['file']) )
+if( isset($roster->pages[2]) && isset($config_pages[$page]['pages'][$roster->pages[2]]['file']) )
+{
+	if(file_exists(ROSTER_ADMIN . $config_pages[$page]['pages'][$roster->pages[2]]['file']))
+	{
+		require_once(ROSTER_ADMIN . $config_pages[$page]['pages'][$roster->pages[2]]['file']);
+	}
+}
+elseif( isset($config_pages[$page]['file']) )
 {
 	if (file_exists(ROSTER_ADMIN . $config_pages[$page]['file']))
 	{
@@ -131,15 +139,41 @@ foreach( $config_pages as $pindex => $data )
 {
 	$pagename = $roster->pages[0] . ( $page != 'roster' ? '-' . $page : '' );
 
-	if( !isset($data['special']) || $data['special'] != 'hidden' )
+	if( !isset($data['special']) || $data['special'] != 'hidden' && $data['special'] != 'group' )
 	{
 		$roster->tpl->assign_block_vars('pagebar',array(
-			'SPECIAL' => ( isset($data['special']) ? $data['special'] : '' ),
-			'SELECTED' => ( isset($data['href']) ? ($pagename == $data['href'] ? true : false) : ''),
-			'LINK' => ( isset($data['href']) ? makelink($data['href']) : '' ),
-			'NAME' => ( isset($data['title']) ? ( isset($roster->locale->act[$data['title']]) ? $roster->locale->act[$data['title']] : $data['title'] ) : '' ),
+			'SPECIAL'	=> ( isset($data['special']) ? $data['special'] : '' ),
+			'SELECTED'	=> ( isset($data['href']) ? ($pagename == $data['href'] ? true : false) : ''),
+			'LINK'		=> ( isset($data['href']) ? makelink($data['href']) : '' ),
+			'NAME'		=> ( isset($data['title']) ? ( isset($roster->locale->act[$data['title']]) ? $roster->locale->act[$data['title']] : $data['title'] ) : '' ),
+			'SUB'		=> false,
 			)
 		);
+	}
+	if ( isset($data['special']) && $data['special'] == 'group' )
+	{
+		$roster->tpl->assign_block_vars('pagebar',array(
+			'SPECIAL'	=> ( isset($data['special']) ? $data['special'] : '' ),
+			'ICON'		=> ( isset($data['icon']) ? $data['icon'] : 'glyphicon-list' ),
+			'SELECTED'	=> ( isset($data['href']) ? ($pagename == $data['href'] ? true : false) : ''),
+			'LINK'		=> ( isset($data['href']) ? makelink($data['href']) : '' ),
+			'NAME'		=> ( isset($data['title']) ? ( isset($roster->locale->act[$data['title']]) ? $roster->locale->act[$data['title']] : $data['title'] ) : '' ),
+			'SUB'		=> true,
+			)
+		);
+		if (count($data['pages']) > 0)
+		{
+			foreach ($data['pages'] as $s => $sub)
+			{
+				$roster->tpl->assign_block_vars('pagebar.sub',array(
+					'SPECIAL'	=> ( isset($sub['special']) ? $sub['special'] : '' ),
+					'SELECTED'	=> ( isset($roster->pages[2]) ? ($roster->pages[2] == $sub['href'] ? true : false) : ''),
+					'LINK'		=> ( isset($sub['href']) ? makelink('rostercp-user-'.$sub['href']) : '' ),
+					'NAME'		=> ( isset($sub['title']) ? ( isset($roster->locale->act[$sub['title']]) ? $roster->locale->act[$sub['title']] : $sub['title'] ) : '' ),
+					)
+				);
+			}
+		}
 	}
 }
 
@@ -230,6 +264,11 @@ if( isset($roster->pages[1]) )
 	elseif( $roster->pages[1] == 'plugin' )
 	{
 		$fullname = $roster->plugin_data[$roster->pages[2]]['fullname'];
+		$rostercp_title = ( isset($roster->locale->act[$fullname]) ? $roster->locale->act[$fullname] : $fullname );
+	}
+	elseif( $roster->pages[1] == 'user' )
+	{
+		$fullname = 'pagebar_'.$roster->pages[2];
 		$rostercp_title = ( isset($roster->locale->act[$fullname]) ? $roster->locale->act[$fullname] : $fullname );
 	}
 	elseif( $roster->pages[1] != '' )

@@ -25,9 +25,25 @@
 		  	<div class="sidebar content-box" style="display: block;">
                 <ul class="nav">
 					<!-- BEGIN pagebar -->
+					<!-- IF pagebar.SUB -->
+					<li class="submenu<!-- IF USER_PAGE_S --> open<!-- ENDIF -->">
+						<a href="javascript:;">
+							<i class="glyphicon <!-- IF pagebar.ICON-->{pagebar.ICON}<!-- ELSE -->glyphicon-list<!-- ENDIF -->"></i>{pagebar.NAME}
+                            <span class="caret pull-right"></span>
+						</a>
+						<ul>
+						<!-- BEGIN sub -->
+							<li<!-- IF pagebar.sub.SELECTED --> class="current"<!-- ENDIF -->>
+								<a href="{pagebar.sub.LINK}">{pagebar.sub.NAME}</a>
+							</li>
+						<!-- END sub -->
+						</ul>
+					</li>
+					<!-- ELSE -->
 					<li<!-- IF pagebar.SELECTED --> class="current"<!-- ENDIF -->>
 						<a href="{pagebar.LINK}"><i class="fa fa-fw fa-bar-chart-o"></i>{pagebar.NAME}</a>
 					</li>
+					<!-- ENDIF -->
 					<!-- END pagebar -->
 					
 					<!-- IF ADDON_PAGEBAR -->

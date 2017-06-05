@@ -115,3 +115,6 @@ color: #fff;
     border-width: 0px;
     border-radius: 0px;
 }
+.sidebar .nav li.open > a {
+	color: #fff;
+}

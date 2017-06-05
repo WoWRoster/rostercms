@@ -105,6 +105,22 @@ INSERT INTO `renprefix_config` VALUES (8270, 'rs_color_full', '#CC3333', 'color'
 INSERT INTO `renprefix_config` VALUES (8280, 'rs_color_recommended', '#33CC33', 'color', 'rs_right');
 
 # --------------------------------------------------------
+### roster rank access
+INSERT INTO `renprefix_config` VALUES (1201, 'rank_0', '15', 'function{rosterAccess', 'guild_ranks');
+INSERT INTO `renprefix_config` VALUES (1202, 'rank_1', '15', 'function{rosterAccess', 'guild_ranks');
+INSERT INTO `renprefix_config` VALUES (1203, 'rank_2', '15', 'function{rosterAccess', 'guild_ranks');
+INSERT INTO `renprefix_config` VALUES (1204, 'rank_3', '15', 'function{rosterAccess', 'guild_ranks');
+INSERT INTO `renprefix_config` VALUES (1205, 'rank_4', '15', 'function{rosterAccess', 'guild_ranks');
+INSERT INTO `renprefix_config` VALUES (1206, 'rank_5', '15', 'function{rosterAccess', 'guild_ranks');
+INSERT INTO `renprefix_config` VALUES (1207, 'rank_6', '15', 'function{rosterAccess', 'guild_ranks');
+INSERT INTO `renprefix_config` VALUES (1208, 'rank_7', '15', 'function{rosterAccess', 'guild_ranks');
+INSERT INTO `renprefix_config` VALUES (1209, 'rank_8', '15', 'function{rosterAccess', 'guild_ranks');
+INSERT INTO `renprefix_config` VALUES (1210, 'rank_9', '15', 'function{rosterAccess', 'guild_ranks');
+INSERT INTO `renprefix_config` VALUES (1211, 'rank_10', '15', 'function{rosterAccess', 'guild_ranks');
+INSERT INTO `renprefix_config` VALUES (1212, 'rank_11', '15', 'function{rosterAccess', 'guild_ranks');
+INSERT INTO `renprefix_config` VALUES (1212, 'rank_12', '15', 'function{rosterAccess', 'guild_ranks');
+
+# --------------------------------------------------------
 ### update_access
 INSERT INTO `renprefix_config` VALUES (9000, 'authenticated_user', '1', 'radio{enable^1|disable^0', 'update_access');
 INSERT INTO `renprefix_config` VALUES (9001, 'api_key_private', '3kMykjYN6qFrFEqkgyfgbMpjUX7phpjZ', 'text{64|40', 'update_access');
