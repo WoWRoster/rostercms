@@ -729,6 +729,7 @@ class roster_db
 	 */
 	function client_info()
 	{
-		return mysql_get_client_info();
+		return mysqli_get_client_info();
+		
 	}
 }
