@@ -1711,3 +1711,41 @@ $lang['apiitem']['skills'] = array(
 	"165" => "Lederverarbeitung",
 	"164" => "Schmiedekunst"
 );
+
+/*
+	New Roster 3.0 strings 
+	Translated from english to german by Nefuh
+*/
+
+/*
+	Common
+*/
+$lang['clear'] = 'Leeren';
+$lang['api_usage'] = 'Api Verwendung';
+/*
+	PageTitles
+*/
+$lang['pagebar_rostertheme'] = 'Theme Einstellungen';
+/*
+	Admin
+*/
+$lang['admin']['default_group'] = 'Standard Benutzergruppe|Die Standard Gruppe für neue Benutzer die nicht in der Gilde sind';
+$lang['admin']['minifyjs'] = 'JS komprimieren|Wählen um Javascriptdateien zu minimieren, die noch nicht minimiert sind';
+$lang['admin']['bootstrap'] = 'Bootstrap|Wähle die Bootstrap Theme Farbe für den Roster';
+$lang['admin']['debug_window'] = "Debug Info|<ul class='ul-no-m'><li>off: Keine Debug Fenster anzeigen</li><li>on: Debug Fenster anzeigen unter dem Roster</li></ul>";
+$lang['admin']['debug_windows'] = "Debug Info";
+$lang['admin']['debug_window_desc'] = "Fähigkeit das Debug- und Hinweisfenster zu sehen";
+
+/*
+	Info addon strings new
+*/
+$lang['standing_to_local'] = array (
+	7	=> 'Ehrfürchtig',
+	6	=> 'Respektvoll',
+	5	=> 'Wohlwollen',
+	4	=> 'Freundlich',
+	3	=> 'Neutral',
+	2	=> 'Unfreundlich',
+	1	=> 'Feindselig',
+	0	=> 'Hasserfüllt',
+);
