@@ -1122,7 +1122,6 @@ input[type=text], input[type=password], select{
     background-color: rgba(0,0,0,1);
     border-color: #c77e19 !important;
     color: #c77e19;
-	height: 2.5rem;
 }
 textarea {
     background-color: rgba(0,0,0,.4);

@@ -528,13 +528,20 @@ function process_step1( )
 	$our_curl = in_array('curl', get_loaded_extensions()) ? '<span class="positive">Yes</span>' : '<span class="negative">No</span>';
 	$their_curl = 'Required for Blizzard API';
 
-	if( (phpversion() < $REQUIRE['php_version']) || (!extension_loaded('mysql')) OR (!extension_loaded('mysqli')) OR (!extension_loaded('pdo_mysql')))
+	$ismyswl = false;
+	
+	if (extension_loaded('mysql')){$ismyswl = true;}
+	if (extension_loaded('mysqli')){$ismyswl = true;}
+	if (extension_loaded('pdo_mysql')){$ismyswl = true;}
+
+	if( (phpversion() < $REQUIRE['php_version']) || !$ismyswl)
 	{
 		$tpl->error_append('<span style="font-weight:bold;font-size:14px;">Sorry, your server does not meet the minimum requirements for WoWRoster</span>');
 	}
 	else
 	{
 		$tpl->message_append('WoWRoster has scanned your server and determined that it meets the minimum requirements.');
+		$this->assign_var('S_SHOW_BUTTON', true);
 	}
 
 	/**
