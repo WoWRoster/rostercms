@@ -321,13 +321,14 @@ CREATE TABLE `renprefix_guild` (
 ##
 
 CREATE TABLE `renprefix_guild_rank` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `rank` tinyint(4) NOT NULL DEFAULT '0',
   `slug` varchar(20) NOT NULL DEFAULT '',
   `title` varchar(30) NOT NULL DEFAULT '',
   `access` varchar(20) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
+) ;
+ALTER TABLE `renprefix_guild_rank` ADD PRIMARY KEY (`id`);
+  
 ## ------------------------------------------------------##
 
 ##
