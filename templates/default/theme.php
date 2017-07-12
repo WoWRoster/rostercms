@@ -59,6 +59,12 @@ roster_add_js('templates/' . $roster->tpl->tpl . '/js/jquery.sumoselect.js', 'co
 roster_add_js('templates/' . $roster->tpl->tpl . '/js/apitips.js',null,'footer');
 roster_add_js('templates/' . $roster->tpl->tpl . '/js/tooltip.js',null,'footer');
 roster_add_js('templates/' . $roster->tpl->tpl . '/theme.js');
+
+roster_add_js('templates/' . $roster->tpl->tpl . '/js/markitup/jquery.markitup.js', 'core');
+roster_add_js('templates/' . $roster->tpl->tpl . '/js/markitup/sets/default/set.js', 'core');
+roster_add_css('templates/' . $roster->tpl->tpl . '/style/markitup/skins/markitup/style.css', 'theme');
+roster_add_css('templates/' . $roster->tpl->tpl . '/style/markitup/sets/default/style.css', 'theme');
+
 /**
  * Starts or ends fancy bodering containers
  *

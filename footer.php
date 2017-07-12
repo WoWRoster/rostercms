@@ -22,6 +22,7 @@ $totaltime = round(format_microtime() - ROSTER_STARTTIME, 2);
 
 $error_report = $roster->error->stop();
 $debug_report = '';
+$roster->config['debug_window'] = true;
 if ( $roster->config['debug_window'] )
 {
 	$debug_report = $roster->debug->get_debug();

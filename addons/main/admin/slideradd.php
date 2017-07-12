@@ -21,26 +21,37 @@ $menu .= $config->buildConfigMenu('rostercp-addon-' . $addon['basename']);
 include_once($addon['inc_dir'] . 'functions.lib.php');
 $func = New mainFunctions;
 
+
 if (isset($_POST['op']) && $_POST['op'] == 'upload')
 {
-	$filename = basename( $_FILES['b_image']['name']);
-	$target_path = $addon['dir'] .'images'. DIR_SEP . basename( $_FILES['b_image']['name']);
-	$path = $addon['dir'] .'images'. DIR_SEP . 'slider/';
+	$func->upload_slide($_FILES);
+	/*
+	$ext = substr($_FILES['b_image']['name'], strrpos($_FILES['b_image']['name'], '.')+1);
+	$filename = hash_file('md5', $_FILES['b_image']['tmp_name']).'.'.$ext;
+	$target_path = $addon['dir'] .'images'. DIR_SEP . $filename;
+	$path = $addon['dir'] .'images'. DIR_SEP . 'slider'. DIR_SEP;
 	$slider = $path .'slider-'. $filename;
 	$thumb = $path .'thumb-'. $filename;
 
 	if(move_uploaded_file($_FILES['b_image']['tmp_name'], $target_path))
 	{
 		
-		$func->image_resize($target_path, $thumb, 100, 47);
-		$func->image_resize($target_path, $slider, 825, 412);
+		$image = new ImageResize($target_file);
+		$image->resizeToHeight(420);//resize(275, 200);
+		$image->crop(850, 420);
+		$image->save($slider);
+		
+		$image1 = new ImageResize($target_file);
+		$image1->resizeToHeight(47);//resize(275, 200);
+		$image1->crop(100, 47);
+		$image1->save($thumb);
 
 		$query = "INSERT INTO `" . $roster->db->table('slider', $addon['basename']) . "` SET "
 			. "`b_title` = '" . $_POST['b_title'] . "', "
 			. "`b_desc` = '" . $_POST['b_desc'] . "', "
 			. "`b_url` = '" . $_POST['b_url'] . "', "
 			. "`b_video` = '" . $_POST['b_video'] . "', "
-			. "`b_image` = '" . $_FILES['b_image']['name'] . "';";
+			. "`b_image` = '" . $filename . "';";
 
 		if( $roster->db->query($query) )
 		{
@@ -59,7 +70,7 @@ if (isset($_POST['op']) && $_POST['op'] == 'upload')
 	{
 		$roster->set_message(sprintf($roster->locale->act['slider_file_error'], $target_path), $roster->locale->act['b_add'], 'error');
 	}
-	//*/
+	*/
 }
 
 $roster->tpl->set_handle('slider',$addon['basename'] . '/admin/slideradd.html');

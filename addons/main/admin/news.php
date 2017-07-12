@@ -62,8 +62,9 @@ $menu .= $config->buildConfigMenu('rostercp-addon-' . $addon['basename']);
 		$roster->tpl->assign_block_vars('news_admin', array(
 			'POSTER'    => $row['poster'],
 			'NUM'       => $numn,
-			'TEXT'      => $row['text'],
+			'TEXT'      => substr($row['text'], 0, 300),//$row['text'],
 			'NEWS_ID'   => $row['news_id'],
+			'IMG_THUMB'		=> (!empty($row['img']) ? $addon['image_url'].'news/thumbs/'.$row['img'].'-thumb.jpg' : false),
 			'TITLE'     => $row['title'],
 			'DATE'      => $row['date_format'],
 			'U_EDIT'    => makelink('guild-'. $addon['basename'] .'-edit&amp;id='. $row['news_id']),

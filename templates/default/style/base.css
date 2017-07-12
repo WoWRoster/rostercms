@@ -6,7 +6,7 @@ a:hover { color:#FFF; text-decoration:none; font-weight:bold; }
 html{	height: 100%;
 	display: flex;
 flex-direction: column;}
-body {background: url(../images/silvermoon-1920x1200.png) fixed no-repeat; background-color: #000000; color: #ffffff;}
+body {background: url(../images/silvermoon-1920x1200.png) fixed no-repeat; background-position:center;background-color: #000000; color: #ffffff;}
 .roster-wrap { font:12px arial,helvetica,sans-serif; color:#FFFFFF; min-width: 420px; max-width: 1224px; margin: 20px auto 20px auto; position: relative; padding-top: 1px; float: center; }
 .theme-wrap { position: relative; min-width: 420px; max-width: 1224px; margin: auto; border: 1px solid #7E2217;   /* background: url(../images/GarrisonMissionParchment.png); */
   background-color: #353a41; padding: 0;text-align: left; }
@@ -16,6 +16,17 @@ body {background: url(../images/silvermoon-1920x1200.png) fixed no-repeat; backg
 	padding: 30px 0 30px 0;
 	border-left: 1px solid rgba(255,255,255,0.1);
 	border-right: 1px solid rgba(255,255,255,0.1);
+}
+.no-margin {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+.row.extra-bottom-padding{
+   margin-bottom: 10px;
+}
+
+#main-nobg {
+	padding: 30px 0 30px 0;
 }
 
 a:-webkit-any-link {
@@ -1568,6 +1579,9 @@ button:hover {
 	color: #FFFFFF;
 	padding: 5px;
 }
+/*
+card css since not in v3 yet using v4 css
+*
 .card-deck .card {
     width: 277px !important;
     display: inline-block;
@@ -1880,7 +1894,9 @@ button:hover {
     width: 100%;
   }
 }
-
+*
+	end cards
+*/
 
 
 .list-group {
@@ -2710,3 +2726,245 @@ background-color: #e5e5e5;
 .quote-blizz .quote-body a:hover b{color:#fff !important}
 .quote-blizz .quote-body b a{text-decoration:none}
 .quote-blizz hr{background:transparent;border-top:1px dotted #333;height:1px;margin:5px 0 10px 0}
+
+
+/*
+	bliz cards cause they cool
+*/
+
+@charset "UTF-8";
+/**
+* SassFlexbox
+* Manage Flexbox in Sass easily.
+*
+* @author     Samuel Marchal (zessx)
+* @version    0.1
+*/
+/*
+    Display
+ */
+.card-deck,
+.card-deck, .card-deck .card-list,
+.card-deck .card-list, .card-deck .card,
+.card-deck .card, .card-deck .card .card-block,
+.card-deck .card .card-block, .gallery,
+.gallery, .nav-tabs,
+.nav-tabs {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flexbox;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; }
+
+/*
+    Flex direction
+ */
+
+.card-deck .card,
+.card-deck .card, .card-deck .card .card-block,
+.card-deck .card .card-block {
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+
+/*
+    Flex wrap
+ */
+.card-deck,
+.card-deck, .gallery,
+.gallery {
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+
+/*
+    Flex flow
+ */
+/*
+    Order
+ */
+/*
+    Flex grow
+ */
+/*
+    Flex shrink
+ */
+/*
+    Flex basis
+ */
+/*
+    Flex
+ */
+/*
+    Justify content
+ */
+.card-deck,
+.card-deck {
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-flex-pack: start;
+  -ms-flex-pack: start;
+  -moz-justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start; }
+
+  .card,
+  .card {
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0px;
+    height: auto;
+    margin-bottom: 1.75rem; }
+    @media (min-width: 48em) {
+      .card,
+      .card {
+        max-width: 16rem; } }
+    .card img,
+    .card img {
+      display: block;
+      height: auto;
+      margin: 0 auto;
+      max-width: 100%;
+      width: 100%; }
+    .card .card-img-top,
+    .card .card-img-bottom,
+    .card .card-img-top,
+    .card .card-img-bottom {
+      box-shadow: none;
+      box-sizing: border-box;
+      display: block;
+      width: 100%; }
+    .card .card-img-top,
+    .card .card-img-top {
+      border-width: 0 0 1px 0;
+      border-color: #2b2c2f;
+      border-style: solid; }
+    .card .card-img-bottom,
+    .card .card-img-bottom {
+      border-width: 1px 0 0 0;
+      border-color: #2b2c2f;
+      border-style: solid; }
+    .card .card-block,
+    .card .card-block {
+      padding: 0 1em;
+      height: inherit; }
+      .card .card-block .card-title,
+      .card .card-block .card-title {
+        text-transform: normal;
+        font-weight: bold;
+        margin: 0;
+        padding: 1em 0 0.5em 0;
+        font-size: 1.1em;
+        font-family: "Semplicita Pro"; }
+      .card .card-block .card-text,
+      .card .card-block .card-text {
+        margin: 0;
+        color: #ebdec2;
+        padding: 0 0 1em; }
+    .card .card-header,
+    .card .card-header {
+      margin: 0;
+      padding: 0.8em 1em;
+      background-color: rgba(255, 255, 255, 0.1);
+      font-size: 1em;
+      color: rgba(255, 255, 255, 0.8); }
+    .card .card-footer,
+    .card .card-footer {
+      margin: 0;
+      padding: 0.6em 1.3em;
+      background-color: rgba(255, 255, 255, 0.1);
+      font-size: 0.8em;
+      color: rgba(255, 255, 255, 0.3);
+      border-width: 1px 0 0 0;
+      border-color: #2b2c2f;
+      border-style: solid; }
+  a.card,
+  a.card {
+    display: block; }
+  .card-deck,
+  .card-deck {
+    margin-bottom: 1.75rem;
+    max-width: 100%; }
+    .card-deck .card-list,
+    .card-deck .card-list {
+      -webkit-flex-grow: 0;
+      -webkit-box-flex: 0;
+      -moz-flex-grow: 0;
+      -ms-flex-positive: 0;
+      flex-grow: 0;
+      margin-bottom: 1.75rem;
+      transition: width .4s ease-in-out,-ms-flex .4s ease-in-out;
+      box-sizing: border-box; }
+      @media (min-width: 30em) {
+        .card-deck .card-list,
+        .card-deck .card-list {
+          width: 50%;
+          padding: 0 0 0.2em 0.2em;
+          margin: 0; }
+          .card-deck .card-list:nth-child(2n+1),
+          .card-deck .card-list:nth-child(2n+1) {
+            clear: both; } }
+      @media (min-width: 62em) {
+        .card-deck .card-list,
+        .card-deck .card-list {
+          width: 25%;
+          margin: 0; }
+          .card-deck .card-list:nth-child(3n+1),
+          .card-deck .card-list:nth-child(3n+1) {
+            clear: both; } }
+    .card-deck .card,
+    .card-deck .card {
+      margin-bottom: 0;
+      max-width: 100%; }
+      .card-deck .card .card-block,
+      .card-deck .card .card-block {
+        -webkit-flex-grow: 1;
+        -webkit-box-flex: 1;
+        -moz-flex-grow: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -webkit-flex-shrink: 0;
+        -webkit-box-flex: 0;
+        -moz-flex-shrink: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        -webkit-flex-basis: auto;
+        -moz-flex-basis: auto;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto; }
+      .card-deck .card .card-text,
+      .card-deck .card .card-text {
+        -webkit-flex-grow: 1;
+        -webkit-box-flex: 1;
+        -moz-flex-grow: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -webkit-flex-shrink: 0;
+        -webkit-box-flex: 0;
+        -moz-flex-shrink: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        -webkit-flex-basis: auto;
+        -moz-flex-basis: auto;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto; }
+.deco-none {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.deco-none:link {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.deco-none:hover {
+  color: inherit;
+  text-decoration: inherit;
+}

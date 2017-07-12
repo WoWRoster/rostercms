@@ -44,6 +44,24 @@ $lang['b_image']  = 'Image File';
 $lang['b_add']    = 'Add Slider Image';
 $lang['b_upload'] = 'Upload a Slider Image';
 $lang['b_video'] = 'Video';
+$lang['newstype'] = array(
+	'1' => 'Guild',
+	'2' => 'PTR',
+	'3' => 'Patch Notes',
+	'4' => 'Blizzard',
+	'5' => 'Raiding',	
+	'6' => 'Warcarft',
+	'7' => 'Event',
+	'8' => 'Other',
+);
+$lang['newstype_1'] = 'Guild';
+$lang['newstype_2'] = 'PTR';
+$lang['newstype_3'] = 'Patch Notes';
+$lang['newstype_4'] = 'Blizzard';
+$lang['newstype_5'] = 'Raiding';	
+$lang['newstype_6'] = 'Warcarft';
+$lang['newstype_7'] = 'Event';
+$lang['newstype_8'] = 'Other';
 
 $lang['news_edit_success']     = 'News edited successfully';
 $lang['news_add_success']      = 'News added successfully';

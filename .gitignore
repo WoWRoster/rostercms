@@ -3,3 +3,6 @@ addons/main/images/slider/**
 cache/**
 conf.php
 Thumbs.db
+addons/guides/**
+addons/raidbox/**
+plugins/**

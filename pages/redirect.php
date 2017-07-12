@@ -20,20 +20,6 @@ if( !defined('IN_ROSTER') )
 $roster->api2->ignore_cache = true;
 if ($_GET['state'] == 'login')
 {
-	/*
-	if( isset($_COOKIE['roster_pass']) && isset($_COOKIE['roster_user']) )
-	{
-		$re = $roster->auth->checkPass($_COOKIE['roster_pass'], $_COOKIE['roster_user'],'0');
-		if ( $re == true )
-		{
-			$jscript = '
-			closepopup();
-			';
-			roster_add_js($jscript, 'inline', 'header', false, false);
-			exit();
-		}
-	}
-	*/
 	$extra = array('state' => 'login2');
 	$auth_url = $roster->api2->getAuthenticationUrl($roster->api2->baseurl[$roster->api2->region]['AUTHORIZATION_ENDPOINT'], $roster->api2->redirect_uri,$extra);
 	header('Location: ' . $auth_url);
@@ -42,27 +28,13 @@ if ($_GET['state'] == 'login')
 if ($_GET['state'] == 'claim')
 {
 	$params = array('code' => $_GET['code'], 'auth_flow' => 'auth_code', 'redirect_uri' => $roster->api2->redirect_uri, 'state' => 'login2');
-	//print_r($params);
 	$response = $roster->api2->getAccessToken($roster->api2->baseurl[$roster->api2->region]['TOKEN_ENDPOINT'], 'authorization_code', $params);
-	//print_r($response);
+
 	$roster->api2->setAccessToken($response['access_token']);
 	$chars = $roster->api2->fetch('wowprofile');
-	//echo '<pre>';
-	//print_r($chars);
-	//echo '</pre>';
 	
 	// ranks array for access lvls...
-	$ranks = array(
-		0	=> '1:2:3:4',// gm / admin
-		1	=> '2:3:4',// officer
-		2	=> '2:3:4',// officer
-		3	=> '2:3',// member
-		4	=> '2:3',// member
-		5	=> '2:3',// member
-		6	=> '2:3',// member
-		7	=> '2:3',// member
-		8	=> '2:3',// member
-	);
+	$ranks = _getranks();
 	$mranks = array();
 	$update_sql = array();
 	
@@ -185,24 +157,10 @@ function updatecars($response)
 	d($roster);
 	
 	$chars = $roster->api2->fetch('wowprofile');
-	// ranks array for access lvls...
-	$ranks = array(
-		0	=> '1:2:3:4',// gm / admin
-		1	=> '2:3:4',// officer
-		2	=> '2:3:4',// officer
-		3	=> '2:3',// member
-		4	=> '2:3',// member
-		5	=> '2:3',// member
-		6	=> '2:3',// member
-		7	=> '2:3',// member
-		8	=> '2:3',// member
-	);
+	$ranks = _getranks();
 	$orank = explode(':', $roster->auth->access);
-	//unset($orank[0]);
-	//d($roster->auth->access);
-	$mranks = $orank;//array();
-	//d($mranks);
-	//unset($mranks[0]);
+	$mranks = $orank;
+
 	$update_sql = array();
 	if (is_array($chars['characters']))
 	{
@@ -261,20 +219,40 @@ function updatecars($response)
 		
 	}
 }
-function getcharid($name,$server)
+
+function _getranks()
+{
+	global $roster, $addon;
+	
+	$query = "SELECT * FROM `" . $roster->db->table('guild_rank') . "`;";
+	$result = $roster->db->query($query);
+
+	if (!$result)
 	{
-		global $roster, $addon;
-		$mid = array();
-		$sql = 'SELECT `member_id`,`name`,`server`,`guild_id` FROM `' . $roster->db->table('members') . '` WHERE `name` = "' . $name . '" AND `server` = "'.$server.'"';
-		$query = $roster->db->query($sql);
-		while( $row = $roster->db->fetch($query) )
-		{
-			$mid = array(
-			'member_id'	=> $row['member_id'],
-			'name'		=> $row['name'],
-			'server'	=> $row['server'],
-			'guild_id'	=> $row['guild_id']
-			);
-		}
-		return $mid;
-	}			
+		die_quietly('Could not fetch menu configuration from database. MySQL said: <br />' . $roster->db->error(),'Roster',__FILE__,__LINE__,$query);
+	}
+	$ranks = array();
+	while($r = $roster->db->fetch($result))
+	{
+		$ranks[$r['rank']] = $r['access'];
+	}
+	return $ranks;
+}
+
+function getcharid($name,$server)
+{
+	global $roster, $addon;
+	$mid = array();
+	$sql = 'SELECT `member_id`,`name`,`server`,`guild_id` FROM `' . $roster->db->table('members') . '` WHERE `name` = "' . $name . '" AND `server` = "'.$server.'"';
+	$query = $roster->db->query($sql);
+	while( $row = $roster->db->fetch($query) )
+	{
+		$mid = array(
+		'member_id'	=> $row['member_id'],
+		'name'		=> $row['name'],
+		'server'	=> $row['server'],
+		'guild_id'	=> $row['guild_id']
+		);
+	}
+	return $mid;
+}			

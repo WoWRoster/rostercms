@@ -620,7 +620,7 @@ class Client
 		global $roster;
 		$protected_resource_url = self::_buildUrl($protected_resource_url, $parameters);
 
-		//echo $protected_resource_url.'<br>';
+		echo $protected_resource_url.'<br>';
 		$lmh=null;
 		if ( isset($http_headers['If-Modified-Since']) && $http_headers['If-Modified-Since'] != '')
 		{

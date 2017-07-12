@@ -1,0 +1,65 @@
+<div id="main" class="container">
+
+	<div class="nav_bar">
+		{CRUMB}
+	</div>
+
+	<ul class="f_options">
+		<li>
+			<!-- IF LOCKED -->{IMAGE}<!-- TRANSLATE t_lock -->
+			<!-- ELSE -->
+			<a class="fa-button Forum-button Forum-button--new" id="toggle-create-topic" href="{M_STARTTOPIC}">
+				<span class="Button-content">New Topic</span>
+			</a>
+			<!-- ENDIF -->
+		</li>
+		<li>
+		<!-- IF CANLOCK -->
+			<form name="lock" method="post" enctype="multipart/form-data" action="">
+				<input type="hidden" name="op" value="process" />
+				<input type="hidden" name="type" value="{L_ACTIVEOP}" />
+				<input type="hidden" name="id" value="{TOPIC_ID}" />
+				<button xmlns="http://www.w3.org/1999/xhtml" class="Forum-button Forum-button--new" id="toggle-create-topic" type="submit">
+					<span class="Overlay-element"></span>
+					<span class="Button-content"><i class="Icon"></i>{L_ACTIVET}</span>
+				</button>
+			</form>
+		<!-- ENDIF -->
+		</li>
+	</ul>
+
+	<div class="Forum-ForumTopicList ">
+		<!-- BEGIN forums -->
+
+		<a href="{forums.FORUM_URL}"><div class="ForumTopic" >
+			<span class="ForumTopic-type">
+				<img src="images/<!-- IF forums.STICKY -->sticky<!-- ELSE -->topic<!-- ENDIF -->_<!-- IF forums.READ -->read<!-- ELSE -->unread<!-- ENDIF -->{forums.IMAGEL}{forums.IMAGEM}.gif">
+				<i class="Icon"></i>
+			</span>
+			<div class="ForumTopic-details">
+				<span class="ForumTopic-heading">
+					<span class="ForumTopic-title--wrapper">
+						<span class="ForumTopic-timestamp on-mobile">
+							<!-- ## <a class="ForumTopic-timestamp--lastPost" href="{forums.FORUM_URL}" >{forums.R_DATE}</a> -->
+						</span>
+						<span class="ForumTopic-title" >{forums.TITLE}</span>
+					</span>
+					<i class="statusIcon statusIcon-desktop" ></i>
+				</span>
+				<span class="ForumTopic-author">{forums.POSTER}</span>
+				<span class="ForumTopic-replies">
+					<i class="Icon"></i>
+					<span>{forums.POSTS}</span>
+				</span>
+				<span class="ForumTopic-timestamp">
+					<div class="ForumTopic-timestamp--lastPost" href="{forums.FORUM_URL}" >{forums.R_DATE}</div>
+				</span>
+			</div>
+		</div></a>
+		
+		
+		
+		
+		<!-- END forums -->
+	</div>
+</div>

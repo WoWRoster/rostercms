@@ -1,10 +1,5 @@
 <?php
 
-//roster_add_js($addon['url'] . 'js/jquery.easing.1.3.js');
-//roster_add_js($addon['url'] . 'js/camera.js');
-
-//roster_add_css($addon['tpl_url'] . 'camera.css');
-
 include_once($addon['inc_dir'] . 'functions.lib.php');
 $func = New mainFunctions;
 
@@ -38,25 +33,6 @@ $roster->tpl->assign_vars(array(
 	'FACTION' => isset($roster->data['factionEn']) ? strtolower($roster->data['factionEn']) : false,
 	'JSDIE'		=> $addon['dir'].'js'
 ));
-/*
-$r = $func->makeUSERmenu($roster->output['show_menu']);
-$usrmenu = '<ul style="line-height: 24px;" class="user_menu_sb">';
-foreach($r['user'] as $i => $usr)
-{
-	$usrmenu .= '<li><div class="item-sm">
-	<img src="'.$usr['ICON'].'" alt="" />
-	<div class="mask"></div>
-</div>
-<a href="'.$usr['U_LINK'].'">'.$usr['NAME'].'</a></li>';
-}
-$usrmenu .= '</ul>';
-
-$roster->tpl->assign_block_vars('right', array(
-	'BLOCKNAME'  => 'User menu',
-	'ICON'       => 'inv_misc_bag_26_spellfire',
-	'BLOCK_DATA' => $roster->auth->getMenuLoginForm() . ($roster->auth->valid == 1 ? $usrmenu : '')
-));
-*/
 
 // init the plugin for this addon and display them
 
@@ -90,20 +66,10 @@ while( $rowb = $roster->db->fetch($resultsb) )
 	{
 		$e = false;
 	}
-	$target_path = $addon['dir'] .'images/slider/'. $rowb['b_image'];
-	if (!file_exists($addon['dir'] .'images/slider/'. $rowb['b_image']) )
-	{
-		$func->image_resize($target_path, $addon['dir'] .'images/slider/'. $rowb['b_image'], 600, 300);
-	}
-	if (!file_exists($addon['dir'] .'images/slider/thumb-'. $rowb['b_image']) )
-	{
-		$func->image_resize($target_path, $addon['dir'] .'images/slider/thumb-'. $rowb['b_image'], 100, 47);
-	}
-
 	$roster->tpl->assign_block_vars('slider', array(
 		'DESC'     => $rowb['b_desc'],
 		'URL'      => $rowb['b_url'],
-		'IMAGE'    => $addon['url_path'] .'images/slider/'. $rowb['b_image'],
+		'IMAGE'    => $addon['url_path'] .'images/slider/slider-'. $rowb['b_image'],
 		'TIMAGE'   => $addon['url_path'] .'images/slider/thumb-'. $rowb['b_image'],
 		'ID'       => $rowb['b_id'],
 		'TITLE'    => $rowb['b_title'],
@@ -179,17 +145,19 @@ while( $row = $roster->db->fetch($results) )
 	//$message = bbcode_nl2br($message);
 	//echo $row['title'].'-'.$row['poster'].'-'.$row['text'].'<br />';
 	$roster->tpl->assign_block_vars('news', array(
-		'POSTER'    => $row['poster'],
-		'NUM'       => $numn,
-		'TEXT'      => $message,
-		'IMG'		=> (!empty($row['img']) ? $addon['image_url'].'news/'.$row['img'].'-image.jpg' : false),
-		'TITLE'     => $row['title'],
-		'DATE'      => $row['date_format'],
-		'U_EDIT'    => makelink('guild-'. $addon['basename'] .'-edit&amp;id='. $row['news_id']),
-		'U_COMMENT' => makelink('guild-'. $addon['basename'] .'-comment&amp;id='. $row['news_id']),
-		'U_EDIT'    => makelink('guild-'. $addon['basename'] .'-edit&amp;id='. $row['news_id']),
-		'L_COMMENT' => ($row['comm_count'] != 1 ? sprintf($roster->locale->act['n_comments'], $row['comm_count']) : sprintf($roster->locale->act['n_comment'], $row['comm_count'])),
-		'NEWS_TYPE' => $row['news_type']
+		'POSTER'		=> $row['poster'],
+		'NUM'			=> $numn,
+		//'TEXT'			=> $message,
+		'NEWS_TYPE'		=> (isset($row['news_type']) ? $roster->locale->act['newstype'][$row['news_type']] : ''),
+		'TEXT_MIN'		=> substr($message, 0, 300),
+		'IMG'			=> (!empty($row['img']) ? $addon['image_url'].'news/'.$row['img'].'-image.jpg' : false),
+		'IMG_THUMB'		=> (!empty($row['img']) ? $addon['image_url'].'news/thumbs/'.$row['img'].'-thumb.jpg' : false),
+		'TITLE'			=> $row['title'],
+		'DATE'			=> $row['date_format'],
+		'LINK'			=> makelink('guild-'. $addon['basename'] .'-post&amp;id='. $row['news_id']),
+		'U_COMMENT'		=> makelink('guild-'. $addon['basename'] .'-comment&amp;id='. $row['news_id']),
+		'U_EDIT'		=> makelink('guild-'. $addon['basename'] .'-edit&amp;id='. $row['news_id']),
+		'L_COMMENT'		=> ($row['comm_count'] != 1 ? sprintf($roster->locale->act['n_comments'], $row['comm_count']) : sprintf($roster->locale->act['n_comment'], $row['comm_count'])),
 	));
 	$numn++;
 }

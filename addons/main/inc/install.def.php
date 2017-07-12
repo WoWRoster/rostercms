@@ -119,6 +119,14 @@ class mainInstall
 			`b_video` int(10) DEFAULT NULL,
 			PRIMARY KEY (`id`)");
 
+		$installer->create_table($installer->table('images'),"
+			`id` int(5) NOT NULL,
+			`image` varchar(255) DEFAULT NULL,
+			`basename` varchar(150) DEFAULT NULL,
+			`ext` varchar(150) DEFAULT NULL,
+			`url` varchar(255) NOT NULL DEFAULT '#',
+			PRIMARY KEY (`id`)");
+
 		$installer->create_table($installer->table('news'),"
 			`news_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 			`name` varchar(255) DEFAULT NULL,
@@ -184,6 +192,7 @@ class mainInstall
 		$installer->drop_table($installer->table('comments'));
 		$installer->drop_table($installer->table('blocks'));
 		$installer->drop_table($installer->table('slider'));
+		$installer->drop_table($installer->table('images'));
 		$installer->drop_table($installer->table('news'));
 		$installer->remove_all_config();
 		$installer->remove_all_permissions();

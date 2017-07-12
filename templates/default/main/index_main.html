@@ -1,5 +1,5 @@
 
-<div id="main" class="container">
+<div id="main-nobg" class="container">
 
     <div class="col-md-9">
 		
@@ -46,44 +46,33 @@
 
 
         <!-- IF S_ADD_NEWS -->
-        <div class="right">
-            <a class="btn btn-primary btn-xs" href="{U_ADD_NEWS}"><span class="ui-icon ui-icon-plus"></span><!-- TRANSLATE add_news --></a>
+        <div class="row">
+            <div class="col-md-12">
+				<a class="btn btn-primary btn-xs" href="{U_ADD_NEWS}"><span class="ui-icon ui-icon-plus"></span><!-- TRANSLATE add_news --></a>
+			</div>
         </div>
         <!-- ENDIF -->
 
         <!-- BEGIN news -->
-
-        <div class="news_block">
-            <div class="title">
-                <div class="icon">
-                    <img src="{INTERFACE_URL}Interface/Icons/inv_misc_note_02.{IMG_SUFFIX}" alt="" />
-                    <div class="mask"></div>
-                </div>
-                {news.TITLE}
-                <!-- IF S_EDIT_NEWS -->
-                <div class="right">
-                    <a class="input" href="{news.U_EDIT}"><span class="ui-icon ui-icon-pencil"></span><!-- TRANSLATE edit --></a>
-                </div>
-                <!-- ENDIF -->
-            </div>
-			<!-- IF news.IMG -->
-			<div class="header-image">
-				<img src="{news.IMG}"></a>
+			<div class="media news_entry">
+				<a class="pull-left" href="{news.LINK}">
+					<img class="media-object" width="" height="" src="{news.IMG_THUMB}">
+					<!-- IF news.NEWS_TYPE -->
+					<span class="news-type">{news.NEWS_TYPE}</span>
+					<!-- ENDIF -->
+				</a>
+				<div class="media-body">
+					<h4 class="media-heading">{news.TITLE}</h4>
+					
+					<p>{news.TEXT_MIN}</p>
+					<ul class="list-inline list-unstyled">
+						<li><span><i class="glyphicon glyphicon-calendar"></i> {news.DATE}</span></li>
+						<li> | </li>
+						<li><span><i class="glyphicon glyphicon-comment"></i> {news.L_COMMENT}</span></li>
+					</ul>
+			   </div>
+			   <a class="NewsBlog-link" href="{news.LINK}"></a>
 			</div>
-			<!-- ENDIF -->
-            <div class="article-summary">
-                    {news.TEXT}
-            </div>
-            <span class="clear"></span>
-            <div class="tier-3-a">
-                <div class="tier-3-b">
-                    <div class="config">
-                        <div class="config-name"><!-- TRANSLATE posted_by -->: {news.POSTER} <span class="spacer"> - </span> {news.DATE}</div>
-                        <div class="config-input comment_color"><a class="comment_color" href="{news.U_COMMENT}">{news.L_COMMENT}</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- END news -->
 
     </div>

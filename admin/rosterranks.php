@@ -19,31 +19,37 @@ if( !defined('IN_ROSTER') || !defined('IN_ROSTER_ADMIN') )
 $start = (isset($_GET['start']) ? $_GET['start'] : 0);
 
 $roster->output['title'] .= $roster->locale->act['pagebar_rosterrank'];
-
+include(ROSTER_LIB . 'config.lib.php');
+$config = new roster_config( $roster->db->table('config') );
 
 //user_desc
 if( isset($_POST['process']) && $_POST['process'] == 'process' )
 {
-	
+	foreach ($_POST['config_rank'] as $slug => $d)
+	{
+		$query = "UPDATE `" . $roster->db->table('guild_rank') . "` SET `title` = '" . $d['name'] . "', `access` = '" . implode(':', $d['access']) . "' WHERE `slug` = '" . $slug . "';";
+		$roster->db->query($query);
+	}
 }
 
+$query = "SELECT * FROM `" . $roster->db->table('guild_rank') . "`;";
+$result = $roster->db->query($query);
 
-$c = 1;
-$ranks = 12;
-$r = 0;
-for ($r=0;$r<=$ranks;$r++)
+if (!$result)
 {
-	$roster->tpl->assign_block_vars('user', array(
+	die_quietly('Could not fetch menu configuration from database. MySQL said: <br />' . $roster->db->error(),'Roster',__FILE__,__LINE__,$query);
+}
+
+while($r = $roster->db->fetch($result))
+{
+	$roster->tpl->assign_block_vars('rank', array(
 		'ROW_CLASS' => $roster->switch_row_class(),
-		'ID'        => $r,
+		'ID'        => $r['id'],
 		'IDC'       => $c++,
-		'IDX'       => $c++,
-		'ACTIVE'    => (bool)$row['active'],
-		'NAME'      => 'Rank '.$r,
-		'TOOLTIP'   => '',
-		'EMAIL'     => $r,
-		'ACCESS'    => $roster->auth->rosterAccess(array('guild_id' => ''.$roster->data['guild_id'].'','name' => 'rank'.$r.'[access]', 'value' => $roster->config['rank'.$r.''])),
-		'PERMISS'	=> ''
+		'RANK_NUM'	=> $r['slug'],
+		'RANK'      => 'Rank '.$r['rank'],
+		'TITLE'		=> $r['title'],
+		'ACCESS'    => $roster->auth->rosterAccess(array('guild_id' => ''.$roster->data['guild_id'].'','name' => 'rank['.$r['slug'].'][access]', 'value' => $r['access']))
 		)
 	);
 }
@@ -53,5 +59,5 @@ $roster->tpl->assign_vars(array(
 	)
 );
 
-$roster->tpl->set_filenames(array('body' => 'admin/user_manager.html'));
+$roster->tpl->set_filenames(array('body' => 'admin/rosterranks.html'));
 $body = $roster->tpl->fetch('body');

@@ -34,7 +34,6 @@ INSERT INTO `renprefix_config` VALUES (110, 'main_conf', NULL, 'blockframe', 'me
 INSERT INTO `renprefix_config` VALUES (120, 'defaults_conf', NULL, 'blockframe', 'menu');
 INSERT INTO `renprefix_config` VALUES (130, 'debug_conf', NULL, 'blockframe', 'menu');
 INSERT INTO `renprefix_config` VALUES (150, 'realmstatus_conf', NULL, 'page{1', 'menu');
-INSERT INTO `renprefix_config` VALUES (160, 'data_links', NULL, 'blockframe', 'menu');
 INSERT INTO `renprefix_config` VALUES (170, 'update_access', NULL, 'blockframe', 'menu');
 INSERT INTO `renprefix_config` VALUES (180, 'documentation', 'http://www.wowroster.net/MediaWiki', 'newlink', 'menu');
 INSERT INTO `renprefix_config` VALUES (190, 'acc_session', 'NULL', 'blockframe', 'menu');
@@ -167,3 +166,18 @@ INSERT INTO `renprefix_menu_button` VALUES (3, 0, 'menu_roster_ucp', 'util', 'uc
 
 # --------------------------------------------------------
 ### Users
+
+INSERT INTO `renprefix_guild_rank` (`id`, `rank`, `slug`, `title`, `access`) VALUES
+(1, 0, 'rank_0', 'Rank 0', '0:1:2'),
+(2, 1, 'rank_1', 'Rank 1', '0'),
+(3, 2, 'rank_2', 'Rank 2', '0'),
+(4, 3, 'rank_3', 'Rank 3', '0'),
+(5, 4, 'rank_4', 'Rank 4', '0'),
+(6, 5, 'rank_5', 'Rank 5', '0'),
+(7, 6, 'rank_6', 'Rank 6', '0'),
+(8, 7, 'rank_7', 'Rank 7', '0'),
+(9, 8, 'rank_8', 'Rank 8', '0'),
+(10, 9, 'rank_9', 'Rank 9', '0'),
+(11, 10, 'rank_10', 'Rank 10', '0'),
+(12, 11, 'rank_11', 'Rank 11', '0'),
+(13, 12, 'rank_12', 'Rank 12', '0');

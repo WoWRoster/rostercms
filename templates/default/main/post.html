@@ -1,0 +1,23 @@
+<div id="main" class="container">
+	<!-- BEGIN news -->
+	<div style="background-color:#000000;background-image:url('{news.IMG}')" class="news-head-bg">
+		<div class="pane-overlay">
+			<div class="news-title">
+				<span class="ntitle">{news.TITLE}</span>
+				<span class="ninfo"><!-- TRANSLATE posted_by -->: {news.POSTER} <span class="spacer"> - </span> {news.DATE}</span>
+			</div>
+		</div>
+	</div>
+	<!-- IF S_EDIT_NEWS -->
+	<ul class="list-inline list-unstyled">
+	<li><a class="btn btn-primary btn-xs" href="{news.U_EDIT}"><span class="ui-icon ui-icon-pencil"></span><!-- TRANSLATE edit --></a></li>
+	</ul>
+	<!-- ENDIF -->
+	<div class="news-block">
+		{news.TEXT}
+	</div>
+	<!-- END news -->
+
+
+
+		

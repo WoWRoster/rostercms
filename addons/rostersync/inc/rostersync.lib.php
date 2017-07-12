@@ -915,8 +915,12 @@ class rostersync {
 		global $roster, $addon;
 		$this->data = $roster->api2->fetch('guild',array('name'=>$guildName,'server'=>$server,'fields'=>$this->fields['guild'] ));
 		
-		 $this->_sync_guild_update($server, $guildName, $region, $guildId);
+		$this->_sync_guild_update($server, $guildName, $region, $guildId);
 
+		$querystrx = "UPDATE `" . $roster->db->table('members') . "` SET `active` = '0' WHERE `guild_id` = '".$guildId."';";
+		$resultx = $roster->db->query($querystrx);
+				
+				
 		$members = 0;
 		$this->setMessage('<ul><li>Updating '.$guildName.'@'.$server.' Members<ul>');
 		foreach ($this->data['members'] as $i => $m)
@@ -974,6 +978,10 @@ class rostersync {
 				$this->setMessage('<li><span class="color-red-medium">'.$m['character']['name'].' data missing</span></li>');
 			}
 		}
+		$querystrx = "DELETE FROM `" . $roster->db->table('members') . "` WHERE `guild_id` = '".$guildId."' AND `active` = '0' ;";
+		$resultx = $roster->db->query($querystrx);
+		
+		$this->setMessage('<li><span class="color-red-medium">'.$roster->db->affected_rows( ).' members Removed</span></li>');
 		$this->setMessage('</ul></li></ul>');
 		$this->status[$this->type]['log'] = $this->getMessages();
 	}	

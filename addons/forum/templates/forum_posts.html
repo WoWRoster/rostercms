@@ -1,0 +1,132 @@
+<div id="main" class="container">
+
+	<div class="nav_bar">
+		{CRUMB}
+	</div>
+		<ul class="f_options">
+			<!-- IF LOCKED -->
+			<li>
+				{IMAGE}
+			</li>
+			<!-- ENDIF -->
+			<!-- IF CANLOCK -->
+			<li>
+				<form name="lock" method="post" enctype="multipart/form-data" action="">
+					<input type="hidden" name="op" value="process" />
+					<input type="hidden" name="type" value="{L_ACTIVEP}" />
+					<input type="hidden" name="value" value="{L_ACTIVEOP}" />
+					<input type="hidden" name="id" value="{TOPIC_ID}" />
+					<button xmlns="http://www.w3.org/1999/xhtml" class="Forum-button Forum-button--new" id="toggle-create-topic" type="submit">
+						<span class="Overlay-element"></span>
+						<span class="Button-content"><i class="Icon"></i>{L_ACTIVE}</span>
+					</button>
+				</form>
+			</li>
+			<!-- ENDIF -->
+			
+			<!-- IF CANSTICKY -->
+			<li>
+				<form name="lock" method="post" enctype="multipart/form-data" action="">
+					<input type="hidden" name="op" value="process" />
+					<input type="hidden" name="type" value="{L_STICKYP}" />
+					<input type="hidden" name="value" value="{L_STICKYOP}" />
+					<input type="hidden" name="id" value="{TOPIC_ID}" />
+					<button xmlns="http://www.w3.org/1999/xhtml" class="Forum-button Forum-button--new" id="toggle-create-topic" type="submit">
+						<span class="Overlay-element"></span>
+						<span class="Button-content"><i class="Icon"></i>{L_STICKY}</span>
+					</button>
+				</form>
+			</li>
+			<!-- ENDIF -->
+			
+			
+			<!-- IF CANANOUNC -->
+			<li>
+				<form name="lock" method="post" enctype="multipart/form-data" action="">
+					<input type="hidden" name="op" value="process" />
+					<input type="hidden" name="type" value="{L_ANOUNCP}" />
+					<input type="hidden" name="value" value="{L_ANOUNCOP}" />
+					<input type="hidden" name="id" value="{TOPIC_ID}" />
+					<button xmlns="http://www.w3.org/1999/xhtml" class="Forum-button Forum-button--new" id="toggle-create-topic" type="submit">
+						<span class="Overlay-element"></span>
+						<span class="Button-content"><i class="Icon"></i>{L_ANOUNC}</span>
+					</button>
+				</form>
+			</li>
+			<!-- ENDIF -->
+			
+			
+			<!-- ##IF CANPOST 
+			<li>
+				<a class="fa-button Forum-button Forum-button--new" id="toggle-create-topic" href="{M_STARTTOPIC}">
+					<span class="Button-content">Reply</span>
+				</a>
+			</li>
+			-- ENDIF## -->
+		</ul>
+
+			<div class="head">
+				<div class="icon"></div>
+				<div class="title">{TOPIC_TITLE}</div>
+			</div>
+			<!-- BEGIN forums -->
+				<div xmlns="http://www.w3.org/1999/xhtml" class="TopicPost" id="post-{forums.POST_ID}" >
+					<div class="TopicPost-content">
+						<aside class="TopicPost-author">
+							<div class="Author-block">
+								<div class="Author" id="" >
+									<a href="" class="Author-avatar hasNoProfile"><img src="" alt="" /></a>
+									<div class="Author-details">
+										<span class="Author-name">
+										{forums.POST_USERNAME}
+										</span>
+									</div>
+								</div>
+							</div>
+						</aside>
+						<div class="TopicPost-body">
+							<div class="TopicPost-details">
+								<div class="Timestamp-details">
+									<a class="TopicPost-timestamp" href="#post-2">{forums.POST_TIME}</a>
+									<span class="TopicPost-rank TopicPost-rank--none" data-topic-post-rank="true"></span>
+									
+									<ul class="profile-icons">
+									<!-- IF CANDELA or CANDELO -->
+										<li id="post_delete">
+											<form name="lock" method="post" enctype="multipart/form-data" action="">
+												<input type="hidden" name="op" value="process" />
+												<input type="hidden" name="type" value="delete" />
+												<input type="hidden" name="value" value="{L_ANOUNCOP}" />
+												<input type="hidden" name="id" value="{POST_ID}" />
+												<button xmlns="http://www.w3.org/1999/xhtml" class="Forum-button Forum-button--new" id="toggle-create-topic" type="submit">
+													<span class="Overlay-element"></span>
+													<span class="Button-content"><i class="Icon"></i>{PAB_DEL}</span>
+												</button>
+											</form>
+										</li>
+									<!-- ENDIF -->
+										<li id="post_report">
+											<form name="lock" method="post" enctype="multipart/form-data" action="">
+												<input type="hidden" name="op" value="process" />
+												<input type="hidden" name="type" value="report" />
+												<input type="hidden" name="value" value="{L_ANOUNCOP}" />
+												<input type="hidden" name="id" value="{POST_ID}" />
+												<button xmlns="http://www.w3.org/1999/xhtml" class="Forum-button Forum-button--new" id="toggle-create-topic" type="submit">
+													<span class="Overlay-element"></span>
+													<span class="Button-content"><i class="Icon"></i>{PAB_REP}</span>
+												</button>
+											</form>
+										</li>
+									</ul>
+								</div>
+							</div>
+							
+
+							<div class="TopicPost-bodyContent">
+							{forums.POST_TEXT}
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- END forums -->
+

@@ -118,3 +118,14 @@ color: #fff;
 .sidebar .nav li.open > a {
 	color: #fff;
 }
+
+.modal-lg {
+	width: 940px;
+	margin: 50px auto;
+}
+.card-scroll {
+	display: block !important;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	max-height: 700px !important;
+}

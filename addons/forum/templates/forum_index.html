@@ -1,0 +1,38 @@
+<div id="main" class="container">
+
+	<div class="nav_bar">
+		{CRUMB}
+	</div>
+	<div class="Forum-ForumTopicList ">
+	<!-- BEGIN forums -->
+		<header xmlns="http://www.w3.org/1999/xhtml" class="ForumCategory-header">
+			<h1 class="ForumCategory-heading">{forums.TITLE}</h1>
+		</header>
+		<!-- BEGIN subforum -->
+		<a href="{forums.subforum.FORUM_URL}"><div class="ForumTopic" >
+			<span class="ForumTopic-type">
+				<img src="images/forum_<!-- IF forums.subforum.READ -->read<!-- ELSE -->unread<!-- ENDIF -->{forums.subforum.IMAGEL}.gif">
+				<i class="Icon"></i>
+			</span>
+			<div class="ForumTopic-details">
+				<span class="ForumTopic-heading">
+					<span class="ForumTopic-title--wrapper">
+						<span class="ForumTopic-timestamp on-mobile">
+						</span>
+						<span class="ForumTopic-title" >{forums.subforum.TITLE}</span>
+						<span class="ForumTopic-timestamp" >{forums.subforum.DESC}</span>
+					</span>
+					<i class="statusIcon statusIcon-desktop" ></i>
+				</span>
+				<span class="ForumTopic-author">Posts: {forums.subforum.POSTS}</span>
+				<span class="ForumTopic-replies">
+					<i class="Icon"></i>
+					<span>Topics: {forums.subforum.TOPICS}</span>
+				</span>
+			</div>
+		</div></a>
+		<!-- END subforum -->
+	
+	<!-- END forums -->
+	</div>
+</div>

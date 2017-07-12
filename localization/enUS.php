@@ -1965,7 +1965,9 @@ $lang['api_usage'] = 'Api Usage';
 /*
 	PageTitles
 */
+$lang['USER_GROUP'] = 'User Settings';
 $lang['pagebar_rostertheme'] = 'Theme Settings';
+$lang['pagebar_rosterranks'] = 'Roster Ranks';
 /*
 	Admin
 */

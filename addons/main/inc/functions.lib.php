@@ -7,17 +7,26 @@ class mainFunctions
 {
 
 	var $block = array();
+	var $msg = array();
 
 	function newsUPDATE($post,$html)
 	{
 		global $roster, $addon;
 
+		$img = null;
+			if ( isset($_POST['h_imagel']) )
+			{
+				$img = $_POST['h_imagel'];
+			}
+			
 		$news = preg_replace('#<script(.*?)>(.*?)</script>#is', '',  $post['news']);
 		$query = "UPDATE `" . $roster->db->table('news',$addon['basename']) . "` SET "
 					. "`poster` = '" . $post['author'] . "', "
 					. "`title` = '" . $post['title'] . "', "
+					. "`news_type` = '" . $post['news_type'] . "', "
 					. "`text` = '" . $news . "', "
-					. "`html` = '" . $html . "' "
+					. "`html` = '" . $html . "', "
+					. "`img` = '" . $img . "' "
 					. "WHERE `news_id` = '" . $post['id'] . "';";
 
 		if( $roster->db->query($query) )
@@ -35,16 +44,13 @@ class mainFunctions
 	function newsADD($post,$html)
 	{
 		global $roster, $addon;
-		
-		//d($post);
+
 		if( $roster->auth->getAuthorized('news_can_post') )
 		{
-
-			//ALTER TABLE  `roster_addons_main_news` ADD  `img` VARCHAR( 255 ) NULL AFTER  `text` ;
 			$img = null;
-			if ( isset($_FILES['h_image']['name']) )
+			if ( isset($_POST['h_imagel']) )
 			{
-				$img = $this->upload_image();
+				$img = $_POST['h_imagel'];
 			}
 			
 			$news = preg_replace('#<script(.*?)>(.*?)</script>#is', '',  $post['news']);
@@ -52,8 +58,9 @@ class mainFunctions
 						. "`poster` = '" . $roster->auth->user['user_display'] . "', "
 						. "`poster_id` = '".$roster->auth->user['id']."', "
 						. "`poster_ip` = '".$_SERVER['REMOTE_ADDR']."', "
-						. "`poster_ipx` = '".$_SERVER['HTTP_X_FORWARDED_FOR']."', "
+						. "`poster_ipx` = '00.00.00', "
 						. "`title` = '" . $post['title'] . "', "
+						. "`news_type` = '" . $post['news_type'] . "', "
 						. "`text` = '" . $news . "', "
 						. "`html` = '" . $html . "', "
 						. "`img` = '" . $img . "', "
@@ -75,77 +82,150 @@ class mainFunctions
 		}
 	}
 
-	function upload_image()
+	function upload_slide($upfile)
 	{
 		global $roster, $addon;
-		//echo '<pre>';print_r($_FILES);echo '</pre>';
-		$base_file = $_FILES['h_image']['name'];
-		$ext = substr($base_file, strrpos($base_file, '.')+1);
-		$new_base = time();
-		$new_name = $new_base.'-image.'.$ext;
-		$new_thumb = $new_base.'-thumb.'.$ext;
-		$new_name_b	= $new_base.'-image';//.'.$ext;
-		$new_thumb_b = $new_base.'-thumb';//.'.$ext;
-		//echo $base_file.' - '.$ext.'<br>';
+		
+		$ext = substr($_FILES['b_image']['name'], strrpos($_FILES['b_image']['name'], '.')+1);
+		$filename = hash_file('md5', $_FILES['b_image']['tmp_name']).'.'.$ext;
+		echo $filename.'<br>';
+		$target_path = $addon['dir'] .'images'. DIR_SEP . $filename;
+		$path = $addon['dir'] .'images'. DIR_SEP . 'slider'. DIR_SEP;
+		$slider = $path .'slider-'. $filename;
+		$thumb = $path .'thumb-'. $filename;
+
+		if(move_uploaded_file($_FILES['b_image']['tmp_name'], $target_path))
+		{
+			
+			$image = new ImageResize($target_path);
+			$image->resizeToHeight(420);//resize(275, 200);
+			$image->crop(850, 420);
+			$image->save($slider);
+			
+			$image1 = new ImageResize($target_path);
+			$image1->resizeToHeight(47);//resize(275, 200);
+			$image1->crop(100, 47);
+			$image1->save($thumb);
+
+			$query = "INSERT INTO `" . $roster->db->table('slider', $addon['basename']) . "` SET "
+				. "`b_title` = '" . $_POST['b_title'] . "', "
+				. "`b_desc` = '" . $_POST['b_desc'] . "', "
+				. "`b_url` = '" . $_POST['b_url'] . "', "
+				. "`b_video` = '" . $_POST['b_video'] . "', "
+				. "`b_image` = '" . $filename . "';";
+
+			if( $roster->db->query($query) )
+			{
+				$roster->set_message(sprintf($roster->locale->act['slider_add_success'], $_FILES['b_image']['name']));
+			}
+			else
+			{
+				unlink($target_path);
+				unlink($slider);
+				unlink($thumb);
+				$roster->set_message($roster->locale->act['slider_error_db'], '', 'error');
+				$roster->set_message('<pre>' . $roster->db->error() . '</pre>', 'MySQL Said', 'error');
+			}
+		}
+		else
+		{
+			$roster->set_message(sprintf($roster->locale->act['slider_file_error'], $target_path), $roster->locale->act['b_add'], 'error');
+		}
+	
+	}
+	function upload_image($file,$name = '')
+	{
+		global $roster, $addon;
+
+		$base_file = $file;
+		$ext = substr($name, strrpos($name, '.')+1);
+		$new_base = hash_file('md5', $base_file);
+		// small
+		$new_thumb 		= $new_base.'-thumb.'.$ext;
+		$new_thumb_b 	= $new_base.'-thumb';
+		// med
+		$new_name 		= $new_base.'-image.'.$ext;
+		$new_name_b		= $new_base.'-image';
+		// large
+
 		$target_dir = $addon['dir'].'images/news/';
 		$target_file = $target_dir . $new_name;
 		$target_file_thumb = $target_dir . 'thumbs/'.$new_thumb;
 		$uploadOk = 1;
-		$imageFileType = $ext;//pathinfo($target_file,PATHINFO_EXTENSION);
+		$imageFileType = $ext;
 		// Check if image file is a actual image or fake image
 
-			$check = getimagesize($_FILES["h_image"]["tmp_name"]);
+			$check = getimagesize($file);
 			if($check !== false)
 			{
-				$roster->set_message('File is an image - " . $check["mime"] . ".', '', 'error');
+				$this->set_msg('File is an image - ' . $check["mime"] . '.', '', 'error');
 				$uploadOk = 1;
 			}
 			else
 			{
-				$roster->set_message('File is not an image.', '', 'error');
+				$this->set_msg('File is not an image.', '', 'error');
 				$uploadOk = 0;
 			}
 		
 		// Check if file already exists
 		if (file_exists($target_file))
 		{
-			$roster->set_message('Sorry, file already exists', '', 'error');
+			return array("jquery-upload-file-error" =>'Sorry, file already exists');
 			$uploadOk = 0;
 		}
 		// Check file size
 		if ($_FILES["h_image"]["size"] > 50000000)
 		{
-			$roster->set_message('Sorry, your file is too large.', '', 'error');
+			return array("jquery-upload-file-error" =>'Sorry, your file is too large.');
 			$uploadOk = 0;
 		}
 		// Allow certain file formats
-		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" )
+		if($imageFileType != "jpg" && $imageFileType != "jpeg" )
 		{
-			$roster->set_message('Sorry, only JPG, JPEG, PNG & GIF files are allowed (".$imageFileType.") .', '', 'error');
+			return array("jquery-upload-file-error" =>'Sorry, only JPG, JPEG files are allowed ('.$imageFileType.').');
 			$uploadOk = 0;
 		}
 		// Check if $uploadOk is set to 0 by an error
 		if ($uploadOk == 0)
 		{
-			$roster->set_message('Image not uploaded 1.', '', 'error');
+			$this->set_msg('Image not uploaded 1.', '', 'error');
 		// if everything is ok, try to upload file
 		}
 		else
 		{
-			if (move_uploaded_file($_FILES["h_image"]["tmp_name"], $target_file))
+			if (move_uploaded_file($file, $target_file))
 			{
 				$image = new ImageResize($target_file);
 				//$image->resizeToHeight(300);
-				$image->resize(275, 200);
+				$image->resizeToHeight(200);//resize(275, 200);
+				$image->crop(275, 200);
 				$image->save($target_file_thumb);
-				$roster->set_message('image uploaded');
-				return $new_base;
+				
+				list($w, $h) = getimagesize($target_file);
+				if ($w < 850)
+				{
+					$image1 = new ImageResize($target_file);
+					$image1->resizeToWidth(850,true);
+					$image1->save($target_file);
+				}
+				
+				$this->set_msg('image uploaded');
+				//return $new_base;
 			}
 			else
 			{
-				$roster->set_message('Image not uploaded 2.', '', 'error');
+				$this->set_msg('Image not uploaded 2.', '', 'error');
 			}
 		}
+		return $this->get_msg();
+	}
+	function set_msg($msg)
+	{
+		$this->msg[] = $msg;
+	}
+	function get_msg()
+	{
+		return implode('<br>', $this->msg);
 	}
 	function makeUSERmenu( $sections )
 	{
@@ -369,6 +449,21 @@ class mainFunctions
 	 *
 	 */
 
+	function _build_select($array, $name, $selected=null)
+	{
+		global $roster;
+		
+		$output = ' <select id="'.$name.'" name="'.$name.'" >';
+
+		foreach ($array as $a => $b)
+		{
+			$output .= '<option value="'. $a .'" '. ($a == $selected ? 'selected' : '') .'>'. ucfirst ($b) ."</option>\n";
+		}
+		$output .= '</select>';
+		
+		return $output;
+	}
+	
 	function _initPlugins()
 	{
 		global $roster, $addon;

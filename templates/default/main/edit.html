@@ -1,34 +1,100 @@
 <!-- $Id: edit.html 2409 2012-03-09 08:24:54Z ulminia@gmail.com $ -->
 
-<form method="post" action="{U_EDIT_FORMACTION}" id="editnews" style="text-align:left;">
+<form method="post" action="{U_EDIT_FORMACTION}" id="editnews" style="text-align:left;" enctype="multipart/form-data">
 	<input type="hidden" name="process" value="process" />
 	<input type="hidden" name="id" value="{U_NEWS_ID}" />
 
-	<div class="tier-2-a">
-		<div class="tier-2-b">
-			<div class="tier-2-title">
-				<div class="right"><input type="submit" value="<!-- TRANSLATE edit_news -->" /></div>
-				<!-- TRANSLATE edit_news -->
-			</div>
+	<div class="row extra-bottom-padding">
+		<div class="col-md-3 text-right"><!-- TRANSLATE edit_news --></div>
+		<div class="col-md-9 text-left"><input type="submit" value="<!-- TRANSLATE edit_news -->" /></div>
+	</div>
 
-			<div class="info-text">
-				<label for="author"><!-- TRANSLATE name -->:</label> <input name="author" id="author" type="text" maxlength="16" size="16" value="{AUTHOR}" />
-			</div>
-			<div class="info-text">
-				<label for="title"><!-- TRANSLATE title -->:</label> <input name="title" id="title" type="text" size="32" value="{TITLE}" />
-			</div>
-			<br />
-
-<!-- IF S_HTML_ENABLE -->
-			<div class="radioset">
-				<input type="radio" id="html_on" name="html" value="1" <!-- IF S_NEWS_HTML -->checked="checked" <!-- ENDIF -->/><label for="html_on"><!-- TRANSLATE enable_html --></label>
-				<input type="radio" id="html_off" name="html" value="0" <!-- IF ! S_NEWS_HTML -->checked="checked" <!-- ENDIF -->/><label for="html_off"><!-- TRANSLATE disable_html --></label>
-			</div>
-			<br />
-<!-- ENDIF -->
-
-			<textarea name="news" class="ckeditor" id="news" cols="100" rows="20">{CONTENT}</textarea>
+	<div class="row extra-bottom-padding">
+		<div class="col-md-3 text-right"><label for="author"><!-- TRANSLATE name -->:</label></div>
+		<div class="col-md-9 text-left"><input name="author" id="author" type="text" maxlength="16" size="16"  value="{AUTHOR}" /></div>
+	</div>
+	
+	<div class="row extra-bottom-padding">
+		<div class="col-md-3 text-right"><label for="title"><!-- TRANSLATE title -->:</label></div>
+		<div class="col-md-9 text-left"><input name="title" id="title" type="text" size="64" value="{TITLE}" /></div>
+	</div>
+		
+	<div class="row extra-bottom-padding">
+		<div class="col-md-3 text-right"><label for="news_type"><!-- TRANSLATE news_type -->:</label></div>
+		<div class="col-md-9 text-left">{TYPE_SELECT}</div>
+	</div>
+	
+	<div class="row extra-bottom-padding">
+		<div class="col-md-3 text-right"><label for="ilib">Image Library:</label></div>
+		<div class="col-md-9 text-left">
+			<button type="button" class="btn btn-primary btn-md" id="ilibo" data-member="ilib" data-target="ilib">Image Lib</button>
+			<input type="text" class="inputbox" id="h_imagel" name="h_imagel" value="{IMAGE}" />
+			<img src="{IMAGE_PATH}" width="120px" id="h_imagel_p" height="80px"></a><br>
 		</div>
 	</div>
 
+<script type="text/javascript" >
+   $(document).ready(function() {
+      $("#news").markItUp(mySettings);
+   });
+</script>
+			<textarea name="news" class="ckeditor" id="news" cols="100" rows="20">{CONTENT}</textarea>
+
 </form>
+
+<div class="modal bd-example-modal-lg" id="ilib" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-lg" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close" data-member="ilib" data-target="ilib"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="myModalLabel">Select Image</h4>
+	  </div>
+	  <div class="modal-body" style="color: #000 !important;">
+	  <!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#images" aria-controls="images" role="tab" data-toggle="tab">Images</a></li>
+			<li role="presentation"><a href="#upload" aria-controls="upload" role="tab" data-toggle="tab">Upload</a></li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="images">
+			<button type="button" class="btn btn-info btn-md" id="reload" >Reload</button>
+				<div class="card-deck" id="gallery">
+					<!-- BEGIN images-->
+			<div class="card-list">
+					<div class="card card-inverse">
+					  <img class="card-img" src="{images.IMAGE}" alt="Card image">
+					  <div class="card-img-overlay">
+						<button type="button" class="btn btn-info btn-md" id="isel" data-image="{images.FILE}" data-src="{images.IMAGE}" data-target="h_imagel">select</button>
+					  </div>
+					</div>
+					</div>
+					<!-- END images-->
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="upload">
+			<div id="fileuploader">Upload</div>
+			<script>
+			$(document).ready(function() {
+				$("#fileuploader").uploadFile({
+					url:"{IMG_AJAX_UPLOAD}",
+					fileName:"myfile",
+					showDone: true,
+					showError: true,
+					returnType:"json"
+				});
+			});
+			</script>
+			</div>
+			
+		</div>
+  
+	 
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal" data-member="ilib" data-target="ilib">Close</button>
+	  </div>
+	</div>
+  </div>
+</div>
