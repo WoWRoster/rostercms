@@ -201,8 +201,9 @@ class roster_db
 			$result = "The statement failed.\n";
 			$result .= "getCode: ". $e->getCode () . "\n";
 			$result .= "getMessage: ". $e->getMessage () . "\n";
-		}*/
+		}
 		return $result;
+		*/
 	}
 
 	/**
