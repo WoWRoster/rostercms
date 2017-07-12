@@ -541,7 +541,7 @@ function process_step1( )
 	else
 	{
 		$tpl->message_append('WoWRoster has scanned your server and determined that it meets the minimum requirements.');
-		$this->assign_var('S_SHOW_BUTTON', true);
+		$tpl->assign_var('S_SHOW_BUTTON', true);
 	}
 
 	/**
