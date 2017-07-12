@@ -516,9 +516,9 @@ function process_step1( )
 	$their_php_version = $REQUIRE['php_version'] . ' +';
 
 	// Modules
-	$our_mysql = (extension_loaded('mysql')) ? '<span class="positive">Yes</span>' : '<span class="negative">No</span>';
+	$our_mysql = ( (extension_loaded('mysql')) ? '<span class="positive">Yes</span>' : ( (extension_loaded('pdo_mysql')) ? '<span class="positive">Yes</span>' : '<span class="negative">No</span>' ) );
 	// Required?
-	$their_mysql = $REQUIRE['mysql_version'] . ' +';
+	$their_mysql = $REQUIRE['mysql_version'] . '+';
 
 	$our_gd = (function_exists('imageTTFBBox') && function_exists('imageTTFText') && function_exists('imagecreatetruecolor')) ? '<span class="positive">Yes</span>' : '<span class="negative">No</span>';
 	// Required?
@@ -528,7 +528,7 @@ function process_step1( )
 	$our_curl = in_array('curl', get_loaded_extensions()) ? '<span class="positive">Yes</span>' : '<span class="negative">No</span>';
 	$their_curl = 'Required for Blizzard API';
 
-	if( (phpversion() < $REQUIRE['php_version']) || (!extension_loaded('mysql')) )
+	if( (phpversion() < $REQUIRE['php_version']) || (!extension_loaded('mysql')) OR (!extension_loaded('mysqli')) OR (!extension_loaded('pdo_mysql')))
 	{
 		$tpl->error_append('<span style="font-weight:bold;font-size:14px;">Sorry, your server does not meet the minimum requirements for WoWRoster</span>');
 	}
