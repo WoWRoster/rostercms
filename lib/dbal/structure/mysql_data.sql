@@ -122,8 +122,8 @@ INSERT INTO `renprefix_config` VALUES (1212, 'rank_12', '15', 'function{rosterAc
 # --------------------------------------------------------
 ### update_access
 INSERT INTO `renprefix_config` VALUES (9000, 'authenticated_user', '1', 'radio{enable^1|disable^0', 'update_access');
-INSERT INTO `renprefix_config` VALUES (9001, 'api_key_private', '3kMykjYN6qFrFEqkgyfgbMpjUX7phpjZ', 'text{64|40', 'update_access');
-INSERT INTO `renprefix_config` VALUES (9002, 'api_key_public', 'hmtxw3wkj7h4hku972fd37ms299ne6vv', 'text{64|40', 'update_access');
+INSERT INTO `renprefix_config` VALUES (9001, 'api_key_private', '', 'text{64|40', 'update_access');
+INSERT INTO `renprefix_config` VALUES (9002, 'api_key_public', '', 'text{64|40', 'update_access');
 INSERT INTO `renprefix_config` VALUES (9003, 'api_url_region', 'US', 'select{US^US|Europe^EU|Korea^KR|Taiwan^TW|China^CN', 'update_access');
 INSERT INTO `renprefix_config` VALUES (9004, 'api_url_locale', 'en_US', 'select{Americas English (US)^en_US|Americas Espanol (AL)^es_MX|Americas Portugues (AL)^pt_BR|Europe Deutsch^de_DE|Europe English^en_GB|Europe Espanol^es_ES|Europe Francais^fr_FR|Europe Italiano^it_IT|Europe Portugues^pt_PT|Europe Pyccknn^ru_RU|Korea^ko_KR|Taiwan^zh_TW|China^zh_CN|Southeast Asia^en_US', 'update_access');
 INSERT INTO `renprefix_config` VALUES (9006, 'use_api_onupdate', '0', 'select{Yes^1|No^0', 'update_access');

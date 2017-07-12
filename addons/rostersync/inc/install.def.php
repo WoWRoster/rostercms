@@ -131,11 +131,11 @@ class rostersyncInstall
 		$installer->add_config("'521', 'rsync_char_hunterPets', '0', 'radio{yes^1|no^0', 'rsync_scan_char'");
 
 		$permissions = array(
-			array('catagory'=> 'rostersync', 'name' => 'per_rsync_char_update',			'rostersync' => 'per_rsync_char_update_info',		'cfg_name' => 'char_update'),
-			array('catagory'=> 'rostersync', 'name' => 'per_rsync_guild_update',		'rostersync' => 'per_rsync_guild_update_info',		'cfg_name' => 'guild_update'),
-			array('catagory'=> 'rostersync', 'name' => 'per_rsync_memberlist_update',	'rostersync' => 'per_rsync_memberlist_update_info',	'cfg_name' => 'memberlist_update'),
-			array('catagory'=> 'rostersync', 'name' => 'per_rsync_guild_add',			'rostersync' => 'per_rsync_guild_add_info',			'cfg_name' => 'guild_add'),
-			array('catagory'=> 'rostersync', 'name' => 'per_rsync_member_update',		'rostersync' => 'per_rsync_member_update_info',		'cfg_name' => 'member_update')
+			array('catagory'=> 'rostersync', 'name' => 'per_rsync_char_update',			'info' => 'per_rsync_char_update_info',		'cfg_name' => 'char_update'),
+			array('catagory'=> 'rostersync', 'name' => 'per_rsync_guild_update',		'info' => 'per_rsync_guild_update_info',		'cfg_name' => 'guild_update'),
+			array('catagory'=> 'rostersync', 'name' => 'per_rsync_memberlist_update',	'info' => 'per_rsync_memberlist_update_info',	'cfg_name' => 'memberlist_update'),
+			array('catagory'=> 'rostersync', 'name' => 'per_rsync_guild_add',			'info' => 'per_rsync_guild_add_info',			'cfg_name' => 'guild_add'),
+			array('catagory'=> 'rostersync', 'name' => 'per_rsync_member_update',		'info' => 'per_rsync_member_update_info',		'cfg_name' => 'member_update')
 		);
 		$installer->add_permissions($permissions);
 		
