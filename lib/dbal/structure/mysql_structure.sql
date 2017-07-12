@@ -326,9 +326,8 @@ CREATE TABLE `renprefix_guild_rank` (
   `slug` varchar(20) NOT NULL DEFAULT '',
   `title` varchar(30) NOT NULL DEFAULT '',
   `access` varchar(20) NOT NULL DEFAULT '0'
-) ;
-ALTER TABLE `renprefix_guild_rank` ADD PRIMARY KEY (`id`);
-  
+);
+ 
 ## ------------------------------------------------------##
 
 ##
