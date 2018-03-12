@@ -168,16 +168,27 @@ class bbcode
 		/* Parse */
 		$bbcode = preg_replace($match, $replace, $bbcode);
 
+		/*
 		$youtube['replace'] = '<object type="application/x-shockwave-flash" data="http://www.youtube.com/v/$1" width="425" height="350">
 				<param name="movie" value="http://www.youtube.com/v/$1" />
 				<param name="wmode" value="transparent" />
 			</object>';
+			*
+		//$youtube['replace'] = '<iframe width="100%" src="https://www.youtube.com/embed/$1\?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>';
+		$youtube['replace'] = '<div style=\'position: relative; width: 100%; height: 0px; padding-bottom: 56.25%;\'>
+<iframe style=\'position: absolute; left: 0px; top: 0px; \' width="1280" height="750" src="https://www.youtube.com/embed/$1\?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+</div>';
+*/
+
+		$youtube['replace'] = '<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/$1\?rel=0&showinfo=0" width="1280" height="750" frameborder="0"></iframe>
+		</div>';
 		$youtube['match'] = "/\[youtube\](.+?)\[\/youtube\]/is";
 
 		$bbcode = preg_replace($youtube['match'],$youtube['replace'], $bbcode);
 
 		/* Remove <br> tags before quotes and code blocks */
-		$bbcode=str_replace("?<br />","",$bbcode);
+		//$bbcode=str_replace("?<br />","",$bbcode);
 		$bbcode=str_replace("?","",$bbcode); //Clean up any special characters that got misplaced...
 
 		/* Return parsed contents */

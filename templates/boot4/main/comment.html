@@ -1,0 +1,38 @@
+<!-- $Id: comment.html 2409 2012-03-09 08:24:54Z ulminia@gmail.com $ -->
+
+<!-- IF S_COMMENTS -->
+<div class="comments-block">
+
+<!-- BEGIN comment_row -->
+	<div xmlns="http://www.w3.org/1999/xhtml" class="TopicPost" id="post-{forums.POST_ID}" >
+		<div class="TopicPost-content">
+			<aside class="TopicPost-author">
+				<div class="Author-block">
+					<div class="Author" id="" >
+						<a href="" class="Author-avatar hasNoProfile"><img src="" alt="" /></a>
+						<div class="Author-details">
+							<span class="Author-name">
+							{comment_row.AUTHOR}
+							</span>
+						</div>
+					</div>
+				</div>
+			</aside>
+			<div class="TopicPost-body">
+				<div class="TopicPost-details">
+					<div class="Timestamp-details">
+						<a class="TopicPost-timestamp" href="#post-2">{comment_row.DATE}</a>
+						<span class="TopicPost-rank TopicPost-rank--none" data-topic-post-rank="true"></span>
+					</div>
+				</div>
+				<div class="TopicPost-bodyContent">
+				{comment_row.CONTENT}
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- END comment_row -->
+
+</div>
+<!-- ENDIF -->

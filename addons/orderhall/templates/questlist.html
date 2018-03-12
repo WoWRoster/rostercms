@@ -1,0 +1,26 @@
+<div id="main" class="container">
+
+	<div class="row">
+		<div class="col-md-3 text-right"></div>
+		<div class="col-md-6">
+			<div class="progress">
+				<div class="faction-score">{COMP} / {TOTAL}</div>
+				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{BAR}" aria-valuemin="0" aria-valuemax="100" style="width:{BAR}%">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+
+	<!-- BEGIN quests -->
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-1"><img src="{IMG_URL}{quests.IMG}.gif"></a></div>
+		<div class="col-md-3">{quests.NAME}</div>
+		<div class="col-md-1">{quests.LEVEL}</div>
+		<div class="col-md-1"><a href="{quests.WOWHEAD}" target="_blank" >WOWHEAD</a></div>
+		<div class="col-md-3"></div>
+	</div>
+	
+	<!-- END quests -->
+</div>

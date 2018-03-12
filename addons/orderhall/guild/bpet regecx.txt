@@ -1,0 +1,12 @@
+<a href="(.+)">(.+)</a>:</b> => '\2' => array (
+
+<a href="/item=(.+)" class="q(\d+) icontiny" data-entity="item" data-entity-has-icon="true"> => '\1' = array(
+
+<img src="//wow.zamimg.com/images/wow/icons/tiny/(.+).gif" align="absmiddle"> => 'icon' => '\1',
+
+&nbsp;<span class="tinyicontxt">(.+)</span> => \r\n'name' => '\1',
+
+</a>
+</td>
+<td>
+<a href="/npc=(.+)">(.+)</a> => 'pet' => array(\r\n\t'id' => '\1',\r\n\t'name' => '\2',\r\n),

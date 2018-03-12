@@ -116,6 +116,8 @@ if ( isset($_GET['debug']) )
  * Base, absolute roster library directory
  */
 define('ROSTER_LIB', ROSTER_BASE . 'lib' . DIR_SEP);
+define('ROSTER_MEDIA', ROSTER_BASE . 'uploads' . DIR_SEP);
+
 
 /**
  * Include constants file
@@ -126,6 +128,7 @@ require_once (ROSTER_LIB . 'constants.php');
  * Include common functions
  **/
 require_once (ROSTER_LIB . 'functions.lib.php');
+require_once (ROSTER_LIB . 'roster_media.lib.php');
 
 /**
  * Include aprint library
@@ -271,6 +274,10 @@ include (ROSTER_LIB . 'locale.php');
 $roster->locale = new roster_locale();
 
 /**
+	prereqs are loaded now activate the midea lib
+*/
+$roster->media = new roster_media();
+/**
  * Include the Roster Menu class
  */
 require_once (ROSTER_LIB . 'menu.php');
@@ -350,7 +357,7 @@ $roster->tpl->assign_vars(array(
 	'ROSTER_ONLOAD'   => '',
 	'ROSTER_TOP'      => '',
 ));
-
+define('ROSTER_MEDIA_URL', ROSTER_URL . 'uploads' . DIR_SEP);
 /**
  * Set db->error_die off, our framework is good to go... hopefully
  */

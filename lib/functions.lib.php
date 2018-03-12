@@ -1811,6 +1811,13 @@ function roster_404()
 	$roster->tpl->display('r404');
 }
 
+function roster_useronly()
+{
+	global $roster;
+	$roster->tpl->set_handle('r404','404.html');
+	$roster->tpl->display('r404');
+}
+
 function bbcode_nl2br($text)
 {
 	// custom BBCodes might contain carriage returns so they

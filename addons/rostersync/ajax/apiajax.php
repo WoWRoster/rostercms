@@ -30,8 +30,17 @@ switch ($method)
 {
 	case 'character':
 		$rsync = new rostersync('character');
-		$rsync->_sync_member($_GET['server'], $_GET['member_id'], $_GET['name'], $_GET['region'], $_GET['guild_id']);
+		$b = $_GET['value'];
+		list($id, $name, $server) = explode(':',$b);
+		$rsync->_sync_member($server, $id, $name, $_GET['region'], $_GET['guild_id']);
 
+		echo $rsync->build_update_table('character-success');
+
+	break;
+	
+	case 'members':
+		$rsync = new rostersync('character');
+		$rsync->_sync_member($_GET['server'], $_GET['member_id'], $_GET['name'], $_GET['region'], $_GET['guild_id']);
 		echo $rsync->build_update_table('character-success');
 
 	break;

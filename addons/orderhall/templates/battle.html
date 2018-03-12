@@ -1,0 +1,62 @@
+<div id="main" class="container">
+<div class="col-lg-12 col-centered">
+<h1>Raiding with Leashes</h1>
+</div>
+<div class="col-lg-12 col-centered">
+	<div class="btn-group col-centered">
+		<ul class="nav nav-pills" style="display: inline-block;">
+			<!-- BEGIN exp -->
+			<li class="{exp.ACTIVE}"><a class="btn btn-primary" data-toggle="tab" href="#{exp.ID}">{exp.NAME}</a></li>
+			<!-- END exp -->
+		</ul>
+	</div>
+</div>
+<br>
+<div class="tab-content">
+<!-- BEGIN exp -->
+<div id="{exp.ID}" class="tab-pane fade{exp.ACTIVE2}">
+<!-- BEGIN per -->
+	<div class="row">
+		<div class="col-md-3 text-right"></div>
+		<div class="col-md-6">
+			<div class="progress">
+				<div class="faction-score">{exp.per.COMP} / {exp.per.TOTAL}</div>
+				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{exp.per.BAR}" aria-valuemin="0" aria-valuemax="100" style="width:{exp.per.BAR}%">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+<!-- END per -->
+<!-- BEGIN bpraid -->
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 text-center"><h1>{exp.bpraid.NAME}</h1></div>
+		<div class="col-md-3"></div>
+	</div>
+	<div class="row petline">
+		<div class="col-md-1"></div>
+		<div class="col-md-1">Collected</div>
+		<div class="col-md-3">Item Name</div>
+		<div class="col-md-3">Pet Name</div>
+		<div class="col-md-3">Boss Name</div>
+		<div class="col-md-1"></div>
+	</div>
+	<!-- BEGIN pets -->
+	<div class="row petline">
+		<div class="col-md-1"></div>
+		<div class="col-md-1"><img src="{IMG_URL}{exp.bpraid.pets.COLLECTED}.gif"></a></div>
+		<div class="col-md-3">{exp.bpraid.pets.ITEM_NAME}</div>
+		<div class="col-md-3">{exp.bpraid.pets.PET_NAME}</div>
+		<div class="col-md-3">{exp.bpraid.pets.BOSS}</div>
+		<div class="col-md-1"></div>
+	</div>
+	
+	<!-- END quests -->
+	
+<!-- END bpraid -->
+</div>
+<!-- END exp -->
+</div>
+
+</div>

@@ -148,10 +148,10 @@ function getPluginlist()
 	function processPlugin()
 	{
 		global $roster, $installer;
-
+//d($_POST);
 		$addon_name = $_POST['addon'];
-		$addon_parent = $_POST['addonparent'];
-		$addon_file = $_POST['addonfile'];
+		//$addon_parent = $_POST['addonparent'];
+		//$addon_file = $_POST['addonfile'];
 
 		if( preg_match('/[^a-zA-Z0-9_]/', $addon_name) )
 		{
@@ -227,7 +227,8 @@ function getPluginlist()
 				}
 
 				$query = 'INSERT INTO `' . $roster->db->table('plugin') . '` VALUES 
-				(NULL,"' . $installer->addata['basename'] . '",
+				(NULL,
+				"' . $installer->addata['basename'] . '",
 				"' . $installer->addata['parent'] . '",
 				"' . $installer->addata['scope'] . '",
 				"' . $installer->addata['version'] . '",
@@ -237,7 +238,8 @@ function getPluginlist()
 				"' . $installer->addata['description'] . '",
 				"' . $roster->db->escape(serialize($installer->addata['credits'])) . '",
 				"' . $installer->addata['icon'] . '",
-				"' . $installer->addata['wrnet_id'] . '",NULL);';
+				"' . $installer->addata['wrnet_id'] . '",
+				NULL);';
 				$result = $roster->db->query($query);
 				if( !$result )
 				{
@@ -250,6 +252,7 @@ function getPluginlist()
 				$installer->add_backup($roster->db->table('plugin_config'));
 
 				$success = $addon->install();
+				//d($success);
 
 				// Delete the addon record if there is an error
 				if( !$success )

@@ -88,7 +88,89 @@
 				</div>
 				
 				<!-- END forum -->
-				
+<!-- BEGIN parent -->				
+<div class="content-box-header">
+	<div class="panel-title">{parent.TITLE}</div>
+	<div class="panel-options">
+		<form name="parent" style="display:block;float:left;padding:0 4px;" method="post" enctype="multipart/form-data" action="">
+			<input type="hidden" name="op" value="process" />
+			<input type="hidden" name="type" value="parent" />
+			<input type="hidden" name="id" value="{parent.FORUM_ID}" />
+				{parent.PARENT}
+				<input type="submit" class="btn btn-primary btn-xs" value="Change Parent" />
+		</form>
+		<form name="activate" style="display:block;float:left;padding:0 4px;" method="post" enctype="multipart/form-data" action="">
+			<input type="hidden" name="op" value="process" />
+			<input type="hidden" name="type" value="{parent.B_ACTIVEOP}" />
+			<input type="hidden" name="id" value="{parent.FORUM_ID}" />
+			<button type="submit" class="btn btn-primary btn-xs" >
+			<img src="templates/default/images/admin/{parent.B_ACTIVEI}.png" style="height:16px;width:16px;border:0;" alt="" />{parent.B_ACTIVET}</button>
+		</form>
+		<form name="lock" style="display:block;float:right;padding:0 4px;" method="post" enctype="multipart/form-data" action="">
+			<input type="hidden" name="op" value="process" />
+			<input type="hidden" name="type" value="{parent.L_ACTIVEOP}" />
+			<input type="hidden" name="id" value="{parent.FORUM_ID}" />
+			<button type="submit" class="btn btn-primary btn-xs" ><span class="ui-icon ui-icon-{parent.L_ACTIVEU}"></span>{parent.L_ACTIVET}</button>
+		</form>
+	</div>
+</div>
+<div class="content-box-large box-with-header">
+	<!-- BEGIN child -->
+		<div class="row cfg-row">
+			<div class="col-md-2 col-sm-2">{parent.child.TITLE}</div>
+			<div class="col-md-4 col-sm-4">
+				<form action="{U_MAKELINK}" method="post" style="display:block;padding: 0px 3px;margin: 0px;">
+					<input type="hidden" name="op" value="process" />
+					<input type="hidden" name="type" value="access" />
+					<input type="hidden" name="id" value="{parent.child.FORUM_ID}" />
+						<div class="config-name">
+							{parent.child.ACCESS}
+							<input type="submit" class="btn btn-primary btn-xs" value="Set" />
+						</div>
+				</form>
+			</div>
+			<div class="col-md-3">
+				<form action="{U_MAKELINK}" method="post" style="display:block;padding: 0px 3px;margin: 0px;">
+					<input type="hidden" name="op" value="process" />
+					<input type="hidden" name="type" value="parent" />
+					<input type="hidden" name="id" value="{parent.child.FORUM_ID}" />
+					<div class="config-name">
+						{parent.child.PARENT}
+						<input type="submit" class="btn btn-primary btn-xs" value="Change Parent" />
+					</div>
+				</form>
+			</div>
+			<div class="col-md-1">
+				<form name="activate" style="display:block;float:left;" method="post" enctype="multipart/form-data" action="">
+					<input type="hidden" name="op" value="process" />
+					<input type="hidden" name="type" value="{parent.child.B_ACTIVEOP}" />
+					<input type="hidden" name="id" value="{parent.child.FORUM_ID}" />
+					<button type="submit" class="btn btn-primary btn-xs" >
+					<img src="templates/default/images/admin/{parent.child.B_ACTIVEI}.png" style="height:16px;width:16px;border:0;" alt="" />{parent.child.B_ACTIVET}</button>
+				</form>
+			</div>			
+			<div class="col-md-1">
+				<form name="lock" style="display:block;float:right;" method="post" enctype="multipart/form-data" action="">
+					<input type="hidden" name="op" value="process" />
+					<input type="hidden" name="type" value="{parent.child.L_ACTIVEOP}" />
+					<input type="hidden" name="id" value="{parent.child.FORUM_ID}" />
+					<button type="submit" class="btn btn-primary btn-xs" ><span class="ui-icon ui-icon-{parent.child.L_ACTIVEU}"></span>{parent.child.L_ACTIVET}</button>
+				</form>
+			</div>			
+			<div class="col-md-1">
+				<form name="delete" style="display:inline;" method="post" enctype="multipart/form-data" action="">
+					<input type="hidden" name="op" value="process" />
+					<input type="hidden" name="type" value="delete" />
+					<input type="hidden" name="id" value="{parent.child.FORUM_ID}" />
+					<button type="submit" class="btn btn-primary btn-xs" >
+					<img src="templates/default/images/admin/yellow.png" style="height:16px;width:16px;border:0;" alt="" />Delete</button>
+				</form>
+			</div>
+			
+		</div>
+	<!-- END child -->
+</div>
+<!-- END parent -->
 <form method="post" action="" id="addnews" style="text-align:left;">
 	<input type="hidden" name="op" value="process" />
 	<input type="hidden" name="type" value="add" />

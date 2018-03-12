@@ -1,0 +1,94 @@
+
+<div id="main-nobg" class="container">
+<div class="row">
+    <div class="col-md-9">
+        <div class="carousel slide article-slide" id="article-photo-carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<!-- BEGIN slider -->
+				<li data-target="#article-photo-carousel" data-slide-to="{slider.NUM}"<!-- IF slider.NUM eq 0 --> class="active"<!-- ENDIF -->>
+					<img src="{slider.TIMAGE}" alt="{slider.TITLE}">
+				</li>
+				<!-- END slider -->
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+			
+				<!-- BEGIN slider -->
+				<div class="item<!-- IF slider.NUM eq 0 --> active<!-- ENDIF -->">
+					<!-- IF slider.URL --><a href="{slider.URL}" target="_blank"><!-- ENDIF -->
+					<img src="{slider.IMAGE}" alt="{slider.TITLE}">
+					<div class="carousel-caption">
+						<!-- IF slider.TITLE -->
+							<h3>{slider.TITLE}</h3>
+						<!-- ENDIF -->
+						<!-- IF slider.DESC -->
+							<p>{slider.DESC}</p>
+						<!-- ENDIF -->
+					</div>
+					<!-- IF slider.URL --></a><!-- ENDIF -->
+				</div>
+				<!-- END slider -->
+
+			</div>
+			<a class="left carousel-control" href="#article-photo-carousel" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#article-photo-carousel" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+
+
+
+        <!-- IF S_ADD_NEWS -->
+        <div class="row">
+            <div class="col-md-12">
+				<a class="btn btn-primary btn-xs" href="{U_ADD_NEWS}"><span class="ui-icon ui-icon-plus"></span><!-- TRANSLATE add_news --></a>
+			</div>
+        </div>
+        <!-- ENDIF -->
+
+        <!-- BEGIN news -->
+			<div class="media news_entry">
+				<a class="pull-left" href="{news.LINK}">
+					<img class="media-object" width="" height="" src="{news.IMG_THUMB}">
+					<!-- IF news.NEWS_TYPE -->
+					<span class="news-type">{news.NEWS_TYPE}</span>
+					<!-- ENDIF -->
+				</a>
+				<div class="media-body">
+					<h4 class="media-heading">{news.TITLE}</h4>
+					
+					<p>{news.TEXT_MIN}</p>
+					<ul class="list-inline list-unstyled">
+						<li><span><i class="glyphicon glyphicon-calendar"></i> {news.DATE}</span></li>
+						<li> | </li>
+						<li><span><i class="glyphicon glyphicon-comment"></i> {news.L_COMMENT}</span></li>
+					</ul>
+			   </div>
+			   <a class="NewsBlog-link" href="{news.LINK}"></a>
+			</div>
+        <!-- END news -->
+
+    </div>
+    <div class="col-md-3">
+        <!-- BEGIN right -->
+		<div id="node1" class="side_pannel">
+			<div class="side_title">
+				<div class="icon">
+					<img src="{INTERFACE_URL}Interface/Icons/{right.ICON}.{IMG_SUFFIX}" alt="" />
+					<div class="mask"></div>
+				</div>
+				{right.BLOCKNAME}
+			</div>
+			<div class="content">{right.BLOCK_DATA}</div>
+		</div>
+        <!-- END right -->
+    </div>
+	</div>
+</div>
+

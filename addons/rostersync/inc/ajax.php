@@ -12,6 +12,10 @@ $ajaxfuncs['character'] = array(
 	'file'=>$addon['dir'] . 'ajax/apiajax.php',
 );
 
+$ajaxfuncs['members'] = array(
+	'file'=>$addon['dir'] . 'ajax/apiajax.php',
+);
+
 $ajaxfuncs['guildmembers'] = array(
 	'file'=>$addon['dir'] . 'ajax/apiajax.php',
 );

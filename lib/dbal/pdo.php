@@ -60,6 +60,43 @@ class roster_db
 		$this->queries[$this->file][$this->query_count]['time'] = round((format_microtime()-$this->querytime), 4);
 		$this->queries[$this->file][$this->query_count]['line'] = $this->line;
 
+		if (isset($this->this_error) && $this->this_error != '')
+		{
+			$this->queries[$this->file][$this->query_count]['error'] = $this->this_error;
+		}
+
+		// Describe
+		$this->queries[$this->file][$this->query_count]['describe'] = array();
+
+		if( $this->log_level == 2 )
+		{
+			// Only SELECT queries can be DESCRIBEd. If this isn't a SELECT query, this will properly extract the SELECT part of an INSERT ... SELECT or CREATE TABLE ... SELECT statement, which may be interesting to get describe info for.
+			if( ($pos = strpos( $query, "SELECT" )) === false )
+			{
+				return;
+			}
+
+			$result = $this->link_id->query("DESCRIBE " . substr($query, $pos));
+			if( $result )
+			{
+				while( $this->queries[$this->file][$this->query_count]['describe'][] = $this->link_id->fetch( $result ) ) {};
+				mysql_free_result( $result );
+			}
+		}
+	}
+	
+	function _log2( $query )
+	{
+		$this->_backtrace();
+
+		$this->queries[$this->file][$this->query_count]['query'] = $query;
+		$this->queries[$this->file][$this->query_count]['time'] = round((format_microtime()-$this->querytime), 4);
+		$this->queries[$this->file][$this->query_count]['line'] = $this->line;
+
+		if (isset($this->this_error) && $this->this_error != '')
+		{
+			$this->queries[$this->file][$this->query_count]['error3'] = $this->this_error;
+		}
 		// Describe
 		$this->queries[$this->file][$this->query_count]['describe'] = array();
 
@@ -195,15 +232,6 @@ class roster_db
 	function errno()
 	{
 		print_r($this->link_id);
-		/*
-		catch (PDOException $e)
-		{
-			$result = "The statement failed.\n";
-			$result .= "getCode: ". $e->getCode () . "\n";
-			$result .= "getMessage: ". $e->getMessage () . "\n";
-		}
-		return $result;
-		*/
 	}
 
 	/**
@@ -224,11 +252,12 @@ class roster_db
 	{
 		// Remove pre-existing query resources
 		unset($this->query_id);
-
-		//$query = preg_replace('/;.*$/', '', $query);
+		
 		if( $query != '' )
 		{
+			$this->this_error = '';
 			$this->querytime = format_microtime();
+			$this->query_count++;
 
 			if( $this->log_level > 0 )
 			{
@@ -236,13 +265,8 @@ class roster_db
 			}
 			try
 			{
-				$this->query_count++;
-				//$this->query_id = $this->link_id->query($query);//, $this->link_id);
-				//print_r($this->query_id);echo ' ~<br>';
 				$this->query_id =  $this->link_id->prepare($query);
-				//print_r($res);echo ' ~~<br>';
 				$this->query_id->execute();
-				//print_r($this->query_id);echo ' ~~~<br>';
 
 				if( !empty($this->query_id) )
 				{
@@ -255,11 +279,9 @@ class roster_db
 			catch (PDOException $e)
 			{
 				$err = "The statement failed.<br />";
-				$err .= "getCode: ". $e->getCode () . "<br />";
-				$err .= "getMessage: ". $e->getMessage () . "<br />";
-				$this->queries[$this->file][$this->query_count]['error'] =  $e->getMessage ();
-				$this->this_error = $err;
-				//die(__FILE__ . ': line[' . __LINE__ . ']<br />Database Error "' . $query . '"<br />PDO said:<br />' .  $err . ' <br />' . $this->_backtrace());
+				$err .= "getCode: ". $e->getCode() . "<br />";
+				$err .= "getMessage: ". $e->getMessage() . "<br />";
+				$this->this_error = $e->getMessage();
 			}
 		}
 		
@@ -267,7 +289,6 @@ class roster_db
 		{
 			// I think we should use this method for dying
 			die(__FILE__ . ': line[' . __LINE__ . ']<br />Database Error "' . $query . '"<br />PDO said:<br />' .  $this->errno() );
-			//die_quietly($this->error(), 'Database Error',__FILE__,__LINE__,$query);
 		}
 		else
 		{
@@ -468,8 +489,8 @@ class roster_db
 
 		if( $query_id )
 		{
-			$this->record[spl_object_hash($query_id)] = $query_id->fetch($result_type);//mysql_fetch_array($query_id, $result_type);
-			//echo '<pre>';print_r($this->record[spl_object_hash($query_id)]);echo '</pre>';
+			$this->record[spl_object_hash($query_id)] = $query_id->fetch($result_type);
+			
 			return $this->record[spl_object_hash($query_id)];
 		}
 		else

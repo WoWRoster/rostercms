@@ -1,0 +1,82 @@
+<ol><li>&nbsp;[110]&nbsp;<a href="/Quest:Using_Lost_Knowledge">Using Lost Knowledge</a> or &nbsp;[110]&nbsp;<a class="mw-selflink selflink">Greater Power For Greater Threats</a></li>
+<li>&nbsp;[110]&nbsp;<a href="/Quest:The_Broken_Shore:_Investigating_the_Legion">The Broken Shore: Investigating the Legion</a></li>
+<li>&nbsp;[110]&nbsp;<a href="/Quest:The_Council%27s_Call">The Council's Call</a></li>
+<li>&nbsp;[110]&nbsp;<a href="/Quest:Away_From_Prying_Eyes">Away From Prying Eyes</a></li>
+<li>&nbsp;[110]&nbsp;<a href="/Quest:In_Dire_Need">In Dire Need</a></li>
+<li>Depending on Spec:
+<ul><li>  Monk - Brewmaster / Death_knight - Blood / Druid - Guardian / Paladin - Protection / Warrior - Protection / Demon_hunter - Vengeance </li></ul>
+<ol><li> &nbsp;[110]&nbsp;<a href="/Quest:Legion_Threat:_Dalaran_Infiltration">Legion Threat: Dalaran Infiltration</a></li>
+<li> <a href="/Quest:Aid_of_the_Illidari" title="Quest:Aid of the Illidari">Quest:Aid of the Illidari</a> / &nbsp;&nbsp;[110]&nbsp;<a href="/Quest:Vengeance:_Seeking_Kor%27vas">Vengeance: Seeking Kor'vas</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Gathering_Information">Gathering Information</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Confirming_Suspicions">Confirming Suspicions</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Between_Worlds">Between Worlds</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Dark_Omens">Dark Omens</a></li></ol>
+<ul><li>  Paladin - Holy / Priest - Holy / Monk - Mistweaver / Druid - Restoration / Shaman - Restoration </li></ul>
+<ol><li> &nbsp;[110]&nbsp;<a href="/Quest:Legion_Threat:_Val%27sharah">Legion Threat: Val'sharah</a></li>
+<li> <a href="/Quest:The_Bradensbrook_Investigation" title="Quest:The Bradensbrook Investigation">Quest:The Bradensbrook Investigation</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Aid_on_the_Front_Lines">Aid on the Front Lines</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Shadowsong%27s_Return">Shadowsong's Return</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Cutting_off_the_Heads">Cutting off the Heads</a> &amp; &nbsp;[110]&nbsp;<a href="/Quest:Quieting_the_Spirits">Quieting the Spirits</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Source_of_the_Corruption_(Val%27sharah)">Source of the Corruption</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:The_Matter_Resolved..._For_Now...">The Matter Resolved... For Now...</a></li></ol>
+<ul><li>  Shaman - Elemental / Druid - Feral Combat / Mage - Fire / Warrior - Fury / Rogue - Outlaw / Death_knight - Unholy </li></ul>
+<ol><li> <a href="/Quest:The_Folly_of_Levia_Laurence" title="Quest:The Folly of Levia Laurence">Quest:The Folly of Levia Laurence</a> </li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Bargaining_with_Shadows">Bargaining with Shadows</a> </li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:The_Acolyte_Imperiled">The Acolyte Imperiled</a> </li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Dabbling_in_the_Demonic">Dabbling in the Demonic</a> </li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Following_the_Scent">Following the Scent</a> </li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Unlikely_Seduction">Unlikely Seduction</a> </li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Fel-Crossed_Lovers">Fel-Crossed Lovers</a> </li></ol>
+<ul><li> Warrior - Arms / Death_knight - Frost / Demon_hunter - Havoc / Hunter - Survival / Rogue - Subtlety </li></ul>
+<ol><li> &nbsp;[110]&nbsp;<a href="/Quest:Legion_Threat:_Azshara">Legion Threat: Azshara</a></li>
+<li> <a href="/Quest:The_Thieving_Apprentice" title="Quest:The Thieving Apprentice">Quest:The Thieving Apprentice</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Professionally_Good_Looking">Professionally Good Looking</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Order_of_Incantations">Order of Incantations</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:The_Archmage_Accosted">The Archmage Accosted</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:A_Portal_Away">A Portal Away</a></li></ol>
+<ul><li> Warlock - Affliction / Druid - Balance / Mage - Frost / Hunter - Marksmanship / Priest - Shadow </li></ul>
+<ol><li> &nbsp;[110]&nbsp;<a href="/Quest:Legion_Threat:_The_Necromancer">Legion Threat: The Necromancer</a></li>
+<li> <a href="/Quest:The_Twisted_Twin" title="Quest:The Twisted Twin">Quest:The Twisted Twin</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Message_from_the_Shadows">Message from the Shadows</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Secrets_in_the_Underbelly">Secrets in the Underbelly</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:The_Wisdom_of_the_Council">The Wisdom of the Council</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Where_it%27s_Thinnest">Where it's Thinnest</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Runes_of_Rending">Runes of Rending</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:One_Step_Behind">One Step Behind</a></li></ol>
+<ul><li> Hunter - Beast Mastery / Warlock - Destruction / Priest - Discipline / Monk - Windwalker </li></ul>
+<ol><li> &nbsp;[110]&nbsp;<a href="/Quest:Legion_Threat:_Highmountain">Legion Threat: Highmountain</a> / &nbsp;[110]&nbsp;<a href="/Quest:Legion_Threat:_The_Missing_Mage">Legion Threat: The Missing Mage</a></li>
+<li> <a href="/Quest:Rumblings_Near_Feltotem" title="Quest:Rumblings Near Feltotem">Quest:Rumblings Near Feltotem</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:The_Burning_Birds">The Burning Birds</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:The_Tainted_Marsh">The Tainted Marsh</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Village_of_the_Corruptors">Village of the Corruptors</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:The_Feltotem_Menace">The Feltotem Menace</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Destroying_the_Nest">Destroying the Nest</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:A_Triumphant_Report">A Triumphant Report</a></li></ol>
+<ul><li> Mage - Arcane / Rogue - Assassination / Warlock - Demonology / Shaman - Enhancement / Paladin - Retribution </li></ul>
+<ol><li> &nbsp;[110]&nbsp;<a href="/Quest:Legion_Threat:_Suramar">Legion Threat: Suramar</a></li>
+<li> <a href="/Quest:Fate_of_the_Tideskorn" title="Quest:Fate of the Tideskorn">Quest:Fate of the Tideskorn</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:The_Reluctant_Queen">The Reluctant Queen</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:To_Silence_the_Bonespeakers">To Silence the Bonespeakers</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:To_Tame_the_Drekirjar">To Tame the Drekirjar</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:The_Forgotten_Heir">The Forgotten Heir</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:Unanswered_Questions">Unanswered Questions</a></li>
+<li> &nbsp;[110]&nbsp;<a href="/Quest:The_Gates_Are_Closed">The Gates Are Closed</a></li></ol></li>
+<li>&nbsp;[110]&nbsp;<a href="/Quest:A_Gift_From_the_Six">A Gift From the Six</a></li>
+<li>Finales:
+<ul><li> Shaman - Elemental / Druid - Feral Combat / Mage - Fire / Warrior - Fury / Rogue - Outlaw / Death_knight - Unholy  &nbsp;[110]&nbsp;<a href="/Quest:An_Impossible_Foe">An Impossible Foe</a></li></ul>
+<ol><li>&nbsp;[110]&nbsp;<a href="/Quest:The_Imp_Mother%27s_Gift">The Imp Mother's Gift</a></li></ol>
+<ul><li> Warrior - Arms / Death_knight - Frost / Demon_hunter - Havoc / Hunter - Survival / Rogue - Subtlety  &nbsp;[110]&nbsp;<a href="/Quest:Closing_the_Eye">Closing the Eye</a></li></ul>
+<ol><li>&nbsp;[110]&nbsp;<a href="/Quest:In_Safer_Hands">In Safer Hands</a></li>
+<li>&nbsp;[110]&nbsp;<a href="/Quest:Xylem%27s_Gift">Xylem's Gift</a></li></ol>
+<ul><li> Paladin - Holy / Priest - Holy / Monk - Mistweaver / Druid - Restoration / Shaman - Restoration  &nbsp;[110]&nbsp;<a href="/Quest:End_of_the_Risen_Threat">End of the Risen Threat</a></li></ul>
+<ol><li>&nbsp;[110]&nbsp;<a href="/Quest:Jarod%27s_Gift">Jarod's Gift</a></li></ol>
+<ul><li> Hunter - Beast Mastery / Warlock - Destruction / Priest - Discipline / Monk - Windwalker  &nbsp;[110]&nbsp;<a href="/Quest:Feltotem%27s_Fall">Feltotem's Fall</a></li></ul>
+<ol><li>&nbsp;[110]&nbsp;<a href="/Quest:Navarrogg%27s_Gift">Navarrogg's Gift</a></li></ol>
+<ul><li> Mage - Arcane / Rogue - Assassination / Warlock - Demonology / Shaman - Enhancement / Paladin - Retribution  &nbsp;[110]&nbsp;<a href="/Quest:The_God-Queen%27s_Fury">The God-Queen's Fury</a></li></ul>
+<ol><li>&nbsp;[110]&nbsp;<a href="/Quest:Eyir%27s_Forgiveness">Eyir's Forgiveness</a></li>
+<li>&nbsp;[110]&nbsp;<a href="/Quest:A_Common_Enemy">A Common Enemy</a></li>
+<li>&nbsp;[110]&nbsp;<a href="/Quest:The_God-Queen%27s_Gift">The God-Queen's Gift</a></li></ol>
+<ul><li> Monk - Brewmaster / Death_knight - Blood / Druid - Guardian / Paladin - Protection / Warrior - Protection / Demon_hunter - Vengeance  &nbsp;[110]&nbsp;<a href="/Quest:The_Highlord%27s_Return">The Highlord's Return</a></li></ul>
+<ol><li>&nbsp;[110]&nbsp;<a href="/Quest:Kruul%27s_Gift">Kruul's Gift</a></li></ol>
+<ul><li> Warlock - Affliction / Druid - Balance / Mage - Frost / Hunter - Marksmanship / Priest - Shadow  &nbsp;[110]&nbsp;<a href="/Quest:Thwarting_the_Twins">Thwarting the Twins</a></li></ul>
+<ol><li>&nbsp;[110]&nbsp;<a href="/Quest:Raest%27s_Gift">Raest's Gift</a></li></ol></li></ol>

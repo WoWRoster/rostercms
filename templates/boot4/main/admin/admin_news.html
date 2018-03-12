@@ -1,0 +1,27 @@
+
+	<div class="card-deck">
+	<!-- BEGIN news_admin -->
+  
+		<div class="card-list">
+			<div class="card card-inverse addon_install" id="{news_admin.NEWS_ID}">
+				<img class="card-img-top" src="{news_admin.IMG_THUMB}" style="width: 100%;" alt="illidan is back">
+				<div class="card-block">
+					<h4 class="card-title">{news_admin.TITLE}</h4>
+					<p class="card-text">{news_admin.TEXT}</p>
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">
+						<form name="delete" style="display:inline;" method="post" enctype="multipart/form-data" action="">
+							<input type="hidden" name="op" value="process" />
+							<input type="hidden" name="type" value="delete" />
+							<input type="hidden" name="id" value="{news_admin.NEWS_ID}" />
+							<button type="submit" class="btn btn-primary btn-xs" style="font-size: 18px !important;">
+								<img src="{THEME_PATH}/images/admin/red.png" style="height:16px;width:16px;border:0;" alt="" /><!-- TRANSLATE delete --></button>
+						</form>
+					</li>
+					<li class="list-group-item"><!-- TRANSLATE posted_by -->: {news_admin.POSTER} <span class="spacer"> - </span> {news_admin.DATE} {news_admin.L_COMMENT}</li>
+				</ul>
+			</div>
+		</div>
+	<!-- END news_admin -->
+	</div>

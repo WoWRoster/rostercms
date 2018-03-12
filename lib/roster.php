@@ -610,6 +610,20 @@ class roster
 		}
 
 		$this->data = $this->db->fetch($result);
+		
+		$query = "SELECT * FROM `" . $roster->db->table('guild_rank') . "`;";
+		$result = $roster->db->query($query);
+
+		if (!$result)
+		{
+			die_quietly('Could not fetch menu configuration from database. MySQL said: <br />' . $roster->db->error(),'Roster',__FILE__,__LINE__,$query);
+		}
+		$ranks = array();
+		while($r = $roster->db->fetch($result))
+		{
+			$ranks[$r['rank']] = $r;
+		}
+		$this->data['ranks'] = $ranks;
 	}
 	/**
 	 * Fetch all addon data. We need to cache the active status for addon_active()
@@ -659,6 +673,7 @@ class roster
 						$classfile = ROSTER_PLUGINS . $plugin_name . DIR_SEP . $plugin_name . '.php';
 						require($classfile);
 						$global_plugins[$plugin_name] = new $plugin_name($xplugin);
+						$global_plugins[$plugin_name]->config = $xplugin['config'];
 					}
 				}
 			}

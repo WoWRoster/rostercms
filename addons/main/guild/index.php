@@ -102,7 +102,7 @@ $camera_js_config[] = "imagePath:'". $addon['tpl_image_path'] ."'";
 
 $camera_js = '$(function() {
 
-$(\'.carousel\').carousel();
+//$(\'.carousel\').carousel();
 });';
 
 roster_add_js($camera_js, 'inline', 'footer', false, false);
@@ -149,7 +149,7 @@ while( $row = $roster->db->fetch($results) )
 		'NUM'			=> $numn,
 		//'TEXT'			=> $message,
 		'NEWS_TYPE'		=> (isset($row['news_type']) ? $roster->locale->act['newstype'][$row['news_type']] : ''),
-		'TEXT_MIN'		=> substr($message, 0, 300),
+		'TEXT_MIN'		=> $func->truncate($message, '300'),//substr($message, 0, 300),
 		'IMG'			=> (!empty($row['img']) ? $addon['image_url'].'news/'.$row['img'].'-image.jpg' : false),
 		'IMG_THUMB'		=> (!empty($row['img']) ? $addon['image_url'].'news/thumbs/'.$row['img'].'-thumb.jpg' : false),
 		'TITLE'			=> $row['title'],

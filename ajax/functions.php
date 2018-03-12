@@ -34,3 +34,12 @@ $ajaxfuncs['spell'] = array(
 $ajaxfuncs['talent'] = array(
 	'file'=>ROSTER_AJAX . 'tooltip.php',
 );
+$ajaxfuncs['load'] = array(
+	'file'=>ROSTER_AJAX . 'media.php',
+);
+$ajaxfuncs['delete'] = array(
+	'file'=>ROSTER_AJAX . 'media.php',
+);
+$ajaxfuncs['upload'] = array(
+	'file'=>ROSTER_AJAX . 'media.php',
+);

@@ -1,0 +1,39 @@
+<!-- $Id: ucp-settings.html 2479 2012-05-25 05:05:25Z c.treyce@gmail.com $ -->
+
+<div class="content-box-header">
+	<div class="panel-title">Per Character Display settings</div>
+</div>
+<div class="content-box-large box-with-header">
+
+
+		<div class="btn-toolbar" id="menu">
+			<ul class="btn-group" id="cds_menu">
+			<!-- BEGIN characters -->
+				<li id="text{characters.ID}" class="btn btn-default btn-sm" >{characters.CNAME}</li>
+			<!-- END characters -->
+			</ul>
+		</div>
+		
+		<form action="" method="post" enctype="multipart/form-data" id="config_config" onsubmit="return confirm('This will save the changes to the database. Are you sure?');">
+			<div class="config-submit">
+				<input type="submit" value="Save Settings" />
+				<input type="hidden" name="process" value="process" />
+			</div>
+
+<!-- BEGIN characters -->
+		<div id="text{characters.ID}" >
+			<div class="row">
+				<div class="col-md-12">{characters.CNAME}</div>
+			</div>
+
+<!-- BEGIN cfg -->
+			<div class="row cfg-row">
+			<div class="col-md-6 col-sm-5">{characters.cfg.NAME}</div>
+			<div class="col-md-6 col-sm-5">{characters.cfg.FIELD}</div>
+			</div>
+<!-- END cfg -->
+		</div>
+<!-- END characters -->
+		</form>
+	</div>
+</div>

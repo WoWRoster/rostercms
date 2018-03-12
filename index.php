@@ -140,7 +140,7 @@ switch( $roster->pages[0] )
 			roster_die(sprintf($roster->locale->act['module_not_exist'], ROSTER_PAGE_NAME), $roster->locale->act['roster_error']);
 		}
 }
-
+//d($roster);
 if( empty($roster->pages[1]) )
 {
 	// Send a 404. Then the browser knows what's going on as well.

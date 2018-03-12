@@ -213,7 +213,7 @@ class char
 			'POWER'         => $this->data['mana'],
 			'POWERTYPE'     => ucfirst($this->data['powerType']),
 			'TALENT_POINTS' => $this->data['talent_points'],
-			'ADD_TEMPLATES'	=> apply_filters('info_char_template', $templates) //$templates
+			'ADD_TEMPLATES'	=> apply_filters('info_char_template', $templates, $this->data) //$templates
 			)
 		);
 	}

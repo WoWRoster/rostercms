@@ -1,0 +1,60 @@
+
+	<div class="row">
+		<div class="col-md-12">
+		<form action="{U_FORM_ACTION}" method="post" onsubmit="return confirm('<!-- TRANSLATE confirm_config_submit -->') &amp;&amp; writeValue();">
+			<div class="content-box-header">
+				<div class="panel-title">{SECTION_NAME}</div>
+				<div class="panel-options">
+					<input type="hidden" name="arrayput" id="arrayput" />
+					<input type="hidden" name="section" value="{SECTION}" />
+					<input type="hidden" name="process" value="process" />
+					<input type="submit" value="<!-- TRANSLATE config_submit_button -->" />
+				</div>
+			</div>
+			
+			<div class="content-box-large box-with-header">
+			
+				<div class="panel panel-default">
+					<div class="panel-heading">Active</div>
+					<div class="panel-body">
+						<div class="striped-bar sortable" id="active" style="background-color:#e1e1e8;width:100%;height:{UN_BUTTON_GRID_HEIGHT}px;">
+							
+							<!-- BEGIN button_grid -->
+							<div id="b{button_grid.ID}" class="mitem"{button_grid.TOOLTIP}>
+								<img src="{button_grid.ICON}" alt="" />
+								<span class="frame item-quality-1"></span>
+							</div>
+							<!-- END button_grid -->
+							
+						</div>
+						<input type="hidden" value="" name="order" id="order"/>
+					</div>
+
+					<div class="panel-heading"><!-- TRANSLATE menuconf_unused_buttons --></div>
+					<div class="panel-body">
+						<div class="striped-bar sortable" id="palet" style="background-color:#f2b968;width:100%;height:{UN_BUTTON_GRID_HEIGHT}px;">
+							<!-- BEGIN pallet_grid -->
+							<div id="b{pallet_grid.ID}" class="mitem"{pallet_grid.TOOLTIP}>
+								<img src="{pallet_grid.ICON}" alt="" />
+								<div class="mask {pallet_grid.CLASS}"></div>
+							</div>
+							<!-- END pallet_grid -->
+						</div>
+						<span id="2"></span>
+						<input type="hidden" value="" name="deactivate" id="deactivate" />
+
+					</div>
+
+					<div class="panel-heading"><!-- TRANSLATE menuconf_drag_delete --></div>
+					<div class="panel-body">
+						<div class="striped-bar sortable" id="rec_bin" style="background-color:#d9534f;width:100%;height:{UN_BUTTON_GRID_HEIGHT}px;">
+
+						</div>
+						<span id="3"></span>
+						<input type="hidden" value="" name="delete" id="delete"/>
+					</div>
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>

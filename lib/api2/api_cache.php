@@ -437,7 +437,10 @@ class apicache {
 	}
 	public function insertquest($data,$vars,$parameters)
 	{
-		$this->_insertcache($data,$vars,$parameters);
+		if (isset($data['title']))
+		{
+			$this->_insertcache($data,$vars,$parameters);
+		}
 	}
 
 

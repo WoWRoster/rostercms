@@ -83,45 +83,7 @@ if (isset($_POST['process']) && $_POST['process'] == 'process')
 			$t++;	
 			}
 			$lvl = ($lvl+15);
-			/*
-			$role = '';
-			foreach ($treedata['roles'] as $name => $h)
-			{
-				if ($h == 1)
-				{
-					$role = $name;
-				}
-			}
-			$values = array(
-				'tree'       => $treedata['name'],
-				'order'      => $treenum,
-				'class_id'   => $classid,
-				'background' => strtolower($treedata['backgroundFile']),
-				'icon'       => $treedata['icon'],
-				'roles'		 => $role,
-				'desc'		 => $treedata['description'],
-				'tree_num'   => $treenum
-			);
-			$masterys = array(
-				'class_id'	=>	$classid,
-				'tree'		=>	$treedata['name'],
-				'tree_num'	=>	$treenum,
-				'icon'		=>	$treedata['masteries'][0]['icon'],
-				'name'		=>	$treedata['masteries'][0]['name'],
-				'desc'		=>	$treedata['masteries'][0]['description'],
-				'spell_id'	=>	$treedata['masteries'][0]['spellId']
-			);
-
-			$mquerystr = "INSERT INTO `" . $roster->db->table('talent_mastery') . "` "
-				. $roster->db->build_query('INSERT', $masterys) . "
-				;";
-			$mresult = $roster->db->query($mquerystr);
-				
-			$querystr = "INSERT INTO `" . $roster->db->table('talenttree_data') . "` "
-				. $roster->db->build_query('INSERT', $values) . "
-				;";
-				$result = $roster->db->query($querystr);
-			*/
+			
 			$count++;
 			$treenum++;
 		}
@@ -226,49 +188,6 @@ if (isset($_POST['process']) && $_POST['process'] == 'process')
 				$lvl = ($lvl+15);
 			}
 		
-			/*
-			
-			foreach ($info['talents'] as $a => $treedata)
-			{
-
-				$lvl = 15;
-				foreach ($treedata as $t => $talent)
-				{
-
-					$tooltip = '';
-					$tooltip .= (isset($talent['spell']['powerCost']) 	? $talent['spell']['powerCost'].'<br />' 	: '');
-					$tooltip .=	(isset($talent['spell']['range']) 		? $talent['spell']['range'].'<br />' 	: '');
-					$tooltip .=	(isset($talent['spell']['castTime']) 	? $talent['spell']['castTime'].'<br />' 	: '');
-					$tooltip .=	(isset($talent['spell']['cooldown']) 	? $talent['spell']['cooldown'].'<br />' 	: '');
-					$tooltip .= '<br><span style="color:#00bbff;">'.$talent['spell']['description'].'</span>';
-					$values = array(
-						'talent_id'  => $talent['spell']['id'],
-						'talent_num' => $t,
-						'tree_order' => '0',
-						'class_id'   => $class_id,
-						'name'       => $talent['spell']['name'],
-						'tree'       => '',//$treedata['name'],
-						'tooltip'    => tooltip($tooltip),
-						'texture'    => $talent['spell']['icon'],
-						//'isspell'	 => ( !$talent['spell']['keyAbility'] ? false : true ),
-						'row'        => ($talent['tier'] + 1),
-						'column'     => ($talent['column'] + 1),
-						'rank'       => $lvl
-					);
-
-					
-					$querystr = "INSERT INTO `" . $roster->db->table('talents_data') . "` "
-						. $roster->db->build_query('INSERT', $values) . ";";
-					$result = $roster->db->query($querystr);
-					$count++;
-				$t++;	
-				}
-				$lvl = ($lvl+15);
-
-				$count++;
-				$treenum++;
-			}
-			*/
 			foreach ($info['specs'] as $a => $treedata)
 			{
 			

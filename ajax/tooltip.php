@@ -91,18 +91,24 @@ else
 
 			$a = $roster->api2->fetch('spell',array('id'=>$id));
 
-			$roster->tpl->assign_vars(array(
-					'TYPE'			=> 'spell',
-					'NAME'			=> $a['name'],
-					'DESCRIPTION'	=> str_replace('\n\n','<br>',$a['description']),//$a['description'],
-					'RANGE'			=> $a['range'],
-					'POWERCOST'		=> $a['powerCost'],
-					'CASTTIME'		=> $a['castTime'],
-					'COOLDOWN'		=> $a['cooldown'],
-				)
-			);
-			$roster->tpl->set_filenames(array('tooltip' => 'api.html'));
-			$output = $roster->tpl->fetch('tooltip');
+			$output = '<div xmlns="http://www.w3.org/1999/xhtml" class="tc-tooltip">
+				<h3>'.$a['name'].'</h3>
+				<div>
+					<span class="float-right">'.$a['range'].'</span>
+					'.$a['powerCost'].'
+					<span class="clear"><!-- --></span>
+				</div>
+
+				<div>
+					<span class="float-right">'.$a['cooldown']'</span>
+					'.$a['castTime'].'
+					<span class="clear"><!-- --></span>
+				</div>
+
+				<div class="color-tooltip-yellow">
+				'.str_replace('\n\n','<br>',$a['description']).'
+				</div>
+			</div>';
 		break;
 		
 		case 'talent':
@@ -110,14 +116,12 @@ else
 			$resultg = $roster->db->query($sqlg);
 			$row = $roster->db->fetch($resultg);
 
-			$roster->tpl->assign_vars(array(
-					'TYPE'		=> 'basic',
-					'NAME'		=> $row['name'],
-					'INFO'		=> $row['tooltip'],
-				)
-			);
-			$roster->tpl->set_filenames(array('tooltip' => 'api.html'));
-			$output = $roster->tpl->fetch('tooltip');
+			$output = '<div xmlns="http://www.w3.org/1999/xhtml" class="tc-tooltip">
+				<h3>'.$row['name'].'</h3>
+				<div>
+					'.$row['tooltip'].'
+				</div>
+			</div>';
 
 		break;
 		

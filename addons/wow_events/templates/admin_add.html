@@ -1,0 +1,73 @@
+<form method="post">
+ <div class="form-group ">
+  <label class="control-label requiredField" for="name">
+   Event Name
+   <span class="asteriskField">
+	*
+   </span>
+  </label>
+  <input class="form-control" id="name" name="name" type="text"/>
+ </div>
+ <div class="form-group ">
+  <label class="control-label requiredField" for="icon">
+   Event Icon
+   <span class="asteriskField">
+	*
+   </span>
+  </label>
+  <input class="form-control" id="icon" name="icon" type="text"/>
+ </div>
+ <div class="form-group ">
+  <label class="control-label requiredField" for="start_date">
+   Start Date
+   <span class="asteriskField">
+	*
+   </span>
+  </label>
+  <div class="input-group">
+   <input class="form-control" id="start_date" name="start_date" placeholder="MM/DD/YYYY" type="date"/>
+   <div class="input-group-addon">
+	<i class="fa fa-calendar-plus-o">
+	</i>
+   </div>
+  </div>
+ </div>
+ <div class="form-group ">
+  <label class="control-label requiredField" for="end_date">
+   End Date
+   <span class="asteriskField">
+	*
+   </span>
+  </label>
+  <div class="input-group">
+   <input class="form-control" id="end_date" name="end_date" placeholder="MM/DD/YYYY" type="date"/>
+   <div class="input-group-addon">
+	<i class="fa fa-calendar-plus-o">
+	</i>
+   </div>
+  </div>
+ </div>
+ <div class="form-group ">
+  <label class="control-label requiredField">
+   Is Menu Image
+   <span class="asteriskField">
+	*
+   </span>
+  </label>
+  <div class=" ">
+   <div class="checkbox">
+	<label class="checkbox">
+	 <input name="menu" type="checkbox" value="Menu"/>
+	 Menu
+	</label>
+   </div>
+  </div>
+ </div>
+ <div class="form-group">
+  <div>
+   <button class="btn btn-primary " name="submit" type="submit">
+	Submit
+   </button>
+  </div>
+ </div>
+</form>

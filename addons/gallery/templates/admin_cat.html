@@ -1,0 +1,149 @@
+<div class="card-deck" style="width:90%">
+<!-- BEGIN catagories -->
+<div class="card card-inverse" style="max-width: 33%;">
+	<div class="card-block">
+		<h4 class="card-title">{catagories.NAME}</h4>
+		<p class="card-text">{catagories.DESC}</p>
+	</div>
+	<ul class="list-group list-group-flush">
+		<li class="list-group-item">
+			<ul style="list-style: none;float: left;display: flex;">
+				<li>
+					<form name="activate"  method="post" enctype="multipart/form-data" action="">
+						<input type="hidden" name="op" value="process" />
+						<input type="hidden" name="type" value="{catagories.B_ACTIVEOP}" />
+						<input type="hidden" name="id" value="{catagories.ID}" />
+						<button type="submit" class="btn btn-primary btn-sm" />
+						<img src="/templates/default/images/admin/{catagories.B_ACTIVEI}.png" style="height:16px;width:16px;border:0;" alt="" />{catagories.B_ACTIVET}</button>
+					</form>
+					</li><li>
+					<form name="lock"  method="post" enctype="multipart/form-data" action="">
+						<input type="hidden" name="op" value="process" />
+						<input type="hidden" name="type" value="{catagories.L_ACTIVEOP}" />
+						<input type="hidden" name="id" value="{catagories.ID}" />
+						<button type="submit" class="btn btn-primary btn-sm" /><span class="ui-icon ui-icon-{catagories.L_ACTIVEU}"></span>{catagories.L_ACTIVET}</button>
+					</form>
+					</li><li>
+					<form name="delete"  method="post" enctype="multipart/form-data" action="">
+						<input type="hidden" name="op" value="process" />
+						<input type="hidden" name="type" value="delete" />
+						<input type="hidden" name="id" value="{catagories.ID}" />
+						<button type="submit" class="btn btn-primary btn-sm" />
+						<img src="/templates/default/images/admin/yellow.png" style="height:16px;width:16px;border:0;" alt="" />Delete</button>
+					</form>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>		
+<!-- END catagories -->
+</div>
+<br>
+	<!-- BEGIN catagories -->
+
+	<div class="tier-2-a">
+		<div class="tier-2-b exp-content">
+			<div class="addon-status" style="width: 95px;">
+
+				
+				<div style="margin:3px;">
+					<form name="activate" style="display:block;float:left;" method="post" enctype="multipart/form-data" action="">
+						<input type="hidden" name="op" value="process" />
+						<input type="hidden" name="type" value="{catagories.B_ACTIVEOP}" />
+						<input type="hidden" name="id" value="{catagories.ID}" />
+						<button type="submit" class="input" >
+						<img src="/templates/default/images/admin/{catagories.B_ACTIVEI}.png" style="height:16px;width:16px;border:0;" alt="" />{catagories.B_ACTIVET}</button>
+					</form>
+				</div>
+				<div style="margin:3px;">
+					<form name="lock" style="display:block;float:right;" method="post" enctype="multipart/form-data" action="">
+						<input type="hidden" name="op" value="process" />
+						<input type="hidden" name="type" value="{catagories.L_ACTIVEOP}" />
+						<input type="hidden" name="id" value="{catagories.ID}" />
+						<button type="submit" class="input" ><span class="ui-icon ui-icon-{catagories.L_ACTIVEU}"></span>{catagories.L_ACTIVET}</button>
+					</form>
+				</div>
+				
+				<div style="margin:3px;">
+					<form name="delete" style="display:inline;" method="post" enctype="multipart/form-data" action="">
+						<input type="hidden" name="op" value="process" />
+						<input type="hidden" name="type" value="delete" />
+						<input type="hidden" name="id" value="{catagories.ID}" />
+						<button type="submit" class="input" >
+						<img src="/templates/default/images/admin/yellow.png" style="height:16px;width:16px;border:0;" alt="" />Delete</button>
+					</form>
+				</div>				
+			</div>
+
+			<div class="tier-2-title">
+				{catagories.NAME}
+			</div>
+			
+			<div class="info-text-h">
+				{catagories.DESC}
+			</div>
+		</div>
+
+		<form action="{U_MAKELINK}" method="post" style="display:block;padding: 0px 3px;margin: 0px;">
+			<input type="hidden" name="op" value="process" />
+			<input type="hidden" name="type" value="access" />
+			<input type="hidden" name="id" value="{catagories.ID}" />
+			<div class="tier-3-a">
+				<div class="tier-3-b">
+					<div class="config">
+						<div class="config-name">
+							<!-- TRANSLATE access_level -->: <input type="submit" value="Set" />
+						</div>
+						<div class="config-input">
+							{catagories.ACCESS}
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<!-- END catagories -->
+
+
+
+<br><br>
+
+
+<form method="post" action="" id="create" style="text-align:left;">
+	<div class="tier-2-a">
+		<div class="tier-2-b">
+			<div class="tier-2-title">
+			
+				<input type="hidden" name="op" value="process" />
+				<input type="hidden" name="type" value="create" />
+				<div class="right"><input type="submit" value="<!-- TRANSLATE gal_cat_add -->" /></div>
+				<!-- TRANSLATE gal_cat_add -->
+			</div>
+
+			<div class="form-group row">
+				<label for="title" class="col-xs-2 col-form-label-lg"><!-- TRANSLATE gal_cat_title -->:</label>
+				<div class="col-xs-9">
+					<input class="form-control" name="title" id="title" type="text" maxlength="150" size="75" value="" />
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label for="desc" class="col-xs-2 col-form-label-lg"><!-- TRANSLATE gal_cat_desc -->:</label>
+				<div class="col-xs-9">
+					<input class="form-control" name="desc" id="desc" type="text" size="75" value="" />
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label for="access" class="col-xs-2 col-form-label-lg"><!-- TRANSLATE gal_cat_access -->:</label>
+				<div class="col-xs-9">
+					{ACCESS}
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+</form>
+

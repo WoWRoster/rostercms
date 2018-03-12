@@ -61,7 +61,7 @@ var t;
 			next = members.length - 1;
 			$.ajax({
 				type: "GET",
-				url: "'. makelink('ajax-addon-rostersync-character').'",
+				url: "'. makelink('ajax-addon-rostersync-members').'",
 				data: members[next],
 				dataType: "html",
 				async: false,

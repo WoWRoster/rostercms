@@ -26,12 +26,23 @@ switch ($method)
 			$details['size']=filesize($filePath);
 			$ret[] = $details;
 
-			$output .= '<div class="card card-inverse">
+			$output .= '
+			
+			<div class="card-list">
+					<div class="card card-inverse">
+					  <img class="card-img" src="'.$filePath.'" alt="Card image">
+					  <div class="card-img-overlay">
+						<button type="button" class="btn btn-info btn-md" id="isel" data-image="'.$f[0].'" data-src="'.$filePath.'" data-target="h_imagel">select</button>
+					  </div>
+					</div>
+					</div>';/*
+					
+					<div class="card card-inverse">
   <img class="card-img" src="'.$filePath.'" alt="Card image">
   <div class="card-img-overlay">
     <button type="button" class="btn btn-info btn-md" id="isel" data-image="'.$f[0].'" data-src="'.$filePath.'" data-target="h_imagel">select</button>
   </div>
-</div>';
+</div>';*/
 		}
 
 		echo $output;//json_encode($ret);

@@ -6,9 +6,9 @@ if( ! $roster->auth->getAuthorized( 'roster_cp' ) )
 	return;
 }
 $uid = null;
-if ( isset( $_GET['uid'] ) )
+if ( isset( $_GET['id'] ) )
 {
-	$uid = $_GET['uid'];
+	$uid = $_GET['id'];
 }
 
 	$dm_query1 = "SELECT * FROM `" . $roster->db->table('user_link','user') . "` WHERE `uid` = '".$uid."' ORDER BY `guild`";

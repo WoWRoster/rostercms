@@ -68,6 +68,29 @@ $js = '
 		});
 
 	});
+	
+	jQuery(document).on(\'click\', \'input[type=button]#attachment\', function() {
+		wrapText("news", "[attachment]", "[/attachment]");
+	});
+	jQuery(document).on(\'click\', \'input[type=button]#youtube\', function() {
+		wrapText("news", "[youtube]", "[/youtube]");
+	});
+	jQuery(document).on(\'click\', \'input[type=button]#item\', function() {
+		wrapText("news", "[item]", "[/item]");
+	});
+	jQuery(document).on(\'click\', \'input[type=button]#code\', function() {
+		wrapText("news", "<pre><code>", "</code></pre>");
+	});
+	
+function wrapText(elementID, openTag, closeTag) {
+    var textArea = $(\'#\' + elementID);
+    var len = textArea.val().length;
+    var start = textArea[0].selectionStart;
+    var end = textArea[0].selectionEnd;
+    var selectedText = textArea.val().substring(start, end);
+    var replacement = openTag + selectedText + closeTag;
+    textArea.val(textArea.val().substring(0, start) + replacement + textArea.val().substring(end, len));
+}		
 ';
 
 $directory = $addon['dir'].'images/news/thumbs/';

@@ -1,0 +1,12 @@
+
+<table class="my-c-t">
+<!-- BEGIN chars -->
+<tr class="case-list-item">
+	<td width="10%"><div class="avatar"><!-- IF chars.PROFILE --><a href="{chars.PROFILE}" ><!-- ENDIF --><img src="{chars.THUMB}?alt=wow/static/images/2d/avatar/{chars.RACE}-{chars.GENDER}.jpg"></a></div></td>
+	<td width="20%"><!-- IF chars.PROFILE --><a href="{chars.PROFILE}" >{chars.NAME}</a><!-- ELSE -->{chars.NAME}<!-- ENDIF --></td>
+	<td width="20%">Level {chars.LEVEL} </td>
+	<td width="20%">{chars.CLASS}</td>
+	<td width="30%">{chars.GUILD} @ {chars.SERVER}</td>
+</tr>
+<!-- END chars -->
+</table>

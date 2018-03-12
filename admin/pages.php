@@ -36,10 +36,52 @@ $config_pages['theme'] = array(
 	'title'=>	'pagebar_rostertheme',
 	'file'=>	'theme_settings.php',
 	);
+	
+$config_pages['addon'] = array(
+	'special'=>	'hidden',
+	'file'=>	'addon_conf.php',
+	);
+$config_pages['plugin'] = array(
+	'special'=>	'hidden',
+	'file'=>	'plugin_conf.php',
+	);
+$config_pages['user'] = array(
+	'special'	=> 'group',
+	'title'		=> 'USER_GROUP',
+	'icon'		=> 'glyphicon-user',
+	'pages' 	=> array (
+		'userman' => array(
+			'href'=>	'userman',
+			'title'=>	'pagebar_userman',
+			'file'=>	'user_manager.php',
+		),
+		'usergroups' => array(
+			'href'=>	'usergroups',
+			'title'=>	'pagebar_usergroups',
+			'file'=>	'user_groups.php',
+		),
+		'permissions' => array(
+			'href'=>	'permissions',
+			'title'=>	'pagebar_permissions',
+			'file'=>	'permissions.php',
+		),
+		'rosterranks' => array(
+			'href'=>	'rosterranks',
+			'title'=>	'pagebar_rosterranks',
+			'file'=>	'rosterranks.php',
+		),
+	),
+);	
+	
 $config_pages['upload'] = array(
 	'href'=>	$roster->pages[0].'-upload',
 	'title'=>	'pagebar_uploadrules',
 	'file'=>	'upload_rules.php',
+	);
+$config_pages['media'] = array(
+	'href'=>	$roster->pages[0].'-media',
+	'title'=>	'pagebar_media',
+	'file'=>	'media.php',
 	);
 $config_pages['dataman'] = array(
 	'href'=>	$roster->pages[0].'-dataman',
@@ -81,35 +123,10 @@ if( $roster->config['external_auth'] == 'roster' )
 		);
 }
 */
-$config_pages['user'] = array(
-	'special'	=> 'group',
-	'title'		=> 'USER_GROUP',
-	'icon'		=> 'glyphicon-user',
-	'pages' 	=> array (
-		'userman' => array(
-			'href'=>	'userman',
-			'title'=>	'pagebar_userman',
-			'file'=>	'user_manager.php',
-		),
-		'usergroups' => array(
-			'href'=>	'usergroups',
-			'title'=>	'pagebar_usergroups',
-			'file'=>	'user_groups.php',
-		),
-		'permissions' => array(
-			'href'=>	'permissions',
-			'title'=>	'pagebar_permissions',
-			'file'=>	'permissions.php',
-		),
-		'rosterranks' => array(
-			'href'=>	'rosterranks',
-			'title'=>	'pagebar_rosterranks',
-			'file'=>	'rosterranks.php',
-		),
-	),
-);
+
 
 $config_pages['userman'] = array(
+	'special'=>	'hidden',
 	'href'=>	$roster->pages[0].'-userman',
 	'title'=>	'pagebar_userman',
 	'file'=>	'user_manager.php',
@@ -119,11 +136,13 @@ $config_pages['userchars'] = array(
 	'file'=>	'user_chars.php',
 	);
 $config_pages['usergroups'] = array(
+	'special'=>	'hidden',
 	'href'=>	$roster->pages[0].'-usergroups',
 	'title'=>	'pagebar_usergroups',
 	'file'=>	'user_groups.php',
 	);
 $config_pages['permissions'] = array(
+	'special'=>	'hidden',
 	'href'=>	$roster->pages[0].'-permissions',
 	'title'=>	'pagebar_permissions',
 	'file'=>	'permissions.php',
@@ -141,15 +160,6 @@ $config_pages['config_reset'] = array(
 $config_pages['rosterdiag2'] = array(
 	'href'=>	'rosterdiag2',
 	'title'=>	'pagebar_rosterdiag',
-	);
-	
-$config_pages['addon'] = array(
-	'special'=>	'hidden',
-	'file'=>	'addon_conf.php',
-	);
-$config_pages['plugin'] = array(
-	'special'=>	'hidden',
-	'file'=>	'plugin_conf.php',
 	);
 $config_pages['guide'] = array(
 	'special'=>	'hidden',

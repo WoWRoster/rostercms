@@ -1,0 +1,207 @@
+
+.section-blue{
+	color:#ebdec2;
+	background-image:url(../images/Pane-dirtBlue-27a12e492e.jpg);
+}
+.section-blue>.section-bg{
+	background-color:#040f1a;
+	background-image:url(../images/Pane-dirtBlue-27a12e492e.jpg);
+	background-position:top;
+	background-size:200%;
+	background-repeat:repeat
+}
+@media (min-width:980px){
+	.section-blue>.section-bg{
+		background-size:100%;
+	}
+}
+.section-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+.align-left{text-align:left}
+.align-center{text-align:center}
+.align-right{text-align:right}
+.align-justify{text-align:justify}
+.SortTable{display:table;margin:0 auto}
+.SortTable-head{display:table-header-group}
+.SortTable-body{display:table-row-group}
+.SortTable-row{color:#b1997f;display:table-row}
+.SortTable-body .SortTable-row:nth-child(odd){background:#211510}
+.SortTable-row[disabled]{color:#cacaca}
+.SortTable-col{display:table-cell}
+.SortTable-col.is-hidden{display:none!important}
+.SortTable-label{font-size:12px;line-height:21px;font-weight:700;white-space:nowrap;border:0;color:#f8b700;cursor:pointer;padding:1px;text-align:center;text-decoration:none;text-shadow:1px 1px 0 #000,1px 1px 0 #000;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;display:table-cell}
+.SortTable-label-class{width:40px;}
+@media (min-width:720px){.SortTable-label{font-size:13.6px;line-height:23.8px}
+}
+@media (min-width:1280px){.SortTable-label{font-size:16px;line-height:28px}
+}
+.SortTable-label:active .SortTable-labelOuter{top:0}
+.SortTable-label,.SortTable-labelOuter{padding-right:0}
+.SortTable-labelOuter{display:block;padding:1px;position:relative}
+.SortTable-labelInner{display:block;padding:13px 58px;position:relative}
+.SortTable-labelText{display:inline;position:relative;z-index:1;text-shadow:1px 1px 0 #000,1px 1px 0 #000}
+.SortTable-label:last-child,.SortTable-label:last-child .SortTable-labelOuter{padding-right:1px}
+.SortTable-labelInner,.SortTable-labelOuter{display:block}
+.SortTable-label .SortTable-labelInner{padding-right:18px;padding-left:18px}
+.SortTable-label.is-sorted,.SortTable-label.is-sorted-reverse{color:#fff;position:relative}
+.SortTable-label.is-sorted .SortTable-labelText::after,.SortTable-label.is-sorted-reverse .SortTable-labelText::after{border-top:5px solid #f8b700;border-right:5px solid transparent;border-left:5px solid transparent;bottom:calc(25%);content:"";height:0;right:-15px;position:absolute;width:0}
+.SortTable-label.is-sorted-reverse .SortTable-labelText::after{border-top:none;border-bottom:5px solid #f8b700;bottom:auto;top:calc(45%)}
+.SortTable-data{border-top:1px solid #504137;padding:10px;vertical-align:middle;position:relative}
+@media (min-width:720px){.SortTable-data{height:48px;padding:0 20px}
+}
+.SortTable-data,.SortTable-label{border-bottom:1px solid #000}
+.SortTable-row:nth-last-child(1):nth-child(odd) .SortTable-data{border-bottom:solid 1px #504137}
+.SortTable-row:nth-last-child(1):nth-child(even) .SortTable-data{border-bottom:0}
+.SortTable-status{vertical-align:middle}
+.SortTable--flex{width:100%}
+.SortTable--stretch{width:100%}
+.SortTable--stretch .SortTable-col[data-priority="1"]{width:100%}
+.SortTable-label--left{text-align:left}
+.SortTable-label--right{text-align:right}
+/*
+.skill_bar {
+	background-image:url(images/skill/bar_empty.gif);
+	font-size:11px;
+	vertical-align:top;
+	height:18px;
+	width:287px;
+	padding-left:14px;
+	background-repeat:no-repeat;
+}
+/* This css is already contained within each theme file *
+/* tables *
+table #memberslist {
+	font-family:arial;
+	font-size: 8pt;
+	width: 100%;
+	text-align: left;
+}
+table #memberslist thead tr th, table #memberslist tfoot tr th {
+	border: 1px solid #FFF;
+	font-size: 8pt;
+}
+table #memberslist thead tr {
+background: url(../images/th_bg.png) repeat-x center top;
+}
+
+table #memberslist thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+
+table #memberslist thead tr .headerSortUp {
+	background-image: url(asc.gif);
+}
+table #memberslist thead tr .headerSortDown {
+	background-image: url(desc.gif);
+}
+table #memberslist thead tr .headerSortDown, table #memberslist thead tr .headerSortUp {
+
+}
+*/
+
+
+@media (min-width:540px){.GuildHeader{display:table;position:relative}
+.GuildHeader .GuildHeader-character{margin-bottom:0}
+.GuildHeader .GuildHeader-nameTitle{padding-right:20px;margin-right:20px;border-right:1px solid rgba(255,255,255,.2)}
+}
+.GuildHeader-info{display:table-cell;vertical-align:middle;height:100%}
+.GuildHeader-character{display:table;position:relative;margin-bottom:10px}
+.GuildHeader-title{font-family:"Semplicita Pro","Open Sans",Arial,Helvetica,sans-serif;font-weight:700;font-size:1.08rem;line-height:1.5em;color:#fff;text-shadow:0 0 1px transparent,0 1px 2px rgba(0,0,0,.8);max-width:350px}
+.GuildHeader-title.zh-cn,.zh-cn .GuildHeader-title{font-family:Arial,Helvetica,"å¾®è½¯é›…é»‘","Microsoft YaHei","Hei SC",sans-serif}
+.GuildHeader-title.ko-kr,.ko-kr .GuildHeader-title{font-family:"Nanum Gothic",Arial,Helvetica,"ë§‘ì€ ê³ ë”•","Malgun Gothic","ì• í”Œì‚°ëŒê³ ë”•ë„¤ì˜¤",AppleSDGothicNeo,"ì• í”Œê³ ë”•",AppleGothic,"ë‹ì›€",Dotum,sans-serif}
+.GuildHeader-title.ru-ru,.ru-ru .GuildHeader-title{font-family:"Futura Demi","Open Sans",Arial,Helvetica,sans-serif}
+.GuildHeader-title.zh-tw,.zh-tw .GuildHeader-title{font-family:Arial,Helvetica,"é»‘é«”-ç¹","Heiti TC","å¾®è»Ÿæ­£é»‘","Microsoft JhengHei","Tei TC",sans-serif}
+@media (min-width:720px){.GuildHeader-title{font-size:1.224rem}
+}
+@media (min-width:1280px){.GuildHeader-title{font-size:1.44rem}
+}
+.GuildHeader-logoArea{display:table-cell;vertical-align:middle;height:100%;display:none}
+@media (min-width:720px){.GuildHeader-logoArea{display:block}
+}
+.GuildHeader-logo.Logo--alliance,.GuildHeader-logo.Logo--horde{margin-right:20px}
+.GuildHeader-nameArea{display:table-cell;vertical-align:middle;height:100%}
+.GuildHeader-name{font-family:"Semplicita Pro","Open Sans",Arial,Helvetica,sans-serif;font-weight:700;font-size:2.2395rem;line-height:1.5em;line-height:1em}
+.GuildHeader-name.zh-cn,.zh-cn .GuildHeader-name{font-family:Arial,Helvetica,"å¾®è½¯é›…é»‘","Microsoft YaHei","Hei SC",sans-serif}
+.GuildHeader-name.ko-kr,.ko-kr .GuildHeader-name{font-family:"Nanum Gothic",Arial,Helvetica,"ë§‘ì€ ê³ ë”•","Malgun Gothic","ì• í”Œì‚°ëŒê³ ë”•ë„¤ì˜¤",AppleSDGothicNeo,"ì• í”Œê³ ë”•",AppleGothic,"ë‹ì›€",Dotum,sans-serif}
+.GuildHeader-name.ru-ru,.ru-ru .GuildHeader-name{font-family:"Futura Demi","Open Sans",Arial,Helvetica,sans-serif}
+.GuildHeader-name.zh-tw,.zh-tw .GuildHeader-name{font-family:Arial,Helvetica,"é»‘é«”-ç¹","Heiti TC","å¾®è»Ÿæ­£é»‘","Microsoft JhengHei","Tei TC",sans-serif}
+@media (min-width:720px){.GuildHeader-name{font-size:2.5381rem}
+}
+@media (min-width:1280px){.GuildHeader-name{font-size:2.986rem}
+}
+.GuildHeader-media{text-transform:uppercase}
+.GuildHeader-media .Media-image{padding-right:4px}
+.GuildHeader-links{display:table;position:relative;font-size:1.296rem;line-height:1.5em;color:#f8b700;margin:-10px}
+@media (min-width:720px){.GuildHeader-links{font-size:1.4688rem}
+}
+@media (min-width:1280px){.GuildHeader-links{font-size:1.728rem}
+}
+.GuildHeader-links>*{display:table-cell;vertical-align:middle;height:100%;padding:10px}
+.GuildHeader-details{font-size:.9rem;line-height:1.5em}
+@media (min-width:720px){.GuildHeader-details{font-size:1.02rem}
+}
+@media (min-width:1280px){.GuildHeader-details{font-size:1.2rem}
+}
+.GuildHeader-detail{display:inline-block}
+.GuildHeader--DEATHKNIGHT .GuildHeader-name{color:#c41e3b}
+.GuildHeader--DEMONHUNTER .GuildHeader-name{color:#a330c9}
+.GuildHeader--DRUID .GuildHeader-name{color:#ff7c0a}
+.GuildHeader--HUNTER .GuildHeader-name{color:#aad372}
+.GuildHeader--MAGE .GuildHeader-name{color:#68ccef}
+.GuildHeader--MONK .GuildHeader-name{color:#00ffba}
+.GuildHeader--PALADIN .GuildHeader-name{color:#f48cba}
+.GuildHeader--PRIEST .GuildHeader-name{color:#f0ebe0}
+.GuildHeader--ROGUE .GuildHeader-name{color:#fff468}
+.GuildHeader--SHAMAN .GuildHeader-name{color:#2359ff}
+.GuildHeader--WARLOCK .GuildHeader-name{color:#9382c9}
+.GuildHeader--WARRIOR .GuildHeader-name{color:#c69b6d}
+.GuildHeader--horizontal{display:table;position:relative}
+.GuildHeader--horizontal .GuildHeader-character{margin-bottom:0}
+.GuildHeader--horizontal .GuildHeader-nameTitle{padding-right:20px;margin-right:20px;border-right:1px solid rgba(255,255,255,.2)}
+
+.Logo--Horde.Logo--smaller {
+	background-image: url('images/Logo-alliance.png');
+	position: relative;
+	width: 77.5px;
+}
+.Logo--Horde {
+	background-image: url('images/Logo-alliance.png');
+	position: relative;
+	width: 232.5px;
+}
+
+.Logo--Alliance.Logo--smaller {
+	background-image: url('images/Logo-alliance.png');
+	position: relative;
+	width: 77.5px;
+}
+.Logo--Alliance {
+	background-image: url('images/Logo-alliance.png');
+	position: relative;
+	width: 232.5px;
+}
+.Logo {
+	background-repeat: no-repeat;
+	background-size: 100%;
+	display: inline-block;
+	max-width: 100%;
+	position: relative;
+	height: 110px;
+	margin: 0 10px;
+}
+.GuildHeader-logo.Logo--alliance, .GuildHeader-logo.Logo--horde {
+	margin-right: 20px;
+}

@@ -1,0 +1,39 @@
+
+<!-- IF GPTYPE eq "" -->
+	<!-- BEGIN groups -->
+	<div class="row cfg-row">
+		<div class="col-md-3 col-sm-2"><strong>{groups.NAME}</strong></div>
+		<div class="col-md-3 col-sm-2">{groups.MEM}</div>
+		<div class="col-md-3 col-sm-2"><a href="{groups.DELURL}">Delete</a> <a class="btn btn-default btn-xs" href="{groups.PERMISS}"><!-- TRANSLATE permissions --></a></div>
+	</div>
+	<!-- END groups -->
+	<br>
+	<a href="{ADDGROUP}">Add Group</a>
+<!-- ENDIF -->
+
+<!-- IF GPTYPE eq "add" -->
+<form name="add" method="post" enctype="multipart/form-data" action="{ADDGROUPF}">
+	<div class="row cfg-row">
+		<div class="col-md-3 col-sm-2">
+			<span class="ui-icon ui-icon-help" style="cursor:help;"></span>
+			<label for="name">Group Name</label>
+		</div>
+		<div class="col-md-3 col-sm-2">
+			<input type="text" name="name" value="" id="name" size="45"/>
+		</div>
+	</div>
+	<div class="row cfg-row">
+		<div class="col-md-3 col-sm-2">
+			<span class="ui-icon ui-icon-help" style="cursor:help;"></span>
+			<label for="desc">Group Description</label>
+			</div>
+		<div class="col-md-3 col-sm-2">
+			<input type="text" name="desc" value="" id="desc" size="45"/>
+		</div>
+	</div>
+	<div class="row cfg-row">
+		<input type="submit" value="Add Group" class="btn btn-default btn-xs" >
+		<input type="hidden" name="process" value="addgroup">
+	</div>
+</form>
+<!-- ENDIF -->

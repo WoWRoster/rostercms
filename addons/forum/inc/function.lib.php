@@ -31,8 +31,10 @@ class forum
 				$forums[$rowb['forum_id']] = array(
 					'title'		=> $rowb['title'],
 					'forumid'	=> $rowb['forum_id'],
+					'parent_id'	=> $rowb['parent_id'],
 					'locked'	=> $rowb['locked'],
 					'access'	=> $rowb['access'],
+					'active'	=> $rowb['active'],
 					'access_post'	=> $rowb['access_post'],
 					'forums'	=> array(),
 				);

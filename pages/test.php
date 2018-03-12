@@ -2,7 +2,24 @@
 echo '<div id="main" class="container">';
 
 
-d($roster->locale->wordings);
+$query = "SELECT * FROM `" . $roster->db->table('user_members') . "` WHERE `usr`='ulminia#1676' LIMIT 1;";
+		$result = $roster->db->query($query);
+		//echo (bool)$result;
+		$row = $roster->db->fetch($result);
+d($row);
+
+$q = "SELECT * FROM `" . $roster->db->table('user_members') . "` WHERE `usr`=:usr LIMIT 1";
+          //WHERE id = :id";
+      // Prepare the SQL query
+      $sth = $roster->db->link_id->prepare($q);
+      // Bind parameters to statement variables
+	  $x = 'ulminia#1676';
+      $sth->bindParam(':usr', $x);
+      // Execute statement
+      $sth->execute();
+$sthx = $sth->fetchAll();
+d($sthx);
+//d($roster->locale->wordings);
 /*
 $wherexx = " ";//Where `guild_id` = '" . $roster->data['guild_id'] . "'";
 	$queryxx = "SELECT `level`, `classid`, `guild_title` FROM `" . $roster->db->table('members') . "`"

@@ -1,0 +1,4757 @@
+{
+	"1": [{
+		"range": "",
+		"name": "Level 98",
+		"id": "",
+		"next": [{
+			"range": "98 - 110",
+			"name": "An Important Mission",
+			"name1": "A Desperate Plea",
+			"id": 42814,
+			"id1": 41052
+		},
+		{
+			"range": "98 - 110",
+			"name": "Return to the Broken Shore",
+			"id": 38904
+		},
+		{
+			"range": "98 - 110",
+			"name": "Odyn and the Valarjar",
+			"id": 39654
+		},
+		{
+			"range": "98 - 110",
+			"name": "Weapons of Legend",
+			"id": 40408
+		},
+		{
+			"range": "",
+			"name": "Acquire the chosen artifact:",
+			"id": "",
+			"next": [{
+				"range": "",
+				"name": "Arms ( Strom'kar, the Warbreaker)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "The Sword of Kings",
+					"id": 41105
+				}]
+			},
+			{
+				"range": "",
+				"name": "Fury ( Odyn's Fury and Helya's Wrath)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "The Hunter of Heroes",
+					"id": 40043
+				}]
+			},
+			{
+				"range": "",
+				"name": "Protection ( Scale of the Earth-Warder and Scaleshard)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "Legacy of the Icebreaker",
+					"id": 39191
+				}]
+			}]
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Forgening",
+			"id": 39530
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Forge of Odyn",
+			"id": 39192
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Eye of Odyn",
+			"id": 39214
+		},
+		{
+			"range": "98 - 110",
+			"name": "Thus Begins the War",
+			"id": 40585
+		},
+		{
+			"range": "98 - 110",
+			"name": "Secrets of the Axes",
+			"id": 43643
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 101",
+		"id": "",
+		"next": [{
+			"range": "101 - 110",
+			"name": "Odyn's Summons",
+			"id": 42597
+		},
+		{
+			"range": "",
+			"name": "Complete all of the following:",
+			"id": "",
+			"next": [{
+				"range": "101 - 110",
+				"name": "Champions of Skyhold",
+				"id": 42598,
+				"next": [{
+					"range": "101 - 110",
+					"name": "Champion: Finna Bjornsdottir",
+					"id": 42606
+				},
+				{
+					"range": "101 - 110",
+					"name": "Champion: Ragnvald Drakeborn",
+					"id": 42605
+				}]
+			}]
+		},
+		{
+			"range": "101 - 110",
+			"name": "Captain Stahlstrom",
+			"id": 42607,
+			"next": [{
+				"range": "",
+				"name": "Captain Stahlstrom",
+				"id": 42607
+			}]
+		},
+		{
+			"range": "101 - 110",
+			"name": "Recruiting the Troops",
+			"id": 42609
+		},
+		{
+			"range": "101 - 110",
+			"name": "Troops in the Field",
+			"id": 42610,
+			"next": [{
+				"range": "",
+				"name": "Troops in the Field",
+				"id": 42610
+			}]
+		},
+		{
+			"range": "101 - 110",
+			"name": "Einar the Runecaster",
+			"id": 42611
+		},
+		{
+			"range": "101 - 110",
+			"name": "The Call of Battle",
+			"id": 43750
+		},
+		{
+			"range": "101 - 110",
+			"name": "The Gjallarhorn",
+			"id": 42193
+		},
+		{
+			"range": "101 - 110",
+			"name": "Stolen Honor",
+			"id": 42194
+		},
+		{
+			"range": "101 - 110",
+			"name": "Break the Bonds",
+			"id": 42650
+		},
+		{
+			"range": "101 - 110",
+			"name": "Svergan's Promise",
+			"id": 42651
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "101 - 110",
+				"name": "On the Trail of the Great Worm",
+				"id": 42107,
+				"next": [{
+					"range": "",
+					"name": "On the Trail of the Great Worm",
+					"id": 42107
+				}]
+			},
+			{
+				"range": "101 - 110",
+				"name": "Champion: Svergan Stormcloak",
+				"id": 42614
+			}]
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 102",
+		"id": "",
+		"next": {
+			"0": {
+				"range": "102 - 110",
+				"name": "More Weapons of Legend",
+				"id": 43949
+			},
+			"2": {
+				"range": "102 - 110",
+				"name": "One More Legend",
+				"id": 44417
+			}
+		}
+	},
+	{
+		"range": "",
+		"name": "Level 103",
+		"id": "",
+		"next": [{
+			"range": "103 - 110",
+			"name": "To the Summit!",
+			"id": 42110
+		},
+		{
+			"range": "103 - 110",
+			"name": "Revenge, Served Cold",
+			"id": 42202
+		},
+		{
+			"range": "103 - 110",
+			"name": "Jorhuttam",
+			"id": 42204
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Preparing for War",
+				"id": 43585,
+				"next": [{
+					"range": "",
+					"name": "Aiding the Valkyra",
+					"id": 1378
+				},
+				{
+					"range": "",
+					"name": "Lost at Sea",
+					"id": 1379
+				},
+				{
+					"range": "",
+					"name": "Enslaved by Sea Giants",
+					"id": 1380
+				}]
+			},
+			{
+				"range": "103 - 110",
+				"name": "Recruiting Shieldmaidens",
+				"id": 43975
+			}]
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 110",
+		"id": "",
+		"next": [{
+			"range": "110",
+			"name": "Axe and You Shall Receive",
+			"id": 44255
+		},
+		{
+			"range": "110",
+			"name": "Hitting the Books",
+			"id": 43888
+		},
+		{
+			"range": "110",
+			"name": "Champion Armaments",
+			"id": 44221
+		},
+		{
+			"range": "110",
+			"name": "The Might of the Val'kyr",
+			"id": 44222
+		},
+		{
+			"range": "110D",
+			"name": "Maw of Souls: Message to Helya",
+			"id": 43586,
+			"next": [{
+				"range": "110",
+				"name": "Maw of Souls: Ymiron's Broken Blade",
+				"id": 43604
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Ulduar's Oath",
+			"id": 43090,
+			"next": [{
+				"range": "110",
+				"name": "Champion: Thorim",
+				"id": 42618
+			},
+			{
+				"range": "110",
+				"name": "Champion: Dvalen Ironrune",
+				"id": 42616
+			}]
+		},
+		{
+			"range": "",
+			"name": "Complete all of the following:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Demonic Runes",
+				"id": 42918,
+				"next": [{
+					"range": "110D",
+					"name": "Black Rook Hold: Greater Power",
+					"id": 43506
+				}]
+			},
+			{
+				"range": "110",
+				"name": "Will of the Valarjar",
+				"id": 44667
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Capturing the Gateway",
+			"id": 43577,
+			"next": [{
+				"range": "",
+				"name": "Investigate Felsoul Hold",
+				"id": 1283
+			},
+			{
+				"range": "",
+				"name": "Preparing Our Arrival",
+				"id": 1390
+			},
+			{
+				"range": "",
+				"name": "Last Chance",
+				"id": 1391
+			}]
+		},
+		{
+			"range": "110",
+			"name": "The Fate of Hodir",
+			"id": 42974,
+			"next": [{
+				"range": "110",
+				"name": "Champion: Hodir",
+				"id": 42619
+			}]
+		},
+		{
+			"range": "110",
+			"name": "A Hero's Weapon",
+			"id": 43425
+		}]
+	}],
+	"2": [{
+		"range": "",
+		"name": "Level 98",
+		"id": "",
+		"next": [{
+			"range": "98 - 110",
+			"name": "An Urgent Gathering",
+			"id": 38710
+		},
+		{
+			"range": "98 - 110",
+			"name": "Weapons of Legend",
+			"id": 40408
+		},
+		{
+			"range": "",
+			"name": "Acquire the chosen artifact:",
+			"id": "",
+			"next": [{
+				"range": "",
+				"name": "Holy ( The Silver Hand)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "The Mysterious Paladin",
+					"id": 42231
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Brother's Trail",
+					"id": 42377
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Silver Hand",
+					"id": 42120
+				}]
+			},
+			{
+				"range": "",
+				"name": "Protection ( Truthguard)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "Seeker of Truth",
+					"id": 42000
+				},
+				{
+					"range": "98 - 110",
+					"name": "To Northrend",
+					"id": 42002
+				},
+				{
+					"range": "98 - 110",
+					"name": "The End of the Saga",
+					"id": 42005
+				},
+				{
+					"range": "98 - 110",
+					"name": "Shrine of the Truthguard",
+					"id": 42017
+				}]
+			},
+			{
+				"range": "",
+				"name": "Retribution ( Ashbringer)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "Seeking Guidance",
+					"id": 42770
+				},
+				{
+					"range": "98 - 110",
+					"name": "Sacred Ground",
+					"id1": "",
+					"name1": "Keeping the Peace",
+					"id": ""
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Light Reveals",
+					"id": 42773
+				},
+				{
+					"range": "98 - 110",
+					"name": "Hope Prevails",
+					"id": 42774
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Search for the Highlord",
+					"id": 38376
+				}]
+			}]
+		},
+		{
+			"range": "98 - 110",
+			"name": "We Meet at Light's Hope",
+			"id": 38576
+		},
+		{
+			"range": "98 - 110",
+			"name": "A United Force",
+			"id": 38566
+		},
+		{
+			"range": "98 - 110",
+			"name": "Forging New Strength",
+			"id": 39722
+		},
+		{
+			"range": "98 - 110",
+			"name": "Logistical Matters",
+			"id": 38933
+		},
+		{
+			"range": "98 - 110",
+			"name": "A Sound Plan",
+			"id": 39756
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 101",
+		"id": "",
+		"next": [{
+			"range": "101 - 110",
+			"name": "Growing Power",
+			"id": 42844
+		},
+		{
+			"range": "101 - 110",
+			"name": "Rise, Champions",
+			"id": 39696
+		},
+		{
+			"range": "101 - 110",
+			"name": "The Blood Matriarch",
+			"id": 42846,
+			"next": [{
+				"range": "101 - 110",
+				"name": "Champion: Lady Liadrin",
+				"id": 42881
+			}]
+		},
+		{
+			"range": "101 - 110",
+			"name": "Dark Storms",
+			"id": 42847
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "101 - 110",
+				"name": "A Sign From The Sky",
+				"id": 42866,
+				"next": [{
+					"range": "100 - 110",
+					"name": "A Falling Star",
+					"id": 44009,
+					"next": [{
+						"range": "101 - 110",
+						"name": "Meeting of the Silver Hand",
+						"id": 42867,
+						"next": [{
+							"range": "101 - 110",
+							"name": "The Scion's Legacy",
+							"id": 42919,
+							"next": [{
+								"range": "",
+								"name": "The Highlord's Command",
+								"id": 42885
+							}]
+						}]
+					}]
+				}]
+			},
+			{
+				"range": "101 - 110",
+				"name": "Recruiting the Troops",
+				"id": 42848,
+				"next": [{
+					"range": "101 - 110",
+					"name": "Wrath and Justice",
+					"id": 42849,
+					"next": [{
+						"range": "101 - 110",
+						"name": "Tech It Up a Notch",
+						"id": 42850
+					}]
+				}]
+			}]
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 103",
+		"id": "",
+		"next": [{
+			"range": "103 - 110",
+			"name": "To Faronaar",
+			"id": 42886
+		},
+		{
+			"range": "103 - 110",
+			"name": "This Is Retribution",
+			"id": 42887
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Communication Orbs",
+				"id": 42888
+			},
+			{
+				"range": "103 - 110",
+				"name": "Mother Ozram",
+				"id": 43462
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "The Codex of Command",
+			"id": 42890
+		},
+		{
+			"range": "103 - 110",
+			"name": "Silver Hand Knights",
+			"id": 43494
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Champion: Justicar Julia Celeste",
+				"id": 42852
+			},
+			{
+				"range": "103 - 110",
+				"name": "Champion: Vindicator Boros",
+				"id": 42851
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "Cracking the Codex",
+			"id": 43486
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110D",
+				"name": "Assault on Violet Hold: The Fel Lexicon",
+				"id": 43487
+			},
+			{
+				"range": "103 - 110",
+				"name": "Blood of Our Enemy",
+				"id": 43488
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "Translation: Danger!",
+			"id": 43535
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 110",
+		"id": "",
+		"next": [{
+			"range": "110D",
+			"name": "Black Rook Hold: Lord Ravencrest",
+			"id": 43493
+		},
+		{
+			"range": "110",
+			"name": "To Felblaze Ingress",
+			"id": 43489
+		},
+		{
+			"range": "110",
+			"name": "Aponi's Trail",
+			"id": 43490
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Allies of the Light",
+				"id": 43491
+			},
+			{
+				"range": "110",
+				"name": "The Mind of the Enemy",
+				"id": 43540
+			}]
+		},
+		{
+			"range": "110",
+			"name": "United As One",
+			"id": 43541
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Champion: Aponi Brightmane",
+				"id": 43492
+			},
+			{
+				"range": "110",
+				"name": "A New Path",
+				"id": 43934,
+				"next": [{
+					"range": "110",
+					"name": "Champion: Delas Moonfang",
+					"id": 43933
+				}]
+			}]
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Defenders of the World",
+				"id": 43699
+			},
+			{
+				"range": "110",
+				"name": "Lumenstone",
+				"id": 43698
+			},
+			{
+				"range": "110",
+				"name": "Blood of Sargeras",
+				"id": 43534
+			}]
+		},
+		{
+			"range": "110",
+			"name": "A Light in the Darkness",
+			"id": 43700
+		},
+		{
+			"range": "110",
+			"name": "Warriors of Light",
+			"id": 43697,
+			"next": [{
+				"range": "110",
+				"name": "A Hero's Weapon",
+				"id": 43424
+			},
+			{
+				"range": "110",
+				"name": "Champion: Arator the Redeemer",
+				"id": 43785
+			},
+			{
+				"range": "110",
+				"name": "Champion: Lothraxion",
+				"id": 43701
+			}]
+		}]
+	}],
+	"3": [{
+		"range": "",
+		"name": "Level 98+",
+		"id": "",
+		"next": [{
+			"range": "98 - 110",
+			"name": "Needs of the Hunters",
+			"id": 40384
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Hunter's Call",
+			"id": 41415
+		},
+		{
+			"range": "98 - 110",
+			"name": "Weapons of Legend",
+			"id": 40618
+		},
+		{
+			"range": "",
+			"name": "Acquire the chosen artifact:",
+			"id": "",
+			"next": [{
+				"range": "",
+				"name": "Beast Mastery ( Titanstrike )",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "A Beastly Expedition",
+					"id": 41541
+				},
+				{
+					"range": "98 - 110",
+					"name": "Stolen Thunder",
+					"id": 41574
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Creator's Workshop",
+					"id": 42158
+				},
+				{
+					"range": "98 - 110",
+					"name": "Never Hunt Alone",
+					"id": 42185
+				},
+				{
+					"range": "98 - 110",
+					"name": "Hunter to Hunter",
+					"id": 41009
+				}]
+			},
+			{
+				"range": "",
+				"name": "Marksmanship ( Thas'dorah, Legacy of the Windrunners )",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "Rendezvous with the Courier",
+					"id": 41540
+				},
+				{
+					"range": "98 - 110",
+					"name": "Call of the Marksman",
+					"id": 40392
+				},
+				{
+					"range": "98 - 110",
+					"name": "Clandestine Operation",
+					"id": 40400
+				},
+				{
+					"range": "98 - 110",
+					"name": "Rescue Mission",
+					"id": 40419
+				},
+				{
+					"range": "98 - 110",
+					"name": "Hunter to Hunter",
+					"id": 40952
+				}]
+			},
+			{
+				"range": "",
+				"name": "Survival ( Talonclaw )",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "Preparation for the Hunt",
+					"id": 41542
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Eagle Spirit's Blessing",
+					"id": 39427
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Spear in the Shadow",
+					"id": 40385
+				},
+				{
+					"range": "98 - 110",
+					"name": "Hunter to Hunter",
+					"id": 41008
+				}]
+			}]
+		},
+		{
+			"range": "98 - 110",
+			"name": "On Eagle's Wings",
+			"id": 40953
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Unseen Path",
+			"id": 40954
+		},
+		{
+			"range": "98 - 110",
+			"name": "Oath of Service",
+			"id": 40955
+		},
+		{
+			"range": "98 - 110",
+			"name": "Altar of the Eternal Hunt",
+			"id": 41053
+		},
+		{
+			"range": "98 - 110",
+			"name": "Infused with Power",
+			"id": 41047
+		},
+		{
+			"range": "98 - 110",
+			"name": "Tactical Matters",
+			"id": 40958
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Campaign Begins",
+			"id": 40959
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 101",
+		"id": "",
+		"next": [{
+			"range": "101 - 110",
+			"name": "Pledge of Loyalty",
+			"id": 44090,
+			"next": [{
+				"range": "101 - 110",
+				"name": "Champion: Loren Stormhoof",
+				"id": 42409
+			},
+			{
+				"range": "101 - 110",
+				"name": "A Strong Right Hand",
+				"id": 40957
+			}]
+		},
+		{
+			"range": "101 - 110",
+			"name": "Making Contact",
+			"id": 42523
+		},
+		{
+			"range": "101 - 110",
+			"name": "Recruiting The Troops",
+			"id": 42524
+		},
+		{
+			"range": "101 - 110",
+			"name": "Troops in the Field",
+			"id": 42525
+		},
+		{
+			"range": "101 - 110",
+			"name": "Tech It Up A Notch",
+			"id": 42526
+		},
+		{
+			"range": "101 - 110",
+			"name": "Scouting Reports",
+			"id": 42384
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 102",
+		"id": "",
+		"next": [{
+			"range": "102 - 110",
+			"name": "Continuing the Legend",
+			"id": 44043
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 103",
+		"id": "",
+		"next": [{
+			"range": "103 - 110",
+			"name": "Recruiting More Troops",
+			"id": 42134
+		},
+		{
+			"range": "103 - 110",
+			"name": "Lending a Hand",
+			"id": 42385
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Rising Troubles",
+				"id": 42386
+			},
+			{
+				"range": "103 - 110",
+				"name": "Assassin Entrapment",
+				"id": 42387
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "Urgent Summons",
+			"id": 42388
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Recruiting Rexxar",
+				"id": 42390,
+				"next": [{
+					"range": "103 - 110",
+					"name": "Survival Skills",
+					"id": 43335,
+					"next": [{
+						"range": "103 - 110",
+						"name": "Survive the Night",
+						"id": 42392,
+						"next": [{
+							"range": "103 - 110",
+							"name": "Champion: Rexxar",
+							"id": 42410
+						}]
+					}]
+				}]
+			},
+			{
+				"range": "103 - 110",
+				"name": "Calling Hilaire Home",
+				"id": 42389,
+				"next": [{
+					"range": "103 - 110",
+					"name": "Bite of the Beast",
+					"id": 42391,
+					"next": [{
+						"range": "103 - 110",
+						"name": "Champion: Beastmaster Hilaire",
+						"id": 42411
+					}]
+				}]
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "Homecoming",
+			"id": 42393
+		},
+		{
+			"range": "103 - 110",
+			"name": "Signaling Trouble",
+			"id": 42395
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Unseen Protection",
+				"id": 42394
+			},
+			{
+				"range": "103 - 110",
+				"name": "Aiding Our Allies",
+				"id": 42436,
+				"next": [{
+					"range": "",
+					"name": "Repeatable quests:",
+					"id": "",
+					"next": [{
+						"range": "103 - 110",
+						"name": "Big Gamy Ribs",
+						"id": 42930
+					},
+					{
+						"range": "103 - 110",
+						"name": "Highmountain Salmon",
+						"id": 42929
+					},
+					{
+						"range": "103 - 110",
+						"name": "Silkweave Bandages",
+						"id": 42928
+					}]
+				}]
+			}]
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 110",
+		"id": "",
+		"next": [{
+			"range": "110",
+			"name": "Highmountain Hunters",
+			"id": 42403
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Champion: Hemet Nesingwary",
+				"id": 42413
+			},
+			{
+				"range": "110",
+				"name": "Champion: Addie Fizzlebog",
+				"id": 42414
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Baron and the Huntsman",
+			"id": 42397,
+			"next": [{
+				"range": "110",
+				"name": "Awakening the Senses",
+				"id": 42398,
+				"next": [{
+					"range": "110",
+					"name": "Champion: Huntsman Blake",
+					"id": 42412,
+					"next": [{
+						"range": "110",
+						"name": "Ready to Work",
+						"id": 42399
+					}]
+				}]
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Missing Mages",
+			"id": 42400
+		},
+		{
+			"range": "110",
+			"name": "The Scent of Magic",
+			"id": 42401
+		},
+		{
+			"range": "110",
+			"name": "Assisting the Archmage",
+			"id": 42404
+		},
+		{
+			"range": "110",
+			"name": "Knowing Our Enemy",
+			"id": 42689
+		},
+		{
+			"range": "110",
+			"name": "Leyworm Lure",
+			"id": 42691
+		},
+		{
+			"range": "110",
+			"name": "To Tame the Beast",
+			"id": 42406
+		},
+		{
+			"range": "110",
+			"name": "The Nature of the Beast",
+			"id": 42407
+		},
+		{
+			"range": "110",
+			"name": "Requesting Reinforcements",
+			"id": 42402
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Informing Our Allies",
+				"id": 42405,
+				"next": [{
+					"range": "110",
+					"name": "The Missing Vessel",
+					"id": 43182
+				},
+				{
+					"range": "110",
+					"name": "Required Reagents",
+					"id": 42408
+				},
+				{
+					"range": "110",
+					"name": "Ore Under the Sea",
+					"id": 42655
+				},
+				{
+					"range": "110D",
+					"name": "Darkheart Thicket: Nightmare Oak",
+					"id": 42654,
+					"next": [{
+						"range": "110",
+						"name": "Azure Weaponry",
+						"id": 42656,
+						"next": [{
+							"range": "110",
+							"name": "Meeting in Moonclaw Vale",
+							"id": 42657,
+							"next": [{
+								"range": "110",
+								"name": "Delicate Enchantments",
+								"id": 42658,
+								"next": [{
+									"range": "110",
+									"name": "Same Day Delivery",
+									"id": 42133
+								}]
+							}]
+						}]
+					}]
+				}]
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Leading By Example",
+			"id": 44680
+		},
+		{
+			"range": "110",
+			"name": "In Defense of Dalaran",
+			"id": 42659
+		},
+		{
+			"range": "110",
+			"name": "Champion: Halduron Brightwing",
+			"id": 42415
+		},
+		{
+			"range": "100",
+			"name": "A Hero's Weapon",
+			"id": 43423
+		}]
+	}],
+	"4": [{
+		"range": "",
+		"name": "Level 98",
+		"id": "",
+		"next": [{
+			"range": "98 - 110",
+			"name": "Call of The Uncrowned",
+			"id": 40832
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Final Shadow",
+			"id": 40839
+		},
+		{
+			"range": "98 - 110",
+			"name": "A Worthy Blade",
+			"id": 40840
+		},
+		{
+			"range": "",
+			"name": "Acquire the chosen artifact:",
+			"id": "",
+			"next": [{
+				"range": "",
+				"name": "Assassination (The Kingslayers: Anguish and Sorrow)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "Finishing the Job",
+					"name1": "No Sanctuary",
+					"id": 42501,
+					"id1": 42502
+				},
+				{
+					"range": "98 - 110",
+					"name": "Codebreaker",
+					"id": 42503
+				},
+				{
+					"range": "98 - 110",
+					"name": "Cloak and Dagger",
+					"id": 42539
+				},
+				{
+					"range": "98 - 110",
+					"name": "Preparation",
+					"id": 42568
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Unseen Blade",
+					"id": 42504
+				}]
+			},
+			{
+				"range": "",
+				"name": "Outlaw (The Dreadblades: Fate and Fortune)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "A Friendly Accord",
+					"id": 40847
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Dreadblades",
+					"id": 40849
+				}]
+			},
+			{
+				"range": "",
+				"name": "Subtlety (Fangs of the Devourer: Gorefang and Akaari's Will)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "The Shadows Reveal",
+					"id": 41919
+				},
+				{
+					"range": "98 - 110",
+					"name": "A Matter of Finesse",
+					"id": 41920
+				},
+				{
+					"range": "98 - 110",
+					"name": "Closing In",
+					"id": 41921
+				},
+				{
+					"range": "98 - 110",
+					"name": "Traitor!",
+					"id": 41922
+				},
+				{
+					"range": "98 - 110",
+					"name": "Fangs of the Devourer",
+					"id": 41924
+				}]
+			}]
+		},
+		{
+			"range": "98 - 110",
+			"name": "Honoring Success",
+			"id": 40950
+		},
+		{
+			"range": "98 - 110",
+			"name": "Right Tools for the Job",
+			"id": 40994
+		},
+		{
+			"range": "98 - 110",
+			"name": "Injection of Power",
+			"id": 40995
+		},
+		{
+			"range": "98 - 110",
+			"name": "Delegation",
+			"id": 40996
+		},
+		{
+			"range": "98 - 110",
+			"name": "Lethal Efficiency",
+			"id": 40997
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 101",
+		"id": "",
+		"next": [{
+			"range": "101 - 110",
+			"name": "Return to the Chamber of Shadows",
+			"id": 43007
+		},
+		{
+			"range": "",
+			"name": "Complete all of the following:",
+			"id": "",
+			"next": [{
+				"range": "101 - 110",
+				"name": "Rise, Champions",
+				"id": 42139,
+				"next": [{
+					"range": "101 - 110",
+					"name": "Champion: Garona Halforcen",
+					"id": 43262
+				},
+				{
+					"range": "101 - 110",
+					"name": "Champion: Vanessa VanCleef",
+					"id": 43261
+				}]
+			}]
+		},
+		{
+			"range": "101 - 110",
+			"name": "A More Wretched Hive of Scum and Villainy",
+			"id": 42140
+		},
+		{
+			"range": "101 - 110",
+			"name": "The School of Roguery",
+			"id": 43013
+		},
+		{
+			"range": "101 - 110",
+			"name": "The Big Bad Wolfe",
+			"id": 43014
+		},
+		{
+			"range": "101 - 110",
+			"name": "What Winstone Suggests",
+			"id": 43015
+		},
+		{
+			"range": "101 - 110",
+			"name": "A Body of Evidence",
+			"id": 43958
+		},
+		{
+			"range": "101 - 110",
+			"name": "Spy vs. Spy",
+			"id": 43829
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 102",
+		"id": "",
+		"next": [{
+			"range": "102 - 110",
+			"name": "Another Worthy Blade",
+			"id": 44034
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 103",
+		"id": "",
+		"next": [{
+			"range": "103 - 110",
+			"name": "The Bloody Truth",
+			"id": 44041
+		},
+		{
+			"range": "103 - 110",
+			"name": "Mystery at Citrine Bay",
+			"id": 44116
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Searching For Clues",
+				"id": 44155
+			},
+			{
+				"range": "103 - 110",
+				"name": "Time Flies When Yer Havin' Rum!",
+				"id": 44117
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "Dark Secrets and Shady Deals",
+			"id": 44177,
+			"next": [{
+				"range": "103 - 110",
+				"name": "Champion: Lord Jorach Ravenholdt",
+				"id": 44183
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "Convincin' Old Yancey",
+			"id": 43841
+		},
+		{
+			"range": "103 - 110",
+			"name": "Fancy Lads and Buccaneers",
+			"id": 43852
+		},
+		{
+			"range": "103 - 110",
+			"name": "Champion: Fleet Admiral Tethys",
+			"id": 44181
+		},
+		{
+			"range": "",
+			"name": "Complete all of the following:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Throwing SI:7 Off the Trail",
+				"id": 42684
+			},
+			{
+				"range": "103 - 110",
+				"name": "Blood for the Wolfe",
+				"id": 43468
+			},
+			{
+				"range": "103 - 110",
+				"name": "Noggenfogger's Reasonable Request",
+				"id": 42730,
+				"next": [{
+					"range": "103 - 110",
+					"name": "A Particularly Potent Potion",
+					"id": 44178,
+					"next": [{
+						"range": "103 - 110",
+						"name": "Champion: Marin Noggenfogger",
+						"id": 44180
+					}]
+				}]
+			}]
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 110",
+		"id": "",
+		"next": [{
+			"range": "110D",
+			"name": "Maw of Souls: Ancient Vrykul Legends",
+			"id": 43253
+		},
+		{
+			"range": "110",
+			"name": "The Raven's Eye",
+			"id": 43249
+		},
+		{
+			"range": "110",
+			"name": "Off to Court",
+			"id": 43250
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "In Search of the Eye",
+				"id": 43251
+			},
+			{
+				"range": "110",
+				"name": "Eternal Unrest",
+				"id": 43252
+			}]
+		},
+		{
+			"range": "110D",
+			"name": "Black Rook Hold: Into Black Rook Hold",
+			"id": 42678
+		},
+		{
+			"range": "110",
+			"name": "Deciphering the Letter",
+			"id": 42680,
+			"next": [{
+				"range": "110",
+				"name": "Champion: Valeera Sanguinar",
+				"id": 42800
+			}]
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Where In the World is Mathias?",
+				"id": 43469
+			},
+			{
+				"range": "110",
+				"name": "Pruning the Garden",
+				"id": 43470
+			}]
+		},
+		{
+			"range": "110G",
+			"name": "The World is Not Enough",
+			"id": 43479
+		},
+		{
+			"range": "110",
+			"name": "A Burning Distraction",
+			"id": 43485
+		},
+		{
+			"range": "110",
+			"name": "The Captive Spymaster",
+			"id": 43508
+		},
+		{
+			"range": "110",
+			"name": "Picking a Fight",
+			"id": 37666
+		},
+		{
+			"range": "110",
+			"name": "A Simple Plan",
+			"id": 37448
+		},
+		{
+			"range": "110",
+			"name": "Under Cover of Darkness",
+			"id": 37494
+		},
+		{
+			"range": "110",
+			"name": "The Imposter",
+			"id": 37689
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Champion: Taoshi",
+				"id": 43723
+			},
+			{
+				"range": "110",
+				"name": "Champion: Master Mathias Shaw",
+				"id": 43724
+			}]
+		},
+		{
+			"range": "110",
+			"name": "One More Thing...",
+			"id": 44214
+		},
+		{
+			"range": "110",
+			"name": "A Hero's Weapon",
+			"id": 43422
+		}]
+	}],
+	"5": [{
+		"range": "",
+		"name": "Level 98",
+		"id": "",
+		"next": [{
+			"range": "98 - 110",
+			"name": "Priestly Matters",
+			"id": 40705
+		},
+		{
+			"range": "98 - 110",
+			"name": "A Legend You Can Hold",
+			"id": 40706
+		},
+		{
+			"range": "",
+			"name": "Acquire the chosen artifact:",
+			"id": "",
+			"next": [{
+				"range": "",
+				"name": "Discipline ( Light's Wrath)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "The Light's Wrath",
+					"id": 41625
+				},
+				{
+					"range": "98 - 110",
+					"name": "A New Threat",
+					"id": 41626
+				},
+				{
+					"range": "98 - 110",
+					"name": "A Forgotten Enemy",
+					"id": 41627
+				},
+				{
+					"range": "98 - 110",
+					"name": "Eyes of the Dragon",
+					"id": 41628
+				},
+				{
+					"range": "98 - 110",
+					"name": "Harnessing the Holy Fire",
+					"id": 41629
+				},
+				{
+					"range": "98 - 110",
+					"name": "Unleashing Judgment",
+					"id": 41630
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Nexus Vault",
+					"id": 41631
+				},
+				{
+					"range": "98 - 110",
+					"name": "A Gift of Time",
+					"id": 41632
+				}]
+			},
+			{
+				"range": "",
+				"name": "Holy ( T'uure, Beacon of the Naaru)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "The Vindicator's Plea",
+					"id": 41957
+				},
+				{
+					"range": "98 - 110",
+					"name": "House Call",
+					"id": 41966
+				},
+				{
+					"range": "98 - 110",
+					"name": "Out of the Darkness",
+					"id": 41967
+				},
+				{
+					"range": "98 - 110",
+					"name": "Salvation From On High",
+					"id": 41993
+				},
+				{
+					"range": "98 - 110",
+					"name": "Return of the Light",
+					"id": 42074
+				}]
+			},
+			{
+				"range": "",
+				"name": "Shadow ( Xal'atath, Blade of the Black Empire)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "Blade in Twilight",
+					"id": 40710
+				}]
+			}]
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Light and the Void",
+			"id": 40938
+		},
+		{
+			"range": "98 - 110",
+			"name": "Artifacts Need Artificers",
+			"id": 41015
+		},
+		{
+			"range": "98 - 110",
+			"name": "Empowering Your Artifact",
+			"id": 41017
+		},
+		{
+			"range": "98 - 110",
+			"name": "Actions on Azeroth",
+			"id": 41019
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 101",
+		"id": "",
+		"next": [{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "101 - 110",
+				"name": "Rise, Champions",
+				"id": 43270,
+				"next": [{
+					"range": "101 - 110",
+					"name": "Champion: Calia Menethil",
+					"id": 43271
+				},
+				{
+					"range": "101 - 110",
+					"name": "Champion: High Priestess Ishanah",
+					"id": 43272
+				}]
+			}]
+		},
+		{
+			"range": "101 - 110",
+			"name": "Spread the Word",
+			"id": 43273
+		},
+		{
+			"range": "101 - 110",
+			"name": "Recruiting the Troops",
+			"id": 43275
+		},
+		{
+			"range": "101 - 110",
+			"name": "Troops in the Field",
+			"id": 43276
+		},
+		{
+			"range": "101 - 110",
+			"name": "Tech It Up A Notch",
+			"id": 43277
+		},
+		{
+			"range": "101 - 110",
+			"name": "Relieving the Front Lines",
+			"id": 43371
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 103",
+		"id": "",
+		"next": [{
+			"range": "103 - 110",
+			"name": "Whispers in the Void",
+			"id": 43372
+		},
+		{
+			"range": "103 - 110",
+			"name": "The Best and Brightest",
+			"id": 43373
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Murloc Mind Control",
+				"id": 43374
+			},
+			{
+				"range": "103 - 110",
+				"name": "An Ample Supply",
+				"id": 43375
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "Problem Salver",
+			"id": 43376
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Champion: Yalia Sagewhisper",
+				"id": 42137
+			},
+			{
+				"range": "103 - 110",
+				"name": "Champion: Zabra Hexx",
+				"id": 42138
+			}]
+		},
+		{
+			"range": "103 - 110D",
+			"name": "Eye of Azshara: Looking Through the Lens",
+			"id": 43378
+		},
+		{
+			"range": "103 - 110",
+			"name": "Velen's Vision",
+			"id": 43379
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110D",
+				"name": "Halls of Valor: The Light Within",
+				"id": 43377
+			},
+			{
+				"range": "103 - 110",
+				"name": "Demonic Runes",
+				"id": 43384
+			},
+			{
+				"range": "103 - 110",
+				"name": "Recruiting More Troops",
+				"id": 43851
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "Awakening the Light",
+			"id": 43383
+		},
+		{
+			"range": "103 - 110",
+			"name": "Champion: Sol",
+			"id": 43380
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 110",
+		"id": "",
+		"next": [{
+			"range": "110",
+			"name": "Infiltrating Our Enemies",
+			"id": 43385
+		},
+		{
+			"range": "110",
+			"name": "Onslaught Envoy",
+			"id": 43386
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Scarlet Redemption",
+				"id": 43387
+			},
+			{
+				"range": "110",
+				"name": "Apostate Liberation",
+				"id": 43388
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Unexpected Guests",
+			"id": 43389
+		},
+		{
+			"range": "110",
+			"name": "Champion: Mariella Ward",
+			"id": 43381
+		},
+		{
+			"range": "110",
+			"name": "Forgotten Shadows",
+			"id": 43390
+		},
+		{
+			"range": "110",
+			"name": "Secrets of the Void",
+			"id": 43391
+		},
+		{
+			"range": "110",
+			"name": "Into the Void",
+			"id": 43392
+		},
+		{
+			"range": "110",
+			"name": "Champion: Natalie Seline",
+			"id": 43382
+		},
+		{
+			"range": "110",
+			"name": "Rising Shadows",
+			"id": 43393
+		},
+		{
+			"range": "110",
+			"name": "Crossing Legion Lines",
+			"id": 43394
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "The Mind of the Enemy",
+				"id": 43396
+			},
+			{
+				"range": "110",
+				"name": "Allies of the Light",
+				"id": 43395
+			}]
+		},
+		{
+			"range": "110",
+			"name": "United As One",
+			"id": 43397
+		},
+		{
+			"range": "110",
+			"name": "Aiding the Conclave",
+			"id": 43797
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Elixirs of Aid",
+				"id": 43832,
+				"next": [{
+					"range": "",
+					"name": "Repeatable quests:",
+					"id": "",
+					"next": [{
+						"range": "110",
+						"name": "Starlight Rose",
+						"id": 43923
+					},
+					{
+						"range": "110",
+						"name": "Runescale Koi",
+						"id": 43925
+					},
+					{
+						"range": "110",
+						"name": "Leyblood",
+						"id": 43924
+					}]
+				}]
+			},
+			{
+				"range": "110",
+				"name": "Fortifying the Temple",
+				"id": 43399
+			},
+			{
+				"range": "110",
+				"name": "Lumenstone",
+				"id": 43400
+			}]
+		},
+		{
+			"range": "110",
+			"name": "A Light in the Darkness",
+			"id": 43401
+		},
+		{
+			"range": "110",
+			"name": "High Priest of Netherlight",
+			"id": 43402
+		},
+		{
+			"range": "110",
+			"name": "Champion: Alonsus Faol",
+			"id": 43420
+		}]
+	}],
+	"6": [{
+		"range": "",
+		"name": "Level 98",
+		"id": "",
+		"next": {
+			"0": {
+				"range": "98 - 110",
+				"name": "The Call to War",
+				"id": ""
+			},
+			"1": {
+				"range": "98 - 110",
+				"name": "A Pact Of Necessity",
+				"id": ""
+			},
+			"3": {
+				"range": "",
+				"name": "Acquire the chosen artifact:",
+				"id": "",
+				"next": [{
+					"range": "",
+					"name": "Blood ( Maw of the Damned)",
+					"id": "",
+					"next": [{
+						"range": "98 - 110",
+						"name": "The Dead and the Damned",
+						"id": 40740
+					}]
+				},
+				{
+					"range": "",
+					"name": "Frost (Blades of the Fallen Prince: Frostreaper and Icebringer)",
+					"id": "",
+					"next": [{
+						"range": "98 - 110",
+						"name": "The Call of Icecrown",
+						"id": 38990
+					}]
+				},
+				{
+					"range": "",
+					"name": "Unholy ( Apocalypse)",
+					"id": "",
+					"next": [{
+						"range": "98 - 110",
+						"name": "Apocalypse",
+						"id": 40930
+					},
+					{
+						"range": "98 - 110",
+						"name": "Following the Curse",
+						"id": 40588
+					},
+					{
+						"range": "98 - 110",
+						"name": "Disturbing the Past",
+						"id": 40604
+					},
+					{
+						"range": "98 - 110",
+						"name": "A Grisly Task",
+						"id": 40933
+					},
+					{
+						"range": "98 - 110",
+						"name": "The Dark Riders",
+						"id": 40623
+					},
+					{
+						"range": "98 - 110",
+						"name": "The Call of Vengeance",
+						"id": 40935
+					}]
+				}]
+			},
+			"4": {
+				"range": "98 - 110",
+				"name": "Keeping Your Edge",
+				"id": 39757
+			},
+			"5": {
+				"range": "98 - 110",
+				"name": "Advanced Runecarving",
+				"id": 39761
+			},
+			"6": {
+				"range": "98 - 110",
+				"name": "Plans and Preparations",
+				"id": 39832
+			},
+			"7": {
+				"range": "98 - 110",
+				"name": "Our Next Move",
+				"id": 39799
+			},
+			"8": {
+				"range": "98 - 110",
+				"name": "Return of the Four Horsemen",
+				"id": 42449
+			},
+			"9": {
+				"range": "98 - 110",
+				"name": "The Firstborn Rises",
+				"id": 42484
+			}
+		}
+	},
+	{
+		"range": "",
+		"name": "Level 101",
+		"id": "",
+		"next": [{
+			"range": "101 - 110",
+			"name": "Called to Acherus",
+			"id": 44550
+		},
+		{
+			"range": "101 - 110",
+			"name": "Rise, Champions",
+			"id": 43264,
+			"next": [{
+				"range": "101 - 110",
+				"name": "Champion: Thassarian",
+				"id": 39816
+			},
+			{
+				"range": "101 - 110",
+				"name": "Champion: Nazgrim",
+				"id": 39818
+			}]
+		},
+		{
+			"range": "101 - 110",
+			"name": "Spread the Word",
+			"id": 43265
+		},
+		{
+			"range": "101 - 110",
+			"name": "Recruiting the Troops",
+			"id": 43266
+		},
+		{
+			"range": "101 - 110",
+			"name": "Troops in the Field",
+			"id": 43267
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "101 - 110",
+				"name": "Tech It Up A Notch",
+				"id": 43268
+			},
+			{
+				"range": "101 - 110",
+				"name": "Salanar the Horseman",
+				"id": 43539
+			}]
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 102",
+		"id": "",
+		"next": [{
+			"range": "100 - 110",
+			"name": "Blades of Destiny",
+			"id": 43962
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 103",
+		"id": "",
+		"next": [{
+			"range": "103 - 110",
+			"name": "The Ruined Kingdom",
+			"id": 42533
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Our Oldest Enemies",
+				"id": 42534
+			},
+			{
+				"range": "103 - 110",
+				"name": "Death... and Decay",
+				"id": 42535
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "Regicide",
+			"id": 42536
+		},
+		{
+			"range": "103 - 110",
+			"name": "The King Rises",
+			"id": 42537,
+			"next": [{
+				"range": "103 - 110",
+				"name": "Champion: Thoras Trollbane",
+				"id": 44243
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "A Personal Request",
+			"id": 42708,
+			"next": [{
+				"range": "103 - 110",
+				"name": "Champion: Koltira Deathweaver",
+				"id": 44244
+			}]
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Steeds of the Damned",
+				"id": 43899,
+				"next": [{
+					"range": "",
+					"name": "Knights of the Ebon Blade",
+					"id": 44082
+				}]
+			},
+			{
+				"range": "103 - 110D",
+				"name": "Neltharion's Lair: Braid of the Underking",
+				"id": 43571,
+				"next": [{
+					"range": "103 - 110D",
+					"name": "Darkheart Thicket: The Nightmare Lash",
+					"id": 43572
+				}]
+			}]
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 110",
+		"id": "",
+		"next": [{
+			"range": "110",
+			"name": "Armor Fit For A Deathlord",
+			"id": 44217
+		},
+		{
+			"range": "110",
+			"name": "The Scarlet Assault",
+			"id": 42818
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "The Scarlet Massacre",
+				"id": 42882
+			},
+			{
+				"range": "110",
+				"name": "Raising an Army",
+				"id": 42821
+			}]
+		},
+		{
+			"range": "110",
+			"name": "The Scarlet Commander",
+			"id": 42823
+		},
+		{
+			"range": "110",
+			"name": "The Zealot Rises",
+			"id": 42824
+		},
+		{
+			"range": "110",
+			"name": "Optional: Champion: High Inquisitor Whitemane",
+			"id": 44245
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Advancing the War Effort",
+				"id": 43573
+			},
+			{
+				"range": "110",
+				"name": "Aggregates of Anguish",
+				"id": 43928
+			},
+			{
+				"range": "110",
+				"name": "A Masterpiece of Flesh",
+				"id": "",
+				"next": [{
+					"range": "110",
+					"name": "Champion: Rottgut",
+					"id": 44246,
+					"next": [{
+						"range": "110",
+						"name": "A Thirst For Blood",
+						"id": 44690
+					}]
+				}]
+			},
+			{
+				"range": "110D",
+				"name": "Maw of Souls: Maul of the Dead",
+				"id": 43574
+			},
+			{
+				"range": "110",
+				"name": "Eye of Azshara: The Frozen Soul",
+				"id": 44282,
+				"next": [{
+					"range": "110",
+					"name": "Champion: Amal'thazad",
+					"id": 44247
+				}]
+			}]
+		},
+		{
+			"range": "110",
+			"name": "The Fourth Horseman",
+			"id": 43686
+		},
+		{
+			"range": "110",
+			"name": "Champion: Darion Mograine",
+			"id": 44248
+		},
+		{
+			"range": "110",
+			"name": "A Hero's Weapon",
+			"id": 43407
+		}]
+	}],
+	"7": [{
+		"range": "",
+		"name": "Level 98",
+		"id": "",
+		"next": [{
+			"range": "100 - 110",
+			"name": "A Ring Unbroken",
+			"id": 39746
+		},
+		{
+			"range": "100 - 110",
+			"name": "The Elements Call...",
+			"id": 41335
+		},
+		{
+			"range": "",
+			"name": "Acquire the chosen artifact:",
+			"id": "",
+			"next": [{
+				"range": "",
+				"name": "Elemental ( The Fist of Ra-den)",
+				"id": "",
+				"next": [{
+					"range": "100 - 110",
+					"name": "The Coming Storm",
+					"id": 43334
+				},
+				{
+					"range": "100 - 110",
+					"name": "The Codex of Ra",
+					"id": 43338
+				},
+				{
+					"range": "100 - 110",
+					"name": "The Voice of Thunder",
+					"id": 39771
+				}]
+			},
+			{
+				"range": "",
+				"name": "Enhancement ( Doomhammer)",
+				"id": "",
+				"next": [{
+					"range": "100 - 110",
+					"name": "Where the Hammer Falls",
+					"id": 42931
+				},
+				{
+					"range": "100 - 110",
+					"name": "What the Stonemother Knows",
+					"id": 42932
+				},
+				{
+					"range": "100 - 110",
+					"name": "The Troggs that Fel to Earth",
+					"name1": "Stone Drake Rescue",
+					"name2": "Clutch Play",
+					"id": 42933,
+					"id1": 42935,
+					"id2": 42936
+				},
+				{
+					"range": "100 - 110",
+					"name": "Needlerock Beatdown",
+					"id": 42937
+				},
+				{
+					"range": "100 - 110",
+					"name": "The Hammer in the Deep",
+					"id": 40224
+				}]
+			},
+			{
+				"range": "",
+				"name": "Restoration ( Sharas'dal, Scepter of Tides)",
+				"id": "",
+				"next": [{
+					"range": "100 - 110",
+					"name": "To the Deeps",
+					"id": 43644
+				},
+				{
+					"range": "100 - 110",
+					"name": "Wavespeaker's Trail",
+					"id": 43645
+				},
+				{
+					"range": "100 - 110",
+					"name": "Throne of the Tides: Azshara's Power",
+					"id": 40341
+				}]
+			}]
+		},
+		{
+			"range": "100 - 110",
+			"name": "A Ring Reforged",
+			"id": 40225
+		},
+		{
+			"range": "100 - 110",
+			"name": "The Maelstrom Beckons",
+			"id": 40276
+		},
+		{
+			"range": "100 - 110",
+			"name": "Azeroth Needs You",
+			"id": 41510
+		}]
+	},
+	{
+		"range": "",
+		"name": "Special",
+		"id": "",
+		"next": [{
+			"range": "110 Daily",
+			"name": "Supply Dropped",
+			"id": 44101
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 101",
+		"id": "",
+		"next": [{
+			"range": "101 - 110",
+			"name": "Call of the Earthen Ring",
+			"id": 44544
+		},
+		{
+			"range": "101 - 110",
+			"name": "Nobundo Awaits",
+			"id": 42188
+		},
+		{
+			"range": "101 - 110",
+			"name": "The Ritual of Tides",
+			"id": 42114
+		},
+		{
+			"range": "101 - 110",
+			"name": "Rise, Champions",
+			"id": 42383
+		},
+		{
+			"range": "101 - 110",
+			"name": "Champion: Stormcaller Mylra",
+			"name1": "Champion: Duke Hydraxis",
+			"id": 42198,
+			"id1": 42197
+		},
+		{
+			"range": "101 - 110",
+			"name": "Summoner Morn",
+			"id": 42141
+		},
+		{
+			"range": "101 - 110",
+			"name": "Recruiting The Troops",
+			"id": 42142
+		},
+		{
+			"range": "101 - 110",
+			"name": "Troops in the Field",
+			"id": 41741
+		},
+		{
+			"range": "101 - 110",
+			"name": "Tech It Up A Notch",
+			"id": 41740
+		},
+		{
+			"range": "101 - 110",
+			"name": "Elemental Diplomacy",
+			"id": ""
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 102",
+		"id": "",
+		"next": [{
+			"range": "102 - 110",
+			"name": "Aggra's Guidance",
+			"id": 44406
+		},
+		{
+			"range": "102 - 110",
+			"name": "Expanding Your Horizons",
+			"id": 43945
+		},
+		{
+			"range": "102 - 110",
+			"name": "Your Fullest Potential",
+			"id": 44006
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 103",
+		"id": "",
+		"next": [{
+			"range": "103 - 110",
+			"name": "Servant of the Windseeker",
+			"id": 42977
+		},
+		{
+			"range": "103 - 110",
+			"name": "Blessed Blade of the Windseeker",
+			"id": 43002
+		},
+		{
+			"range": "103 - 110",
+			"name": "The Skies Above",
+			"id": 41770
+		},
+		{
+			"range": "103 - 110",
+			"name": "Recharging the Blade",
+			"id": 41771
+		},
+		{
+			"range": "103 - 110",
+			"name": "Return of the Windlord",
+			"id": 41776
+		},
+		{
+			"range": "103 - 110",
+			"name": "Oath of the Windlord",
+			"id": 41901
+		},
+		{
+			"range": "103 - 110",
+			"name": "Champion: Celestos",
+			"name1": "Champion: Nobundo",
+			"id": 41742,
+			"id1": 41743
+		},
+		{
+			"range": "103 - 110",
+			"name": "Recruiting Earthcallers",
+			"name1": "Enemies of Air",
+			"name2": "The Maelstrom Pillar: Air",
+			"id": 44465,
+			"id1": 42986,
+			"id2": 42996
+		},
+		{
+			"range": "103 - 110",
+			"name": "Mistral Essence",
+			"id": 42983
+		},
+		{
+			"range": "103 - 110D",
+			"name": "Eye of Azshara: The Scepter of Storms",
+			"id": 42984
+		},
+		{
+			"range": "103 - 110",
+			"name": "Investigating Deepholm",
+			"id": ""
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 110",
+		"id": "",
+		"next": [{
+			"range": "110",
+			"name": "A Vision of Triumph",
+			"id": 44253
+		},
+		{
+			"range": "110",
+			"name": "Speaking to the Wind",
+			"id": ""
+		},
+		{
+			"range": "110",
+			"name": "The Great Stonemother",
+			"id": 41775
+		},
+		{
+			"range": "110",
+			"name": "The Return of Twilight",
+			"id": 42068
+		},
+		{
+			"range": "110",
+			"name": "Destroying the Cult",
+			"name1": "The Master's Plan",
+			"id": 41777,
+			"id1": 41897
+		},
+		{
+			"range": "110",
+			"name": "Unleashing the Elements",
+			"name1": "Held Captive!",
+			"id": 41898,
+			"id1": 41899
+		},
+		{
+			"range": "110",
+			"name": "The Twilight Master",
+			"id": 42065
+		},
+		{
+			"range": "110",
+			"name": "A Promise of Earth",
+			"id": 41900
+		},
+		{
+			"range": "110",
+			"name": "Champions ",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Champion: Muln Earthfury",
+				"id": 41746
+			},
+			{
+				"range": "110",
+				"name": "Champion: Avalanchion",
+				"id": 41747
+			},
+			{
+				"range": "110",
+				"name": "Worldmender",
+				"id": 42988
+			}]
+		},
+		{
+			"range": "",
+			"name": "The Maelstrom Pillar: Earth",
+			"id": 42997,
+			"next": [{
+				"range": "110",
+				"name": "Ma'haat the Indomitable",
+				"id": 42989
+			},
+			{
+				"range": "110",
+				"name": "A Taste For Blood",
+				"id": 42995
+			},
+			{
+				"range": "110",
+				"name": "Return to Janai",
+				"id": 43003
+			},
+			{
+				"range": "110D",
+				"name": "Neltharion's Lair: The Earthen Amulet",
+				"id": 42990
+			}]
+		},
+		{
+			"range": "",
+			"name": "Return to the Firelands",
+			"id": 42208,
+			"next": [{
+				"range": "110",
+				"name": "Ascendant of Flames",
+				"id": 41772
+			},
+			{
+				"range": "110",
+				"name": "The Firelord's Command",
+				"id": 41773
+			},
+			{
+				"range": "110",
+				"name": "The Brand of Damnation",
+				"id": 41934
+			},
+			{
+				"range": "110",
+				"name": "Allegiance of Flame",
+				"id": 41888
+			},
+			{
+				"range": "110",
+				"name": "Champion: Rehgar Earthfury",
+				"name1": "Champion: Scaldius",
+				"id": 41744,
+				"id1": 41745
+			},
+			{
+				"range": "100 - 110",
+				"name": "A Hero's Weapon",
+				"id": 43418
+			}]
+		}]
+	}],
+	"8": [{
+		"range": "",
+		"name": "Level 98",
+		"id": "",
+		"next": [{
+			"range": "98 - 110",
+			"name": "Felstorm's Plea",
+			"id": 41035
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Dreadlord's Prize",
+			"id": 41036
+		},
+		{
+			"range": "98 - 110",
+			"name": "A Mage's Weapon",
+			"id": 41085
+		},
+		{
+			"range": "",
+			"name": "Acquire the chosen artifact:",
+			"id": "",
+			"next": [{
+				"range": "",
+				"name": "Arcane ( Aluneth)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "Aluneth, Greatstaff of the Magna",
+					"id": 42001
+				},
+				{
+					"range": "98 - 110",
+					"name": "A New Threat",
+					"id": 41626
+				},
+				{
+					"range": "98 - 110",
+					"name": "A Forgotten Enemy",
+					"id": 41627
+				},
+				{
+					"range": "98 - 110",
+					"name": "Eyes of the Dragon",
+					"id": 41628
+				},
+				{
+					"range": "98 - 110",
+					"name": "Harnessing the Arcane",
+					"id": 42009
+				},
+				{
+					"range": "98 - 110",
+					"name": "Arcane Unleashed",
+					"id": 42010
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Nexus Vault",
+					"id": 41631
+				}]
+			},
+			{
+				"range": "",
+				"name": "Fire ( Felo'melorn)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "An Unexpected Message",
+					"id": 40267
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Path of Atonement",
+					"id": 40270
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Frozen Flame",
+					"id": 11997
+				}]
+			},
+			{
+				"range": "",
+				"name": "Frost ( Ebonchill)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "Finding Ebonchill",
+					"id": 42452
+				},
+				{
+					"range": "",
+					"name": "Complete all of:",
+					"id": "",
+					"next": [{
+						"range": "98 - 110",
+						"name": "The Deadwind Site",
+						"id": 42476
+					},
+					{
+						"range": "98 - 110",
+						"name": "Daio the Decrepit",
+						"id": 42477
+					},
+					{
+						"range": "98 - 110",
+						"name": "Alodi's Gems",
+						"id": 42455
+					}]
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Mage Hunter",
+					"id": 42479
+				}]
+			}]
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Champion's Return (arcane and fire)",
+			"id": 41114
+		},
+		{
+			"range": "98 - 110",
+			"name": "Unlocked Potential",
+			"id": 41125
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Great Akazamzarak",
+			"id": 41112
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Only Way to Travel",
+			"id": 34971
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Tirisgarde Reborn",
+			"id": 41124
+		},
+		{
+			"range": "98 - 110",
+			"name": "A Conjuror's Duty",
+			"id": 41141
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 101",
+		"id": "",
+		"next": [{
+			"range": "101 - 110",
+			"name": "Growing Power",
+			"id": 42175
+		},
+		{
+			"range": "101 - 110",
+			"name": "Rise, Champions",
+			"id": 42663,
+			"next": [{
+				"range": "101 - 110",
+				"name": "Champion: Archmage Kalec",
+				"id": 42662
+			},
+			{
+				"range": "101 - 110",
+				"name": "Champion: Archmage Modera",
+				"id": 42685
+			}]
+		},
+		{
+			"range": "101 - 110",
+			"name": "Technical Wizardry",
+			"id": 42703
+		},
+		{
+			"range": "101 - 110",
+			"name": "Archmage Omniara",
+			"id": 42126
+		},
+		{
+			"range": "101 - 110",
+			"name": "Building Our Troops",
+			"id": 42127
+		},
+		{
+			"range": "101 - 110",
+			"name": "Troops in the Field",
+			"id": 42687
+		},
+		{
+			"range": "101 - 110",
+			"name": "Tech It Up A Notch",
+			"id": 42696
+		},
+		{
+			"range": "101 - 110",
+			"name": "Ancient Magic",
+			"id": 42433
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 103",
+		"id": "",
+		"next": [{
+			"range": "103 - 110",
+			"name": "An Unexpected Visitor",
+			"id": 42418
+		},
+		{
+			"range": "103 - 110",
+			"name": "A Covert Operation",
+			"id": 42434
+		},
+		{
+			"range": "103 - 110",
+			"name": "Prepare To Be Assimilated",
+			"id": 42435
+		},
+		{
+			"range": "103 - 110",
+			"name": "What Is Going On Here?",
+			"id": 42166
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Some Knowledge Shouldn't Be Shared",
+				"id": 42149
+			},
+			{
+				"range": "103 - 110",
+				"name": "The Next Level Has Arrived",
+				"id": 42206
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "Final Exit",
+			"id": 42171
+		},
+		{
+			"range": "103 - 110",
+			"name": "Empyrean Society Report",
+			"id": 42222
+		},
+		{
+			"range": "",
+			"name": "Side quests:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Champion: Esara Verrinde",
+				"id": 42706
+			},
+			{
+				"range": "103 - 110",
+				"name": "Champion: Ravandwyr",
+				"id": 42705
+			},
+			{
+				"range": "103 - 110",
+				"name": "Recruiting Apprentices",
+				"id": 44098
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "The Council is in Session",
+			"id": 42416
+		},
+		{
+			"range": "103 - 110",
+			"name": "Archmage Vargoth's Retreat",
+			"id": 42423
+		},
+		{
+			"range": "103 - 110",
+			"name": "Following In His Footsteps",
+			"id": 42424
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 110",
+		"id": "",
+		"next": [{
+			"range": "110",
+			"name": "Kalec's Plan",
+			"id": 42451
+		},
+		{
+			"range": "",
+			"name": "Side quests:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "A Small Favor",
+				"id": 42954,
+				"next": [{
+					"range": "110",
+					"name": "The Proper Way of Things",
+					"id": 42955,
+					"next": [{
+						"range": "110",
+						"name": "Ari's Package",
+						"id": 42956,
+						"next": [{
+							"range": "110D",
+							"name": "Three Is a Lucky Number",
+							"id": 42959,
+							"next": [{
+								"range": "110",
+								"name": "Champion: Arcane Destroyer",
+								"id": 42704
+							}]
+						}]
+					}]
+				}]
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Not A Toothless Dragon",
+			"id": 42508
+		},
+		{
+			"range": "110",
+			"name": "The Enemy of My Enemy...",
+			"id": 42521,
+			"next": [{
+				"range": "",
+				"name": "More Than Just A Food Vendor",
+				"id": 42494
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Impending Dooooooom!",
+			"id": 42493
+		},
+		{
+			"range": "110",
+			"name": "A Terrible Loss",
+			"id": 42520,
+			"next": [{
+				"range": "110",
+				"name": "Champion: Millhouse Manastorm",
+				"id": 42702
+			}]
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "110D",
+				"name": "Eye of Azshara: A Magical Affliction",
+				"id": 42707,
+				"next": [{
+					"range": "110",
+					"name": "The Might of the Tirisgarde",
+					"id": 44689
+				}]
+			},
+			{
+				"range": "110",
+				"name": "When There's a Will, There's a Way",
+				"id": 42940
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Into the Oculus",
+			"id": 42734,
+			"next": [{
+				"range": "110",
+				"name": "Champion: Meryl Felstorm",
+				"id": 42914,
+				"next": [{
+					"range": "110",
+					"name": "A Hero's Weapon",
+					"id": 43415
+				}]
+			},
+			{
+				"range": "110",
+				"name": "Champion: Archmage Vargoth",
+				"id": 42917
+			}]
+		}]
+	}],
+	"9": [{
+		"range": "",
+		"name": "Level 98",
+		"id": "",
+		"next": [{
+			"range": "98 - 110",
+			"name": "The Sixth",
+			"id": 40716
+		},
+		{
+			"range": "98 - 110",
+			"name": "The New Blood",
+			"id": 40729
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Tome of Blighted Implements",
+			"id": 40684
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Heart of the Dreadscar",
+			"id": 40731
+		},
+		{
+			"range": "98 - 110",
+			"name": "Power Overwhelming",
+			"id": 40677
+		},
+		{
+			"range": "98 - 110",
+			"name": "Rebuilding the Council",
+			"id": 40823
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Path of the Dreadscar",
+			"id": 40824
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 101",
+		"id": "",
+		"next": [{
+			"range": "101 - 110",
+			"name": "A Mutual Friend",
+			"id": 44099
+		},
+		{
+			"range": "101 - 110",
+			"name": "Rise, Champions",
+			"id": 42608,
+			"next": [{
+				"range": "101 - 110",
+				"name": "Champion: Calydus",
+				"id": 41750
+			},
+			{
+				"range": "101 - 110",
+				"name": "Champion: Ritssyn Flamescowl",
+				"id": 41748
+			}]
+		},
+		{
+			"range": "101 - 110",
+			"name": "Information at Any Cost",
+			"id": 42603
+		},
+		{
+			"range": "101 - 110",
+			"name": "Recruiting The Troops",
+			"id": 41797
+		},
+		{
+			"range": "101 - 110",
+			"name": "Troops in the Field",
+			"id": 42602
+		},
+		{
+			"range": "101 - 110",
+			"name": "Tech It Up A Notch",
+			"id": 42601
+		},
+		{
+			"range": "101 - 110",
+			"name": "Searching the Archives",
+			"id": 42097
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 103",
+		"id": "",
+		"next": [{
+			"range": "103 - 110",
+			"name": "An Unlikely Ally",
+			"id": 41759
+		},
+		{
+			"range": "103 - 110",
+			"name": "Bloodstone Bandit",
+			"id": 39179
+		},
+		{
+			"range": "103 - 110",
+			"name": "It Hungers for Blood",
+			"id": 39389
+		},
+		{
+			"range": "103 - 110",
+			"name": "Testing a Theory",
+			"id": 39142
+		},
+		{
+			"range": "103 - 110",
+			"name": "Debt Repaid",
+			"id": 40218
+		},
+		{
+			"range": "103 - 110",
+			"name": "A Daring Rescue",
+			"id": 41767
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Champion: Jubeka Shadowbreaker",
+				"id": 41753
+			},
+			{
+				"range": "103 - 110",
+				"name": "Champion: Zinnin Smythe",
+				"id": 41752
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "Empowering the Soul",
+			"id": 42100,
+			"next": [{
+				"range": "",
+				"name": "Recruiting More Troops",
+				"id": 41798
+			}]
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 110",
+		"id": "",
+		"next": [{
+			"range": "110D",
+			"name": "Black Rook Hold: An Unclaimed Soul",
+			"id": 42098
+		},
+		{
+			"range": "110",
+			"name": "Soul Beacon",
+			"id": 41768
+		},
+		{
+			"range": "110",
+			"name": "Mad Ernie the Alchemist",
+			"id": 41769
+		},
+		{
+			"range": "110",
+			"name": "Herding Goats",
+			"id": 41781
+		},
+		{
+			"range": "110",
+			"name": "Doom and Gloom",
+			"id": 41780
+		},
+		{
+			"range": "110",
+			"name": "Borrowed Time",
+			"id": 41784
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Champion: Shinfel Blightsworn",
+				"id": 41754
+			},
+			{
+				"range": "110",
+				"name": "Champion: Kira Iresoul",
+				"id": 41751
+			}]
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "One Who's Worthy",
+				"id": 42102
+			},
+			{
+				"range": "110D",
+				"name": "Vault of the Wardens: Matters of the Heart",
+				"id": 42660
+			},
+			{
+				"range": "110",
+				"name": "Let it Feed",
+				"id": 42103
+			},
+			{
+				"range": "110",
+				"name": "Unparalleled Power",
+				"id": 44682
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Finding Fizzlebang",
+			"id": 41785
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Coercing a Confession",
+				"id": 41788
+			},
+			{
+				"range": "110",
+				"name": "Someone Else's Mess",
+				"id": 41787
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Lulubelle on Loan",
+			"id": 41793
+		},
+		{
+			"range": "110",
+			"name": "Champion: Lulubelle Fizzlebang",
+			"id": 41755
+		},
+		{
+			"range": "110",
+			"name": "Summoning the Sisters",
+			"id": 41795
+		},
+		{
+			"range": "110",
+			"name": "Selecting a Sixth",
+			"id": 41796
+		},
+		{
+			"range": "110",
+			"name": "Champion: Eredar Twins",
+			"id": 41756
+		},
+		{
+			"range": "110",
+			"name": "A Hero's Weapon",
+			"id": 43414
+		}]
+	}],
+	"10": [{
+		"range": "",
+		"name": "Level 98",
+		"id": "",
+		"next": [{
+			"range": "98 - 110",
+			"name": "Before the Storm",
+			"id": 12103
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Dawning Light",
+			"id": 40236
+		},
+		{
+			"range": "98 - 110",
+			"name": "Prepare To Strike",
+			"id": 40636
+		},
+		{
+			"range": "",
+			"name": "Acquire the chosen artifact:",
+			"id": "",
+			"next": [{
+				"range": "",
+				"name": "Brewmaster ( Fu Zan, the Wanderer's Companion)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "The Wanderer's Companion",
+					"id": 42762
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Riddle of Purity",
+					"name1": "The Riddle of the Barrel",
+					"name2": "The Riddle of the Land",
+					"id": 42768,
+					"id1": 42766,
+					"id2": 42767
+				},
+				{
+					"range": "98 - 110",
+					"name": "Journey to the East",
+					"id": 42957
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Monkey King's Challenge",
+					"id": 42868
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Trial at the Temple",
+					"id": 42765
+				}]
+			},
+			{
+				"range": "",
+				"name": "Mistweaver ( Sheilun, Staff of the Mists)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "The Emperor's Gift",
+					"id": 41003
+				}]
+			},
+			{
+				"range": "",
+				"name": "Windwalker (Fists of the Heavens ( Al'burq and Alra'ed))",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "The Legend of the Sands",
+					"id": 40569
+				},
+				{
+					"range": "98 - 110",
+					"name": "Off To Adventure!",
+					"id": 40633
+				},
+				{
+					"range": "98 - 110",
+					"name": "Thunder on the Sands",
+					"id": 40634
+				},
+				{
+					"range": "98 - 110",
+					"name": "Into The Heavens",
+					"id": 40570
+				}]
+			}]
+		},
+		{
+			"range": "98 - 110",
+			"name": "Purity of Form",
+			"id": 40698
+		},
+		{
+			"range": "98 - 110",
+			"name": "A Matter of Planning",
+			"id": 40793
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Fight Begins",
+			"id": 40795
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 101",
+		"id": "",
+		"next": [{
+			"range": "101 - 110",
+			"name": "Growing Power",
+			"id": 42186
+		},
+		{
+			"range": "101 - 110",
+			"name": "Rise, Champions",
+			"id": 42187
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "101 - 110",
+				"name": "Champion: Li Li Stormstout",
+				"id": 40704
+			},
+			{
+				"range": "103 - 110",
+				"name": "Storm, Earth, and Fire",
+				"id": 41731
+			}]
+		},
+		{
+			"range": "101 - 110",
+			"name": "Tianji of the Ox",
+			"id": 41945
+		},
+		{
+			"range": "101 - 110",
+			"name": "Building Our Troops",
+			"id": 41946
+		},
+		{
+			"range": "101 - 110",
+			"name": "Scrolls of Knowledge",
+			"id": 42210
+		},
+		{
+			"range": "101 - 110",
+			"name": "Tech It Up A Notch",
+			"id": 42191
+		},
+		{
+			"range": "101 - 110",
+			"name": "Report from Tian Monastery",
+			"id": 41905
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 102",
+		"id": "",
+		"next": [{
+			"range": "102 - 110",
+			"name": "Two Paths, Two Weapons",
+			"id": 43973
+		},
+		{
+			"range": "102 - 110",
+			"name": "Three Paths, Three Weapons",
+			"id": 44424
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 103",
+		"id": "",
+		"next": [{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "The Defense of Tian Monastery",
+				"id": 41728,
+				"next": [{
+					"range": "103 - 110",
+					"name": "Storm, Earth, and Fire",
+					"id": 41731
+				},
+				{
+					"range": "103 - 110",
+					"name": "Desperate Strike",
+					"id": 41730
+				}]
+			},
+			{
+				"range": "103 - 110",
+				"name": "Slowing the Spread",
+				"id": 41729
+			}]
+		},
+		{
+			"range": "103 - 110",
+			"name": "The Hand of Keletress",
+			"id": 41732
+		},
+		{
+			"range": "103 - 110",
+			"name": "Rebuilding the Order",
+			"id": 41733
+		},
+		{
+			"range": "",
+			"name": "Optional quests:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "The Way of the Tiger",
+				"id": 43319
+			},
+			{
+				"range": "103 - 110",
+				"name": "Champion: The Monkey King",
+				"id": 41735
+			},
+			{
+				"range": "103 - 110",
+				"name": "Champion: Taran Zhu",
+				"id": 41734
+			}]
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Further Training",
+				"id": 43062
+			},
+			{
+				"range": "103 - 110",
+				"name": "Appropriations",
+				"id": 41907,
+				"next": [{
+					"range": "103 - 110",
+					"name": "An Ample Stockpile",
+					"id": 43054,
+					"next": [{
+						"range": "",
+						"name": "Repeatable quests:",
+						"id": "",
+						"next": [{
+							"range": "103 - 110",
+							"name": "Silkweave Bandages",
+							"id": 43061
+						},
+						{
+							"range": "103 - 110",
+							"name": "Highmountain Salmon",
+							"id": 43060
+						},
+						{
+							"range": "103 - 110",
+							"name": "Spiced Rib Roast",
+							"id": 43058
+						}]
+					}]
+				}]
+			},
+			{
+				"range": "103 - 110",
+				"name": "Tracking the Tideskorn",
+				"id": 41909
+			}]
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 110",
+		"id": "",
+		"next": [{
+			"range": "110",
+			"name": "The Iron Fist",
+			"id": 41849
+		},
+		{
+			"range": "110",
+			"name": "The Master of Swords",
+			"id": 41850
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "No Monk Left Behind",
+				"id": 41852
+			},
+			{
+				"range": "110",
+				"name": "Zero to Hiro",
+				"id": 41853
+			},
+			{
+				"range": "110",
+				"name": "Quelling the Tide",
+				"id": 41851
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Brick By Brick",
+			"id": 41854
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Champion: Hiro",
+				"id": 41737
+			},
+			{
+				"range": "110",
+				"name": "Champion: Sylara Steelsong",
+				"id": 41738
+			},
+			{
+				"range": "110",
+				"name": "Champion: Angus Ironfist",
+				"id": 41736
+			}]
+		},
+		{
+			"range": "110",
+			"name": "The Mead Master",
+			"id": 41038
+		},
+		{
+			"range": "110",
+			"name": "Stolen Knowledge",
+			"id": 41039
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Freya's Spring",
+				"id": 41910
+			},
+			{
+				"range": "110D",
+				"name": "Halls of Valor: The Brewmaster",
+				"id": 41040,
+				"next": [{
+					"range": "110",
+					"name": "Halls of Valor: Odyn's Cauldron",
+					"id": 41059
+				}]
+			},
+			{
+				"range": "110",
+				"name": "Amaranthine Hops",
+				"id": 41911,
+				"next": [{
+					"range": "110",
+					"name": "Making A Trade",
+					"id": 43151
+				}]
+			},
+			{
+				"range": "110",
+				"name": "A Peaceful World",
+				"id": 41086
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Impending Danger",
+			"id": 32442
+		},
+		{
+			"range": "110",
+			"name": "Storm Brew",
+			"id": 41087,
+			"next": [{
+				"range": "110",
+				"name": "Champion: Aegira",
+				"id": 41739
+			}]
+		},
+		{
+			"range": "110",
+			"name": "A Hero's Weapon",
+			"id": 43359
+		}]
+	}],
+	"11": [{
+		"range": "",
+		"name": "Level 98",
+		"id": "",
+		"next": [{
+			"range": "98 - 110",
+			"name": "A Summons From Moonglade",
+			"id": 40643
+		},
+		{
+			"range": "98 - 110",
+			"name": "Call of the Wilds",
+			"id": 41106
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Dreamway",
+			"id": 40644
+		},
+		{
+			"range": "98 - 110",
+			"name": "To The Dreamgrove",
+			"id": 40645
+		},
+		{
+			"range": "98 - 110",
+			"name": "Weapons of Legend",
+			"id": 40408
+		},
+		{
+			"range": "",
+			"name": "Acquire the chosen artifact:",
+			"id": "",
+			"next": [{
+				"range": "",
+				"name": "Balance ( Scythe of Elune)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "The Scythe of Elune",
+					"id": 40783
+				},
+				{
+					"range": "98 - 110",
+					"name": "Its Rightful Place",
+					"id": 40784
+				},
+				{
+					"range": "98 - 110",
+					"name": "A Foe of the Dark",
+					"id": 40785
+				},
+				{
+					"range": "98 - 110",
+					"name": "Following the Curse",
+					"id": 40588
+				},
+				{
+					"range": "98 - 110",
+					"name": "Disturbing the Past",
+					"id": 40604
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Deadwind Hunt",
+					"id": 40837
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Dark Riders",
+					"id": 40623
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Burden Borne",
+					"id": 40900
+				}]
+			},
+			{
+				"range": "",
+				"name": "Feral (Fangs of Ashamane: Fangs of Ashamane and Fangs of Ashamane)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "The Shrine of Ashamane",
+					"id": 42428
+				},
+				{
+					"range": "98 - 110",
+					"name": "Aid for the Ashen",
+					"name1": "Seeds of Renewal",
+					"id": 42439,
+					"id1": 42438
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Shrine in Peril",
+					"id": 42440
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Fangs of Ashamane",
+					"id": 42430
+				}]
+			},
+			{
+				"range": "",
+				"name": "Guardian (Claws of Ursoc: Claws of Ursoc and Claws of Ursoc)",
+				"id": "",
+				"next": {
+					"0": {
+						"range": "98 - 110",
+						"name": "Mistress of the Claw",
+						"id": 41468
+					},
+					"1": {
+						"range": "98 - 110",
+						"name": "To The Hills",
+						"id": 41782
+					},
+					"2": {
+						"range": "98 - 110",
+						"name": "Fallen Offerings",
+						"id": 41783
+					},
+					"3": {
+						"range": "98 - 110",
+						"name": "The First Trial of Ursol",
+						"id": 41790
+					},
+					"4": {
+						"range": "98 - 110",
+						"name": "The Second Trial of Ursol",
+						"id": 41791
+					},
+					"5": {
+						"range": "98 - 110",
+						"name": "The Third Trial of Ursol",
+						"id": 41792
+					},
+					"6": {
+						"range": "98 - 110",
+						"name": "When Dreams Become Nightmares",
+						"id": 40647
+					},
+					"8": {
+						"range": "98 - 110",
+						"name": "The Dreamer Returns",
+						"id": 41918
+					}
+				}
+			},
+			{
+				"range": "",
+				"name": "Restoration ( G'Hanir, the Mother Tree)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "Meet with Mylune",
+					"id": 40649
+				},
+				{
+					"range": "98 - 110",
+					"name": "Necessary Preparations",
+					"id": 41422
+				},
+				{
+					"range": "98 - 110",
+					"name": "Join the Dreamer",
+					"id": 41449
+				},
+				{
+					"range": "98 - 110",
+					"name": "In Deep Slumber",
+					"id": 41436
+				},
+				{
+					"range": "98 - 110",
+					"name": "Reconvene",
+					"id": 41690
+				},
+				{
+					"range": "98 - 110",
+					"name": "Cleansing the Mother Tree",
+					"id": 41689
+				}]
+			}]
+		},
+		{
+			"range": "98 - 110",
+			"name": "Sowing The Seed",
+			"id": 41255
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Seed of Ages",
+			"id": 40651
+		},
+		{
+			"range": "98 - 110",
+			"name": "Ascending The Circle",
+			"id": 41332
+		},
+		{
+			"range": "98 - 110",
+			"name": "Word on the Winds",
+			"id": 40652
+		},
+		{
+			"range": "98 - 110",
+			"name": "Making Trails",
+			"id": 40653
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 101",
+		"id": "",
+		"next": [{
+			"range": "101 - 110",
+			"name": "Growing Power",
+			"id": 42516
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "101 - 110",
+				"name": "Rise, Champions",
+				"id": 42583,
+				"next": [{
+					"range": "101 - 110",
+					"name": "Champion: Naralex",
+					"id": 42096
+				},
+				{
+					"range": "101 - 110",
+					"name": "Champion: Zen'tabra",
+					"id": 40650
+				}]
+			}]
+		},
+		{
+			"range": "101 - 110",
+			"name": "Sister Lilith",
+			"id": 42584
+		},
+		{
+			"range": "101 - 110",
+			"name": "Recruiting the Troops",
+			"id": 42585
+		},
+		{
+			"range": "101 - 110",
+			"name": "A Glade Defense",
+			"id": 42586
+		},
+		{
+			"range": "101 - 110",
+			"name": "Branching Out",
+			"id": 42588
+		},
+		{
+			"range": "101 - 110",
+			"name": "Sampling the Nightmare",
+			"id": 42032
+		},
+		{
+			"range": "101 - 110",
+			"name": "Dire Growth",
+			"id": 42031
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 103",
+		"id": "",
+		"next": [{
+			"range": "103 - 110",
+			"name": "Malorne's Refuge",
+			"id": 42033
+		},
+		{
+			"range": "103 - 110",
+			"name": "Grip of Nightmare",
+			"id": 42034
+		},
+		{
+			"range": "103 - 110",
+			"name": "Tracking the Enemy",
+			"id": 42035
+		},
+		{
+			"range": "103 - 110",
+			"name": "Idol of the Wilds",
+			"id": 42036
+		},
+		{
+			"range": "103 - 110",
+			"name": "Gathering the Dreamweavers",
+			"id": 42037
+		},
+		{
+			"range": "103 - 110",
+			"name": "The Protectors",
+			"id": 43991,
+			"next": [{
+				"range": "",
+				"name": "Optional",
+				"id": "",
+				"next": [{
+					"range": "103 - 110D",
+					"name": "Halls of Valor: Essence of Ferocity",
+					"id": 44075
+				},
+				{
+					"range": "103 - 110D",
+					"name": "Eye of Azshara: Essence of Balance",
+					"id": 44077
+				},
+				{
+					"range": "103 - 110D",
+					"name": "Neltharion's Lair: Essence of Tenacity",
+					"id": 44074
+				},
+				{
+					"range": "103 - 110D",
+					"name": "Darkheart Thicket: Essence of Regrowth",
+					"id": 44076
+				}]
+			}]
+		},
+		{
+			"range": "",
+			"name": "Optional",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Druids of the Claw",
+				"id": 40654
+			},
+			{
+				"range": "103 - 110",
+				"name": "Champion: Broll Bearmantle",
+				"id": 42038
+			},
+			{
+				"range": "103 - 110",
+				"name": "Champion: Sylendra Gladesong",
+				"id": 42039
+			}]
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 110",
+		"id": "",
+		"next": [{
+			"range": "110",
+			"name": "The Way to Nordrassil",
+			"id": 42040
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Enduring the Nightmare",
+				"id": 42041
+			},
+			{
+				"range": "110",
+				"name": "Cleaning Up",
+				"id": 42043
+			},
+			{
+				"range": "110",
+				"name": "Teensy Weensies!",
+				"id": 42042
+			}]
+		},
+		{
+			"range": "110",
+			"name": "A Dying Dream",
+			"id": 42044
+		},
+		{
+			"range": "110",
+			"name": "Communing With Malorne",
+			"id": 42045
+		},
+		{
+			"range": "110",
+			"name": "A New Beginning",
+			"id": 42046,
+			"next": [{
+				"range": "",
+				"name": "Side quests:",
+				"id": "",
+				"next": [{
+					"range": "110",
+					"name": "The Cycle Continues",
+					"id": 43365
+				},
+				{
+					"range": "110D",
+					"name": "Eye of Azshara: Cleansing the Dreamway",
+					"id": 42719
+				},
+				{
+					"range": "110",
+					"name": "The Pendant of Starlight",
+					"id": 42129,
+					"next": [{
+						"range": "110",
+						"name": "Champion: Brightwing",
+						"id": 43368
+					}]
+				}]
+			}]
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Champion: Mylune",
+				"id": 42048
+			},
+			{
+				"range": "110",
+				"name": "Champion: Hamuul Runetotem",
+				"id": 42047
+			}]
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Powering the Portal",
+				"id": 42049
+			},
+			{
+				"range": "110",
+				"name": "Defending the Isles",
+				"id": 43403
+			},
+			{
+				"range": "110",
+				"name": "Focusing the Energies",
+				"id": 42365
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Enter Nightmare",
+			"id": 42051
+		},
+		{
+			"range": "110",
+			"name": "Defenders of the Dream",
+			"id": 42050
+		},
+		{
+			"range": "110",
+			"name": "The War of the Ancients",
+			"id": 42053
+		},
+		{
+			"range": "110",
+			"name": "Archimonde, The Defiler",
+			"id": 42054
+		},
+		{
+			"range": "110",
+			"name": "The Demi-God's Return",
+			"id": 42055
+		},
+		{
+			"range": "110",
+			"name": "A Hero's Weapon",
+			"id": 43409,
+			"next": [{
+				"range": "",
+				"name": "Side quests:",
+				"id": "",
+				"next": [{
+					"range": "110",
+					"name": "Champion: Remulos",
+					"id": 42056
+				},
+				{
+					"range": "110R",
+					"name": "The Emerald Nightmare: The Emerald Nightmare",
+					"id": 42432
+				}]
+			}]
+		}]
+	}],
+	"12": [{
+		"range": "",
+		"name": "Level 98",
+		"id": "",
+		"next": [{
+			"range": "98 - 110",
+			"name": "Call of the Illidari",
+			"id": 39047
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Power to Survive",
+			"id": 40814
+		},
+		{
+			"range": "",
+			"name": "Acquire the chosen artifact:",
+			"id": "",
+			"next": [{
+				"range": "",
+				"name": "Havoc (Twinblades of the Deceiver: Verus and Muramas)",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "Making Arrangements",
+					"id": 40819
+				},
+				{
+					"range": "98 - 110",
+					"name": "By Any Means",
+					"id": 39051
+				},
+				{
+					"range": "98 - 110",
+					"name": "The Hunt",
+					"id": 39247
+				}]
+			},
+			{
+				"range": "",
+				"name": "Vengeance ( Aldrachi Warblades (main hand) and Aldrachi Warblades (off-hand))",
+				"id": "",
+				"next": [{
+					"range": "98 - 110",
+					"name": "Asking a Favor",
+					"id": 40247
+				},
+				{
+					"range": "98 - 110",
+					"name": "Ask and You Shall Receive",
+					"id": 41804
+				},
+				{
+					"range": "98 - 110",
+					"name": "Return to Jace",
+					"id": 41806
+				},
+				{
+					"range": "98 - 110",
+					"name": "Establishing a Connection",
+					"id": 41807
+				},
+				{
+					"range": "98 - 110",
+					"name": "Vengeance Will Be Ours",
+					"id": 40249
+				}]
+			}]
+		},
+		{
+			"range": "98 - 110",
+			"name": "Eternal Vigil",
+			"id": 42869
+		},
+		{
+			"range": "98 - 110",
+			"name": "Securing the Way",
+			"id": 42872
+		},
+		{
+			"range": "98 - 110",
+			"name": "Return to Mardum",
+			"id": 41033
+		},
+		{
+			"range": "98 - 110",
+			"name": "Unbridled Power",
+			"id": 41037
+		},
+		{
+			"range": "98 - 110",
+			"name": "Spoils of Victory",
+			"id": 41062
+		},
+		{
+			"range": "98 - 110",
+			"name": "Cursed Forge of the Nathrezim",
+			"id": 41064
+		},
+		{
+			"range": "98 - 110",
+			"name": "The Hunter's Gaze",
+			"id": 41066
+		},
+		{
+			"range": "98 - 110",
+			"name": "Time is of the Essence",
+			"id": 41067
+		},
+		{
+			"range": "98 - 110",
+			"name": "Direct Our Wrath",
+			"id": 41069
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 101",
+		"id": "",
+		"next": [{
+			"range": "101 - 110",
+			"name": "Return to the Fel Hammer",
+			"id": 42666
+		},
+		{
+			"range": "101 - 110",
+			"name": "Rise, Champions",
+			"id": 42670,
+			"next": [{
+				"range": "101 - 110",
+				"name": "Champion: Altruis the Sufferer",
+				"name1": "Champion: Kayn Sunfury",
+				"id": 42690,
+				"id1": 42695
+			},
+			{
+				"range": "101 - 110",
+				"name": "Champion: Asha Ravensong",
+				"id": 42697
+			}]
+		},
+		{
+			"range": "101 - 110",
+			"name": "Things Gaardoun Needs",
+			"id": 42677
+		},
+		{
+			"range": "101 - 110",
+			"name": "Broken Warriors",
+			"id": 42679
+		},
+		{
+			"range": "101 - 110",
+			"name": "Loramus, Is That You?",
+			"id": 42681
+		},
+		{
+			"range": "101 - 110",
+			"name": "Demonic Improvements",
+			"id": 42683
+		},
+		{
+			"range": "101 - 110",
+			"name": "Additional Accoutrements",
+			"id": 42682
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 103",
+		"id": "",
+		"next": [{
+			"range": "103 - 110",
+			"name": "The Blood of Demons",
+			"id": 37447
+		},
+		{
+			"range": "103 - 110",
+			"name": "Immortal Soul",
+			"id": 42510
+		},
+		{
+			"range": "103 - 110",
+			"name": "Leader of the Illidari",
+			"id": 42522
+		},
+		{
+			"range": "103 - 110",
+			"name": "The Arcane Way",
+			"id": 42593
+		},
+		{
+			"range": "103 - 110",
+			"name": "Move Like No Other",
+			"id": 42594
+		},
+		{
+			"range": "103 - 110",
+			"name": "Back in Black",
+			"id": 42801
+		},
+		{
+			"range": "103 - 110",
+			"name": "Confrontation at the Black Temple",
+			"id": 42634
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Into Our Ranks",
+				"id": 39741,
+				"next": [{
+					"range": "103 - 110",
+					"name": "Champion: Akama",
+					"name1": "Champion: Shade of Akama",
+					"id": 42653,
+					"id1": 42664
+				},
+				{
+					"range": "103 - 110",
+					"name": "Champion: Kor'vas Bloodthorn",
+					"id": 42673
+				}]
+			}]
+		},
+		{
+			"range": "",
+			"name": "Complete all of:",
+			"id": "",
+			"next": [{
+				"range": "103 - 110",
+				"name": "Unexpected Visitors",
+				"id": 42131,
+				"next": [{
+					"range": "103 - 110",
+					"name": "Working With the Wardens",
+					"id": 42731
+				}]
+			},
+			{
+				"range": "103 - 110",
+				"name": "Securing Mardum",
+				"id": 42802,
+				"next": [{
+					"range": "103 - 110",
+					"name": "Green Adepts",
+					"id": 42808
+				}]
+			}]
+		}]
+	},
+	{
+		"range": "",
+		"name": "Level 110",
+		"id": "",
+		"next": [{
+			"range": "110",
+			"name": "Deal With It Personally",
+			"id": 42787
+		},
+		{
+			"range": "110",
+			"name": "Malace in Vrykul Land",
+			"id": 42735
+		},
+		{
+			"range": "110",
+			"name": "Rune Ruination",
+			"id": 42736
+		},
+		{
+			"range": "110",
+			"name": "Strange Bedfellows",
+			"id": 42749
+		},
+		{
+			"range": "110D",
+			"name": "Vault of the Wardens: Vault Break-In",
+			"id": 42752
+		},
+		{
+			"range": "110",
+			"name": "The Crux of the Plan",
+			"id": 42775
+		},
+		{
+			"range": "110",
+			"name": "Two Worthies",
+			"id": 42776,
+			"next": [{
+				"range": "110",
+				"name": "Champion: Belath Dawnblade",
+				"id": 42777
+			},
+			{
+				"range": "110",
+				"name": "Champion: Matron Mother Malevolence",
+				"id": 42701
+			}]
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Preparations for Invasion",
+				"id": 42669
+			},
+			{
+				"range": "110",
+				"name": "One Battle at a Time",
+				"id": 44694
+			}]
+		},
+		{
+			"range": "",
+			"name": "Complete both:",
+			"id": "",
+			"next": [{
+				"range": "110",
+				"name": "Deadlier Warglaives",
+				"id": 42732
+			},
+			{
+				"range": "110D",
+				"name": "A Very Special Kind of Fuel",
+				"id": 42733
+			}]
+		},
+		{
+			"range": "110",
+			"name": "Jump-Capable",
+			"id": 42754
+		},
+		{
+			"range": "110",
+			"name": "A Final Offer",
+			"id": 42810
+		},
+		{
+			"range": "110",
+			"name": "The Invasion of Niskara",
+			"id": 42809
+		},
+		{
+			"range": "110",
+			"name": "Last, But Not Least",
+			"id": 42132,
+			"next": [{
+				"range": "110",
+				"name": "Champion: Allari the Souleater",
+				"id": 43184
+			},
+			{
+				"range": "110",
+				"name": "Champion: Jace Darkweaver",
+				"id": 43185
+			}]
+		},
+		{
+			"range": "110",
+			"name": "I Am the Slayer!",
+			"id": 43186
+		},
+		{
+			"range": "110",
+			"name": "One More Thing...",
+			"id": 44214
+		},
+		{
+			"range": "110",
+			"name": "A Hero's Weapon",
+			"id": 43412
+		}]
+	}]
+}

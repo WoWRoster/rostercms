@@ -261,6 +261,8 @@ class RosterLogin
 	{
 		global $roster;
 		
+		$this->getgroups();
+		$this->getgroupper();
 		// this is allways set so we dont need to check
 		$groups = explode(':',$this->access);
 		//BUT see if the user is loged in and has permissions

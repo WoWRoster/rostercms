@@ -12,7 +12,6 @@
 if (!defined('IN_ROSTER')) {
 	exit('Detected invalid access to this file!');
 }
-
 function roster_add_js( $data = NULL , $type = 'module' , $scope = 'header' , $defer = FALSE , $cache = TRUE , $preprocess = TRUE ) {
 	global $roster;
 	static $javascript = array();
@@ -128,6 +127,9 @@ function roster_get_js($scope = 'header', $javascript = NULL) {
 				foreach ($data as $info) {
 					$output .= '<script type="text/javascript"' . ($info['defer'] ? ' defer="defer"' : '') . '>' . $embed_prefix . $info['code'] . $embed_suffix . "</script>\n";
 				}
+				break;
+				case 'cdn':
+					$output .= '<script type="text/javascript" src="' . $path. "\"></script>\n";
 				break;
 			default:
 				// If JS preprocessing is off, we still need to output the scripts.

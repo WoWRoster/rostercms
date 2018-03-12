@@ -60,7 +60,8 @@ $parent = getDbData( ($roster->db->table('forums',$addon['basename'])),'`forum_i
 $roster->tpl->assign_var('PARENT', createList($parent,'','parent',1,'' ));
 $roster->tpl->assign_var('ACCESS', $roster->auth->rosterAccess(array('name' => 'access')));
 $forums = $functions->getForumsa();
-
+$xforums = $functions->getForums();
+/*
 	foreach($forums as $id =>$forum)
 	{
 		$roster->tpl->assign_block_vars('forum', array(
@@ -83,7 +84,46 @@ $forums = $functions->getForumsa();
 					'DESC'		=> $forum['desc']
 				));
 	}
-
+*/
+	d($xforums);
+	
+	foreach ($xforums as $par => $p)
+	{
+		$roster->tpl->assign_block_vars('parent', array(
+			'TITLE'		=> $p['title'],
+			'FORUM_ID' 	=> $p['forumid'],
+			'PARENT'	=> createList($parent,$p['parent_id'],'parent',1,'' ),
+			'ACCESS'	=> ( isset($p['access']) ? $roster->auth->rosterAccess(array('name' => 'access', 'value' => $p['access'])) : false ),
+			'L_ACTIVEU' => ( $p['locked'] == 1 ? 'locked' : 'unlocked'),
+			'L_ACTIVET'	=> ( $p['locked'] == 1 ? $roster->locale->act['lock'] : $roster->locale->act['unlock']),
+			'L_ACTIVEOP'=> ( $p['locked'] == 1 ? 'unlock' : 'lock'),
+			'B_ACTIVEI' => ( $p['active'] == 1 ? 'green' : 'red'),
+			'B_ACTIVET'	=> ( $p['active'] == 1 ? 'Active' : 'Inactive'),
+			'B_ACTIVEOP'=> ( $p['active'] == 1 ? 'deactivate' : 'activate'),
+		));
+		foreach ($p['forums'] as $child => $c)
+		{
+			$roster->tpl->assign_block_vars('parent.child', array(
+					'FORUM_ID' 	=> $c['forumid'],
+					'FORUM_URL'	=> makelink('guild-'.$addon['basename'].'-forum&amp;id=' . $c['forumid']),
+					'TITLE'		=> $c['title'],
+					'POSTS'		=> $c['posts'],
+					'ORDER'		=> $c['order'],
+					'POSTER'	=> $c['t_poster'],
+					'U_EDIT'	=> makelink('rostercp-addon-forum-forumedit&amp;id=' .$c['forumid']),
+					'P_TITLE'	=> $c['t_title'],
+					'PARENT'	=> createList($parent,$c['parent_id'],'parent',1,'' ),
+					'L_ACTIVEU' => ( $c['locked'] == 1 ? 'locked' : 'unlocked'),
+					'L_ACTIVET'	=> ( $c['locked'] == 1 ? $roster->locale->act['lock'] : $roster->locale->act['unlock']),
+					'L_ACTIVEOP'=> ( $c['locked'] == 1 ? 'unlock' : 'lock'),
+					'B_ACTIVEI' => ( $c['active'] == 1 ? 'green' : 'red'),
+					'B_ACTIVET'	=> ( $c['active'] == 1 ? 'Active' : 'Inactive'),
+					'B_ACTIVEOP'=> ( $c['active'] == 1 ? 'deactivate' : 'activate'),
+					'ACCESS'	=> ( isset($c['access']) ? $roster->auth->rosterAccess(array('name' => 'access', 'value' => $c['access'])) : false ),
+					'DESC'		=> $c['desc']
+				));
+		}
+	}
 $roster->tpl->set_handle('forum',$addon['basename'] . '/admin_forum.html');
 
 $body .= $roster->tpl->fetch('forum');

@@ -1,0 +1,80 @@
+<div id="main" class="container">
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="btn-group col-centered" id="menu">
+				<ul class="oddball" id="gal_cats">
+					<li id="cat_0" class="btn btn-primary" ><a href="#">All</a></li>
+				<!-- BEGIN cats -->
+					<li id="cat_{cats.ID}" class="btn btn-primary"><a href="#">{cats.NAME}</a></li>
+				<!-- END cats -->
+				</ul>
+			</div>
+		</div>
+		<div id="cat_0">
+			<!-- BEGIN images -->
+			<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				<a class="thumbnail" href="{images.FPATH}{images.FILE}-image.{images.EXT}" rel="lightbox" title="{images.CAPTION}">
+					<img class="img-responsive" src="{images.LOC}{images.FILE}-thumb.{images.EXT}" alt="">
+				</a>
+			</div>
+			<!-- END images -->
+		</div>
+		<!-- BEGIN cp -->
+		<div id="cat_{cp.ID}">
+		<!-- BEGIN img -->
+			<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				<a class="thumbnail" href="{cp.img.FPATH}{cp.img.FILE}-image.{cp.img.EXT}" rel="lightbox" title="{cp.img.CAPTION}">
+					<img class="img-responsive" src="{cp.img.LOC}{cp.img.FILE}-thumb.{cp.img.EXT}" alt="">
+				</a>
+			</div>
+		<!-- END img -->
+		</div>
+		<!-- END cp -->
+	</div>
+	
+	<!-- IF CAN_POST -->
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6">
+			<div class="well">
+				<form class="form-horizontal" action="{U_MENU_UPDATE_LUA}" enctype="multipart/form-data" method="post">
+					<fieldset>
+						<legend><!-- TRANSLATE select_files --></legend>
+						<div class="form-group">
+							<div class="input-group">
+								<label for="cap"><!-- TRANSLATE capt -->:</label>
+								<input class="inputbox" id="cap" name="caption" class="form-control" type="text" size="40" />
+							</div>
+							<div class="input-group">
+								<label for="disc"><!-- TRANSLATE desc -->:</label>
+								<textarea cols="30" rows="3" name="desc" id="desc" class="form-control"></textarea>
+							</div>
+							<div class="input-group">
+								<label for="catagories"><!-- TRANSLATE cat -->:</label>
+								{CATS}
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-btn">
+									<span class="btn btn-primary btn-file">
+										Browse&hellip; <input type="file" name="missionsfile">
+									</span>
+								</span>
+								<input type="text" id="missionfile" class="form-control" readonly>
+								<input type="hidden" name="ss_op" value="upload_image" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-lg-8 col-lg-offset-2">
+								<button type="submit" class="btn btn-primary"><!-- TRANSLATE upload --></button>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div class="col-lg-3"></div>
+	</div>
+	<!-- ENDIF -->
+</div>

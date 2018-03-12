@@ -83,62 +83,80 @@ if( !empty($addons) )
 		)
 	);
 
-	foreach( $addons as $addon )
-	{
-		if( !empty($addon['icon']) )
-		{
-			if( strpos($addon['icon'],'.') !== false )
-			{
-				$addon['icon'] = ROSTER_PATH . 'addons/' . $addon['basename'] . '/images/' . $addon['icon'];
-			}
-			else
-			{
-				$addon['icon'] = $roster->config['interface_url'] . 'Interface/Icons/' . $addon['icon'] . '.' . $roster->config['img_suffix'];
-			}
-		}
-		else
-		{
-			$addon['icon'] = $roster->config['interface_url'] . 'Interface/Icons/inv_misc_questionmark.' . $roster->config['img_suffix'];
-			}
-
-		$roster->tpl->assign_block_vars('addon_list', array(
-			'ROW_CLASS'   => $roster->switch_row_class(),
-			'ID'          => ( isset($addon['id']) ? $addon['id'] : '' ),
-			'ICON'        => $addon['icon'],
-			'FULLNAME'    => $addon['fullname'],
-			'BASENAME'    => $addon['basename'],
-			'VERSION'     => $addon['version'],
-			'OLD_VERSION' => ( isset($addon['oldversion']) ? $addon['oldversion'] : '' ),
-			'DESCRIPTION' => $addon['description'],
-			'DEPENDENCY'  => $addon['requires'],
-			'AUTHOR'      => $addon['author'],
-			'ACTIVE'      => ( isset($addon['active']) ? $addon['active'] : '' ),
-			'INSTALL'     => $addon['install'],
-			'L_TIP_UPGRADE' => ( isset($addon['active']) ? makeOverlib(sprintf($roster->locale->act['installer_click_upgrade'],$addon['oldversion'],$addon['version']),$roster->locale->act['installer_upgrade_avail']) : '' ),
-			'ACCESS'      => false //( isset($addon['access']) ? $roster->auth->rosterAccess(array('name' => 'access', 'value' => $addon['access'])) : false )
-			)
+	$clist = array(
+		'3' => 'install',
+		'0' => 'active',
+		'2' => 'deactive',
+		'1' => 'upgrade',
+		'-1' => 'purge'
 		);
+	foreach ($clist as $t => $ail)
+	{
+		$roster->tpl->assign_block_vars('ai_types', array(
+					'TYPE'       => 'ai_'.$t
+				)
+			);
+		foreach( $addons as $addon )
+		{
+			if ($addon['install'] == $t)
+			{
+				if( !empty($addon['icon']) )
+				{
+					if( strpos($addon['icon'],'.') !== false )
+					{
+						$addon['icon'] = ROSTER_PATH . 'addons/' . $addon['basename'] . '/images/' . $addon['icon'];
+					}
+					else
+					{
+						$addon['icon'] = $roster->config['interface_url'] . 'Interface/Icons/' . $addon['icon'] . '.' . $roster->config['img_suffix'];
+					}
+				}
+				else
+				{
+					$addon['icon'] = $roster->config['interface_url'] . 'Interface/Icons/inv_misc_questionmark.' . $roster->config['img_suffix'];
+					}
 
-		
-		if ($addon['install'] == '3')
-		{
-			$install++;
-		}
-		if ($addon['install'] == '0')
-		{
-			$active++;
-		}
-		if ($addon['install'] == '2')
-		{
-			$deactive++;
-		}
-		if ($addon['install'] == '1')
-		{
-			$upgrade++;
-		}
-		if ($addon['install'] == '-1')
-		{
-			$purge++;
+				$roster->tpl->assign_block_vars('ai_types.addon_list', array(
+					'ROW_CLASS'   => $roster->switch_row_class(),
+					'ID'          => ( isset($addon['id']) ? $addon['id'] : '' ),
+					'ICON'        => $addon['icon'],
+					'FULLNAME'    => $addon['fullname'],
+					'BASENAME'    => $addon['basename'],
+					'VERSION'     => $addon['version'],
+					'OLD_VERSION' => ( isset($addon['oldversion']) ? $addon['oldversion'] : '' ),
+					'DESCRIPTION' => $addon['description'],
+					'DEPENDENCY'  => $addon['requires'],
+					'AUTHOR'      => $addon['author'],
+					'ACTIVE'      => ( isset($addon['active']) ? $addon['active'] : '' ),
+					'INSTALL'     => $addon['install'],
+					'L_TIP_UPGRADE' => ( isset($addon['active']) ? makeOverlib(sprintf($roster->locale->act['installer_click_upgrade'],$addon['oldversion'],$addon['version']),$roster->locale->act['installer_upgrade_avail']) : '' ),
+					'ACCESS'      => false //( isset($addon['access']) ? $roster->auth->rosterAccess(array('name' => 'access', 'value' => $addon['access'])) : false )
+					)
+				);
+
+				
+				if ($addon['install'] == '3')
+				{
+					$install++;
+				}
+				if ($addon['install'] == '0')
+				{
+					$active++;
+				}
+				if ($addon['install'] == '2')
+				{
+					$deactive++;
+				}
+				if ($addon['install'] == '1')
+				{
+					$upgrade++;
+				}
+				if ($addon['install'] == '-1')
+				{
+					$purge++;
+				}
+			}
+			
 		}
 		
 	}

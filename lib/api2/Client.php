@@ -551,6 +551,10 @@ class Client
 			case 'zone':
 						$q = 'wow/zone/'.$fields['id'];
 					break;
+			case 'full_url':
+						$this->ignore_cache = true;
+						$q = $fields['url'];
+					break;
 			case 'sc2profile':
 						$this->ignore_cache = true;
 					if ($this->access_token)

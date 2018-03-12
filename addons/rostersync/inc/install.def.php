@@ -26,7 +26,7 @@ class rostersyncInstall
 	var $active = true;
 	var $icon = 'spell_deathknight_bladedarmor';
 
-	var $version = '1.0.0';
+	var $version = '1.2.0';
 	var $wrnet_id  = '';
 
 	var $fullname = 'Roster Sync';
@@ -70,7 +70,7 @@ class rostersyncInstall
 		*/
 		$installer->add_config("'100', 'rsync_minlevel', '10', 'text{3|3', 'rsync_conf'");
 		$installer->add_config("'101', 'rsync_synchcutofftime', '1', 'text{4|4', 'rsync_conf'");
-		//$installer->add_config("'102', 'rsync_use_ajax', '0', 'radio{off^0|Off^0', 'rsync_conf'");
+		$installer->add_config("'102', 'rsync_skip_cache', '0', 'radio{off^0|Off^0', 'rsync_conf'");
 		$installer->add_config("'103', 'rsync_reloadwaittime', '24', 'text{4|4', 'rsync_conf'");
 		$installer->add_config("'104', 'rsync_fetch_timeout', '8', 'text{2|2', 'rsync_conf'");
 		$installer->add_config("'105', 'rsync_skip_start', '0', 'radio{On^1|Off^0', 'rsync_conf'");
@@ -131,7 +131,7 @@ class rostersyncInstall
 		$installer->add_config("'521', 'rsync_char_hunterPets', '0', 'radio{yes^1|no^0', 'rsync_scan_char'");
 
 		$permissions = array(
-			array('catagory'=> 'rostersync', 'name' => 'per_rsync_char_update',			'info' => 'per_rsync_char_update_info',		'cfg_name' => 'char_update'),
+			array('catagory'=> 'rostersync', 'name' => 'per_rsync_char_update',			'info' => 'per_rsync_char_update_info',			'cfg_name' => 'char_update'),
 			array('catagory'=> 'rostersync', 'name' => 'per_rsync_guild_update',		'info' => 'per_rsync_guild_update_info',		'cfg_name' => 'guild_update'),
 			array('catagory'=> 'rostersync', 'name' => 'per_rsync_memberlist_update',	'info' => 'per_rsync_memberlist_update_info',	'cfg_name' => 'memberlist_update'),
 			array('catagory'=> 'rostersync', 'name' => 'per_rsync_guild_add',			'info' => 'per_rsync_guild_add_info',			'cfg_name' => 'guild_add'),
@@ -152,6 +152,11 @@ class rostersyncInstall
 	{
 		global $installer;
 
+		if( version_compare('1.2.0', $oldversion, '>') == true )
+		{
+			$installer->remove_config('102');
+			$installer->add_config("'102', 'rsync_skip_cache', '0', 'radio{on^1|Off^0', 'rsync_conf'");
+		}
 		return true;
 	}
 

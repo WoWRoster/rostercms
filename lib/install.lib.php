@@ -31,6 +31,12 @@ class Install
 	var $addata;
 
 	var $conf_table = 'addon_config';
+	/*
+	var $conf_table = array(
+		'addons'	=> 'addon_config',
+		'plugins'	=> 'plugin_config'	
+	);
+	*/
 	var $install_type = 'addons';
 	
 	var $addon_id;
@@ -353,6 +359,7 @@ class Install
 
 		$retval = 0;
 		//$old_error_die = $roster->db->error_die(false);
+		//d($this->sql);
 		foreach ($this->sql as $id => $query)
 		{
 			if (!$roster->db->query($query))
@@ -364,6 +371,7 @@ class Install
 		}
 		if ($retval)
 		{
+			//d($this->tables);
 			foreach ($this->tables as $table => $backup)
 			{
 				$query = 'DROP TABLE IF EXISTS `' . $table . '`';
