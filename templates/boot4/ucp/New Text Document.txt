@@ -1,9 +1,0 @@
-<!-- IF S_MESSAGES -->
-<div class="alert alert-info">
-	<!-- BEGIN messages -->
-		<!-- BEGIN item -->
-			<!-- IF messages.item.TITLE neq '' --><strong>{messages.item.TITLE}</strong><!-- ENDIF -->{messages.item.TEXT}<br/>
-		<!-- END item -->
-	<!-- END messages -->
-</div>
-<!-- ENDIF -->
