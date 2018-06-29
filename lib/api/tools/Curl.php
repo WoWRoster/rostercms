@@ -131,7 +131,7 @@ class Curl {
         $this->parameters[$key] = $value;
     }
 	
-	public function makeRequest($url, $method='GET', $options=array(),$uri,$method) 
+	public function makeRequest($url, $method='GET', $options=array(),$uri) 
 	{
         $open_basedir_value = ini_get('open_basedir');
 		$ch = curl_init($url);

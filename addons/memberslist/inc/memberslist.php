@@ -185,7 +185,8 @@ roster_add_js($js, 'inline', 'header', false, false);
 	function prepareData( $query, $where, $group, $order_first, $order_last, $fields, $listname )
 	{
 		global $roster, $addon;
-		$this->pageanat = ($this->addon['config']['page_size'] > '0' ? true : false );
+		d($addon);
+		$this->pageanat = ($addon['config']['page_size'] > '0' ? true : false );
 		// Save some info
 		$this->listname = $listname;
 		$this->fields = $fields;

@@ -79,7 +79,7 @@ class roster_db
 			$result = $this->link_id->query("DESCRIBE " . substr($query, $pos));
 			if( $result )
 			{
-				while( $this->queries[$this->file][$this->query_count]['describe'][] = $this->link_id->fetch( $result ) ) {};
+				while( $this->queries[$this->file][$this->query_count]['describe'][] = $this->link_id->query( $result ) ) {};
 				mysql_free_result( $result );
 			}
 		}
@@ -111,7 +111,7 @@ class roster_db
 			$result = $this->link_id->query("DESCRIBE " . substr($query, $pos));
 			if( $result )
 			{
-				while( $this->queries[$this->file][$this->query_count]['describe'][] = $this->link_id->fetch( $result ) ) {};
+				while( $this->queries[$this->file][$this->query_count]['describe'][] = $this->link_id->query( $result ) ) {};
 				mysql_free_result( $result );
 			}
 		}

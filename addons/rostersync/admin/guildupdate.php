@@ -3,6 +3,7 @@ if ( !defined('IN_ROSTER') )
 {
     exit('Detected invalid access to this file!');
 }
+d($roster->data);
 /**
  * Make our menu from the config api
  */
@@ -35,10 +36,10 @@ var t;
 			type: "GET",
 			url: "'. makelink('ajax-addon-rostersync-guildupdate').'",
 			data: {
-				server: "'.$roster->data['server'].'",
-				guildname: "'.$roster->data['guild_name'].'",
-				region: "'.$roster->data['region'].'",
-				guild_id: "'.$roster->data['guild_id'].'",
+				server: "'.( !empty( $roster->data['server']) ? $roster->data['server'] : $roster->data['realm']).'",
+				guildname: "'.( !empty( $roster->data['guild_name']) ? $roster->data['guild_name'] : $roster->data['name']).'",
+				region: "'.( !empty( $roster->data['region']) ? $roster->data['region'] : $roster->data['region2']).'",
+				guild_id: "'.( !empty( $roster->data['guild_id']) ? $roster->data['guild_id'] : '0').'",
 			},
 			dataType: "html",
 			async: false,

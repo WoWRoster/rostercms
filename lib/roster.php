@@ -600,7 +600,7 @@ class roster
 	function _fetch_guild()
 	{
 		global $roster;
-		$query = "SELECT * FROM `" . $this->db->table('guild') . "` ;";
+		$query = "SELECT u.region As region2, u.server As realm, u.*, g.* FROM `" . $this->db->table('upload') . "` u LEFT JOIN `" . $this->db->table('guild') . "` g on `u`.`name` = `g`.`guild_name`;";
 
 		$result = $this->db->query($query);
 
@@ -609,7 +609,21 @@ class roster
 			die_quietly($this->db->error(), 'Database Error', __FILE__ . '<br />Function: ' . __FUNCTION__, __LINE__, $query);
 		}
 
-		$this->data = $this->db->fetch($result);
+		//d($this->db->fetch($result));
+		// fetch all guilds
+		while($guilds = $this->db->fetch($result))
+		{
+			//d($guilds);
+			if ($guilds['default'] ==1)
+			{
+				$this->data = $guilds;
+			}
+			else
+			{
+				$this->data['multiguild'][$guilds['name']] = $guilds;
+			}
+		}
+		//$this->data = $this->db->fetch($result);
 		
 		$query = "SELECT * FROM `" . $roster->db->table('guild_rank') . "`;";
 		$result = $roster->db->query($query);

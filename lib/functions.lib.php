@@ -582,7 +582,7 @@ function cleanTooltip( $tooltip , $caption_color='' , $inline_caption=1 )
 
 
 	// Initialize tooltip_out
-	$tooltip_out = '';
+	$tooltip_out = array();
 
 	// Parsing time!
 	$tooltip = str_replace('<br>',"\n",$tooltip);
@@ -990,7 +990,7 @@ function getaddon( $addonname )
 	$addon['ajax_file'] = $addon['inc_dir'] . 'ajax.php';
 
 	// Get config values for the default profile and insert them into the array
-	$addon['config'] = '';
+	$addon['config'] = array();
 
 	$query = "SELECT `config_name`, `config_value` FROM `" . $roster->db->table('addon_config') . "` WHERE `addon_id` = '" . $addon['addon_id'] . "' ORDER BY `id` ASC;";
 
@@ -1831,8 +1831,8 @@ function getAddonList()
 	global $roster, $installer;
 
 	// Initialize output
-	$addons = '';
-	$output = '';
+	$addons = array();
+	$output = array();
 
 	if( $handle = @opendir(ROSTER_ADDONS) )
 	{
@@ -1868,6 +1868,7 @@ function getAddonList()
 
 				if( array_key_exists($addon,$roster->addon_data) )
 				{
+
 					$output[$addon]['id'] = $roster->addon_data[$addon]['addon_id'];
 					$output[$addon]['active'] = $roster->addon_data[$addon]['active'];
 					$output[$addon]['access'] = $roster->addon_data[$addon]['access'];
