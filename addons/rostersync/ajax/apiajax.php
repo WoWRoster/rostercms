@@ -67,6 +67,7 @@ switch ($method)
 	break;
 	
 	case 'guildadd':
+	echo 'im add a guild';
         $rsync = new rostersync('guild');
 		$rsync->_sync_guild_add($_GET['server'], $_GET['guildname'], $_GET['region']);
 		

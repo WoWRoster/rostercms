@@ -23,3 +23,7 @@ $ajaxfuncs['guildmembers'] = array(
 $ajaxfuncs['makelist'] = array(
 	'file'=>$addon['dir'] . 'ajax/apiajax.php',
 );
+
+$ajaxfuncs['guildadd'] = array(
+	'file'=>$addon['dir'] . 'ajax/apiajax.php',
+);

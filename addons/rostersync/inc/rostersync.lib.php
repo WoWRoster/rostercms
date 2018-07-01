@@ -909,17 +909,18 @@ class rostersync {
 			'DBversion'				=> '',
 			'guild_info_text'		=> '',
 		);
-		$querystr = "INSERT `" . $roster->db->table('guild') . "` SET ". $roster->db->build_query('UPDATE', $guild) . " WHERE `guild_id` = '".$guildId."';";
+		$querystr = "INSERT `" . $roster->db->table('guild') . "` SET ". $roster->db->build_query('UPDATE', $guild) . ";";
 		$result = $roster->db->query($querystr);
 		if( !$result )
 		{
 			$this->status[$this->type]['message'] = $roster->db->this_error;
 			$this->setMessage($roster->db->this_error.'<br>');
-			return false;
 		}
 		
 		$this->status[$this->type]['updated'] = 2;
 		$this->setMessage('</ul></li></ul>');
+		
+		return true;
 		
 	}
 	/*
