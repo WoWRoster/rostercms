@@ -879,7 +879,7 @@ class rostersync {
 	/*
 		Add Guild
 	*/
-	function _sync_guild_add($server, $guildName, $region, $guildId)
+	function _sync_guild_add($server, $guildName, $region )
 	{
 		global $roster, $addon;
 		
@@ -887,6 +887,15 @@ class rostersync {
 		$this->status[$this->type]['server'] = $server;
 		
 		$this->data = $roster->api2->fetch('guild',array('name'=>$guildName,'server'=>$server,'fields'=>$this->fields['guild'] ));
+		if ($roster->config['debug_mode'])
+		{
+			d($this->data);
+		}
+		if ( !isset($this->data['name']) && !isset($this->data['realm']) && !isset($this->data['battlegroup']) )
+		{
+			$roster->debug->_debug( 2, $this->data, 'Guild Sync Failed', 'FAILED' );
+			return false;
+		}
 		
 		$this->setMessage('<ul><li>Adding '.$guildName.'@'.$server.'<ul>');
 			
